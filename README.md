@@ -45,7 +45,7 @@ Setting (this RPG will be taking place in a world we call "Stormcrest")
  > This description should be in enough detail that the TA/instructor can determine the complexity of the project and if it is sufficient for the team members to complete in the time allotted. 
  > 
  > You also need to set up an empty project board using GitHub projects (board view with default columns). Make sure you add the board under your project repository. You should also have a Product Backlog and In testing columns added. All columns should be in the right order.
- > ### Phase II
+  ## Phase II
  > Theodore Pumpernickel will log in to the game and either press start, quit, or display. In the display there will be getters and setters, one for showing swords, one for potions, one health, one for powers. In quit it just leaves and will start the game. If starting from the beginning the narrator will give a lengthy description of the game. If you start from the middle or end, pick up where you left off. 
 
 >Alvin will be bumping into other characters this is where we make the other character classes. So goblins are the bad guys and they will have a class containing getters and setters for. 
