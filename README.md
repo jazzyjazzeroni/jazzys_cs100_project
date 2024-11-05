@@ -42,7 +42,40 @@ Setting (this RPG will be taking place in a world we call "Stormcrest")
 >![image](https://github.com/user-attachments/assets/17361dc8-037c-4426-8276-3372d8fd58d8)
 
 ### Screen Layouts
-> Include the layout of each of your screens. The layout should describe the screen’s major components such as menus and prompts for user inputs and expected output, or any graphical user interface components if applicable (e.g. buttons, text boxes, etc). Explain what is on the layout, and the purpose of each menu item, button, etc. If many screens share the same layout, start by describing the general layout and then list the screens that will be using that layout and the differences between each of them.
+> General Layout
+Most screens in the game share a common layout structure, with variations based on their specific functions. The general layout includes:
+Title Bar: Displays the screen title.
+Main Menu: Provides navigation options (e.g., Start Game, Settings, Exit).
+Content Area: The main area where game content and interactions appear.
+Status Bar: Shows player status, such as health, mana, and inventory items.
+
+Main Menu Screen
+Title: Displays the game title "Flames of Ice".
+Start Button: Starts a new game.
+Load Button: Loads a saved game.
+Settings Button: Opens the settings menu.
+Exit Button: Exits the game.
+
+Settings Screen
+Change the name of the character
+Back Button: Returns to the main menu.
+
+Game Screen
+Character Info: Displays protagonist's health, mana, and equipped items.
+Enemy Info: Displays enemy health and status.
+Action Menu: Provides options for attack, healing, powers, and items.
+Dialogue Box: Shows narrative dialogue and battle prompts.
+Inventory Screen
+Items List: Lists all the items in the player's inventory such as mushrooms, potions, and swords.
+Item Details: Shows details of the selected item.
+Use/Equip Button: Uses or equips the selected item.
+Unequip Button: Player can go back if item is not needed at the moment.
+Back Button: Returns to the game screen.
+
+Battle Screen
+Protagonist and Enemy Sprites: Visual representation of the protagonist and enemies.
+Action Menu: Options for attack, healing, powers, and items.
+Battle Log: Displays the sequence of actions and outcomes in the battle
 
 ## Class Diagram
 > ![the uml png](https://github.com/user-attachments/assets/c149c76f-e014-403e-a5c7-5e6833d63eb5)
