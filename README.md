@@ -33,8 +33,12 @@ Setting (this RPG will be taking place in a world we call "Stormcrest")
 
 ### Navigation Diagram
 >![image](https://github.com/user-attachments/assets/17361dc8-037c-4426-8276-3372d8fd58d8)
+>> ![image](https://github.com/user-attachments/assets/e5524e38-1183-4d27-8da4-9bce513d1787)
+>> ![image](https://github.com/user-attachments/assets/9aeff9d8-be0b-4777-ba51-aafe662b2aaa)
+
 
 ### Screen Layouts
+>![image](https://github.com/user-attachments/assets/fdb88c22-0a24-43b0-b21a-543b01b7463f)
 > General Layout
 Most screens in the game share a common layout structure, with variations based on their specific functions. The general layout includes:
 Title Bar: Displays the screen title.
@@ -42,12 +46,14 @@ Main Menu: Provides navigation options (e.g., Start Game, Settings, Exit).
 Content Area: The main area where game content and interactions appear.
 Status Bar: Shows player status, such as health, mana, and inventory items.
 
+
 > Main Menu Screen
 Title: Displays the game title "Flames of Ice".
 Start Button: Starts a new game.
 Load Button: Loads a saved game.
 Settings Button: Opens the settings menu.
 Exit Button: Exits the game.
+
 
 > Settings Screen
 Change the name of the character
