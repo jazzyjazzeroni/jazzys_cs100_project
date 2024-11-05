@@ -49,18 +49,18 @@ Main Menu: Provides navigation options (e.g., Start Game, Settings, Exit).
 Content Area: The main area where game content and interactions appear.
 Status Bar: Shows player status, such as health, mana, and inventory items.
 
-Main Menu Screen
+> Main Menu Screen
 Title: Displays the game title "Flames of Ice".
 Start Button: Starts a new game.
 Load Button: Loads a saved game.
 Settings Button: Opens the settings menu.
 Exit Button: Exits the game.
 
-Settings Screen
+> Settings Screen
 Change the name of the character
 Back Button: Returns to the main menu.
 
-Game Screen
+> Game Screen
 Character Info: Displays protagonist's health, mana, and equipped items.
 Enemy Info: Displays enemy health and status.
 Action Menu: Provides options for attack, healing, powers, and items.
@@ -72,7 +72,7 @@ Use/Equip Button: Uses or equips the selected item.
 Unequip Button: Player can go back if item is not needed at the moment.
 Back Button: Returns to the game screen.
 
-Battle Screen
+> Battle Screen
 Protagonist and Enemy Sprites: Visual representation of the protagonist and enemies.
 Action Menu: Options for attack, healing, powers, and items.
 Battle Log: Displays the sequence of actions and outcomes in the battle
