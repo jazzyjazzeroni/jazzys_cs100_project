@@ -78,7 +78,7 @@ Action Menu: Options for attack, healing, powers, and items.
 Battle Log: Displays the sequence of actions and outcomes in the battle
 
 ## Class Diagram
-> ![the uml png](https://github.com/user-attachments/assets/c149c76f-e014-403e-a5c7-5e6833d63eb5)
+>![uml drawio (1)](https://github.com/user-attachments/assets/a5f64829-d93e-4d48-bc20-eed9e38e1f04)
 
 
 
