@@ -32,8 +32,7 @@ Setting (this RPG will be taking place in a world we call "Stormcrest")
 ## User Interface Specification
 
 ### Navigation Diagram
->![image](https://github.com/user-attachments/assets/17361dc8-037c-4426-8276-3372d8fd58d8)
-
+>![image](https://github.com/user-attachments/assets/e5ca3f36-b454-428e-a420-3d2365621e10)
 
 
 ### Screen Layouts
