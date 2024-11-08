@@ -25,9 +25,9 @@ Narrative dialogue: Prompts that provide the user with little quips and actions 
 Setting (this RPG will be taking place in a world we call "Stormcrest")
 
   ## Phase II
- > Theodore Pumpernickel will log in to the game and either press start, quit, or display. In the display there will be getters and setters, one for showing swords, one for potions, one health, one for powers. In quit it just leaves and will start the game. If starting from the beginning the narrator will give a lengthy description of the game. If you start from the middle or end, pick up where you left off. 
+ > The user/player will log in to the game and either press "start," "quit," or "display." In the display there will be getters and setters, one for showing swords, one for potions, one for health,  and another one for powers. In "quit" it just leaves and will end the game. If starting from the beginning, the narrator will give a lengthy description of the game. It will also give the option for tutorial gameplay. If the user starts from the middle or end, the player will pick up where they left off. 
 
->Alvin will be bumping into other characters this is where we make the other character classes. So goblins are the bad guys and they will have a class containing getters and setters for. 
+>Theodore will be bumping into other characters on his journey. This is where we utilize the other character classes. Goblins are the bad guys and they will have a class containing getters and setters. If the user dies the program will quit. if the player wa
 
 ## User Interface Specification
 
