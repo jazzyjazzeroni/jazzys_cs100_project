@@ -27,7 +27,7 @@ Setting (this RPG will be taking place in a world we call "Stormcrest")
   ## Phase II
  > The user/player will log in to the game and either press "start," "quit," or "display." In the display there will be getters and setters, one for showing swords, one for potions, one for health,  and another one for powers. In "quit" it just leaves and will end the game. If starting from the beginning, the narrator will give a lengthy description of the game. It will also give the option for tutorial gameplay. If the user starts from the middle or end, the player will pick up where they left off. 
 
->Theodore will be bumping into other characters on his journey. This is where we utilize the other character classes. Goblins are the bad guys and they will have a class containing getters and setters. If the user dies the program will quit. if the player wa
+>Theodore will be bumping into other characters on his journey. This is where we utilize the other character classes. Goblins are the bad guys and they will have a class containing getters and setters. If the user dies the program will quit.
 
 ## User Interface Specification
 
