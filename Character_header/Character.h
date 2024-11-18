@@ -20,6 +20,7 @@ void setHealth(double);
 bool isalive() const;
 Character(CharType, const string &, double, double);
 void damage(double dam);
+virtual void displayStats() const;
 virtual void attack(Character &) = 0;
 
 };

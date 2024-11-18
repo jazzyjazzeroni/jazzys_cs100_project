@@ -9,15 +9,13 @@ enum Powers{WATER, EARTH, FIRE, AIR};
 
 class Power_type{
 protected:
-double health;
-double attackAmount;
-string name;
 Powers p_type;
 
 public:
-string getPower () const;
+Powers getPower () const;
 void setPower();
-Power_type(Powers, const string &, double, double);
+void usePower(Powers);
+bool canUsePower(Powers);
 
 };
 #endif

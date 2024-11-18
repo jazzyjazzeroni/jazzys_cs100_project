@@ -10,6 +10,8 @@ using namespace std;
 class MainCharacter : public Character {
 private:
     string allegiance;
+    Powers powers;
+    Inventory inventory;
     char move;
 
 public:
@@ -17,8 +19,12 @@ public:
 
     void attack(Character &opponent) override;
     void WitchInteraction();
+    void heal(int);
     char getMovement();
-   void setMovement(char);
+    void setMovement(char);
+    void usePowers();
+    void addPotion();
+    void equipSword();
 
 };
 
