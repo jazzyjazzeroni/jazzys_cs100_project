@@ -7,16 +7,13 @@ using namespace std;
 class Goblin : public Character {
 private:
     string allegiance;
-    char move;
+    int specialPower;
 
 public:
-    Goblin(const string &name, double health, double attackStrength, const string &allegiance);
+    Goblin(const string &name, double health, double attackStrength, int specialPower, const string &allegiance);
 
     void attack(Character &opponent) override;
-    void WitchInteraction();
-    char getMovement();
-   void setMovement(char);
-
+    void SpecialAttack(int);
 };
 
 #endif
