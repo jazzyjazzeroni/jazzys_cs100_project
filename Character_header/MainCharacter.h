@@ -23,7 +23,9 @@ public:
     char getMovement();
     void setMovement(char);
     void usePowers();
-    void addPotion();
+    const Inventory& getInventory() const;
+    void usePotion();
+    void useMushroom();
     void equipSword();
 
 };

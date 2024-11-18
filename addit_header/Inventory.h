@@ -26,5 +26,6 @@ double getswordDam() const;
 void setswordDam(double);
 double getHealAmount() const;
 void setHealAmount(double);
+void displayInventory();
 };
 #endif

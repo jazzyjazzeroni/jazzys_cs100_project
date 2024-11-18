@@ -11,6 +11,7 @@ class Character{
 protected:
 double health;
 double attackAmount;
+double damage_amount;
 string name;
 CharType type;
 
@@ -20,7 +21,8 @@ void setHealth(double);
 bool isalive() const;
 Character(CharType, const string &, double, double);
 void damage(double dam);
-virtual void displayStats() const;
+void takeDamage(double);
+virtual void displayStats();
 virtual void attack(Character &) = 0;
 
 };
