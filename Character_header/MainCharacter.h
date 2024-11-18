@@ -2,6 +2,9 @@
 #define MAINCHARACTER_H
 
 #include "Character.h"
+#include "Powers.h"
+#include "Inventory.h"
+#include "Interface.h"
 using namespace std; 
 
 class MainCharacter : public Character {
