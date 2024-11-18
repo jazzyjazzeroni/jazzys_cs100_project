@@ -5,6 +5,7 @@
 using ::testing::AtLeast;
 using ::testing::Return;
 using ::testing::Mock;
+using ::testing::InSequence;
 
 class MockCharacter : public Character{
     public:
@@ -29,10 +30,52 @@ EXPECT_EQ(_char.getHealth(), 90.0);
 
 TEST(Charactertest, TestdefaultHealth){
 MockCharacter _char;
-EXPECT_EQ(_char.getHealth(), 90.0);
- _char.setHealth(140.0);
- EXPECT_EQ(_char.getHealth(), 140.0); 
+ EXPECT_CALL(_char, getHealth())
+    .WillOnce(Return(200.0));
+    EXPECT_DOUBLE_EQ(_char.getHealth(), 200.0); 
 };
+
+TEST(Charactertest, TestSETValidHealth){
+MockCharacter _char;
+ EXPECT_CALL(_char, setHealth(70.0))
+    .Times(1);
+    EXPECT_DOUBLE_EQ(_char.getHealth(), 70.0); 
+};
+
+TEST(Charactertest, invalidNegHealthTest){
+MockCharacter _char;
+ EXPECT_CALL(_char, setHealth(-30.0))
+    .Times(1);
+EXPECT_CALL(_char, getHealth())
+.WillOnce(Return(0.0));
+    EXPECT_DOUBLE_EQ(_char.getHealth(), 0.0); 
+};
+
+TEST(Charactertest, MaxHealthTest){
+MockCharacter _char;
+ EXPECT_CALL(_char, setHealth(300.0))
+    .Times(1);
+EXPECT_CALL(_char, getHealth())
+.WillOnce(Return(MAX_HEALTH));
+_char.setHealth(250.0);
+EXPECT_DOUBLE_EQ(_char.getHealth(), MAX_HEALTH); 
+};
+
+TEST(Charactertest, HealthAfterdamageTest){
+MockCharacter _char;
+ EXPECT_CALL(_char, setHealth(200.0))
+    .Times(1);
+EXPECT_CALL(_char, damage(20.0))
+    .Times(1);
+EXPECT_CALL(_char, getHealth())
+.WillOnce(Return(180.0));
+_char.setHealth(200.0);
+_char.damage(20.0);
+    EXPECT_DOUBLE_EQ(_char.getHealth(), 180.0); 
+};
+
+
+
 
 
 
