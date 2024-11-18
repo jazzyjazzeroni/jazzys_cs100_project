@@ -10,7 +10,7 @@ private:
     char move;
 
 public:
-    MainChar(const string &name, double health, double attackStrength, const string &allegiance);
+    MainCharacter(const string &name, double health, double attackStrength, const string &allegiance);
 
     void attack(Character &opponent) override;
     void WitchInteraction();
