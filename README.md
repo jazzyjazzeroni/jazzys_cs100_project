@@ -81,6 +81,74 @@ Protagonist and Enemy Sprites: Visual representation of the protagonist and enem
 Action Menu: Options for attack, healing, powers, and items.
 Battle Log: Displays the sequence of actions and outcomes in the battle
 
+Settings Screen: Is shown when the player chooses settings.
+
+![settings display](https://github.com/user-attachments/assets/a9358db4-ffbc-44a2-b89a-dbf5303b8b57)
+
+Tutorial Prompt: Is shown when the player first starts a new game.
+
+![tutorial prompt (1)](https://github.com/user-attachments/assets/5361d894-0d82-41cb-8264-0788c09214ba)
+
+First Tutorial Screen: Explains how the levels work and prompts the player to choose a direction to move in.
+
+![first tutorial screen (1)](https://github.com/user-attachments/assets/881bb461-06eb-4027-94aa-ecf8c850e950)
+
+Mushroom Encounter Screen: Is randomly shown when the player encounters a mushroom (is also the second screen shown in the tutorial).
+
+![second tutorial screen (1)](https://github.com/user-attachments/assets/3e9ecc50-751b-4108-90a8-df950d2d9e9c)
+
+Movement Screen: Is shown when the player is traversing the levels (is also the third screen shown in the tutorial).
+
+![movement prompt (1)](https://github.com/user-attachments/assets/9b03d579-98ad-4279-a949-0c8d40d83ab3)
+
+Enemy Encounter Screen: Is shown when the player encounters an enemy (is also the fourth screen shown in the tutorial).
+
+![enemy encounter prompt (1)](https://github.com/user-attachments/assets/ea7a5b99-1b6e-41e4-9e3f-98b41661506c)
+
+Player's Turn Screen: Is shown when it's the player's turn during battles.
+
+![player turn screen (1)](https://github.com/user-attachments/assets/4eb7b311-38d5-4e33-8041-ed5c23b6df5e)
+
+Player's Attack Success Screen: Is shown after a player's attack hits.
+
+![User attack success screen (1)](https://github.com/user-attachments/assets/75709406-3563-40fa-8b7b-7d77b5d0f6c7)
+
+Enemy's Attack Screen: Is shown after an enemy's attack hits.
+
+![enemy attack success screen (1)](https://github.com/user-attachments/assets/65c07031-5045-4465-9977-71866fd72b93)
+
+Using Items Screen: Is shown when the player chooses to use an item.
+
+![using items prompt (1)](https://github.com/user-attachments/assets/9a49665e-dc3a-48ca-a990-0c4235dab47f)
+
+Swords List Screen: Is shown when the player chooses to use a sword during battles.
+
+![swords list display (1)](https://github.com/user-attachments/assets/4dfd28ea-7812-425a-968d-729450736fe6)
+
+Potions List Screen: Is shown when the player chooses to use a potion during battles.
+
+![swords list display (1)](https://github.com/user-attachments/assets/d9f68bdb-9013-4862-bac7-a8120f940255)
+
+Death Screen: Is shown when the player's health reaches zero (minus the skull emoji lol).
+
+![death screen (2)](https://github.com/user-attachments/assets/807aa69b-c50b-42ab-8dd3-cb13d777aaa7)
+
+Enemy defeated screen: Is shown when the enemy's health reaches zero.
+
+![enemy defeated screen](https://github.com/user-attachments/assets/382bdbea-f72e-4598-bd4e-630b1ab9e5ee)
+
+Last enemy/Level completion screen: Is shown when the last enemy in a level is defeated.
+
+![level completion screen](https://github.com/user-attachments/assets/630d516d-c73b-4726-b97b-9ebdf40309ce)
+
+Pause Menu: Is shown when the player pauses.
+
+![pause menu (1)](https://github.com/user-attachments/assets/519217a9-d4b0-40fe-b3dc-6037c8fb6cb3)
+
+Quit reassurance prompt: Is shown when the player chooses to save and quit from the pause menu.
+
+![quit reassurance prompt (1)](https://github.com/user-attachments/assets/a97ed428-7ee4-49d4-8a60-7bfa3a8b6c85)
+
 ## Class Diagram
 >![uml drawio (1)](https://github.com/user-attachments/assets/a5f64829-d93e-4d48-bc20-eed9e38e1f04)
 
