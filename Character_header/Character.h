@@ -17,7 +17,7 @@ CharType type;
 
 public:
 Character::Character();
-double getHealth () const;
+virtual double getHealth () const =0;
 virtual void setHealth(double) =0;
 virtual bool isalive() const =0;
 Character(CharType, const string &, double, double);
