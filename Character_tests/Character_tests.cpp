@@ -10,7 +10,7 @@ using ::testing::InSequence;
 class MockCharacter : public Character{
     public:
     MockCharacter()
-        : Character(MAINCHAR, "MockCharacter", 100.0, 10.0) {}
+        : Character(MAINCHAR, "MockCharacter", 200.0, 10.0) {}
     MOCK_METHOD(void, displayStats, (), (override));
     MOCK_METHOD(void, setHealth, (double), (override));
     MOCK_METHOD(double, getHealth, (), (const, override));

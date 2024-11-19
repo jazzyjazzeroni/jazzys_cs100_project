@@ -5,8 +5,6 @@ using namespace std;
 #ifndef __INTERFACE_H__
 #define __INTERFACE_H__
 
-
-
 class Interface{
 protected:
 string selectChar;

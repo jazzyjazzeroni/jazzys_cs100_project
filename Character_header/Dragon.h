@@ -20,7 +20,6 @@ public:
     void setfireAttack();
     void attack(Character &opponent) override;
     
-
 };
 
 #endif

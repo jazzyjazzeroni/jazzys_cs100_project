@@ -6,7 +6,6 @@ using namespace std;
 
 enum Powers{WATER, EARTH, FIRE, AIR};
 
-
 class Power_type{
 protected:
 Powers p_type;
