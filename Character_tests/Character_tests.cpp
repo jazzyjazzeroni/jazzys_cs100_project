@@ -18,6 +18,7 @@ class MockCharacter : public Character{
     MOCK_METHOD(void, damage, (double), (override));
     MOCK_METHOD(void, takeDamage, (double), (override));
     MOCK_METHOD(void, attack, (Character&), (override));
+    MOCK_METHOD(CharType, getType, (), (override));
 
 };
 
