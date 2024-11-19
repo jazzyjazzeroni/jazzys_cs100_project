@@ -5,9 +5,9 @@ string Inventory::getMushroom() const
     return mushroom;
 }
 
-void Inventory::setMushroom(string mushroom)
+void Inventory::setMushroom(string pMushroom)
 {
-    this->mushroom = mushroom;
+    mushroom = pMushroom;
 }
 
 vector<std::string> Inventory::getSword() const
@@ -15,9 +15,9 @@ vector<std::string> Inventory::getSword() const
     return swords;
 }
 
-void Inventory::setSword(vector<string> swords)
+void Inventory::setSword(vector<string> pSwords)
 {
-    this->swords = swords; 
+    swords = pSwords; 
 }
 
 vector<std::string> Inventory::getPotion() const
@@ -25,43 +25,57 @@ vector<std::string> Inventory::getPotion() const
     return potions;
 }
 
-void Inventory::setPotion(vector<string> potions) 
+void Inventory::setPotion(vector<string> pPotions) 
 {
-    this->potions = potions;
+    potions = pPotions;
 }
 
-void Inventory::removePotion()
-{
-    //PSEUDOCODE
-    /*
-    * if potion is not empty
-        potion--
-      else
-        display "You don't have potion in the first place...Find some on your journey"  
-    */
+void Inventory::removePotion() {
+    if (!potions.empty()) {
+        potions.pop_back();
+    } else {
+        std::cout << "There are no potions in your inventory to remove. You will find some along the way...\n";
+    }
 }
 
-void Inventory::removeSword()
-{
-     //PSEUDOCODE
-    /*
-    * if sword is not empty
-        sword--
-      else
-        display "Seems to be you do not have a sword. You need one along the way..."  
-    */
+void Inventory::removeSword() {
+    if (!swords.empty()) {
+        swords.pop_back();
+    } else {
+        std::cout << "You are not holding a sword.\n";
+    }
 }
 
-double Inventory::getswordDam() const
-{
-    //PSEUDOCODE
-    /*
-        After every 
-    */
+double Inventory::getswordDam() const {
+    return sword_dam;
 }
 
-// double getswordDam() const;
-// void setswordDam(double);
-// double getHealAmount() const;
-// void setHealAmount(double);
-// void displayInventory();
+void Inventory::setswordDam(double pSwordDamage) {
+    sword_dam = pSwordDamage;
+}
+
+double Inventory::getHealAmount() const {
+    return heal_num;
+}
+
+void Inventory::setHealAmount(double pHealNum) {
+    heal_num = pHealNum;
+}
+
+void Inventory::displayInventory() {
+    std::cout << "Mushroom: " << mushroom << '\n';
+    std::cout << "Swords: ";
+    for (const string& sword : swords) {
+        std::cout << sword << " ";
+    }
+    std::cout << '\n';
+
+    std::cout << "Potions: ";
+    for (const string& potion : potions) {
+        std::cout << potion << " ";
+    }
+    std::cout << '\n';
+
+    std::cout << "Sword Damage: " << sword_dam << '\n';
+    std::cout << "Heal Amount: " << heal_num << '\n';
+}
