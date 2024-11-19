@@ -180,6 +180,16 @@ _char.setHealth(200.0);
 _char.damage(0.0);
 EXPECT_DOUBLE_EQ(_char.getHealth(), 200.0);
 };
+
+TEST(Charactertest, OverkillDamage) {
+    MockCharacter _char;
+    _char.setHealth(50.0);
+    EXPECT_CALL(_char, damage(100.0));
+    EXPECT_CALL(_char, getHealth())
+        .WillOnce(Return(0.0));
+    _char.damage(100.0);
+    EXPECT_DOUBLE_EQ(_char.getHealth(), 0.0);
+};
 //end take damage tests
 
 //start damage tests
@@ -270,15 +280,31 @@ EXPECT_CALL(_char, attack(::testing::Ref(opp)))
     _char.attack(opp);
 };
 
-// TEST(Charactertest, SuccessfullattackEnemy){
-// MockCharacter _char;
-// MockCharacter opp;
-// EXPECT_CALL(_char, Chartype)
-//         .Times(1);
-//     EXPECT_CALL(opp, takeDamage(40.0))
-//         .Times(1);
-//     _char.attack(opp);
-// };
+TEST(Charactertest, SuccessfullattackEnemy){
+MockCharacter _char;
+MockCharacter opp;
+EXPECT_CALL(_char, getType())
+        .WillOnce(Return(MAINCHAR));
+    EXPECT_CALL(opp, getType())
+        .WillOnce(Return(GOBLIN));
+        if (_char.getType() != opp.getType()) {
+        EXPECT_CALL(opp, takeDamage(testing::_))
+            .Times(1); 
+    }
+    _char.attack(opp);
+};
+
+TEST(Charactertest, testAlly){
+MockCharacter _char;
+MockCharacter ally;
+EXPECT_CALL(_char, getType())
+        .WillOnce(Return(MAINCHAR));
+    EXPECT_CALL(ally, getType())
+        .WillOnce(Return(NPC));
+        EXPECT_CALL(ally, takeDamage(testing::_))
+        .Times(0); 
+    _char.attack(ally);
+};
 
 
 
