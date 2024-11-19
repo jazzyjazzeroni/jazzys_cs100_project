@@ -21,7 +21,6 @@ public:
     void WitchInteraction();
     void heal(int);
     char getMovement();
-    void setMovement(char);
     void usePowers();
     const Inventory& getInventory() const;
     void usePotion();
