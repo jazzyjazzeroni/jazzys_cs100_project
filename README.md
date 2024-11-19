@@ -32,7 +32,8 @@ Setting (this RPG will be taking place in a world we call "Stormcrest")
 ## User Interface Specification
 
 ### Navigation Diagram
->![image](https://github.com/user-attachments/assets/e5ca3f36-b454-428e-a420-3d2365621e10)
+>![flames-of-ice-navigation drawio (1)](https://github.com/user-attachments/assets/636f8a92-b3ca-4c7f-8c97-04c499ec37cc)
+
 
 
 ### Screen Layouts
