@@ -175,8 +175,21 @@ Quit reassurance prompt: Is shown when the player chooses to save and quit from 
  >   * A new class diagram incorporating your changes after considering the SOLID principles.
  >   * For each update in your class diagram, you must explain in 3-4 sentences:
  >     * What SOLID principle(s) did you apply?
- >     * How did you apply it? i.e. describe the change.
- >     * How did this change help you write better code?
+>        We analyzed the SOLID principles in regards to our UML diagram and made the changes we saw necessary. For the Single-Responsibility Principle (SRP), we organized the display and the screen layout into separate output classes. This is so that classes such as the enemy and main character classes did not have excessive responsibilities. We did not feel as though our UML diagram was in violation in any aspect of the Open-Closed Principle (OCP).
+For the Liskov Substitution Principle (LSP), we made it so our derived classes like Sword, can override the abstract class of Inventory.
+We felt as though our UML diagram did not violate any aspect of the Interface Segregation Principle (ISP).
+We felt as though our UML diagram did not violate any aspect of the Dependency Inversion Principle (DIP).
+
+ >   * How did you apply it? i.e. describe the change.
+> The critical changes applied to our code base was refactoring the methods from the Character class to pure virtual functions. 
+The group has noticed the original code base for the abstract Character class violated the Liskov Substitution Principle since the subclasses were not consistent with the base class due to the methods. We organized the display and the screen layout into a separate output class. This is so that classes such as the enemy and main character classes did not have excessive responsibilities. Now the output that the user will be interacting with throughout the game, is organized in one cohesive class.
+The group has simply changed this by making all methods in the Character class to virtual functions to abide by the Liskov Substitution Principle. For our two abstract classes, Inventory and Character, we implemented virtual functions for them. This is so that the child classes can override the abstract class. By replacing each virtual function with the specific function for each derived class, we had not altered the correctness of our UML diagram.
+
+ > * How did this change help you write better code?
+> It provided a more efficient and organized structure that allowed for the foundation of our program to be more readable. The SOLID principles enabled us, as programmers, to practice clean and concise coding. 
+While coding, the group has noticed that with other suboptimal programming practices (i.e. using methods that are not needed for other classes, declaring data types or values that cause inconspicuous errors to the code base. 
+One principle that helped our group was the Single Responsibility Principle since we have encountered bugs in our program that were difficult to trace. However, when the group decided to separate the methods into different subclasses. We were able to backtrace where the bugs were coming from.
+
  > * Perform a new sprint plan like you did in Phase II.
  > * Make sure that your README file (and Project board) are up-to-date reflecting the current status of your project and the most recent class diagram. Previous versions of the README file should still be visible through your commit history.
 >  * Each team member should also submit the Individual Contributions Form on Canvas for phase III. In this form, you need to fill in the names of all team members, the percentage of work contributed by each member for phase III, and a description of their contributions. Remember that each team member should submit the form individually.
