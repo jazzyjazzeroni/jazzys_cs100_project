@@ -259,6 +259,26 @@ EXPECT_CALL(opp, getHealth())
 
 //start attack tests
 
+TEST(Charactertest, SuccessfulattackOpp){
+MockCharacter _char;
+MockCharacter opp;
+EXPECT_CALL(_char, attack(::testing::Ref(opp)))
+        .Times(1);
+    EXPECT_CALL(opp, takeDamage(40.0))
+        .Times(1);
+    _char.attack(opp);
+};
+
+// TEST(Charactertest, SuccessfullattackEnemy){
+// MockCharacter _char;
+// MockCharacter opp;
+// EXPECT_CALL(_char, Chartype)
+//         .Times(1);
+//     EXPECT_CALL(opp, takeDamage(40.0))
+//         .Times(1);
+//     _char.attack(opp);
+// };
+
 
 
 //end attack tests
