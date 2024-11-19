@@ -3,6 +3,7 @@ gameManager{
     levels = [level(pwoer, map, numGoblin),level(pwoer, map, numGoblin),level(pwoer, map, numGoblin)]
     gameStart
     {
+        menuPrinter::printMainmenu()
         while{
         level[currlevel].start()
         level ++
@@ -13,6 +14,18 @@ gameManager{
     }
     }
 
+}
+ menuPrinter
+{
+    static printMainMemnu()
+    static printGoblinMenu(left, killed)
+    {
+        // how manhy goblins u have left, and how many u killed
+    }
+    static printStus(player)
+    {
+        health, power rn
+    }
 }
 level()
 {
@@ -34,6 +47,7 @@ level()
     void takeAction()
     {
         char action;
+        menuprinter::printGoblinMenu()
         cin >> action;
         if(i)
         {
@@ -208,6 +222,10 @@ gameManager()
         if(i)
         {
             inventory.open(player); // todo
+        }
+        if(s)
+        {
+            menuPrinter::printStatus(player)
         }
         if(wasd)
         {
