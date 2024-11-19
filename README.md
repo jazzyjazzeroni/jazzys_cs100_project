@@ -170,7 +170,7 @@ Quit reassurance prompt: Is shown when the player chooses to save and quit from 
  
 
  >     * What SOLID principle(s) did you apply?
->        We analyzed the SOLID principles in regards to our UML diagram and made the changes we saw necessary. For the Single-Responsibility Principle (SRP), we organized the display and the screen layout into separate output classes. This is so that classes such as the enemy and main character classes did not have excessive responsibilities. We did not feel as though our UML diagram was in violation in any aspect of the Open-Closed Principle (OCP).
+We analyzed the SOLID principles in regards to our UML diagram and made the changes we saw necessary. For the Single-Responsibility Principle (SRP), we organized the display and the screen layout into separate output classes. This is so that classes such as the enemy and main character classes did not have excessive responsibilities. We did not feel as though our UML diagram was in violation in any aspect of the Open-Closed Principle (OCP).
 For the Liskov Substitution Principle (LSP), we made it so our derived classes like Sword, can override the abstract class of Inventory.
 We felt as though our UML diagram did not violate any aspect of the Interface Segregation Principle (ISP).
 We felt as though our UML diagram did not violate any aspect of the Dependency Inversion Principle (DIP).
