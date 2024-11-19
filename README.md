@@ -136,7 +136,7 @@ Swords List Screen: Is shown when the player chooses to use a sword during battl
 
 Potions List Screen: Is shown when the player chooses to use a potion during battles.
 
-![swords list display (1)](https://github.com/user-attachments/assets/d9f68bdb-9013-4862-bac7-a8120f940255)
+![potions list display](https://github.com/user-attachments/assets/5312a4de-c118-47cd-acd8-70e23cc57e77)
 
 Death Screen: Is shown when the player's health reaches zero (minus the skull emoji lol).
 
