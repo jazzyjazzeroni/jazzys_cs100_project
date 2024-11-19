@@ -16,13 +16,15 @@ string name;
 CharType type;
 
 public:
-double getHealth () const;
-void setHealth(double);
-bool isalive() const;
+Character::Character();
+virtual double getHealth () const =0;
+virtual CharType getType() =0;
+virtual void setHealth(double) =0;
+virtual bool isalive() const =0;
 Character(CharType, const string &, double, double);
-void damage(double dam);
-void takeDamage(double);
-virtual void displayStats();
+virtual void damage(double dam) = 0;
+virtual void takeDamage(double) = 0 ;
+virtual void displayStats() =0 ;
 virtual void attack(Character &) = 0;
 
 };
