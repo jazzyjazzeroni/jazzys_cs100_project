@@ -6,3 +6,4 @@ bin/
 *.a
 ncurses-6.1.tar.gz
 .vscode/
+addit_src/gameManager().cs
