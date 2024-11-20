@@ -7,25 +7,24 @@ using namespace std;
 
 class Inventory{
 protected:
-string mushroom;
-vector<string>  swords;
-vector<string>  potions;
-double sword_dam;
-double heal_num;
+string swords;
+string potions;
+int sword_dam;
+int heal_num;
+int num_sword;
+int num_potions;
 
 public:
-string getMushroom () const;
-void setMushroom(string);
-vector<string> getSword() const;
-void setSword(vector<string>);
-vector<string> getPotion() const;
-void setPotion(vector<string>);
+string getSword() const;
+void setSword(string);
+string getPotion() const;
+void setPotion(string);
 void removePotion();
 void removeSword();
-double getswordDam() const;
-void setswordDam(double);
-double getHealAmount() const;
-void setHealAmount(double);
+int getswordDam() const;
+void setswordDam(int);
+int getHealAmount() const;
+void setHealAmount(int);
 void displayInventory();
 };
 #endif
