@@ -18,16 +18,18 @@ private:
     char move;
 
 public:
-    MainCharacter(const string &name, double health, double attackStrength, const string &allegiance);
+     MainCharacter(const string &name, double health, double attackStrength, const string &allegiance);
 
-    void attack(Character &opponent) override;
-    void WitchInteraction();
-    void heal(int);
-    char getMovement();
-    void usePowers();
-    const Inventory& getInventory() const;
-    void usePotion();
-    void equipSword();
+    virtual void attack(Character &opponent) override;
+    virtual void WitchInteraction();
+    virtual void heal(int);
+    virtual char getMovement();
+    virtual void usePowers();
+    virtual const Inventory& getInventory() const;
+    virtual void usePotion();
+    virtual void equipSword();
+    // string getAllegiance() const;   
+    // void setAllegiance(const string &newAllegiance);
 };
 
 #endif
