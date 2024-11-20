@@ -13,7 +13,6 @@ using namespace std;
     void GameMap::setObjectAt(int x, int y, const Object& obj){
         mapMatrix[y][x] = obj;
     }
-
     int GameMap::getNumGoblins() const{
         return numGoblin;
     }
