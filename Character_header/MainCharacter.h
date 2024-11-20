@@ -28,7 +28,6 @@ public:
     const Inventory& getInventory() const;
     void usePotion();
     void equipSword();
-
 };
 
 #endif
