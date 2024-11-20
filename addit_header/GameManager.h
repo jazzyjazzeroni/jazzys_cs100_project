@@ -1,7 +1,7 @@
 #include <vector>
 #include "Level.h"
 #include "MenuPrinter.h"
-#include "Map.h"
+#include "GameMap.h"
 #include "../Character_header/MainCharacter.h"
 #include "Inventory.h"
 

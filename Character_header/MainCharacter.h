@@ -2,11 +2,11 @@
 #define MAINCHARACTER_H
 
 #include "Character.h"
-#include "Powers.h"
-#include "Inventory.h"
+#include "../addit_header/Powers.h"
+#include "../addit_header/Inventory.h"
 #include "../addit_header/GameManager.h"
 #include "../addit_header/GameMap.h"
-#include "../addit_header/Sword.h"
+#include "../addit_header/Swords.h"
 using namespace std; 
 
 class MainCharacter : public Character {
