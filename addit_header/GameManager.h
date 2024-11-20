@@ -2,7 +2,7 @@
 #include "Level.h"
 #include "MenuPrinter.h"
 #include "Map.h"
-#include "MainCharacter.h"
+#include "../Character_header/MainCharacter.h"
 #include "Inventory.h"
 
 #ifndef GAMEMANAGER_H

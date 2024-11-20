@@ -4,9 +4,9 @@
 #include "Character.h"
 #include "Powers.h"
 #include "Inventory.h"
-#include "Interface.h"
-#include "GameMap.h"
-#include "Sword.h"
+#include "../addit_header/GameManager.h"
+#include "../addit_header/GameMap.h"
+#include "../addit_header/Sword.h"
 using namespace std; 
 
 class MainCharacter : public Character {
