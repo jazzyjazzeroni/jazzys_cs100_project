@@ -13,7 +13,18 @@ link_directories(${LIBRARY_OUTPUT_PATH})
 include_directories(
   ${CMAKE_SOURCE_DIR}/test/lib/googletest/include/
   ${CMAKE_SOURCE_DIR}/test/lib/googlemock/include/
+  ${CMAKE_SOURCE_DIR}/Character_header
+  ${CMAKE_SOURCE_DIR}/addit_header
 )
 
 add_subdirectory(lib)
 add_subdirectory(test)
+
+file(GLOB CHARACTER_HEADERS ${CMAKE_SOURCE_DIR}/Character_header/*.h)
+add_library(CharacterLib ${CHARACTER_HEADERS})
+
+file(GLOB ADDIT_HEADERS ${CMAKE_SOURCE_DIR}/addit_header/*.h)
+add_library(AdditLib ${ADDIT_HEADERS})
+
+add_executable(main_app main.cpp)
+target_link_libraries(main_app CharacterLib AdditLib
