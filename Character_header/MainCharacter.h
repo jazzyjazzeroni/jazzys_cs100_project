@@ -2,9 +2,11 @@
 #define MAINCHARACTER_H
 
 #include "Character.h"
-#include "Powers.h"
-#include "Inventory.h"
-#include "Interface.h"
+#include "../addit_header/Powers.h"
+#include "../addit_header/Inventory.h"
+#include "../addit_header/GameManager.h"
+#include "../addit_header/GameMap.h"
+#include "../addit_header/Swords.h"
 using namespace std; 
 
 class MainCharacter : public Character {
@@ -12,6 +14,7 @@ private:
     string allegiance;
     Powers powers;
     Inventory inventory;
+    Sword sword;
     char move;
 
 public:
@@ -21,11 +24,9 @@ public:
     void WitchInteraction();
     void heal(int);
     char getMovement();
-    void setMovement(char);
     void usePowers();
     const Inventory& getInventory() const;
     void usePotion();
-    void useMushroom();
     void equipSword();
 
 };

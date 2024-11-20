@@ -6,7 +6,6 @@ using namespace std;
 
 class Goblin : public Character {
 private:
-    string allegiance;
     int specialPower;
 
 public:
