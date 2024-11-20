@@ -24,7 +24,6 @@ virtual bool isalive() const =0;
 Character(CharType, const string &, double, double);
 virtual void damage(double dam) = 0;
 virtual void takeDamage(double) = 0 ;
-virtual void displayStats() =0 ;
 virtual void attack(Character &) = 0;
 
 };

@@ -5,6 +5,8 @@
 #include "Powers.h"
 #include "Inventory.h"
 #include "Interface.h"
+#include "GameMap.h"
+#include "Sword.h"
 using namespace std; 
 
 class MainCharacter : public Character {
@@ -12,6 +14,7 @@ private:
     string allegiance;
     Powers powers;
     Inventory inventory;
+    Sword sword;
     char move;
 
 public:
@@ -24,7 +27,6 @@ public:
     void usePowers();
     const Inventory& getInventory() const;
     void usePotion();
-    void useMushroom();
     void equipSword();
 
 };

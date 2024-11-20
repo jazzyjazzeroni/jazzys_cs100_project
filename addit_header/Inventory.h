@@ -5,26 +5,28 @@ using namespace std;
 #ifndef __INVENTORY_H__
 #define __INVENTORY_H__
 
-class Inventory{
-protected:
-string swords;
-string potions;
-int sword_dam;
-int heal_num;
-int num_sword;
-int num_potions;
+class Item {
+public:
+    string name;
+    int value;
+
+    Item(string name, int value) : name(name), value(value) {}
+};
+
+class Inventory {
+private:
+    vector<Item> swords;
+    vector<Item> potions;
 
 public:
-string getSword() const;
-void setSword(string);
-string getPotion() const;
-void setPotion(string);
-void removePotion();
-void removeSword();
-int getswordDam() const;
-void setswordDam(int);
-int getHealAmount() const;
-void setHealAmount(int);
-void displayInventory();
+    void addSword(const string &name, int damage);
+    void addPotion(const string &name, int healAmount);
+
+    void removeSword(const string &name);
+    void removePotion(const string &name);
+
+    Item* getSword(const string &name);
+    Item* getPotion(const string &name);
 };
+
 #endif

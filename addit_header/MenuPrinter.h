@@ -1,21 +1,18 @@
 #include <string>
 #include <iostream>
-#include "MainCharacter.h"
+#include "../Character_header/MainCharacter.h"
 using namespace std;
 #ifndef __MENUPRINTER_H__
 #define __MENUPRINTER_H__
 
 class MenuPrinter{
-protected:
-string selectChar;
-MainChar mmc;
 
 public:
-string getChar()const;
-void setChar(string);
-void displayMainMenu();
-void displayBattleMenu();
-void displayStatus();
+// string getChar()const;
+// void setChar(string);
+static void printMainMenu();
+static void printGoblinMenu(int left, int killed);
+static void printStatus(const MainCharacter& player);
 
 };
 #endif
