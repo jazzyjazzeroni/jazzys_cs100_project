@@ -6,7 +6,6 @@ using namespace std;
 
 class Dragon : public Character {
 private:
-    string allegiance;
     int breatheFire;
     int fireBall;
     // Powers specialpowers;
