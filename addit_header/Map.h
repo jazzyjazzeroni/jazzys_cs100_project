@@ -2,13 +2,15 @@
 #include <iostream>
 #include "MainCharacter.h"
 using namespace std;
-#ifndef __MENUPRINTER_H__
-#define __MENUPRINTER_H__
+#ifndef __MAP_H__
+#define __MAP_H__
 
-class MenuPrinter{
+class Map{
 protected:
-string selectChar;
-MainChar mmc;
+int x_pos;
+int y_pos;
+int height;
+int length;
 
 public:
 string getChar()const;
