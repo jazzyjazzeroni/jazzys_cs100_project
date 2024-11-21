@@ -54,3 +54,23 @@ void Inventory::removePotion(const string &name) {
     }
 }
 
+
+// I do need someone to take a look at the two Item* implemented
+Item* Inventory::getSword(const string &name)
+{
+
+    for(auto &sword : swords)
+    {
+        if(sword.name == name) return &sword;
+    }
+    std::cout << "No sword found in your inventory.\n";
+}
+
+Item* Inventory::getPotion(const string &name)
+{
+    for(auto &potion : potions)
+    {
+        if(potion.name == name) return &potion;
+    }
+    std::cout << "No potion found in your inventory.\n";
+}
