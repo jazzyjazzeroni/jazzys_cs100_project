@@ -100,10 +100,6 @@ First Tutorial Screen: Explains how the levels work and prompts the player to ch
 
 ![first tutorial screen (1)](https://github.com/user-attachments/assets/881bb461-06eb-4027-94aa-ecf8c850e950)
 
-Mushroom Encounter Screen: Is randomly shown when the player encounters a mushroom (is also the second screen shown in the tutorial).
-
-![second tutorial screen (1)](https://github.com/user-attachments/assets/3e9ecc50-751b-4108-90a8-df950d2d9e9c)
-
 Movement Screen: Is shown when the player is traversing the levels (is also the third screen shown in the tutorial).
 
 ![movement prompt (1)](https://github.com/user-attachments/assets/9b03d579-98ad-4279-a949-0c8d40d83ab3)
