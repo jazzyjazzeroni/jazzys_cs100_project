@@ -154,8 +154,8 @@ Quit reassurance prompt: Is shown when the player chooses to save and quit from 
  
   ## Phase III
  
+![uml drawio (2)](https://github.com/user-attachments/assets/afea3ac6-218c-41e1-ae2d-3786941ae90a)
 
- 
 We analyzed the SOLID principles in regards to our UML diagram and made the changes we saw necessary. For the Single-Responsibility Principle (SRP), we organized the display and the screen layout into separate output classes. This is so that classes such as the enemy and main character classes did not have excessive responsibilities. We did not feel as though our UML diagram was in violation in any aspect of the Open-Closed Principle (OCP).
 For the Liskov Substitution Principle (LSP), we made it so our derived classes like Sword, can override the abstract class of Inventory.
 We felt as though our UML diagram did not violate any aspect of the Interface Segregation Principle (ISP).
@@ -167,7 +167,7 @@ The group has noticed the original code base for the abstract Character class vi
 The group has simply changed this by making all methods in the Character class to virtual functions to abide by the Liskov Substitution Principle. For our two abstract classes, Inventory and Character, we implemented virtual functions for them. This is so that the child classes can override the abstract class. By replacing each virtual function with the specific function for each derived class, we had not altered the correctness of our UML diagram.
 
  > * How did this change help you write better code?
-> It provided a more efficient and organized structure that allowed for the foundation of our program to be more readable. The SOLID principles enabled us, as programmers, to practice clean and concise coding. 
+> The SOLID principles provided a guide for a more efficient and organized structure that allowed for the foundation of our program to be more readable. These principles enabled us, as programmers, to practice clean and concise coding. 
 While coding, the group has noticed that with other suboptimal programming practices (i.e. using methods that are not needed for other classes, declaring data types or values that cause inconspicuous errors to the code base. 
 One principle that helped our group was the Single Responsibility Principle since we have encountered bugs in our program that were difficult to trace. However, when the group decided to separate the methods into different subclasses. We were able to backtrace where the bugs were coming from.
 
