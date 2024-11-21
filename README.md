@@ -88,8 +88,6 @@ Settings Screen: Is shown when the player chooses settings.
 
 Change Character's Name Screen: Is shown when the player chooses to change their character's name from the Settings menu.
 
-![change characters name screen](https://github.com/user-attachments/assets/62421ba2-20c3-48f4-9f8b-872329034bdd)
-
 Change Language Screen: Is shown when the player chooses to change the language from the Settings menu.
 
 ![Language Options screen](https://github.com/user-attachments/assets/3f9dbbed-ea33-4109-874e-fa00c2611834)
