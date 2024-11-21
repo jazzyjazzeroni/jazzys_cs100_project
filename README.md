@@ -88,8 +88,6 @@ Settings Screen: Is shown when the player chooses settings.
 
 Change Character's Name Screen: Is shown when the player chooses to change their character's name from the Settings menu.
 
-![change characters name screen](https://github.com/user-attachments/assets/62421ba2-20c3-48f4-9f8b-872329034bdd)
-
 Change Language Screen: Is shown when the player chooses to change the language from the Settings menu.
 
 ![Language Options screen](https://github.com/user-attachments/assets/3f9dbbed-ea33-4109-874e-fa00c2611834)
@@ -101,10 +99,6 @@ Tutorial Prompt: Is shown when the player first starts a new game.
 First Tutorial Screen: Explains how the levels work and prompts the player to choose a direction to move in.
 
 ![first tutorial screen (1)](https://github.com/user-attachments/assets/881bb461-06eb-4027-94aa-ecf8c850e950)
-
-Mushroom Encounter Screen: Is randomly shown when the player encounters a mushroom (is also the second screen shown in the tutorial).
-
-![second tutorial screen (1)](https://github.com/user-attachments/assets/3e9ecc50-751b-4108-90a8-df950d2d9e9c)
 
 Movement Screen: Is shown when the player is traversing the levels (is also the third screen shown in the tutorial).
 
@@ -125,14 +119,6 @@ Player's Attack Success Screen: Is shown after a player's attack hits.
 Enemy's Attack Screen: Is shown after an enemy's attack hits.
 
 ![enemy attack success screen (1)](https://github.com/user-attachments/assets/65c07031-5045-4465-9977-71866fd72b93)
-
-Using Items Screen: Is shown when the player chooses to use an item.
-
-![using items prompt (1)](https://github.com/user-attachments/assets/9a49665e-dc3a-48ca-a990-0c4235dab47f)
-
-Swords List Screen: Is shown when the player chooses to use a sword during battles.
-
-![swords list display (1)](https://github.com/user-attachments/assets/4dfd28ea-7812-425a-968d-729450736fe6)
 
 Potions List Screen: Is shown when the player chooses to use a potion during battles.
 
