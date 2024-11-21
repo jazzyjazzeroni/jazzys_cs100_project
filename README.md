@@ -120,10 +120,6 @@ Enemy's Attack Screen: Is shown after an enemy's attack hits.
 
 ![enemy attack success screen (1)](https://github.com/user-attachments/assets/65c07031-5045-4465-9977-71866fd72b93)
 
-Swords List Screen: Is shown when the player chooses to use a sword during battles.
-
-![swords list display (1)](https://github.com/user-attachments/assets/4dfd28ea-7812-425a-968d-729450736fe6)
-
 Potions List Screen: Is shown when the player chooses to use a potion during battles.
 
 ![potions list display](https://github.com/user-attachments/assets/5312a4de-c118-47cd-acd8-70e23cc57e77)
