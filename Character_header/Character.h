@@ -1,5 +1,5 @@
-#include <string>
 #include <iostream>
+#include <string>
 using namespace std;
 #ifndef __CHARACTER_H__
 #define __CHARACTER_H__
@@ -17,14 +17,14 @@ CharType type;
 
 public:
 Character::Character();
-virtual double getHealth () const =0;
-virtual CharType getType() =0;
-virtual void setHealth(double) =0;
-virtual bool isalive() const =0;
+double getHealth () const;
+CharType getType();
+void setHealth(double);
+bool isalive() const;
 Character(CharType, const string &, double, double);
-virtual void damage(double dam) = 0;
-virtual void takeDamage(double) = 0 ;
-virtual void attack(Character &) = 0;
+void damage(double dam); 
+void takeDamage(double);
+void attack(Character &);
 
 };
 #endif

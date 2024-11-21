@@ -33,13 +33,13 @@
 
 class Battle {
 private:
-    Character& maincharacter;
+    Character& player;
     Character& goblin;
     int num_of_rounds = 5;
 
 public: 
     // THIS IS ONLY FOR TESTING 
-    Battle(Character& mc, Character& g, int num_of_rounds);
+    Battle(Character& player, Character& goblin, int num_of_rounds);
     void round();
 };
 #endif 
