@@ -4,3 +4,6 @@ Makefile
 CMakeCache.txt
 bin/
 *.a
+.vscode/
+ncurses-6.1.tar.gz
+addit_src/gameManager().cs
