@@ -120,10 +120,6 @@ Enemy's Attack Screen: Is shown after an enemy's attack hits.
 
 ![enemy attack success screen (1)](https://github.com/user-attachments/assets/65c07031-5045-4465-9977-71866fd72b93)
 
-Using Items Screen: Is shown when the player chooses to use an item.
-
-![using items prompt (1)](https://github.com/user-attachments/assets/9a49665e-dc3a-48ca-a990-0c4235dab47f)
-
 Swords List Screen: Is shown when the player chooses to use a sword during battles.
 
 ![swords list display (1)](https://github.com/user-attachments/assets/4dfd28ea-7812-425a-968d-729450736fe6)
