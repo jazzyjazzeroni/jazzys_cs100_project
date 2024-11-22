@@ -107,10 +107,13 @@ The class diagram exemplifies inheritance, polymorphism, aggregation, and compos
 
  
   ## Phase III
-  # Updated Class Diagram
+  ### Updated Navigation Diagram
+![new-nav](https://github.com/user-attachments/assets/e06bd595-4a94-4464-a9d2-c035fc50120f)
+
+  ### Updated Class Diagram
 ![462571056_928616959365459_6724141756829051268_n](https://github.com/user-attachments/assets/38f80b2d-6810-498f-90b0-07dcd173f25e)
 
- # 
+ 
 For phase III, the group has implemented four (4) new features/classes, namely: MenuPrinter class, GameManager class, Level class, and GameMap class. We have also used functions for each object that the user will encounter on this map. These objects include potions, swords, and goblins. This will implement each object to a space on our map grid. 
 
 For the MenuPrinter class, this class contains static methods that’s responsible for mainly outputting all of the console text. This class does not take any input values to maintain code maintainability and the group decided it was best to have one class to be responsible for for all of the console outputs. From the client’s end, they will be able to start the game and the MenuPrinter class will display all information to the user. The client will only interact with this class and not directly with the others. As the user moves through the game, multiple different menus and screens will be outputted. For instance, if the client wants to see the status of the player's health, by inputting a char there will be a displayStatus() function used to output. 
