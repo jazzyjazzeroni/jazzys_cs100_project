@@ -117,13 +117,17 @@ The class diagram exemplifies inheritance, polymorphism, aggregation, and compos
 
 
 <strong>UML Diagram associations:</strong>
-</br>Aggregation: The MenuPrinter is an aggregation of GameManager class
-</br>Composition: Powers is a composite with MainCharacter and Goblin class
+<ul>
+</br><li>Aggregation: The MenuPrinter is an aggregation of GameManager class</li>
+</br><li>Composition: Powers is a composite with MainCharacter and Goblin class
 	- Battle class is a composition of Level class
 	- GameMap is a composite class of Level
-</br>Implementation: Sword and Potions is implemented from the Inventory class
-</br>Inheritance: MainCharacter, Goblin, and Dragon is inheriting from the Character class
-</br>Direct Association: The Character class is directly associated to the Battle class
+	</li>
+</br><li>Implementation: Sword and Potions is implemented from the Inventory class </li>
+</br><li>Inheritance: MainCharacter, Goblin, and Dragon is inheriting from the Character class</li>
+</br<li>>Direct Association: The Character class is directly associated to the Battle class</li>
+</ul>
+
 
 For phase III, the group has implemented four (4) new features/classes, namely: MenuPrinter class, GameManager class, Level class, and GameMap class. We have also used functions for each object </n>that the user will encounter on this map. These objects include potions, swords, and goblins. This will implement each object to a space on our map grid. 
 
