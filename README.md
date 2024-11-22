@@ -111,7 +111,8 @@ The class diagram exemplifies inheritance, polymorphism, aggregation, and compos
 ![new-nav](https://github.com/user-attachments/assets/e06bd595-4a94-4464-a9d2-c035fc50120f)
 
   ### Updated Class Diagram
-![462571056_928616959365459_6724141756829051268_n](https://github.com/user-attachments/assets/38f80b2d-6810-498f-90b0-07dcd173f25e)
+![latestuml drawio](https://github.com/user-attachments/assets/e3d2b760-3882-41b2-abe1-9180a1698b15)
+
 
 UML Diagram associations:
 </br>Aggregation: The MenuPrinter is an aggregation of GameManager class
