@@ -109,8 +109,8 @@ The class diagram exemplifies inheritance, polymorphism, aggregation, and compos
 
  
   ## Phase III
- 
-![uml drawio (2)](https://github.com/user-attachments/assets/afea3ac6-218c-41e1-ae2d-3786941ae90a)
+  
+ ![please2 drawio](https://github.com/user-attachments/assets/50a83036-a907-441c-82ed-6b4aecdd541a)
 
 We analyzed the SOLID principles in regards to our UML diagram and made the changes we saw necessary. For the Single-Responsibility Principle (SRP), we organized the display and the screen layout into separate output classes. This is so that classes such as the enemy and main character classes did not have excessive responsibilities. We did not feel as though our UML diagram was in violation in any aspect of the Open-Closed Principle (OCP).
 For the Liskov Substitution Principle (LSP), we made it so our derived classes like Sword, can override the abstract class of Inventory.
