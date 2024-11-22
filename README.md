@@ -129,19 +129,6 @@ The SOLID principles provided a guide for a more efficient and organized structu
 While coding, the group has noticed that with other suboptimal programming practices (i.e. using methods that are not needed for other classes, declaring data types or values that cause inconspicuous errors to the code base. 
 One principle that helped our group was the Single Responsibility Principle since we have encountered bugs in our program that were difficult to trace. However, when the group decided to separate the methods into different subclasses. We were able to backtrace where the bugs were coming from.
 
-  * Perform a new sprint plan like you did in Phase II.
-  * Make sure that your README file (and Project board) are up-to-date reflecting the current status of your project and the most recent class diagram. Previous versions of the README file should still be visible through your commit history.
-  * Each team member should also submit the Individual Contributions Form on Canvas for phase III. In this form, you need to fill in the names of all team members, the percentage of work contributed by each member for phase III, and a description of their contributions. Remember that each team member should submit the form individually.
- 
-During the meeting with your reader you will discuss: 
-  * How effective your last sprint was (each member should talk about what they did)
-  * The group held multiple sprint meetings via <i>Zoom</i> and <i>Slack</i>. Each sprint meeting lasted for 1-4 Hours and each member discussed about the features they were assigned with and their current progress with that feature.
-  * 
-  * Any tasks that did not get completed last sprint, and how you took them into consideration for this sprint
-  * 
-  * Any bugs you've identified and created issues for during the sprint. Do you plan on fixing them in the next sprint or are they lower priority?
-  * What tasks you are planning for this next sprint.
-
  
   ## Final deliverable
   All group members will give a demo to the reader during lab time. ou should schedule your demo on Calendly with the same reader who took your second scrum meeting. The reader will check the demo and the project GitHub repository and ask a few questions to all the team members. 
