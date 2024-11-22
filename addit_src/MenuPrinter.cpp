@@ -129,7 +129,7 @@ void MenuPrinter::quitReassuranceMenu() {
 
 // this function name might need to get changed
 // prints after a goblin gets defeated i think
-void MenuPrinter::printGoblinMenu(int left, int killed) {
+void MenuPrinter::printGoblinStatus(int left, int killed) {
     cout << "        GOBLIN HAS BEEN SLAIN!           " << endl;
     cout << "     Defeat " << left << " more!         " << endl;
 }
