@@ -88,8 +88,6 @@ Settings Screen: Is shown when the player chooses settings.
 
 Change Character's Name Screen: Is shown when the player chooses to change their character's name from the Settings menu.
 
-![change characters name screen](https://github.com/user-attachments/assets/62421ba2-20c3-48f4-9f8b-872329034bdd)
-
 Change Language Screen: Is shown when the player chooses to change the language from the Settings menu.
 
 ![Language Options screen](https://github.com/user-attachments/assets/3f9dbbed-ea33-4109-874e-fa00c2611834)
@@ -101,10 +99,6 @@ Tutorial Prompt: Is shown when the player first starts a new game.
 First Tutorial Screen: Explains how the levels work and prompts the player to choose a direction to move in.
 
 ![first tutorial screen (1)](https://github.com/user-attachments/assets/881bb461-06eb-4027-94aa-ecf8c850e950)
-
-Mushroom Encounter Screen: Is randomly shown when the player encounters a mushroom (is also the second screen shown in the tutorial).
-
-![second tutorial screen (1)](https://github.com/user-attachments/assets/3e9ecc50-751b-4108-90a8-df950d2d9e9c)
 
 Movement Screen: Is shown when the player is traversing the levels (is also the third screen shown in the tutorial).
 
@@ -125,14 +119,6 @@ Player's Attack Success Screen: Is shown after a player's attack hits.
 Enemy's Attack Screen: Is shown after an enemy's attack hits.
 
 ![enemy attack success screen (1)](https://github.com/user-attachments/assets/65c07031-5045-4465-9977-71866fd72b93)
-
-Using Items Screen: Is shown when the player chooses to use an item.
-
-![using items prompt (1)](https://github.com/user-attachments/assets/9a49665e-dc3a-48ca-a990-0c4235dab47f)
-
-Swords List Screen: Is shown when the player chooses to use a sword during battles.
-
-![swords list display (1)](https://github.com/user-attachments/assets/4dfd28ea-7812-425a-968d-729450736fe6)
 
 Potions List Screen: Is shown when the player chooses to use a potion during battles.
 
@@ -168,8 +154,8 @@ Quit reassurance prompt: Is shown when the player chooses to save and quit from 
  
   ## Phase III
  
+![uml drawio (2)](https://github.com/user-attachments/assets/afea3ac6-218c-41e1-ae2d-3786941ae90a)
 
- 
 We analyzed the SOLID principles in regards to our UML diagram and made the changes we saw necessary. For the Single-Responsibility Principle (SRP), we organized the display and the screen layout into separate output classes. This is so that classes such as the enemy and main character classes did not have excessive responsibilities. We did not feel as though our UML diagram was in violation in any aspect of the Open-Closed Principle (OCP).
 For the Liskov Substitution Principle (LSP), we made it so our derived classes like Sword, can override the abstract class of Inventory.
 We felt as though our UML diagram did not violate any aspect of the Interface Segregation Principle (ISP).
@@ -181,7 +167,7 @@ The group has noticed the original code base for the abstract Character class vi
 The group has simply changed this by making all methods in the Character class to virtual functions to abide by the Liskov Substitution Principle. For our two abstract classes, Inventory and Character, we implemented virtual functions for them. This is so that the child classes can override the abstract class. By replacing each virtual function with the specific function for each derived class, we had not altered the correctness of our UML diagram.
 
  > * How did this change help you write better code?
-> It provided a more efficient and organized structure that allowed for the foundation of our program to be more readable. The SOLID principles enabled us, as programmers, to practice clean and concise coding. 
+> The SOLID principles provided a guide for a more efficient and organized structure that allowed for the foundation of our program to be more readable. These principles enabled us, as programmers, to practice clean and concise coding. 
 While coding, the group has noticed that with other suboptimal programming practices (i.e. using methods that are not needed for other classes, declaring data types or values that cause inconspicuous errors to the code base. 
 One principle that helped our group was the Single Responsibility Principle since we have encountered bugs in our program that were difficult to trace. However, when the group decided to separate the methods into different subclasses. We were able to backtrace where the bugs were coming from.
 
