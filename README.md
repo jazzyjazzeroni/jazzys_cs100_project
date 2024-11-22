@@ -112,6 +112,54 @@ The class diagram exemplifies inheritance, polymorphism, aggregation, and compos
   
  ![please2 drawio](https://github.com/user-attachments/assets/50a83036-a907-441c-82ed-6b4aecdd541a)
 
+ 
+For phase III, the group has implemented four (4) new features/classes, namely: MenuPrinter class, GameManager class, Level class, and GameMap class. We have also used functions for each object that the user will encounter on this map. These objects include potions, swords, and goblins. This will implement each object to a space on our map grid. 
+
+For the MenuPrinter class, this class contains static methods that’s responsible for mainly outputting all of the console text. This class does not take any input values to maintain code maintainability and the group decided it was best to have one class to be responsible for for all of the console outputs. From the client’s end, they will be able to start the game and the MenuPrinter class will display all information to the user. The client will only interact with this class and not directly with the others. As the user moves through the game, multiple different menus and screens will be outputted. For instance, if the client wants to see the status of the player's health, by inputting a char there will be a displayStatus() function used to output. 
+
+A crucial implementation is the GameManager class, this class is the central system for the Text-Based RPG, Flames of Ice, itself. 
+The game manager has the methods to start the game, as well as hold the data members of the different levels
+Because the MenuPrinter class can exist out of the GameManager class it has an aggregation relationship. We have created this new relationship as the way our code will be implemented the MenuPrinter can exist without the other class.
+
+A new feature that the group has implemented to the program are the different levels for the game all found in the Level class. The group has also implemented the Level class which is a composition to the GameManager. There will be four levels to the game and a final boss round which the main character, Theodore, get to battle with the dragon:
+
+First Four Levels:
+Level 1: Easy Breezy 
+Level 2: Getting Heated
+Level 3: Frigid Flights 
+Level 4: Earthbound 
+
+Initially, the main character will start off with wind powers. The mechanics of the game is that Theodore will fight goblins each round depending on their elements. 
+
+Mechanics:
+	Level 1: Easy Breezy - The game starts with the main character, Theodore having air elemental powers. He will only be able to fight Earth-type goblins in this round. Once Theodore is able to defeat 5 fire goblins, he will move to the next level.
+Level 2: Getting Heated - Theodore levels up and now has fire elemental powers. He can now fight Earth-type and Wind-type goblins. Theodore will have to battle 10 goblins to move to the next round. 
+Level 3: Frigid Flights - Theodore has leveled-up to the third round and now has water-elemental powers. He is now able to fight Earth, Wind, and Fire type goblins. He will then be able to move on to the final stage once he defeats 15 goblins
+Level 4: Earthbound - Theodore has all elements (Earth, Wind, Fire, Water), he can fight all kinds of goblins and can finally move to the boss stage (Dragon’s stage) once he defeats 15 goblins. (Note: The group has decided on 15 goblins for this stage for less time-consumption on the client’s end)
+
+Once the player has completed all of the first four levels. They will now move on to the boss round. insert boss level name
+
+Final Stage:
+	Here, Theodore will battle Ignus, the dragon. The Final stage will have a back-and-forth combat and the player wins once Ignus is defeated.
+
+
+
+
+Another Important class that we have now added is the GameMap class. There must be a x-y Cartesian Plane with a height and width, because the mainCharacter will be placed on this map and it is the client's role to move around by inputting WASD to either move left, right, up, or down. Because of the GameMap, each char the user inputs will correspond to a x or a y position. This class has an int of numGoblin, due to the composition relationship between GameMap and Levels. Each level has a different size map and a different amount of goblins on the plan that the client must fight off, GameMap class must have a different amount of goblins. This composition relationship between GameMap and Levels is imperative as GameMap depends heavily on the Level. In turn, if the Levels class were to be destroyed the entire GameMap class would also cease to exist. Our map is essentially a matrix that will have either empty spaces in a grid, a type of sword, a type of potion, or a type of goblin. We decided to use a mapping specifically vector<vector<Object>> mapMatrix that will be on each grid of our map. This interaction between the client and the different items or characters they will bump into is exemplified by our getters and setters for that object. The GameMap class will also be implemented to keep track of the amount of goblins killed and the amount still on the map by the getNumGoblins() getter and the getGoblinsKilled() getter. 
+
+The class diagram exemplifies inheritance, polymorphism, aggregation, and composition. Our Character class is our abstract class, and this is abstract because we have a virtual void function for damage. For our Character class, each character is inherited from the Character class. The user is going to be interacting from the interface class as the main character, Theodore Pumpernickel. The interface is going to have a void function in order to display the main menu so that the user is able to quit/save their progress at any time. Each character is going to have a health bar and an integer representing how much health each character has. There are going to be stats for each character, specifying what type of element the character corresponds with, the damage they have, a check to see if the character is alive/ko’d after battle, and a confirmation that the health bar was updated properly. The update boolean function is used to update characters’ equipment as well as the characters themselves. This character abstract class has boolean functions to see the statistics of each character. The main character is going to be positioned in the x-y Cartesian Plane so that the user can use the keys WASD.
+
+The UML diagram has a Powers class, which each character aggregates from, as it is an association relationship. The enemies and main character will have their own powers, and this is represented as an enum. The user will equip their water/earth powers if the enemy they encounter is a fire/wind goblin. However, the character will not use the attack() function if the goblin has water/earth powers (as they are not compatible for battle). If the character interacts with a witch, the witch will provide dialogue as a void function. The witch has a string of potions. Using the needsPotion boolean function, if their health is low, the main character will obtain this potion and the health will be fully/mostly filled up. As well as other characters, Theodore will bump into different swords and potions, which are illustrated in the Inventory class. This Inventory class has a composition relationship with the main character class, as both inventory and the main character can exist without each other. The character has options to addPotion(), addSword(), and removeSword(). Once the main character attacks and kills the correct goblins, there is a final boss, the Dragon, Ignus. Ignus inherits from the Enemy class as he is an enemy. Ignus has the ability to fly() and fireAttack(), as well as spit fireballs (represented as integers) which can be used against the main character. Each attack to either the main character or the enemy will change the integers of their respective health bars. As long as the main character's health is not 0, the player can keep playing. Once the integer reaches 0, the user will be prompted that they have lost, and the interface will return to the printMenu().
+
+The Inventory class has been updated from our last UML class diagram. In the inventory, there will be two child classes that inherit from the Inventory class which are the Swords and Potion class. 
+
+  Sword: Theodore will be equipped with a sword from the start of the game, and once the game    progresses, he will be able to find new swords that will be replaced from his old one.  The gameMap will be utilized in this context
+
+	 Potion: In the game, there will be different potions that can be found all over the gameMap
+
+These are all the new features that have been added to our Phase III.
+
+
 We analyzed the SOLID principles in regards to our UML diagram and made the changes we saw necessary. For the Single-Responsibility Principle (SRP), we organized the display and the screen layout into separate output classes. This is so that classes such as the enemy and main character classes did not have excessive responsibilities. We did not feel as though our UML diagram was in violation in any aspect of the Open-Closed Principle (OCP).
 For the Liskov Substitution Principle (LSP), we made it so our derived classes like Sword, can override the abstract class of Inventory.
 We felt as though our UML diagram did not violate any aspect of the Interface Segregation Principle (ISP).
