@@ -118,9 +118,11 @@ We felt as though our UML diagram did not violate any aspect of the Interface Se
 We felt as though our UML diagram did not violate any aspect of the Dependency Inversion Principle (DIP).
 
    * How did you apply it? i.e. describe the change.
-The critical changes applied to our code base was refactoring the methods from the Character class to pure virtual functions. 
-The group has noticed the original code base for the abstract Character class violated the Liskov Substitution Principle since the subclasses were not consistent with the base class due to the methods. We organized the display and the screen layout into a separate output class. This is so that classes such as the enemy and main character classes did not have excessive responsibilities. Now the output that the user will be interacting with throughout the game, is organized in one cohesive class.
-The group has simply changed this by making all methods in the Character class to virtual functions to abide by the Liskov Substitution Principle. For our two abstract classes, Inventory and Character, we implemented virtual functions for them. This is so that the child classes can override the abstract class. By replacing each virtual function with the specific function for each derived class, we had not altered the correctness of our UML diagram.
+The critical change applied to our code base was the separation of methods such as 
+The group has noticed the original code base violated many of the Single Responsibility Principle with many classes such as the following: Main Character and Goblin class which inherit from the Character class. The Character class initially had methods such as getMovement(), setMovement(), getInventory() methods that led to the Goblin class inheriting these methods as well. The methods were then placed into the MainCharacter class in order to separate them
+
+Another example that the group followed was the whole MenuPrinter class itself. The MenuPrinter class was made to only output lines and not take any input values to abide by the Single Responsibility Principle.
+
 
   * How did this change help you write better code?
 The SOLID principles provided a guide for a more efficient and organized structure that allowed for the foundation of our program to be more readable. These principles enabled us, as programmers, to practice clean and concise coding. 
