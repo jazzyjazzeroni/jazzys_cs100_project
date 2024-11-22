@@ -1,10 +1,10 @@
 #include <vector>
-#include "GameMap.h"
+#include "../addit_header/GameMap.h"
 
 using namespace std;
 
     void GameMap::killGoblin(int x, int y){
-        mapMatrix[y][x] = Object();
+        GobmapMatrix[y][x] = Goblin();
         goblinKilled++;
     }
     Object& GameMap::getObjectAt(int x, int y){
