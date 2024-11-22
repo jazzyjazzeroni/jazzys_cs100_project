@@ -125,7 +125,7 @@ The class diagram exemplifies inheritance, polymorphism, aggregation, and compos
 	</li>
 </br><li>Implementation: Sword and Potions is implemented from the Inventory class </li>
 </br><li>Inheritance: MainCharacter, Goblin, and Dragon is inheriting from the Character class</li>
-</br<li>>Direct Association: The Character class is directly associated to the Battle class</li>
+</br<li>Direct Association: The Character class is directly associated to the Battle class</li>
 </ul>
 
 
