@@ -177,7 +177,10 @@ One principle that helped our group was the Single Responsibility Principle sinc
  
 > During the meeting with your reader you will discuss: 
  > * How effective your last sprint was (each member should talk about what they did)
+>  * The group held multiple sprint meetings via <i>Zoom</i> and <i>Slack</i>. Each sprint meeting lasted for 1-4 Hours and each member discussed about the features they were assigned with and their current progress with that feature.
+>  * 
  > * Any tasks that did not get completed last sprint, and how you took them into consideration for this sprint
+>  * 
  > * Any bugs you've identified and created issues for during the sprint. Do you plan on fixing them in the next sprint or are they lower priority?
  > * What tasks you are planning for this next sprint.
 
