@@ -108,7 +108,7 @@ The class diagram exemplifies inheritance, polymorphism, aggregation, and compos
  
   ## Phase III
   
- ![please2 drawio](https://github.com/user-attachments/assets/50a83036-a907-441c-82ed-6b4aecdd541a)
+![462571056_928616959365459_6724141756829051268_n](https://github.com/user-attachments/assets/38f80b2d-6810-498f-90b0-07dcd173f25e)
 
  
 For phase III, the group has implemented four (4) new features/classes, namely: MenuPrinter class, GameManager class, Level class, and GameMap class. We have also used functions for each object that the user will encounter on this map. These objects include potions, swords, and goblins. This will implement each object to a space on our map grid. 
