@@ -36,19 +36,9 @@ Theodore will be bumping into other characters on his journey. This is where we 
 
 ### Screen Layouts
  
-General Layout
-Most screens in the game share a common layout structure, with variations based on their specific >functions. The general layout includes:
 Title Screen/Main Menu: Displays the screen title and options (e.g., Start Game, Settings, Exit).
 
 ![image](https://github.com/user-attachments/assets/e5524e38-1183-4d27-8da4-9bce513d1787)
-
-Content Area: The main area where game content and interactions appear.
-
-![image](https://github.com/user-attachments/assets/9aeff9d8-be0b-4777-ba51-aafe662b2aaa)
-
-Status Bar: Shows player status, such as health, mana, and inventory items.
-
-![image](https://github.com/user-attachments/assets/fdb88c22-0a24-43b0-b21a-543b01b7463f)
 
 Settings Screen: Is shown when the player chooses settings.
 
