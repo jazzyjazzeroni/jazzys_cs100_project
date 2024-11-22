@@ -116,7 +116,7 @@ The class diagram exemplifies inheritance, polymorphism, aggregation, and compos
 ![latestuml drawio](https://github.com/user-attachments/assets/e3d2b760-3882-41b2-abe1-9180a1698b15)
 
 
-UML Diagram associations:
+<strong>UML Diagram associations:</strong>
 </br>Aggregation: The MenuPrinter is an aggregation of GameManager class
 </br>Composition: Powers is a composite with MainCharacter and Goblin class
 	- Battle class is a composition of Level class
