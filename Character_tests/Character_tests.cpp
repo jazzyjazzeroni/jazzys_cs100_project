@@ -11,7 +11,6 @@ class MockCharacter : public Character{
     public:
     MockCharacter()
         : Character(MAINCHAR, "MockCharacter", 200.0, 10.0) {}
-    MOCK_METHOD(void, displayStats, (), (override));
     MOCK_METHOD(void, setHealth, (double), (override));
     MOCK_METHOD(double, getHealth, (), (const, override));
     MOCK_METHOD(bool, isalive, (), (const, override));
@@ -94,7 +93,7 @@ EXPECT_CALL(_char, isalive())
 
 //end health tests
 
-//start alive tests
+//start alive testss
 TEST(Charactertest, CharAlive){
 MockCharacter _char;
 EXPECT_CALL(_char, isalive())
