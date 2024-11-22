@@ -17,6 +17,7 @@ private:
 
 public:
     Level(int power, const vector<vector<int>>& mapLayout, int numGoblins);
+    Level::Finalbosslevel(int power);
     void start();
     void takeAction();
 };
