@@ -184,16 +184,8 @@ The group has simply changed this by making all methods in the Character class t
 > It provided a more efficient and organized structure that allowed for the foundation of our program to be more readable. The SOLID principles enabled us, as programmers, to practice clean and concise coding. 
 While coding, the group has noticed that with other suboptimal programming practices (i.e. using methods that are not needed for other classes, declaring data types or values that cause inconspicuous errors to the code base. 
 One principle that helped our group was the Single Responsibility Principle since we have encountered bugs in our program that were difficult to trace. However, when the group decided to separate the methods into different subclasses. We were able to backtrace where the bugs were coming from.
+An example for this `
 
- > * Perform a new sprint plan like you did in Phase II.
- > * Make sure that your README file (and Project board) are up-to-date reflecting the current status of your project and the most recent class diagram. Previous versions of the README file should still be visible through your commit history.
->  * Each team member should also submit the Individual Contributions Form on Canvas for phase III. In this form, you need to fill in the names of all team members, the percentage of work contributed by each member for phase III, and a description of their contributions. Remember that each team member should submit the form individually.
- 
-> During the meeting with your reader you will discuss: 
- > * How effective your last sprint was (each member should talk about what they did)
- > * Any tasks that did not get completed last sprint, and how you took them into consideration for this sprint
- > * Any bugs you've identified and created issues for during the sprint. Do you plan on fixing them in the next sprint or are they lower priority?
- > * What tasks you are planning for this next sprint.
 
  
  > ## Final deliverable
