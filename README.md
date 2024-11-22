@@ -166,7 +166,9 @@ We felt as though our UML diagram did not violate any aspect of the Dependency I
 The critical change applied to our code base was the separation of methods such as 
 The group has noticed the original code base violated many of the Single Responsibility Principle with many classes such as the following: Main Character and Goblin class which inherit from the Character class. The Character class initially had methods such as getMovement(), setMovement(), getInventory() methods that led to the Goblin class inheriting these methods as well. The methods were then placed into the MainCharacter class in order to separate them
 
-Another example that the group followed was the whole MenuPrinter class itself. The MenuPrinter class was made to only output lines and not take any input values to abide by the Single Responsibility Principle.
+Another example that the group followed was the whole MenuPrinter class itself. The MenuPrinter class was made to only output lines and not take any input values to abide by the Single Responsibility Principle
+
+The group has noticed a violation in the Inventory class. This class goes against the Open-Closed Principle. The original plan was to implement the class with swords and potions as functions to this class. However, the group decided to implement Sword and Potion to its own class instead since the original implementation of Inventory class had to have several conditional statements that could potentially cause memory leakages and bugs. The group then made Sword and Potion to its own class with its own setter and getter functions in order not to pollute the Inventory class with several looping and if-else statements.
 
 The SOLID principles provided a guide for a more efficient and organized structure that allowed for the foundation of our program to be more readable. These principles enabled us, as programmers, to practice clean and concise coding. 
 While coding, the group has noticed that with other suboptimal programming practices (i.e. using methods that are not needed for other classes, declaring data types or values that cause inconspicuous errors to the code base. 
