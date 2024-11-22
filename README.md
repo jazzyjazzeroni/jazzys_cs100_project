@@ -108,7 +108,8 @@ The class diagram exemplifies inheritance, polymorphism, aggregation, and compos
  
   ## Phase III
   ### Updated Navigation Diagram
-![new-nav](https://github.com/user-attachments/assets/e06bd595-4a94-4464-a9d2-c035fc50120f)
+![latestuml drawio](https://github.com/user-attachments/assets/bc4ebbcb-a2a1-4dd2-ba6f-47e8f56d8b42)
+
 
   ### Updated Class Diagram
 ![latestuml drawio](https://github.com/user-attachments/assets/e3d2b760-3882-41b2-abe1-9180a1698b15)
