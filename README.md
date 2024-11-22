@@ -100,6 +100,18 @@ Inventory Menu: Is shown when the player presses 'i' for inventory.
 
 ![new inventory](https://github.com/user-attachments/assets/7b9bae58-08fd-43a6-ad19-27f429504a44)
 
+Status Screen: Is shown when the player presses 'h' to see their current health status.
+
+![status screen](https://github.com/user-attachments/assets/e1039c83-25dd-470d-9af0-204d8b7ee079)
+
+Final Boss (Ignus' Lair) Start Screen: Is shown when the player completes level 4 and enters the final boss.
+
+![final boss start screen](https://github.com/user-attachments/assets/09368861-fb2f-4ad4-978a-802f9824176e)
+
+Game Completion Screen: Is shown when the player defeats Ignus and beats the game.
+
+![game completion screen](https://github.com/user-attachments/assets/7a171158-4fb2-4411-a680-e7eb437b078b)
+
 ## Class Diagram
 >![462571056_928616959365459_6724141756829051268_n](https://github.com/user-attachments/assets/79602bab-e31f-4ae4-95ee-f25c01250b36)
 
@@ -113,13 +125,13 @@ The class diagram exemplifies inheritance, polymorphism, aggregation, and compos
  
 For phase III, the group has implemented four (4) new features/classes, namely: MenuPrinter class, GameManager class, Level class, and GameMap class. We have also used functions for each object that the user will encounter on this map. These objects include potions, swords, and goblins. This will implement each object to a space on our map grid. 
 
-For the MenuPrinter class, this class contains static methods that’s responsible for mainly outputting all of the console text. This class does not take any input values to maintain code maintainability and the group decided it was best to have one class to be responsible for for all of the console outputs. From the client’s end, they will be able to start the game and the MenuPrinter class will display all information to the user. The client will only interact with this class and not directly with the others. As the user moves through the game, multiple different menus and screens will be outputted. For instance, if the client wants to see the status of the player's health, by inputting a char there will be a displayStatus() function used to output. 
+For the MenuPrinter class, this class contains static methods that’s responsible for mainly outputting all of the console text. This class does not take any input values to maintain code maintainability and the group decided it was best to have one class to be responsible for for all of the console outputs. From the client’s end, they will be able to start the game and the MenuPrinter class will display all information to the user. The client will only interact with this class and not directly with the others. As the user moves through the game, multiple different menus and screens will be outputted. For instance, if the client wants to see the status of the player's health, by inputting char 'h' there will be a displayStatus() function used to output. 
 
 A crucial implementation is the GameManager class, this class is the central system for the Text-Based RPG, Flames of Ice, itself. 
-The game manager has the methods to start the game, as well as hold the data members of the different levels
-Because the MenuPrinter class can exist out of the GameManager class it has an aggregation relationship. We have created this new relationship as the way our code will be implemented the MenuPrinter can exist without the other class.
+The game manager has the methods to start the game, as well as hold the data members of the different levels.
+Because the MenuPrinter class can exist outside of the GameManager class, it has an aggregation relationship. We have created this new relationship as the way our code will be implemented the MenuPrinter can exist without the other class.
 
-A new feature that the group has implemented to the program are the different levels for the game all found in the Level class. The group has also implemented the Level class which is a composition to the GameManager. There will be four levels to the game and a final boss round which the main character, Theodore, get to battle with the dragon:
+A new feature that the group has implemented to the program are the different levels for the game all found in the Level class. The group has also implemented the Level class which is related via composition to the GameManager. There will be four levels in the game and a final boss round in which the main character, Theodore, gets to battle the main antagonist, the dragon Ignus.
 
 First Four Levels:
 Level 1: Easy Breezy 
@@ -130,19 +142,16 @@ Level 4: Earthbound
 Initially, the main character will start off with wind powers. The mechanics of the game is that Theodore will fight goblins each round depending on their elements. 
 
 Mechanics:
-	Level 1: Easy Breezy - The game starts with the main character, Theodore having air elemental powers. He will only be able to fight Earth-type goblins in this round. Once Theodore is able to defeat 5 fire goblins, he will move to the next level.
-Level 2: Getting Heated - Theodore levels up and now has fire elemental powers. He can now fight Earth-type and Wind-type goblins. Theodore will have to battle 10 goblins to move to the next round. 
-Level 3: Frigid Flights - Theodore has leveled-up to the third round and now has water-elemental powers. He is now able to fight Earth, Wind, and Fire type goblins. He will then be able to move on to the final stage once he defeats 15 goblins
-Level 4: Earthbound - Theodore has all elements (Earth, Wind, Fire, Water), he can fight all kinds of goblins and can finally move to the boss stage (Dragon’s stage) once he defeats 15 goblins. (Note: The group has decided on 15 goblins for this stage for less time-consumption on the client’s end)
+	Level 1: Easy Breezy - The game starts with the main character, Theodore having Wind elemental powers. He will only be able to fight Earth-type goblins in this round. Once Theodore is able to defeat 5 fire goblins, he will move to the next level.
+Level 2: Getting Heated - Theodore levels up and now has Fire elemental powers. He can now fight Earth-type and Wind-type goblins. Theodore will have to battle 10 goblins to move to the next round. 
+Level 3: Frigid Flights - Theodore has leveled-up to the third round and now has Water-elemental powers. He is now able to fight Earth, Wind, and Fire type goblins. He will then be able to move on to the final stage once he defeats 15 goblins.
+Level 4: Earthbound - Theodore has all elements (Earth, Wind, Fire, Water), he can fight all kinds of goblins and can finally move to the boss stage (Ignus' Lair) once he defeats 15 goblins. (Note: The group has decided on 15 goblins for this stage for less time-consumption on the client’s end)
 
-Once the player has completed all of the first four levels. They will now move on to the boss round. insert boss level name
+Once the player has completed all of the first four levels. They will now move on to the boss round: Ignus' Lair.
 
-Final Stage:
-	Here, Theodore will battle Ignus, the dragon. The Final stage will have a back-and-forth combat and the player wins once Ignus is defeated.
-
-
-
-
+Final Boss:
+	Here, Theodore will battle Ignus, the dragon. The Final Boss will have a back-and-forth combat and the player wins once Ignus is defeated.
+ 
 Another Important class that we have now added is the GameMap class. There must be a x-y Cartesian Plane with a height and width, because the mainCharacter will be placed on this map and it is the client's role to move around by inputting WASD to either move left, right, up, or down. Because of the GameMap, each char the user inputs will correspond to a x or a y position. This class has an int of numGoblin, due to the composition relationship between GameMap and Levels. Each level has a different size map and a different amount of goblins on the plan that the client must fight off, GameMap class must have a different amount of goblins. This composition relationship between GameMap and Levels is imperative as GameMap depends heavily on the Level. In turn, if the Levels class were to be destroyed the entire GameMap class would also cease to exist. Our map is essentially a matrix that will have either empty spaces in a grid, a type of sword, a type of potion, or a type of goblin. We decided to use a mapping specifically vector<vector<Object>> mapMatrix that will be on each grid of our map. This interaction between the client and the different items or characters they will bump into is exemplified by our getters and setters for that object. The GameMap class will also be implemented to keep track of the amount of goblins killed and the amount still on the map by the getNumGoblins() getter and the getGoblinsKilled() getter. 
 
 The class diagram exemplifies inheritance, polymorphism, aggregation, and composition. Our Character class is our abstract class, and this is abstract because we have a virtual void function for damage. For our Character class, each character is inherited from the Character class. The user is going to be interacting from the interface class as the main character, Theodore Pumpernickel. The interface is going to have a void function in order to display the main menu so that the user is able to quit/save their progress at any time. Each character is going to have a health bar and an integer representing how much health each character has. There are going to be stats for each character, specifying what type of element the character corresponds with, the damage they have, a check to see if the character is alive/ko’d after battle, and a confirmation that the health bar was updated properly. The update boolean function is used to update characters’ equipment as well as the characters themselves. This character abstract class has boolean functions to see the statistics of each character. The main character is going to be positioned in the x-y Cartesian Plane so that the user can use the keys WASD.
@@ -151,25 +160,24 @@ The UML diagram has a Powers class, which each character aggregates from, as it 
 
 The Inventory class has been updated from our last UML class diagram. In the inventory, there will be two child classes that inherit from the Inventory class which are the Swords and Potion class. 
 
-  Sword: Theodore will be equipped with a sword from the start of the game, and once the game    progresses, he will be able to find new swords that will be replaced from his old one.  The gameMap will be utilized in this context
+  Sword: Theodore will be equipped with a sword from the start of the game, and once the game progresses, he will be able to find new swords that can replace his current sword (as the player can only carry one sword at a time). The gameMap will be utilized in this context:
 
 Potion: In the game, there will be different potions that can be found all over the gameMap
 
 These are all the new features that have been added to our Phase III.
 
-
-We analyzed the SOLID principles in regards to our UML diagram and made the changes we saw necessary. For the Single-Responsibility Principle (SRP), we organized the display and the screen layout into separate output classes. This is so that classes such as the enemy and main character classes did not have excessive responsibilities. We did not feel as though our UML diagram was in violation in any aspect of the Open-Closed Principle (OCP).
+We analyzed the SOLID principles in regards to our UML diagram and made the changes we saw necessary. For the Single-Responsibility Principle (SRP), we organized the display/screen layouts into separate output classes. This is so that classes such as the enemy and main character classes did not have excessive responsibilities. We did not feel as though our UML diagram was in violation in any aspect of the Open-Closed Principle (OCP).
 For the Liskov Substitution Principle (LSP), we made it so our derived classes like Sword, can override the abstract class of Inventory.
 We felt as though our UML diagram did not violate any aspect of the Interface Segregation Principle (ISP).
 We felt as though our UML diagram did not violate any aspect of the Dependency Inversion Principle (DIP).
 
-The critical change applied to our code base was the separation of methods such as 
-The group has noticed the original code base violated many of the Single Responsibility Principle with many classes such as the following: Main Character and Goblin class which inherit from the Character class. The Character class initially had methods such as getMovement(), setMovement(), getInventory() methods that led to the Goblin class inheriting these methods as well. The methods were then placed into the MainCharacter class in order to separate them
+The critical change applied to our code base was the separation of methods.
+The group has noticed the original code base violated many of the Single Responsibility Principle with many classes such as the following: Main Character and Goblin class which inherit from the Character class. The Character class initially had methods such as getMovement(), setMovement(), getInventory() methods that led to the Goblin class inheriting these methods as well. The methods were then placed into the MainCharacter class in order to separate them.
 
 Another example that the group followed was the whole MenuPrinter class itself. The MenuPrinter class was made to only output lines and not take any input values to abide by the Single Responsibility Principle.
 
 The SOLID principles provided a guide for a more efficient and organized structure that allowed for the foundation of our program to be more readable. These principles enabled us, as programmers, to practice clean and concise coding. 
-While coding, the group has noticed that with other suboptimal programming practices (i.e. using methods that are not needed for other classes, declaring data types or values that cause inconspicuous errors to the code base. 
+While coding, the group has noticed that with other suboptimal programming practices (i.e. using methods that are not needed for other classes, declaring data types or values that cause inconspicuous errors to the code base). 
 One principle that helped our group was the Single Responsibility Principle since we have encountered bugs in our program that were difficult to trace. However, when the group decided to separate the methods into different subclasses. We were able to backtrace where the bugs were coming from.
 
  
