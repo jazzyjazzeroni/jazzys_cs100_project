@@ -131,12 +131,12 @@ Because the MenuPrinter class can exist out of the GameManager class it has an a
 
 A new feature that the group has implemented to the program are the different levels for the game all found in the Level class. The group has also implemented the Level class which is a composition to the GameManager. There will be four levels to the game and a final boss round which the main character, Theodore, get to battle with the dragon:
 
-<li>First Four Levels:
-<ul>Level 1: Easy Breezy </ul>
-<ul>Level 2: Getting Heated</ul>
-<ul>Level 3: Frigid Flights </ul>
-<ul>Level 4: Earthbound </ul>
-</li>
+<ul>First Four Levels:
+<li>Level 1: Easy Breezy </li>
+<li>Level 2: Getting Heated</li>
+<li>Level 3: Frigid Flights </li>
+<li>Level 4: Earthbound </li>
+</ul>
 Initially, the main character will start off with wind powers. The mechanics of the game is that Theodore will fight goblins each round depending on their elements. 
 
 <strong>Mechanics:</strong>
