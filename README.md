@@ -155,7 +155,7 @@ The Inventory class has been updated from our last UML class diagram. In the inv
 
   Sword: Theodore will be equipped with a sword from the start of the game, and once the game    progresses, he will be able to find new swords that will be replaced from his old one.  The gameMap will be utilized in this context
 
-	 Potion: In the game, there will be different potions that can be found all over the gameMap
+Potion: In the game, there will be different potions that can be found all over the gameMap
 
 These are all the new features that have been added to our Phase III.
 
