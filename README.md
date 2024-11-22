@@ -117,14 +117,11 @@ For the Liskov Substitution Principle (LSP), we made it so our derived classes l
 We felt as though our UML diagram did not violate any aspect of the Interface Segregation Principle (ISP).
 We felt as though our UML diagram did not violate any aspect of the Dependency Inversion Principle (DIP).
 
-   * How did you apply it? i.e. describe the change.
 The critical change applied to our code base was the separation of methods such as 
 The group has noticed the original code base violated many of the Single Responsibility Principle with many classes such as the following: Main Character and Goblin class which inherit from the Character class. The Character class initially had methods such as getMovement(), setMovement(), getInventory() methods that led to the Goblin class inheriting these methods as well. The methods were then placed into the MainCharacter class in order to separate them
 
 Another example that the group followed was the whole MenuPrinter class itself. The MenuPrinter class was made to only output lines and not take any input values to abide by the Single Responsibility Principle.
 
-
-  * How did this change help you write better code?
 The SOLID principles provided a guide for a more efficient and organized structure that allowed for the foundation of our program to be more readable. These principles enabled us, as programmers, to practice clean and concise coding. 
 While coding, the group has noticed that with other suboptimal programming practices (i.e. using methods that are not needed for other classes, declaring data types or values that cause inconspicuous errors to the code base. 
 One principle that helped our group was the Single Responsibility Principle since we have encountered bugs in our program that were difficult to trace. However, when the group decided to separate the methods into different subclasses. We were able to backtrace where the bugs were coming from.
