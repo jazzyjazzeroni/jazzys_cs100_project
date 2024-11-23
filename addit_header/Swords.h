@@ -9,8 +9,6 @@ class Sword : public Inventory {
 private:
     int power;
     string name;
-    string type; // "character" | "sword" | "potion" | "empty"
-    int value; // 0 | 5 | 10 | 15
 
 public:
     Sword();
@@ -21,13 +19,6 @@ public:
     string getName() const;
     void setPower(int pwr);
     void setName(const string& nm);
-
-    Sword(const string& type, int value);
-    string getType() const;
-    void setType(const string& newType);
-    int getValue() const;
-    void setValue(int newValue);
-    void print() const;
 };
 
 #endif

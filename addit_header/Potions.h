@@ -8,8 +8,6 @@ class Potion  : public Inventory {
 private:
     int healingAmount; 
     string type;  
-    string type; // "character" | "sword" | "potion" | "empty"
-    int value; // 0 | 5 | 10 | 15
 
 public:
     Potion();
@@ -20,13 +18,6 @@ public:
 
     string getType() const;
     void setType(const string& type);
-
-    Potion(const string& type, int value);
-    string getType() const;
-    void setType(const string& newType);
-    int getValue() const;
-    void setValue(int newValue);
-    void print() const;
 };
 
 #endif
