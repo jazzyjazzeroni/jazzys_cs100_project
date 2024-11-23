@@ -1,10 +1,11 @@
 #include <string>
+#include "Inventory.h"
 #ifndef SWORD_H
 #define SWORD_H
 
 using namespace std;
 
-class Sword {
+class Sword : public Inventory {
 private:
     int power;
     string name;
