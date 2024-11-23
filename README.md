@@ -177,10 +177,8 @@ Potion: In the game, there will be different potions that can be found all over 
 These are all the new features that have been added to our Phase III.
 
 
-We analyzed the SOLID principles in regards to our UML diagram and made the changes we saw necessary. For the Single-Responsibility Principle (SRP), we organized the display and the screen layout into separate output classes. This is so that classes such as the enemy and main character classes did not have excessive responsibilities. We did not feel as though our UML diagram was in violation in any aspect of the Open-Closed Principle (OCP).
+We analyzed the SOLID principles in regards to our UML diagram and made the changes we saw necessary. For the Single-Responsibility Principle (SRP), we organized the display and the screen layout into separate output classes. This is so that classes such as the enemy and main character classes did not have excessive responsibilities.
 For the Liskov Substitution Principle (LSP), we made it so our derived classes like Sword, can override the abstract class of Inventory.
-We felt as though our UML diagram did not violate any aspect of the Interface Segregation Principle (ISP).
-We felt as though our UML diagram did not violate any aspect of the Dependency Inversion Principle (DIP).
 
 The critical change applied to our code base was the separation of methods such as 
 The group has noticed the original code base violated many of the Single Responsibility Principle with many classes such as the following: Main Character and Goblin class which inherit from the Character class. The Character class initially had methods such as getMovement(), setMovement(), getInventory() methods that led to the Goblin class inheriting these methods as well. The methods were then placed into the MainCharacter class in order to separate them
