@@ -1,7 +1,14 @@
 #include <vector>
 #include "Swords.h"
+<<<<<<< HEAD
 #include "Potions.h"
 #include "../Character_header/Goblin.h"
+=======
+#include "Goblin.h"
+#include "Potions.h"
+#include "../Character_header/Character.h"
+
+>>>>>>> nfaro002/mapping_game
 #ifndef GAMEMAP_H
 #define GAMEMAP_H
 using namespace std;
