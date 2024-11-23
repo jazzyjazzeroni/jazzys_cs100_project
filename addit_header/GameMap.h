@@ -2,6 +2,7 @@
 #include "Object.h"
 #include "Swords.h"
 #include "Goblin.h"
+#include "../Character_header/Character.h"
 
 #ifndef GAMEMAP_H
 #define GAMEMAP_H

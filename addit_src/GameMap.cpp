@@ -1,5 +1,7 @@
 #include <vector>
 #include "GameMap.h"
+#include "Object.h"
+#include "../Character_header/Character.h"
 
 using namespace std;
 
@@ -47,7 +49,7 @@ GameMap::GameMap(const vector<vector<int>>& initMatrix, int w, int h) : width(w)
                     numGoblin++;
                 }
                 if(initMatrix[y][x] == 5)
-                {  mapMatrix[y][x] = Potion(5, "small healing potion");
+                {  mapMatrix[y][x] =   Potion(5, "small healing potion");
     
                 }
                 if(initMatrix[y][x] == 6)

@@ -11,6 +11,7 @@ private:
 
 public:
     Sword();
+        Sword(int pwr = 0, const string& nm = "Default Sword");
     Sword(int pwr, const string& nm);
 
     int getPower() const;
