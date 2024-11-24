@@ -15,6 +15,7 @@ using namespace std;
     void GameMap::setObjectAt(int x, int y, const Object& obj){
         mapMatrix[y][x] = obj;
     }
+
     int GameMap::getNumGoblins() const{
         return numGoblin;
     }
@@ -57,4 +58,4 @@ GameMap::GameMap(const vector<vector<int>>& initMatrix, int w, int h) : width(w)
                 }
             }
         }
-void init(); //maybe add?
+    void init(); //maybe add?
