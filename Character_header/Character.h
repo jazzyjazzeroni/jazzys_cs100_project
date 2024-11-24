@@ -19,7 +19,7 @@ public:
 Character::Character();
 virtual double getHealth () const =0;
 virtual CharType getType() =0;
-virtual void setHealth(double) =0;
+ virtual void setHealth(double);
 virtual bool isalive() const =0;
 Character(CharType, const string &, double, double);
 virtual void damage(double dam) = 0;

@@ -10,6 +10,7 @@ public:
 
     Object();
     Object(const string& type, int value);
+    virtual ~Object() = default;
 
     string getType() const;
     void setType(const string& newType);
