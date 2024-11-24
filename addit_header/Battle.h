@@ -1,45 +1,24 @@
-#include "GameMap.h"
-#include "Inventory.h"
-#include "MenuPrinter.h"
-#include <vector>
-#include "../Character_header/MainCharacter.h"
-#include "../Character_header/Character.h"
 #ifndef BATTLE_H
 #define BATTLE_H
 
-// enum CharType{MAINCHAR, GOBLIN, DRAGON, NPC};
-// const double MAX_HEALTH = 200.0;
+#include "../addit_header/GameMap.h"
+#include "../addit_header/Inventory.h"
+#include "../addit_header/MenuPrinter.h"
+#include "../Character_header/MainCharacter.h"
+#include "../Character_header/Character.h"
+#include "../Character_header/Dragon.h"
+#include <vector>
 
-// class Character{
-// protected:
-// double health;
-// double attackAmount;
-// double damage_amount;
-// string name;
-// CharType type;
-
-// public:
-// Character::Character();
-// virtual double getHealth () const =0;
-// virtual CharType getType() =0;
-// virtual void setHealth(double) =0;
-// virtual bool isalive() const =0;
-// Character(CharType, const string &, double, double);
-// virtual void damage(double dam) = 0;
-// virtual void takeDamage(double) = 0 ;
-// virtual void attack(Character &) = 0;
-
-// };
-
-class Battle {
+class Battle 
+{
 private:
-    Character& player;
-    Character& goblin;
-    int num_of_rounds = 5;
+    MainCharacter& mc;
+    Dragon& dragon;
 
 public: 
-    // THIS IS ONLY FOR TESTING 
-    Battle(Character& player, Character& goblin, int num_of_rounds);
-    void round();
+    Battle(MainCharacter& mc, Dragon& dragon)
+        :mc(this->mc), dragon(this->dragon){}
+    void startBattle();
+    void declareWinner();
 };
 #endif 
