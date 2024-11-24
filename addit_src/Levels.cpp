@@ -61,7 +61,6 @@ void Level::Finalbosslevel(int power) {
     cout << "Good luck!" << endl;
     cout << endl;
 
-    MainCharacter player(power);
     Dragon dragon(100);
 
     while (player.getHealth() > 0 && dragon.getHealth() > 0) {
@@ -124,7 +123,7 @@ vector<Level> initializeLevels() {
         {0, 4, 0, 0, 0},
         {6, 4, 0, 4, 0}
     };
-    levels.push_back(Level(3, 4)); 
+levels.push_back(Level(3, level3Map, 4)); 
 
     vector<vector<int>> level4Map = {
         {0, 1, 0, 5, 4, 0},  
@@ -135,7 +134,8 @@ vector<Level> initializeLevels() {
         {6, 4, 0, 4, 0, 4}
 
     };
-    levels.push_back(Level(4, 5)); 
+    levels.push_back(Level(4, level4Map, 5)); 
+
 
     return levels;
 }
