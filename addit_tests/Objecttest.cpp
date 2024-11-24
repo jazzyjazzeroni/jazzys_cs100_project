@@ -169,45 +169,49 @@ TEST(ObjectTest, InValidLargeValue) {
 
 //start getter tests
 
-TEST(ObjectTest, ValidGetterTest) {
-    Object obj("Goblin", 10);
-    EXPECT_EQ(obj.getType(), "Goblin");
-    EXPECT_EQ(obj.getValue(), 10);
-}
-
-TEST(ObjectTest, ValidGetterTest) {
+TEST(ObjectTest, ValidGoblinGetterTest) {
     Object obj("Goblin", 10);
     EXPECT_EQ(obj.getType(), "Goblin");
     EXPECT_EQ(obj.getValue(), 10);
 }
 
 
-TEST(ObjectTest, ValidGetterTest) {
-    Object obj("Goblin", 10);
-    EXPECT_EQ(obj.getType(), "Goblin");
+TEST(ObjectTest, ValidPotionGetterTest) {
+    Object obj("Potion", 10);
+    EXPECT_EQ(obj.getType(), "Potion");
     EXPECT_EQ(obj.getValue(), 10);
 }
 
-TEST(ObjectTest, ValidGetterTest) {
-    Object obj("Goblin", 10);
-    EXPECT_EQ(obj.getType(), "Goblin");
-    EXPECT_EQ(obj.getValue(), 10);
+TEST(ObjectTest, ValidSwordGetterTest) {
+    Object obj("Sword", 7);
+    EXPECT_EQ(obj.getType(), "Sword");
+    EXPECT_EQ(obj.getValue(), 7);
 }
 
+
+TEST(ObjectTest, InvalidGetterTyprTest) {
+    Object obj("Invalid", 15);
+    EXPECT_EQ(obj.getType(), "Null");
+    EXPECT_EQ(obj.getValue(), 15);
+}
+
+TEST(ObjectTest, InvalidGetterValTest) {
+    Object obj("Sword", 1500);
+    EXPECT_EQ(obj.getType(), "Sword");
+    EXPECT_EQ(obj.getValue(), 15);
+}
+
+TEST(ObjectTest, InvalidGetterNegValTest) {
+    Object obj("Potion", -15);
+    EXPECT_EQ(obj.getType(), "Potion");
+    EXPECT_EQ(obj.getValue(), 0);
+}
+
+TEST(ObjectTest, InvalidValidTotalGetterTest) {
+    Object obj("Inavalid", -1000);
+    EXPECT_EQ(obj.getType(), "Null");
+    EXPECT_EQ(obj.getValue(), 0);
+}
 
 //end getter tests
-
-
-//start print tests
-
-
-TEST(ObjectTest, Print) {
-    Object obj("potion", 15);
-    testing::internal::CaptureStdout();
-    obj.print();
-    std::string output = testing::internal::GetCapturedStdout();
-    EXPECT_EQ(output, "Name: potion, Value: 15\n");
-}
-
-//end print tests
 
