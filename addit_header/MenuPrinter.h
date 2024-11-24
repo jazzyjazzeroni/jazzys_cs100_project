@@ -11,7 +11,7 @@ public:
 // string getChar()const;
 // void setChar(string);
 static void printMainMenu();
-static void printGoblinMenu(int left, int killed);
+static void printGoblinStatus(int left, int killed);
 static void printStatus(const MainCharacter& player);
 
 };
