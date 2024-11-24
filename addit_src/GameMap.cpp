@@ -10,6 +10,9 @@ using namespace std;
         goblinKilled++;
     }
     Object& GameMap::getObjectAt(int x, int y){
+        if (x < 0 || x >= width || y < 0 || y >= height) {
+        throw std::out_of_range("Invalid map coordinates");
+    }
         return mapMatrix[y][x];
     }
     void GameMap::setObjectAt(int x, int y, const Object& obj){
