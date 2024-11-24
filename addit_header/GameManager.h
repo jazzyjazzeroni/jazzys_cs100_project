@@ -17,6 +17,7 @@ private:
 
 public:
     GameManager();
+    ~GameManager();
     void gameStart();
 };
 
