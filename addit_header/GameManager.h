@@ -17,6 +17,7 @@ public:
     ~GameManager();
     void gameStart();
     void pause();
+    void quit();
 };
 
 #endif

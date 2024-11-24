@@ -1,9 +1,10 @@
+#ifndef INVENTORY_H
+#define INVENTORY_H
 #include <string>
 #include <iostream>
 #include <vector>
 using namespace std;
-#ifndef __INVENTORY_H__
-#define __INVENTORY_H__
+
 
 class Item {
 public:
