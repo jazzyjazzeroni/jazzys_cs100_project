@@ -42,5 +42,5 @@ void GameManager::gameStart()
      
 void GameManager::pause()
 {
-    MenuPrinter::pau
+    MenuPrinter::pauseMenu();
 }
