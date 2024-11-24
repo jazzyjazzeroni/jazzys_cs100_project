@@ -75,7 +75,7 @@ TEST(LevelsTest, ValidInitialLevelTest) {
     EXPECT_EQ(levels.getObjectAt(2, 2).getType(), "Potion");
 }
 
-TEST(LevelsTest, ValidInitializeLevelMatrixTest) {
+TEST(LevelsTest, ValidInitializeLevelTest) {
     vector<vector<int>> layout = {
         {0, 1, 2},
         {4, 5, 6},
@@ -91,9 +91,9 @@ TEST(LevelsTest, ValidInitializeLevelMatrixTest) {
     EXPECT_EQ(levels.getObjectAt(1, 1).getType(), "Potion");
 }
 
-TEST(LevelsTest, EmptyLevelInitialization) {
-    vector<vector<int>> layout = createLevelMatrix(3, 3);
-    Levels levels(layout, 3, 3);
+TEST(LevelsTest, EmptyLevelInitialiseTest) {
+    vector<vector<int>> layout = createLevelMatrix(5, 5);
+    Levels levels(layout, 5, 5);
 
     EXPECT_EQ(levels.getNumGoblins(), 0);
     EXPECT_EQ(levels.getGoblinsKilled(), 0);
@@ -103,7 +103,7 @@ TEST(LevelsTest, EmptyLevelInitialization) {
     EXPECT_EQ(levels.getObjectAt(2, 2).getType(), "Null");
 }
 
-TEST(LevelsTest, InvalidLevelMatrixSizeTest) {
+TEST(LevelsTest, InvalidLevelSizeTest) {
     vector<vector<int>> layout = {
         {0, 1, 2},
         {4, 5, 6},
@@ -131,7 +131,7 @@ TEST(LevelsTest, KillGoblinValidTest) {
     EXPECT_EQ(levels.getNumGoblins(), 2); 
 }
 
-TEST(LevelsTest, KillGoblinInvalidCoordinates) {
+TEST(LevelsTest, KillGoblinInvalidCoordinateTest) {
     vector<vector<int>> layout = {
         {0, 4, 0},
         {0, 0, 0},
@@ -270,7 +270,3 @@ TEST(LevelsTest, testUnreachableGoblin) {
     unreachableLevel.start();
     ASSERT_EQ(unreachableLevel.getGameMap().getGoblinsKilled(), 2);
 }
-
-
-
-
