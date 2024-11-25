@@ -1,5 +1,7 @@
 #include <vector>
 #include "GameMap.h"
+#include "Object.h"
+#include "../Character_header/Character.h"
 
 using namespace std;
 
@@ -8,11 +10,15 @@ using namespace std;
         goblinKilled++;
     }
     Object& GameMap::getObjectAt(int x, int y){
+        if (x < 0 || x >= width || y < 0 || y >= height) {
+        throw std::out_of_range("Invalid map coordinates");
+    }
         return mapMatrix[y][x];
     }
     void GameMap::setObjectAt(int x, int y, const Object& obj){
         mapMatrix[y][x] = obj;
     }
+
     int GameMap::getNumGoblins() const{
         return numGoblin;
     }
@@ -46,7 +52,7 @@ GameMap::GameMap(const vector<vector<int>>& initMatrix, int w, int h) : width(w)
                     numGoblin++;
                 }
                 if(initMatrix[y][x] == 5)
-                {  mapMatrix[y][x] = Potion(5, "small healing potion");
+                {  mapMatrix[y][x] =   Potion(5, "small healing potion");
     
                 }
                 if(initMatrix[y][x] == 6)
