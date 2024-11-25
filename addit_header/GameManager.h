@@ -3,9 +3,9 @@
 #include <vector>
 #include "Level.h"
 #include "MenuPrinter.h"
-#include "GameMap.h"
+#include "../addit_header/GameMap.h"
 #include "../Character_header/MainCharacter.h"
-#include "Inventory.h"
+#include "../addit_header/Inventory.h"
 
 class GameManager: public MenuPrinter {
 private:

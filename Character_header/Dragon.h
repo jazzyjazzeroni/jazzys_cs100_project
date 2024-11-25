@@ -12,7 +12,6 @@ private:
 
 public:
     Dragon(const string &name, double health, double attackStrength, const string &allegiance);
-    void fly(string);
     int getfireAttack();
     int getfireBall();
     void setfireBall();
