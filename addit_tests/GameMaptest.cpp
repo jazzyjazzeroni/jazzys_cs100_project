@@ -135,7 +135,7 @@ TEST(GameMapTest, KillGoblinInvalidCoordinates) {
 }
 
 TEST(GameMapTest, NullspaceTest) {
-    vector<ector<int>> layout = {
+    vector<vector<int>> layout = {
         {0, 4, 0},
         {0, 0, 0},
         {4, 0, 0}

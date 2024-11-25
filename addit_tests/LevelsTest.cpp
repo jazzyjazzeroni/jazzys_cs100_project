@@ -81,7 +81,7 @@ TEST(LevelsTest, ValidInitializeLevelTest) {
         {4, 5, 6},
         {3, 4, 0}
     };
-    Levels levels(layout, 3, 3);
+    Level levels(layout, 3, 3);
 
     EXPECT_EQ(levels.getNumGoblins(), 2);
     EXPECT_EQ(levels.getGoblinsKilled(), 0);
