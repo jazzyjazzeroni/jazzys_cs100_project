@@ -101,7 +101,6 @@ vector<Level> initializeLevels() {
         {0, 0, 2, 0, 6},  
         {4, 0, 0, 1, 0},  
         {0, 5, 0, 4, 0} 
-        
     };
     levels.push_back(Level(1, level1Map, 2)); //goal: 2 goblins
 
