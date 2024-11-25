@@ -32,7 +32,7 @@ Theodore will be bumping into other characters on his journey. This is where we 
 ## User Interface Specification
 
 ### Navigation Diagram
->![flames-of-ice-navigation drawio (1)](https://github.com/user-attachments/assets/636f8a92-b3ca-4c7f-8c97-04c499ec37cc)
+![flames-of-ice-navigation drawio (1)](https://github.com/user-attachments/assets/636f8a92-b3ca-4c7f-8c97-04c499ec37cc)
 
 ### Screen Layouts
  
@@ -101,17 +101,35 @@ Inventory Menu: Is shown when the player presses 'i' for inventory.
 ![new inventory](https://github.com/user-attachments/assets/7b9bae58-08fd-43a6-ad19-27f429504a44)
 
 ## Class Diagram
->![462571056_928616959365459_6724141756829051268_n](https://github.com/user-attachments/assets/79602bab-e31f-4ae4-95ee-f25c01250b36)
+![uml drawio (1)](https://github.com/user-attachments/assets/a5f64829-d93e-4d48-bc20-eed9e38e1f04)
 
 The class diagram exemplifies inheritance, polymorphism, aggregation, and composition. Our Character class is our abstract class, and this is abstract because we have a virtual void function for damage. Each character is inherited from the Character class. The user is going to be interacting from the interface class as the main character, Theodore Pumpernickel. The interface is going to have a void function in order to display the main menu so that the user is able to quit/save their progress at any time. Each character is going to have a health bar and an integer representing how much health each character has. There are going to be stats for each character, specifying what type of element the character corresponds with, the damage they have, a check to see if the character is alive/ko’d after battle, and a confirmation that the health bar was updated properly. The update boolean function is used to update characters’ equipment as well as the characters themselves. This character abstract class has boolean functions to see the statistics of each character. The main character is going to be positioned in the x-y Cartesian Plane so that the user can moveLeft(), moveRight(), moveUp(), and moveDown(). As the user presses the appropriate keys (on the keyboard) to move Theodore, different characters, such as goblins and witches, will interact with the main character. The UML diagram has a Powers class, which each character aggregates from, as it is an association relationship. The enemies and main character will have their own powers, and this is represented as an enum. The user will equip their water/earth powers if the enemy they encounter is a fire/wind goblin. However, the character will not use the attack() function if the goblin has water/earth powers (as they are allies). If the character interacts with a witch, the witch will provide dialogue as a void function. The witch has a string of potions. Using the needsPotion boolean function, if their health is low, the main character will obtain this potion and the health will be fully/mostly filled up. As well as other characters, Theodore will bump into different swords and mushrooms, which are illustrated in the Inventory class. This Inventory class has a composition relationship with the main character class, as both inventory and the main character can exist without each other. The character has options to addPotion(), addSword(), removeSword(), and addMushroom(). Once the main character attacks and kills the correct goblins, there is a final boss, the Dragon, Ignus. Ignus inherits from the Enemy class as he is an enemy. Ignus has the ability to fly() and fireAttack(), as well as spit fireballs (represented as integers) which can be used against the main character. Each attack to either the main character or the enemy will change the integers of their respective health bars. As long as the main character's health is not 0, the player can keep playing. Once the integer reaches 0, the user will be prompted that they have lost, and the interface will return to the printMenu().
 
  
   ## Phase III
-  
-![462571056_928616959365459_6724141756829051268_n](https://github.com/user-attachments/assets/38f80b2d-6810-498f-90b0-07dcd173f25e)
+  ### Updated Navigation Diagram
+![navnew drawio](https://github.com/user-attachments/assets/ae5c54cf-23dc-43d6-8b00-c62c7b14211a)
 
- 
-For phase III, the group has implemented four (4) new features/classes, namely: MenuPrinter class, GameManager class, Level class, and GameMap class. We have also used functions for each object that the user will encounter on this map. These objects include potions, swords, and goblins. This will implement each object to a space on our map grid. 
+
+
+  ### Updated Class Diagram
+![latestuml drawio](https://github.com/user-attachments/assets/e3d2b760-3882-41b2-abe1-9180a1698b15)
+
+
+<strong>UML Diagram associations:</strong>
+<ul>
+</br><li>Aggregation: The MenuPrinter is an aggregation of GameManager class</li>
+</br><li>Composition: Powers is a composite with MainCharacter and Goblin class
+	- Battle class is a composition of Level class
+	- GameMap is a composite class of Level
+	</li>
+</br><li>Implementation: Sword and Potions is implemented from the Inventory class </li>
+</br><li>Inheritance: MainCharacter, Goblin, and Dragon is inheriting from the Character class</li>
+</br<li>Direct Association: The Character class is directly associated to the Battle class</li>
+</ul>
+
+
+For phase III, the group has implemented four (4) new features/classes, namely: MenuPrinter class, GameManager class, Level class, and GameMap class. We have also used functions for each object </n>that the user will encounter on this map. These objects include potions, swords, and goblins. This will implement each object to a space on our map grid. 
 
 For the MenuPrinter class, this class contains static methods that’s responsible for mainly outputting all of the console text. This class does not take any input values to maintain code maintainability and the group decided it was best to have one class to be responsible for for all of the console outputs. From the client’s end, they will be able to start the game and the MenuPrinter class will display all information to the user. The client will only interact with this class and not directly with the others. As the user moves through the game, multiple different menus and screens will be outputted. For instance, if the client wants to see the status of the player's health, by inputting a char there will be a displayStatus() function used to output. 
 
@@ -121,20 +139,21 @@ Because the MenuPrinter class can exist out of the GameManager class it has an a
 
 A new feature that the group has implemented to the program are the different levels for the game all found in the Level class. The group has also implemented the Level class which is a composition to the GameManager. There will be four levels to the game and a final boss round which the main character, Theodore, get to battle with the dragon:
 
-First Four Levels:
-Level 1: Easy Breezy 
-Level 2: Getting Heated
-Level 3: Frigid Flights 
-Level 4: Earthbound 
-
+<ul>First Four Levels:
+<li>Level 1: Easy Breezy </li>
+<li>Level 2: Getting Heated</li>
+<li>Level 3: Frigid Flights </li>
+<li>Level 4: Earthbound </li>
+</ul>
 Initially, the main character will start off with wind powers. The mechanics of the game is that Theodore will fight goblins each round depending on their elements. 
 
-Mechanics:
-	Level 1: Easy Breezy - The game starts with the main character, Theodore having air elemental powers. He will only be able to fight Earth-type goblins in this round. Once Theodore is able to defeat 5 fire goblins, he will move to the next level.
-Level 2: Getting Heated - Theodore levels up and now has fire elemental powers. He can now fight Earth-type and Wind-type goblins. Theodore will have to battle 10 goblins to move to the next round. 
-Level 3: Frigid Flights - Theodore has leveled-up to the third round and now has water-elemental powers. He is now able to fight Earth, Wind, and Fire type goblins. He will then be able to move on to the final stage once he defeats 15 goblins
-Level 4: Earthbound - Theodore has all elements (Earth, Wind, Fire, Water), he can fight all kinds of goblins and can finally move to the boss stage (Dragon’s stage) once he defeats 15 goblins. (Note: The group has decided on 15 goblins for this stage for less time-consumption on the client’s end)
-
+<strong>Mechanics:</strong>
+	<ul>
+ 	<li>Level 1: Easy Breezy - The game starts with the main character, Theodore having air elemental powers. He will only be able to fight Earth-type goblins in this round. Once Theodore is able to defeat 5 fire 		goblins, he will move to the next level.</li>
+	<li>Level 2: Getting Heated - Theodore levels up and now has fire elemental powers. He can now fight Earth-type and Wind-type goblins. Theodore will have to battle 10 goblins to move to the next round. </li>
+	<li>Level 3: Frigid Flights - Theodore has leveled-up to the third round and now has water-elemental powers. He is now able to fight Earth, Wind, and Fire type goblins. He will then be able to move on to the final stage 	once he defeats 15 goblins</li>
+	<li>Level 4: Earthbound - Theodore has all elements (Earth, Wind, Fire, Water), he can fight all kinds of goblins and can finally move to the boss stage (Dragon’s stage) once he defeats 15 goblins. (Note: The group has 	decided on 15 goblins for this stage for less time-consumption on the client’s end)</li>
+	</ul>
 Once the player has completed all of the first four levels. They will now move on to the boss round. insert boss level name
 
 Final Stage:
@@ -158,15 +177,15 @@ Potion: In the game, there will be different potions that can be found all over 
 These are all the new features that have been added to our Phase III.
 
 
-We analyzed the SOLID principles in regards to our UML diagram and made the changes we saw necessary. For the Single-Responsibility Principle (SRP), we organized the display and the screen layout into separate output classes. This is so that classes such as the enemy and main character classes did not have excessive responsibilities. We did not feel as though our UML diagram was in violation in any aspect of the Open-Closed Principle (OCP).
+We analyzed the SOLID principles in regards to our UML diagram and made the changes we saw necessary. For the Single-Responsibility Principle (SRP), we organized the display and the screen layout into separate output classes. This is so that classes such as the enemy and main character classes did not have excessive responsibilities.
 For the Liskov Substitution Principle (LSP), we made it so our derived classes like Sword, can override the abstract class of Inventory.
-We felt as though our UML diagram did not violate any aspect of the Interface Segregation Principle (ISP).
-We felt as though our UML diagram did not violate any aspect of the Dependency Inversion Principle (DIP).
 
 The critical change applied to our code base was the separation of methods such as 
 The group has noticed the original code base violated many of the Single Responsibility Principle with many classes such as the following: Main Character and Goblin class which inherit from the Character class. The Character class initially had methods such as getMovement(), setMovement(), getInventory() methods that led to the Goblin class inheriting these methods as well. The methods were then placed into the MainCharacter class in order to separate them
 
-Another example that the group followed was the whole MenuPrinter class itself. The MenuPrinter class was made to only output lines and not take any input values to abide by the Single Responsibility Principle.
+Another example that the group followed was the whole MenuPrinter class itself. The MenuPrinter class was made to only output lines and not take any input values to abide by the Single Responsibility Principle
+
+The group has noticed a violation in the Inventory class. This class goes against the Open-Closed Principle. The original plan was to implement the class with swords and potions as functions to this class. However, the group decided to implement Sword and Potion to its own class instead since the original implementation of Inventory class had to have several conditional statements that could potentially cause memory leakages and bugs. The group then made Sword and Potion to its own class with its own setter and getter functions in order not to pollute the Inventory class with several looping and if-else statements.
 
 The SOLID principles provided a guide for a more efficient and organized structure that allowed for the foundation of our program to be more readable. These principles enabled us, as programmers, to practice clean and concise coding. 
 While coding, the group has noticed that with other suboptimal programming practices (i.e. using methods that are not needed for other classes, declaring data types or values that cause inconspicuous errors to the code base. 
