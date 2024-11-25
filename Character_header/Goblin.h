@@ -9,7 +9,7 @@ private:
     int specialPower;
 
 public:
-    Goblin(const string &name, double health, double attackStrength, int specialPower, const string &allegiance);
+    Goblin(const string &name, int health, int attackStrength, int specialPower, const string &allegiance);
 
     void attack(Character &opponent) override;
     void SpecialAttack(int);

@@ -5,25 +5,25 @@ using namespace std;
 #define __CHARACTER_H__
 
 enum CharType{MAINCHAR, GOBLIN, DRAGON, NPC};
-const double MAX_HEALTH = 200.0;
+const int MAX_HEALTH = 200;
 
 class Character{
 protected:
-double health;
-double attackAmount;
-double damage_amount;
+int health;
+int attackAmount;
+int damage_amount;
 string name;
 CharType type;
 
 public:
 Character::Character();
-virtual double getHealth () const =0;
+virtual int getHealth () const =0;
 virtual CharType getType() =0;
- virtual void setHealth(double);
+ virtual void setHealth(int);
 virtual bool isalive() const =0;
-Character(CharType, const string &, double, double);
-virtual void damage(double dam) = 0;
-virtual void takeDamage(double) = 0 ;
+Character(CharType, const string &, int, int);
+virtual void damage(int dam) = 0;
+virtual void takeDamage(int) = 0 ;
 virtual void attack(Character &) = 0;
 
 };

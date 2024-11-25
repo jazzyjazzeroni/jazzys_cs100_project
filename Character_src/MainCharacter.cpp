@@ -37,11 +37,13 @@ MainCharacter::MainCharacter(const string &name, double health, double attackStr
 }
 
 void MainCharacter::attack(Character &opponent) {
+    int attackStength = sword.getPower() + attackAmount;
     opponent.takeDamage(attackStrength);
+    cout << "You attacked " << opponent.getName() << " with " << attackStength << " damage." << endl;
 }
 
 void MainCharacter::WitchInteraction() {
-    powers.usePowers();
+    cout << "You have encountered a witch. She will heal you for 10 health points." << endl;
 }
 
 void MainCharacter::heal(int amount) {
