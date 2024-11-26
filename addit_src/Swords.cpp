@@ -1,4 +1,5 @@
 #include "../addit_header/Swords.h"
+#include "../Character_header/Character.h"
 #include <iostream>
 #include <string>
 using namespace std;
@@ -32,20 +33,19 @@ using namespace std;
     void Sword::setName(const string& nm) {
         sword_name = nm;
     }
-
-    // void Sword::damage(int amount) { needs to be implemented
+   
 
     void Sword::dealDamage() {
         if (this->sword_name == "Normal Sword") {
-            damage(5);
+            damage(sword_dam);
             cout << "You used your " << sword_name << "!" << endl;
         }
         else if (this->sword_name == "Better Sword") {
-            damage(10);
+            damage(sword_dam);
             cout << "You used your " << sword_name << "!" << endl;
         }
         else if (this->sword_name == "Greatest Sword") {
-            damage(15);
+            damage(sword_dam);
             cout << "You used your " << sword_name << "!" << endl;
         }
     }
