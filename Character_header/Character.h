@@ -6,7 +6,7 @@ using namespace std;
 
 
 enum CharType{MAINCHAR, GOBLIN, DRAGON};
-const double MAX_HEALTH = 200.0;
+const int MAX_HEALTH = 200;
 
 class Character{
 protected:
