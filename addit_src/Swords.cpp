@@ -37,15 +37,15 @@ using namespace std;
 
     void Sword::dealDamage() {
         if (this->sword_name == "Normal Sword") {
-            damage(5);
+            damage(sword_dam);
             cout << "You used your " << sword_name << "!" << endl;
         }
         else if (this->sword_name == "Better Sword") {
-            damage(10);
+            damage(sword_dam);
             cout << "You used your " << sword_name << "!" << endl;
         }
         else if (this->sword_name == "Greatest Sword") {
-            damage(15);
+            damage(sword_dam);
             cout << "You used your " << sword_name << "!" << endl;
         }
     }
