@@ -1,4 +1,4 @@
-#include "MainCharacter.h"
+#include "../Character_header/MainCharacter.h"
 #include <iostream>
 
 using namespace std;
@@ -77,3 +77,4 @@ void MainCharacter::equipSword() {
     sword = inventory.getBestSword(); // Assuming `getBestSword()` is a method in `Inventory`
     attackAmount = sword.getAttackStrength(); // Update attack strength
 }
+

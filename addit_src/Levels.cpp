@@ -15,7 +15,7 @@ Level::Level(int power, const vector<vector<int>>& mapLayout, int numGoblins) : 
 
 void Level::start() {
     while (!end) {
-        gameMap.printMap(player.getX(), player.getY());
+        // gameMap.printMap(player.getX(), player.getY());
         takeAction();
         end = (gameMap.getGoblinsKilled() >= goblinGoal);
     }

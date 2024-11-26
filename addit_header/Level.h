@@ -1,5 +1,7 @@
 #include "GameMap.h"
 #include "../Character_header/MainCharacter.h"
+#include "../Character_header/Character.h"
+#include "Object.h"
 #include "Inventory.h"
 #include "MenuPrinter.h"
 #include "GameManager.h"
@@ -19,7 +21,7 @@ private:
 
 public:
     Level(int power, const vector<vector<int>>& mapLayout, int numGoblins);
-    Level::Finalbosslevel(int power);
+    void Level::Finalbosslevel(int power);
     static vector<Level> initializeLevels();
     void start();
     void takeAction();
