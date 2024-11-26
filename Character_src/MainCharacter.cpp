@@ -100,34 +100,34 @@ MainCharacter::MainCharacter(int x, int y) : x(x), y(y) {}  // Ensure this initi
     }
 
     // Movement function that uses modulo to ensure the character stays on the map
-    Object move(char action, GameMap &gameMap) {
-        // int x = x, y = y;
+    Object MainCharacter::move(char action, GameMap &gameMap) {
+        int New_x = x, New_y = y;
 
         if (action == 'w') { // Move up
-            y = mod(y - 1, gameMap.getHeight()); // Wrap around vertically
+            New_y = mod(y - 1, gameMap.getHeight()); // Wrap around vertically
         } else if (action == 's') { // Move down
-            y = mod(y + 1, gameMap.getHeight()); // Wrap around vertically
+            New_y = mod(y + 1, gameMap.getHeight()); // Wrap around vertically
         } else if (action == 'a') { // Move left
-            x = mod(x - 1, gameMap.getWidth()); // Wrap around horizontally
+            New_x = mod(x - 1, gameMap.getWidth()); // Wrap around horizontally
         } else if (action == 'd') { // Move right
-            x = mod(x + 1, gameMap.getWidth()); // Wrap around horizontally
+            New_x = mod(x + 1, gameMap.getWidth()); // Wrap around horizontally
         }
 
         // Update the player's position
-        // x = newX;
-        // y = newY;
+        x = New_x;
+        y = New_y;
 
         // Return the object at the new position
         return gameMap.getObjectAt(x, y);
     }
 
     // Get position of the character
-    pair<int, int> getPosition() const {
+    pair<int, int> MainCharacter::getPosition() const {
         return {x, y};
     }
 
     // Attack function
-    void attack(GameMap &gameMap, int targetX, int targetY) {
+    void MainCharacter::attack(GameMap &gameMap, int targetX, int targetY) {
         Object &target = gameMap.getObjectAt(targetX, targetY);
         
         if (target.getType() == "goblin") {

@@ -33,9 +33,9 @@ public:
      void usePotion(const string &);
      void equipSword(const string &);
      int mod(int value, int limit);
-         Object move(char action, GameMap &gameMap);
-    pair<int, int> getPosition() const;
-    void setPosition(int x, int y);
+     Object move(char action, GameMap &gameMap);
+     pair<int, int> getPosition() const;
+     void setPosition(int x, int y);
 
     // string getAllegiance() const;   
     // void setAllegiance(const string &newAllegiance);
