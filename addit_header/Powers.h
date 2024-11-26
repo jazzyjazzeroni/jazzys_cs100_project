@@ -2,27 +2,27 @@
 #include <iostream>
 using namespace std;
 
-#ifndef __POWERS_H__
-#define __POWERS_H__
+#ifndef __Power_type_H__
+#define __Power_type_H__
 
-enum Powers{ICE, EARTH, FIRE, AIR, FUSED_POWER};
+enum Power_type{ICE, EARTH, FIRE, AIR, FUSED_POWER};
 
-class Power_type{
+class Powers{
 protected:
-Powers p_type;
+Power_type p_type;
 int powerDamage;
 
 public:
 Power_type();
-Powers getPower () const;
+Power_type getPower () const;
 void setPower(const int);
 int getDamage() const;
 void setDamage(int);
-void usePower(Powers, const string&);
-void useFusedPower(); //if battle is against dragon, all powers can be used
+void usePower(Power_type, const string&);
+void useFusedPower(); //if battle is against dragon, all Power_type can be used
 
 private:
-bool canUsePower(Powers, const string&);
+bool canUsePower(Power_type, const string&);
 
 };
 

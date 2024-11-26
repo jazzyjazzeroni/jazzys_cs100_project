@@ -38,7 +38,7 @@ void Sword::dealDamage(Character &opponent) {
         cout << "You used your " << sword_name << " dealing " << sword_dam << " damage!" << endl;
     }
 
-    opponent.takeDamage(sword_dam); 
+    opponent.recieveDamage(sword_dam); 
 }
 
 void Sword::damage(int amount) {

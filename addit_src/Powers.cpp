@@ -5,15 +5,15 @@
 using namespace std;
 //Water vs Fire, Wind vs Earth 
 
-Power_type::Power_type() {
+Powers::Powers() {
     p_type = AIR;
     powerDamage = 80;
 }
 
-Powers Power_type::getPower () const {
+Power_type Powers::getPower () const {
     return p_type;
 }
-void Power_type::setPower(const int option) {
+void Powers::setPower(const int option) {
     if (option == 0) {
         p_type = ICE;
     }
@@ -28,14 +28,14 @@ void Power_type::setPower(const int option) {
     }
 }
 
-int Power_type::getDamage() const {
+int Powers::getDamage() const {
     return powerDamage;
 }
-void Power_type::setDamage(int damage) {
+void Powers::setDamage(int damage) {
     powerDamage = damage;
 }
 
-void Power_type::usePower(Powers element, const string &enemyAllegiance) {
+void Powers::usePower(Power_type element, const string &enemyAllegiance) {
     if (canUsePower(element, enemyAllegiance)) {
         cout << "Elemental Power used!" << endl;
         damage(powerDamage);
@@ -48,13 +48,13 @@ void Power_type::usePower(Powers element, const string &enemyAllegiance) {
     }
 }
 
-void Power_type::useFusedPower () {
+void Powers::useFusedPower () {
     cout << "Ultimate ability used!" << endl;
     damage(powerDamage);
     cout << "Dealt "<< powerDamage << " damage to Ignus!" << endl;
 }
 
-bool Power_type::canUsePower(Powers element, const string& enemyAllegiance) {
+bool Powers::canUsePower(Power_type element, const string& enemyAllegiance) {
     if (element == ICE) {
         if (enemyAllegiance == "ICE") {
             return false;

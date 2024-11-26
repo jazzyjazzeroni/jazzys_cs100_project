@@ -46,7 +46,7 @@ bool Character::isalive() const
     return this->health > 0;
 }
 
-void Character::damage(int damage_amount)
+void Character::dealtDamage(int damage_amount)
 {
     if(damage_amount > 0)
     {
@@ -57,10 +57,10 @@ void Character::damage(int damage_amount)
     }
 }
 
-void Character::takeDamage(int dam)
+void Character::recieveDamage(int dam)
 {
     std::cout << "Theodore loses " << damage_amount << '\n';
-    this->damage(dam);
+    this->dealtDamage(dam);
     std::cout << "Health Status: " << health << '\n';
 }
 
@@ -71,7 +71,7 @@ void Character::attack(Character &enemy)
         return;
     }
     std::cout << name << " attacks " << enemy.name << attackAmount << " hits!\n";
-    enemy.takeDamage(this->attackAmount);
+    enemy.recieveDamage(this->attackAmount);
     if (!enemy.isalive()) {
         std::cout << enemy.name << " has been defeated!\n";
     }

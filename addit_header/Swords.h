@@ -24,6 +24,7 @@ public:
     void setName(const string& nm);
     void dealDamage(Character &);
     void damage(int amount); // declare damage method
+    // todo add print
 };
 
 #endif

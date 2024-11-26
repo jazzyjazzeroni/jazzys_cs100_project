@@ -19,10 +19,11 @@ CharType type;
 
 public:
 Character::Character();
-virtual int getHealth() const = 0;
-virtual CharType getType() = 0;
-virtual void setHealth(int) = 0;
-virtual bool isalive() const = 0;
+Character::Character(CharType,const string &, int, int ,int);
+int getHealth() const;
+CharType getType();
+void setHealth(int);
+bool isalive() const;
 Character(CharType, const string &, int, int);
 virtual void dealtDamage(int) = 0;
 virtual void recieveDamage(int) = 0;

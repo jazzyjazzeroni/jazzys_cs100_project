@@ -15,7 +15,7 @@ MainCharacter::MainCharacter(const string &name, int health, int attackStrength,
 // Attacks the opponent
 void MainCharacter::attack(Character &opponent) {
     cout << name << " attacks " << opponent.getType() << " with a sword, dealing " << attackAmount << " damage!" << endl;
-    opponent.takeDamage(attackAmount);
+    opponent.recieveDamage(attackAmount);
 }
 
 // Interaction with the Witch
@@ -42,12 +42,6 @@ void MainCharacter::heal(int amount) {
     cout << name << " heals for " << amount << " health points. Current health: " << health << endl;
 }
 
-// Gets the movement direction
-char MainCharacter::getMovement() {
-    cout << "Enter movement direction (W/A/S/D): ";
-    cin >> move;
-    return move;
-}
 
 // Uses a power
 void MainCharacter::usePowers() {
@@ -78,18 +72,29 @@ void MainCharacter::usePotion(const string &potionName) {
         cout << "Potion not found in inventory!" << endl;
     }
 }
-
-// Equips a sword
-void MainCharacter::equipSword(const string &swordName) {
-    for (const auto &sword : inventory.getSwords()) { // Access swords directly
-        if (sword.getName() == swordName) {
-            attackAmount = sword.getPower(); // Equip and update attack strength
-            cout << "Equipped sword: " << swordName << " (Damage: " << sword.getPower() << ")" << endl;
-            return;
-        }
+// Add sword function (pick up a sword)
+    void MainCharacter::equipSword(Sword & newSword) {
+        //todo give o[ption to swap or replace sword]
+            // Swap or replace the sword
+            this->sword = Sword(newSword.getValue(), "New Sword");
+            inventory.addSword(newSword);
     }
-    cout << "Sword not found in inventory!" << endl;
-}
+    // Equips a sword
+//     void MainCharacter::equipSword(Object & newSword) {
+//         if (newSword.getType() == "sword") {
+//             // Swap or replace the sword
+//             this->sword = Sword(newSword.getValue(), "New Sword");
+
+//         }
+//     for (const auto &sword : inventory.getSwords()) { // Access swords directly
+//         if (sword.getName() == swordName) {
+//             attackAmount = sword.getPower(); // Equip and update attack strength
+//             cout << "Equipped sword: " << swordName << " (Damage: " << sword.getPower() << ")" << endl;
+//             return;
+//         }
+//     }
+//     cout << "Sword not found in inventory!" << endl;
+// }
   
 
 MainCharacter::MainCharacter(int x, int y) : x(x), y(y) {}  // Ensure this initializes member variables x and y
@@ -127,24 +132,15 @@ MainCharacter::MainCharacter(int x, int y) : x(x), y(y) {}  // Ensure this initi
     }
 
     // Attack function
-    void MainCharacter::attack(GameMap &gameMap, int targetX, int targetY) {
-        Object &target = gameMap.getObjectAt(targetX, targetY);
-        
-        if (target.getType() == "goblin") {
+    void MainCharacter::attack(Character &target) {
+        if (target.getType() == "goblin") { //todo change to enum
             // Assuming you have a method for attack calculation here
             Goblin &goblin = dynamic_cast<Goblin&>(target);
             // Do the attack logic here
         }
     }
 
-    // Add sword function (pick up a sword)
-    void addSword(GameMap &gameMap, int swordX, int swordY) {
-        Object &newSword = gameMap.getObjectAt(swordX, swordY);
-        if (newSword.getType() == "sword") {
-            // Swap or replace the sword
-            sword = Sword(newSword.getValue(), "New Sword");
-        }
-    }
+
 
     // Heal the character using a potion
     void heal(int amount) {

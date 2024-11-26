@@ -14,10 +14,13 @@ using namespace std;
     Object& GameMap::getObjectAt(int x, int y){
         if (x < 0 || x >= width || y < 0 || y >= height) {
         throw std::out_of_range("Invalid map coordinates");
-    }
+        }
         return mapMatrix[y][x];
     }
     void GameMap::setObjectAt(int x, int y, const Object& obj){
+        if (x < 0 || x >= width || y < 0 || y >= height) {
+        throw std::out_of_range("Invalid map coordinates");
+        }
         mapMatrix[y][x] = obj;
     }
 
@@ -63,6 +66,5 @@ GameMap::GameMap(const vector<vector<int>>& initMatrix, int w, int h) : width(w)
                 }
             }
         }
-    void init(); //maybe add?
     }
     
