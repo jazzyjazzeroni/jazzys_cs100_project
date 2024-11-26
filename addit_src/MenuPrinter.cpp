@@ -1,6 +1,7 @@
 #include <string>
 #include <iostream>
 #include "../addit_header/MenuPrinter.h"
+#include "../Character_header/MainCharacter.h"
 using namespace std;
 
 // prints the main/title screen

@@ -1,6 +1,7 @@
 #include "gtest/gtest.h"
 #include "gmock/gmock.h"
 #include "Character.h"
+#include "Object.h"
 
 using ::testing::AtLeast;
 using ::testing::Return;
@@ -12,12 +13,12 @@ class MockCharacter : public Character{
     MockCharacter()
         : Character(MAINCHAR, "MockCharacter", 200.0, 10.0) {}
     MOCK_METHOD(void, setHealth, (double), (override));
-    MOCK_METHOD(double, getHealth, (), (const, override));
+    MOCK_METHOD(double, getHealth, (), (const));
     MOCK_METHOD(bool, isalive, (), (const, override));
     MOCK_METHOD(void, damage, (double), (override));
     MOCK_METHOD(void, takeDamage, (double), (override));
     MOCK_METHOD(void, attack, (Character&), (override));
-    MOCK_METHOD(CharType, getType, (), (override));
+    MOCK_METHOD(CharType, getType, (), ());
 
 };
 

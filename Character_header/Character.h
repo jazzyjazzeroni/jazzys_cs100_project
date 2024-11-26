@@ -1,13 +1,15 @@
-#include <string>
-#include <iostream>
-using namespace std;
+
 #ifndef __CHARACTER_H__
 #define __CHARACTER_H__
+#include <string>
+#include <iostream>
+#include "Object.h"
+using namespace std;
 
 enum CharType{MAINCHAR, GOBLIN, DRAGON, NPC};
 const int MAX_HEALTH = 200;
 
-class Character{
+class Character : public Object {
 protected:
 int health;
 int attackAmount;
@@ -16,12 +18,13 @@ string name;
 CharType type;
 
 public:
-Character::Character();
-virtual int getHealth () const =0;
-virtual CharType getType() =0;
- virtual void setHealth(int);
+Character(){};
+Character(CharType, const string &, int, int){};
+
+int getHealth () const {return health;};
+CharType getType() {return type;};
+virtual void setHealth(int)= 0;
 virtual bool isalive() const =0;
-Character(CharType, const string &, int, int);
 virtual void damage(int dam) = 0;
 virtual void takeDamage(int) = 0 ;
 virtual void attack(Character &) = 0;

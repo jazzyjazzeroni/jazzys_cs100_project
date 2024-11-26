@@ -23,6 +23,7 @@ public:
     static vector<Level> initializeLevels();
     void start();
     void takeAction();
+    GameMap getGameMap() const{ return gameMap; }
 };
 
 #endif
