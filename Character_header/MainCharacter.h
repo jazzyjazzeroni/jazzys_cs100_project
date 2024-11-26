@@ -18,7 +18,7 @@ private:
     char move;
 
 public:
-     MainCharacter(const string &name, double health, double attackStrength, const string &allegiance);
+     MainCharacter(const string &name, int health, int attackStrength, const string &allegiance);
 
     virtual void attack(Character &opponent) override;
     virtual void WitchInteraction();

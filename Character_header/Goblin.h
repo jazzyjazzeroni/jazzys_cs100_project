@@ -9,15 +9,15 @@ private:
     int specialPower;
 
 public:
-    Goblin(const string &name, double health, double attackStrength, int specialPower, const string &allegiance){};
+    Goblin(const string &name, int health, int attackStrength, int specialPower, const string &allegiance){};
     Goblin(int){};
     Goblin(){};
     void attack(Character &opponent) override{};
     void SpecialAttack(int){};
-    void setHealth(double health) override{};
+    void setHealth(int health) override{};
     bool isalive() const override{};
-    void damage(double dam) override{};
-    void takeDamage(double dam) override{};
+    void damage(int dam) override{};
+    void takeDamage(int dam) override{};
     
 };
 
