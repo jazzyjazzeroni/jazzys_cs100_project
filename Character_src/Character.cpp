@@ -23,4 +23,50 @@ int Character::getHealth() const
     return this->health;
 }
 
+CharType Character::getType() 
+{
+    return this->type;
+}
+
+void Character::setHealth(int health)
+{
+    if (health > 0) // Character still has health
+    {
+        if (health <= MAX_HEALTH)
+            this->health = health;
+        else
+            this->health = MAX_HEALTH;
+    } 
+   else // Character has no more health
+        this->health = 0;   
+}
+
+bool Character::isalive() const
+{
+    return this->health > 0;
+}
+
+void Character::damage(int damage_amount)
+{
+    if(damage_amount > 0)
+    {
+        health -= damage_amount;
+        if (health < 0)
+            health -0;
+    }
+}
+
+void Character::takeDamage(int dam)
+{
+    std::cout << "Theodore loses " << damage_amount << '\n';
+    std::cout << "Health Status: " << health << '\n';
+}
+
+void Character::attack(Character &enemy)
+{
+    std::cout << name << " attacks " << enemy.name << attack_amount << " hits!\n";
+    enemy.takeDamage(attack_amount);
+}
+
+
 
