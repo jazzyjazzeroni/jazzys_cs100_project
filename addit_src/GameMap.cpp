@@ -1,5 +1,7 @@
 #include <vector>
 #include "GameMap.h"
+#include "Object.h"
+#include "../Character_header/Character.h"
 
 using namespace std;
 
@@ -8,11 +10,15 @@ using namespace std;
         goblinKilled++;
     }
     Object& GameMap::getObjectAt(int x, int y){
+        if (x < 0 || x >= width || y < 0 || y >= height) {
+        throw std::out_of_range("Invalid map coordinates");
+    }
         return mapMatrix[y][x];
     }
     void GameMap::setObjectAt(int x, int y, const Object& obj){
         mapMatrix[y][x] = obj;
     }
+
     int GameMap::getNumGoblins() const{
         return numGoblin;
     }
@@ -30,14 +36,14 @@ GameMap::GameMap(const vector<vector<int>>& initMatrix, int w, int h) : width(w)
                 }
                 if(initMatrix[y][x] == 1)
                 {
-                    mapMatrix[y][x] = Sword(5, "small sword");
+                    mapMatrix[y][x] = Sword(5, "Normal Sword");
                 }
                 if(initMatrix[y][x] == 2)
-                {  mapMatrix[y][x] = Sword(10, "bigger sword");
+                {  mapMatrix[y][x] = Sword(10, "Better Sword");
                
                 }
                 if(initMatrix[y][x] == 3)
-                {  mapMatrix[y][x] = Sword(15, "biggest sword");
+                {  mapMatrix[y][x] = Sword(15, "Greater Sword");
                
                 }
                 if(initMatrix[y][x] == 4)
@@ -46,13 +52,15 @@ GameMap::GameMap(const vector<vector<int>>& initMatrix, int w, int h) : width(w)
                     numGoblin++;
                 }
                 if(initMatrix[y][x] == 5)
-                {  mapMatrix[y][x] = Potion(5, "small healing potion");
+                {  mapMatrix[y][x] =   Potion(5, "Small Potion");
     
                 }
                 if(initMatrix[y][x] == 6)
-                {  mapMatrix[y][x] = Potion(10, "bigger healing potion");
+                {  mapMatrix[y][x] = Potion(10, "Large Potion");
     
                 }
             }
         }
     void init(); //maybe add?
+    }
+    

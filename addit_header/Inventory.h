@@ -1,6 +1,8 @@
 #include <string>
 #include <iostream>
 #include <vector>
+#include "Potions.h"
+#include "Swords.h"
 using namespace std;
 #ifndef __INVENTORY_H__
 #define __INVENTORY_H__

@@ -13,8 +13,6 @@ public:
 static void printMainMenu();
 static void printGoblinStatus(int left, int killed);
 static void printStatus(const MainCharacter& player);
-static void printSettingsMenu();
-static void printLanguageMenu();
 static void tutorialMenu();
 static void movementMenu();
 static void fireGoblinEncounterMenu();
