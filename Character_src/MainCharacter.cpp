@@ -92,16 +92,16 @@ void MainCharacter::equipSword(const string &swordName) {
 }
   
 
-  MainCharactor(int x = 0, int y = 0) : x(x), y(y) {}
+MainCharacter::MainCharacter(int x, int y) : x(x), y(y) {}  // Ensure this initializes member variables x and y
 
     // Modulo function to wrap around the coordinates
-    int mod(int value, int limit) {
+    int MainCharacter::mod(int value, int limit) {
         return (value % limit + limit) % limit;  // Handle negative values properly
     }
 
     // Movement function that uses modulo to ensure the character stays on the map
     Object move(char action, GameMap &gameMap) {
-        int newX = x, newY = y;
+        int newX = this->x, newY = this->y;
 
         if (action == 'w') { // Move up
             newY = mod(y - 1, gameMap.getHeight()); // Wrap around vertically
@@ -154,8 +154,7 @@ void MainCharacter::equipSword(const string &swordName) {
     // Check if the character is alive
     bool isAlive() const {
         return getHealth() > 0;
-    }
-};
+    };
 
 
 
