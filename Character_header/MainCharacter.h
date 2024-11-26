@@ -17,6 +17,7 @@ private:
     Inventory inventory;
     Sword sword;
     char move;
+    int x, y; 
 
 public:
      MainCharacter(const string &name, int health, int attackStrength, const string &allegiance);

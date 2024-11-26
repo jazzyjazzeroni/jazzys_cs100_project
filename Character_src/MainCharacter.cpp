@@ -90,19 +90,72 @@ void MainCharacter::equipSword(const string &swordName) {
     }
     cout << "Sword not found in inventory!" << endl;
 }
+  
 
-// // Displays inventory items
-// void MainCharacter::displayInventory() const {
-//     cout << "Inventory:\n";
-//     cout << "Swords:\n";
-//     for (const auto &sword : inventory.getSwords()) {
-//         cout << sword.getName() << " - Damage: " << sword.getPower() << endl;
-//     }
-//     cout << "Potions:\n";
-//     for (const auto &potion : inventory.getPotions()) {
-//         cout << potion.getType() << " - Heal: " << potion.getHealingAmount() << endl;
-//     }
-// }
+  MainCharactor(int x = 0, int y = 0) : x(x), y(y) {}
+
+    // Modulo function to wrap around the coordinates
+    int mod(int value, int limit) {
+        return (value % limit + limit) % limit;  // Handle negative values properly
+    }
+
+    // Movement function that uses modulo to ensure the character stays on the map
+    Object move(char action, GameMap &gameMap) {
+        int newX = x, newY = y;
+
+        if (action == 'w') { // Move up
+            newY = mod(y - 1, gameMap.getHeight()); // Wrap around vertically
+        } else if (action == 's') { // Move down
+            newY = mod(y + 1, gameMap.getHeight()); // Wrap around vertically
+        } else if (action == 'a') { // Move left
+            newX = mod(x - 1, gameMap.getWidth()); // Wrap around horizontally
+        } else if (action == 'd') { // Move right
+            newX = mod(x + 1, gameMap.getWidth()); // Wrap around horizontally
+        }
+
+        // Update the player's position
+        x = newX;
+        y = newY;
+
+        // Return the object at the new position
+        return gameMap.getObjectAt(x, y);
+    }
+
+    // Get position of the character
+    pair<int, int> getPosition() const {
+        return {x, y};
+    }
+
+    // Attack function
+    void attack(GameMap &gameMap, int targetX, int targetY) {
+        Object &target = gameMap.getObjectAt(targetX, targetY);
+        
+        if (target.getType() == "goblin") {
+            // Assuming you have a method for attack calculation here
+            Goblin &goblin = dynamic_cast<Goblin&>(target);
+            // Do the attack logic here
+        }
+    }
+
+    // Add sword function (pick up a sword)
+    void addSword(GameMap &gameMap, int swordX, int swordY) {
+        Object &newSword = gameMap.getObjectAt(swordX, swordY);
+        if (newSword.getType() == "sword") {
+            // Swap or replace the sword
+            sword = Sword(newSword.getValue(), "New Sword");
+        }
+    }
+
+    // Heal the character using a potion
+    void heal(int amount) {
+        setHealth(getHealth() + amount); // Assuming you have a setHealth method in Character
+    }
+
+    // Check if the character is alive
+    bool isAlive() const {
+        return getHealth() > 0;
+    }
+};
 
 
 

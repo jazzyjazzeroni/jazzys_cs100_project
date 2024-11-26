@@ -9,6 +9,8 @@ using namespace std;
         mapMatrix[y][x] = Object();
         goblinKilled++;
     }
+    int getWidth() const { return width; }
+    int getHeight() const { return height; }
     Object& GameMap::getObjectAt(int x, int y){
         if (x < 0 || x >= width || y < 0 || y >= height) {
         throw std::out_of_range("Invalid map coordinates");

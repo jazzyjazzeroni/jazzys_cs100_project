@@ -27,6 +27,8 @@ public:
     void setObjectAt(int x, int y, const Object& obj);
     int getNumGoblins() const;
     int getGoblinsKilled() const;
+    int getWidth() const;
+    int getHeight() const;
     
 };
 
