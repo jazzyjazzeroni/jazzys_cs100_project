@@ -101,21 +101,21 @@ MainCharacter::MainCharacter(int x, int y) : x(x), y(y) {}  // Ensure this initi
 
     // Movement function that uses modulo to ensure the character stays on the map
     Object move(char action, GameMap &gameMap) {
-        int newX = this->x, newY = this->y;
+        // int x = x, y = y;
 
         if (action == 'w') { // Move up
-            newY = mod(y - 1, gameMap.getHeight()); // Wrap around vertically
+            y = mod(y - 1, gameMap.getHeight()); // Wrap around vertically
         } else if (action == 's') { // Move down
-            newY = mod(y + 1, gameMap.getHeight()); // Wrap around vertically
+            y = mod(y + 1, gameMap.getHeight()); // Wrap around vertically
         } else if (action == 'a') { // Move left
-            newX = mod(x - 1, gameMap.getWidth()); // Wrap around horizontally
+            x = mod(x - 1, gameMap.getWidth()); // Wrap around horizontally
         } else if (action == 'd') { // Move right
-            newX = mod(x + 1, gameMap.getWidth()); // Wrap around horizontally
+            x = mod(x + 1, gameMap.getWidth()); // Wrap around horizontally
         }
 
         // Update the player's position
-        x = newX;
-        y = newY;
+        // x = newX;
+        // y = newY;
 
         // Return the object at the new position
         return gameMap.getObjectAt(x, y);
