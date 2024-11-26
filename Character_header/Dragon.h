@@ -8,16 +8,15 @@ class Dragon : public Character {
 private:
     int breatheFire;
     int fireBall;
-    // Powers specialpowers;
 
 public:
+    Dragon();
     Dragon(const string &name, double health, double attackStrength, const string &allegiance);
-    void fly(string);
     int getfireAttack();
     int getfireBall();
-    void setfireBall();
-    void setfireAttack();
-    void attack(Character &opponent) override;
+    void setfireBall(int fireBall);
+    void setfireAttack(int breatheFire);
+    void attack(Character &opponent);
     
 };
 
