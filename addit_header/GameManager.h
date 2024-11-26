@@ -1,3 +1,6 @@
+
+#ifndef GAMEMANAGER_H
+#define GAMEMANAGER_H
 #include <vector>
 #include "Level.h"
 #include "MenuPrinter.h"
@@ -5,8 +8,6 @@
 #include "../Character_header/MainCharacter.h"
 #include "Inventory.h"
 
-#ifndef GAMEMANAGER_H
-#define GAMEMANAGER_H
 
 using namespace std;
 

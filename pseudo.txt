@@ -11,9 +11,9 @@ gameManager{
         {
             gameOver
         }
+        
     }
     }
-
 }
  menuPrinter
 {
