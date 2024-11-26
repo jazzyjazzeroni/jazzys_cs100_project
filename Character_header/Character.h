@@ -18,16 +18,15 @@ string name;
 CharType type;
 
 public:
-Character();
-Character(CharType, const string &, int, int, int);
-
-int getHealth () const;
-CharType getType();
- void setHealth(int);
- bool isalive() const ;
- void damage(int dam) ;
- void takeDamage(int) ;
-virtual void attack(Character &);
+Character::Character();
+virtual int getHealth() const = 0;
+virtual CharType getType() = 0;
+virtual void setHealth(int) = 0;
+virtual bool isalive() const = 0;
+Character(CharType, const string &, int, int);
+virtual void dealtDamage(int) = 0;
+virtual void recieveDamage(int) = 0;
+virtual void attack(Character &) = 0;
 
 };
 #endif
