@@ -149,7 +149,3 @@ levels.push_back(Level(3, level3Map, 4));
 
     return levels;
 }
-
-
-
-
