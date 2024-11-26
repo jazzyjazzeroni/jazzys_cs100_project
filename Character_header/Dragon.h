@@ -6,16 +6,16 @@ using namespace std;
 
 class Dragon : public Character {
 private:
-    int breatheFire;
-    int fireBall;
+    int breathe_fire;
+    int fire_ball;
 
 public:
     Dragon();
-    Dragon(const string &name, double health, double attackStrength, const string &allegiance);
+    Dragon(const string &name, int health, int attackStrength);
     int getfireAttack();
     int getfireBall();
-    void setfireBall(int fireBall);
-    void setfireAttack(int breatheFire);
+    void setfireBall(int pFireBall);
+    void setfireAttack(int pBreatheFire);
     void attack(Character &opponent);
     
 };
