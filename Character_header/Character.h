@@ -3,7 +3,7 @@
 #define __CHARACTER_H__
 #include <string>
 #include <iostream>
-#include "Object.h"
+#include "../addit_headers/Object.h"
 using namespace std;
 
 enum CharType{MAINCHAR, GOBLIN, DRAGON, NPC};
