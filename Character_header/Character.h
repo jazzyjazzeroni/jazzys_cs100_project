@@ -10,19 +10,19 @@ const double MAX_HEALTH = 200.0;
 
 class Character{
 protected:
-double health;
-double attack_amount;
-double damage_amount;
+int health;
+int attack_amount;
+int damage_amount;
 string name;
 CharType type;
 
 public:
 Character::Character();
-double getHealth () const;
+int getHealth () const;
 CharType getType();
 void setHealth(double);
 bool isalive() const ;
-Character(CharType, const string &, double, double);
+Character(CharType, const string &, int, int, int);
 void damage(double dam);
 void takeDamage(double);
 void attack(Character &);
