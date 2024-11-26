@@ -12,12 +12,12 @@
 //     void attack(Character &opponent);
 
 
-Dragon::Dragon(const string &name, int health, int attackStrength)
+Dragon::Dragon(const string &name, int pHealth, int pBreatheFire, int pFireBall)
 {
    this->name = "Ignus";
    this->health = health;
-   this->attack_amount = attackStrength;
-
+   this->breathe_fire = pBreatheFire;
+   this->fire_ball = pFireBall;
 }
 
 Dragon::Dragon()
@@ -26,6 +26,11 @@ Dragon::Dragon()
     this->health = 0;
     this->fire_ball = 0;
     this->breathe_fire = 0;
+}
+
+Dragon::~Dragon()
+{
+
 }
 
 int Dragon::getfireAttack() 

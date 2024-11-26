@@ -2,7 +2,6 @@
 #define DRAGON_H
 
 #include "Character.h"
-using namespace std; 
 
 class Dragon : public Character {
 private:
@@ -11,7 +10,8 @@ private:
 
 public:
     Dragon();
-    Dragon(const string &name, int health, int attackStrength);
+    ~Dragon();
+    Dragon(const string &name, int pHealth, int pBreatheFire, int pFireBall);
     int getfireAttack();
     int getfireBall();
     void setfireBall(int pFireBall);
