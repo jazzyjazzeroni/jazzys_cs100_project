@@ -2,24 +2,27 @@
 #define SWORD_H
 #include <string>
 #include "Inventory.h"
+#include "Object.h"
 
 
 using namespace std;
 
 class Sword : public Object {
 private:
-    int power;
-    string name;
+    int sword_dam;
+    string sword_name;
 
 public:
     Sword(){};
     // Sword(int pwr = 0, const string& nm = "Default Sword");
-    Sword(int pwr, const string& nm){};
+    Sword(int pwr, const string& nm);
 
-    int getPower() const{};
-    string getName() const{};
-    void setPower(int pwr){};
-    void setName(const string& nm){};
+    int getPower() const;
+    string getName() const;
+    void setPower(int pwr);
+    void setName(const string& nm);
+    void dealDamage();
+    void damage(int amount); // declare damage method
 };
 
 #endif
