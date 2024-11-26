@@ -3,6 +3,7 @@
 #include <string>
 #include "Inventory.h"
 #include "Object.h"
+#include "../Character_header/Character.h"
 
 
 using namespace std;
@@ -22,7 +23,9 @@ public:
     void setPower(int pwr);
     void setName(const string& nm);
     void dealDamage();
-    void damage(int amount); // declare damage method
+    
+    private:
+    void damage(int amount);
 };
 
 #endif
