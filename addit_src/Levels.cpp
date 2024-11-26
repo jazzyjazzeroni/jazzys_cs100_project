@@ -25,7 +25,7 @@ void Level::start() {
 void Level::takeAction() {
     char action;
     cout << "Enter action: ";
-    MenuPrinter::printGoblinMenu(
+    MenuPrinter::printGoblinStatus(
             gameMap.getNumGoblins() - gameMap.getGoblinsKilled(), 
             gameMap.getGoblinsKilled()
         );
