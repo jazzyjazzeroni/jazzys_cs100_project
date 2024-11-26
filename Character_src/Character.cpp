@@ -3,18 +3,18 @@
 Character::Character()
 {
     this->health = 0;
-    this->attack_amount = 0;
+    this->attackAmount = 0;
     this->damage_amount = 0;
     this->name = " ";
     this->type = MAINCHAR;
 }
 
-Character::Character(CharType type, const string &name, int health, int attack_amount, int damage_amount)
+Character::Character(CharType type, const string &name, int health, int attackAmount, int damage_amount)
 {
     this->type = type;
     this->name = name;
     this->health = health;
-    this->attack_amount = attack_amount;
+    this->attackAmount = attackAmount;
     this->damage_amount = damage_amount;
 }
 
@@ -70,8 +70,8 @@ void Character::attack(Character &enemy)
         std::cout << enemy.name << " is already defeated! " << name << " cannot attack.\n";
         return;
     }
-    std::cout << name << " attacks " << enemy.name << attack_amount << " hits!\n";
-    enemy.takeDamage(this->attack_amount);
+    std::cout << name << " attacks " << enemy.name << attackAmount << " hits!\n";
+    enemy.takeDamage(this->attackAmount);
     if (!enemy.isalive()) {
         std::cout << enemy.name << " has been defeated!\n";
     }
