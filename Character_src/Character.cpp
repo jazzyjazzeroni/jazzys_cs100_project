@@ -1,12 +1,12 @@
 #include "../Character_header/Character.h"
-Character::Character()
-{
-    this->health = 0;
-    this->attackAmount = 0;
-    this->damage_amount = 0;
-    this->name = " ";
-    this->type = MAINCHAR;
-}
+// Character::Character()
+// {
+//     this->health = 0;
+//     this->attackAmount = 0;
+//     this->damage_amount = 0;
+//     this->name = " ";
+//     this->type = MAINCHAR;
+// }
 
 Character::Character(CharType type, const string &name, int health, int attackAmount, int damage_amount)
 {
@@ -77,7 +77,7 @@ void Character::attack(Character &enemy)
 }
 
 void Character::updateElementForLevel() {
-    currentElement = levels.getElementForLevel(levels.getCurrentLevel());
+    currentElement = level.getElementForLevel(level.getCurrentLevel());
 }
 
 Power_type Character::getCurrentElement() const {

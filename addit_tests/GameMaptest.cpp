@@ -295,6 +295,50 @@ TEST(GameMapTest, InvalidGoblinsKilled) {
     EXPECT_EQ(gameMap.getGoblinsKilled(), 3);
 }
 
+// Create a test case where gameMap is defined properly
+
+TEST(GameMapTest, ValidInitialmMapTest) {
+    // Initialize the layout
+    vector<vector<int>> layout = createMatrix(3, 3);
+    layout[0][0] = 4; // Goblin
+    layout[1][1] = 1; // Sword
+    layout[2][2] = 2; // Potion
+
+    // Create an instance of GameMap
+    GameMap gameMap(layout, 3, 3);
+
+    // Perform the tests using gameMap
+    EXPECT_EQ(gameMap.getNumGoblins(), 1);
+    EXPECT_EQ(gameMap.getGoblinsKilled(), 0);
+
+    EXPECT_EQ(gameMap.getObjectAt(0, 0).getType(), "Goblin");
+    EXPECT_EQ(gameMap.getObjectAt(1, 1).getType(), "Sword");
+    EXPECT_EQ(gameMap.getObjectAt(2, 2).getType(), "Potion");
+}
+
+TEST(GameMapTest, KillGoblinValidTest) {
+    // Initialize the layout
+    vector<vector<int>> layout = {
+        {0, 4, 0},
+        {0, 0, 0},
+        {4, 0, 0}
+    };
+
+    // Create an instance of GameMap
+    GameMap gameMap(layout, 3, 3);
+
+    // Validate initial conditions
+    EXPECT_EQ(gameMap.getNumGoblins(), 2);
+    EXPECT_EQ(gameMap.getGoblinsKilled(), 0);
+
+    // Kill a goblin and check the updated state
+    gameMap.killGoblin(1, 0);
+
+    EXPECT_EQ(gameMap.getGoblinsKilled(), 1);
+    EXPECT_EQ(gameMap.getObjectAt(1, 0).getType(), "Null");
+    EXPECT_EQ(gameMap.getNumGoblins(), 2);  // Still 2 goblins, just one killed
+}
+
 // Test edge cases for map boundaries
 TEST(GameMapTest, BoundaryCoordinatesTest) {
     vector<vector<int>> layout = createMatrix(5, 5);
