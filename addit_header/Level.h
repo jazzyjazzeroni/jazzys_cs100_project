@@ -21,8 +21,10 @@ private:
     int goblinGoal;
     int levelNumber;
     bool end;
+    int currentLevel;
 
 public:
+    Level();
     Level(int power, const vector<vector<int>>& mapLayout, int numGoblins);
     void Level::Finalbosslevel(int power);
     static vector<Level> initializeLevels();
@@ -33,5 +35,4 @@ public:
     void setLevel(int level); // Set the current level
     int getCurrentLevel() const;
 };
-
 #endif

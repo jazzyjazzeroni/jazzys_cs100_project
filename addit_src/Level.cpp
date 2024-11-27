@@ -12,8 +12,15 @@ struct Map {
     vector<vector<char>> layout; 
 };
 
-Level::Level(int power, const vector<vector<int>>& mapLayout, int numGoblins) : gameMap(mapLayout, mapLayout[0].size(), mapLayout.size()), player(power), inventory(), goblinGoal(numGoblins), end(false) {}
+// Level::Level(int power, const vector<vector<int>>& mapLayout, int numGoblins) : gameMap(mapLayout, mapLayout[0].size(), mapLayout.size()), player(power), inventory(), goblinGoal(numGoblins), end(false) {}
 
+Level::Level(int power, const vector<vector<int>>& mapLayout, int numGoblins)
+    : gameMap(mapLayout, mapLayout[0].size(), mapLayout.size()), 
+      player(power), 
+      inventory(), 
+      goblinGoal(numGoblins), 
+      levelNumber(1), 
+      end(false) {}
 void Level::start() {
     while (!end) {
         // gameMap.printMap(player.getX(), player.getY());
@@ -23,7 +30,7 @@ void Level::start() {
 }
 
 
-Levels::Levels() : currentLevel(1) {
+Level::Level() : levelNumber(1), currentLevel(1) {
     // Initialize level-to-element mapping
     levelElements[1] = ICE;
     levelElements[2] = FIRE;
@@ -32,7 +39,7 @@ Levels::Levels() : currentLevel(1) {
     levelElements[5] = FUSED_POWER; // Example ultimate ability level
 }
 
-Power_type Levels::getElementForLevel(int level) const {
+Power_type Level::getElementForLevel(int level) const {
     auto it = levelElements.find(level);
     if (it != levelElements.end()) {
         return it->second;
@@ -41,7 +48,7 @@ Power_type Levels::getElementForLevel(int level) const {
     }
 }
 
-void Levels::setLevel(int level) {
+void Level::setLevel(int level) {
     if (level > 0 && level <= static_cast<int>(levelElements.size())) {
         currentLevel = level;
     } else {
@@ -49,7 +56,7 @@ void Levels::setLevel(int level) {
     }
 }
 
-int Levels::getCurrentLevel() const {
+int Level::getCurrentLevel() const {
     return currentLevel;
 }
 

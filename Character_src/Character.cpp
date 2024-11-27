@@ -1,5 +1,4 @@
 #include "../Character_header/Character.h"
-
 Character::Character()
 {
     this->health = 0;
@@ -75,4 +74,12 @@ void Character::attack(Character &enemy)
     if (!enemy.isalive()) {
         std::cout << enemy.name << " has been defeated!\n";
     }
+}
+
+void Character::updateElementForLevel() {
+    currentElement = levels.getElementForLevel(levels.getCurrentLevel());
+}
+
+Power_type Character::getCurrentElement() const {
+    return currentElement;
 }

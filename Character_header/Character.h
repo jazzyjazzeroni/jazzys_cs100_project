@@ -3,6 +3,8 @@
 #include <string>
 #include <iostream>
 #include "../addit_header/Object.h"
+#include "../addit_header/Powers.h"
+#include "../addit_header/Level.h"
 using namespace std;
 
 enum CharType{MAINCHAR, GOBLIN, DRAGON, NPC};
@@ -15,6 +17,8 @@ int attackAmount;
 int damage_amount;
 string name;
 CharType type;
+Power_type currentElement;
+Level levels;
 
 public:
 Character::Character();
@@ -26,6 +30,8 @@ bool isalive() const;
 Character(CharType, const string &, int, int);
  void dealtDamage(int);
  void recieveDamage(int);
+ void updateElementForLevel(); // Updates element based on current level
+    Power_type getCurrentElement() const;
 virtual void attack(Character &) = 0;
 
 };
