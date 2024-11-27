@@ -19,7 +19,7 @@ void GameManager::gameStart()
         while (true) {
             levels[currLevel].takeAction();
 
-            if (levels[currLevel].level)
+            if (levels[currLevel])
                 std::cout << "Level " << (currLevel + 1) << " complete!" << endl;
                 currLevel++;
                 break;

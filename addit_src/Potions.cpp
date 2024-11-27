@@ -3,39 +3,34 @@
 #include <string>
 using namespace std;
 
-    Potion::Potion () {
-        healingAmount = 0;
-        type = "";
-    }
 
-    Potion::Potion(int healAmount, const string& potionType) {
-        healingAmount = healAmount;
-        type = potionType;
-    }
+Potion::Potion() : healingAmount(0), type("") {}
 
-    int Potion::getHealingAmount() const {
-        return healingAmount;
-    }
-    void Potion::setHealingAmount(int amount) {
-        healingAmount = amount;
-    }
+Potion::Potion(int healAmount, const string &potionType)
+    : healingAmount(healAmount), type(potionType) {}
 
-    string Potion::getType() const {
-        return type;
+int Potion::getHealingAmount() const {
+    return healingAmount;
+}
+
+void Potion::setHealingAmount(int amount) {
+    healingAmount = amount;
+}
+
+string Potion::getType() const {
+    return type;
+}
+
+void Potion::setType(const string &potionType) {
+    type = potionType;
+}
+
+void Potion::healCharacter(MainCharacter &character) {
+    if (type == "Small Potion") {
+        character.heal(50); 
+    } else if (type == "Large Potion") {
+        character.heal(100); 
+    } else {
+        character.heal(healingAmount); 
     }
-
-    void Potion::setType(const string& type) {
-        this->type = type;
-    }
-
-    // void Potion::heal(int amount) needs to be implemented
-
-
-    void Potion::healCharacter() {
-        if (this->type == "Small Potion") {
-            heal(50);
-        }
-        else if (this->type == "Large Potion") {
-            heal(100);
-        }
-    }
+}

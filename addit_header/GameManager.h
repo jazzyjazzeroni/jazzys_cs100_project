@@ -1,24 +1,23 @@
-
 #ifndef GAMEMANAGER_H
 #define GAMEMANAGER_H
 #include <vector>
 #include "Level.h"
 #include "MenuPrinter.h"
-#include "GameMap.h"
+#include "../addit_header/GameMap.h"
 #include "../Character_header/MainCharacter.h"
-#include "Inventory.h"
+#include "../addit_header/Inventory.h"
 
-
-using namespace std;
-
-class GameManager {
+class GameManager: public MenuPrinter {
 private:
     int currLevel;
     vector<Level> levels;
 
 public:
     GameManager();
+    ~GameManager();
     void gameStart();
+    void pause();
+    void quit();
 };
 
 #endif

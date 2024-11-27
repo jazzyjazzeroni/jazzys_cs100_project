@@ -193,14 +193,6 @@ Inventory{
      }
 }
 
-
-Jasmyne Hardy - jhard025
-  1:59 PM
-It looks beautiful :face_holding_back_tears:
-
-
-Mel
-  2:00 PM
 gameManager()
 {
     GameMap gameMap;

@@ -1,19 +1,19 @@
-
 #ifndef POTIONS_H
 #define POTIONS_H
 
 #include <string>
 #include "Inventory.h"
 #include "Object.h"
+#include "../Character_header/MainCharacter.h"
 using namespace std;
 
 class Potion  : public Object {
 private:
-    int healingAmount = 0; 
+    int healingAmount; 
     string type;  
 
 public:
-    Potion();
+    Potion(){};
     Potion(int healAmount, const string& potionType);
 
     int getHealingAmount() const;
@@ -21,8 +21,7 @@ public:
 
     string getType() const;
     void setType(const string& type);
-    void healCharacter();
-    void heal(int amount);  // Declare heal method
+    void healCharacter(MainCharacter &character);
 };
 
 #endif
