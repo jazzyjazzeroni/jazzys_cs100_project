@@ -24,8 +24,8 @@ CharType getType();
 void setHealth(int);
 bool isalive() const;
 Character(CharType, const string &, int, int);
-virtual void dealtDamage(int) = 0;
-virtual void recieveDamage(int) = 0;
+ void dealtDamage(int);
+ void recieveDamage(int);
 virtual void attack(Character &) = 0;
 
 };

@@ -7,6 +7,7 @@
 #include "GameManager.h"
 #include "Powers.h"
 #include <vector>
+#include <map>
 #ifndef LEVEL_H
 #define LEVEL_H
 using namespace std;
