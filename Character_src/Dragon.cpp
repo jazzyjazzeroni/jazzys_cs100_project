@@ -48,12 +48,16 @@ int Dragon::getfireBall()
     return this->fire_ball;
 }
 
+void Dragon::setfireBall(int damage)
+{
+    this->fire_ball = damage;
+}
 void Dragon::attack(Character &player)
 {
-    int attack_amount = breathe_fire;
+    int attack_amount = this->breathe_fire;
     if(fire_ball > 0)
     {
-        attack_amount = fire_ball;
+        attack_amount = this->fire_ball;
     }
 }
 
