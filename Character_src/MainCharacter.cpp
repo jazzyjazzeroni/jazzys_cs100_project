@@ -22,25 +22,6 @@ void MainCharacter::attack(Character &opponent) {
     }
 }
 
-// Interaction with the Witch
-void MainCharacter::WitchInteraction() {
-    cout << "You meet the witch in the forest." << endl;
-    cout << "She offers to enhance your powers or health. What will you choose? (1 = Powers, 2 = Health): ";
-    int choice;
-    cin >> choice;
-
-    // if (choice == 1) {
-    //     Power_type.useFusedPower(); // Assuming enhancement details in `Powers`
-    //     cout << "Your ultimate power has been enhanced!" << endl;
-    // } 
-     if (choice == 2) {
-        heal(50);
-        cout << "Your health increased by 50!" << endl;
-    } else {
-        cout << "Invalid choice. The witch vanishes into thin air." << endl;
-    }
-}
-
 // Heals the character
 void MainCharacter::heal(int amount) {
     health = min(health + amount, MAX_HEALTH); // Prevent exceeding MAX_HEALTH

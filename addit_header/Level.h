@@ -1,6 +1,8 @@
 #include "GameMap.h"
 #include "../Character_header/MainCharacter.h"
 #include "../Character_header/Character.h"
+#include "../Character_header/Goblin.h"
+#include "../Character_header/Dragon.h"
 #include "Object.h"
 #include "Inventory.h"
 #include "MenuPrinter.h"
@@ -18,6 +20,7 @@ private:
     std::map<int, Power_type> levelElements; // Map level number to element type
     MainCharacter player;
     Inventory inventory;
+    Dragon dragon;
     int goblinGoal;
     int levelNumber;
     bool end;

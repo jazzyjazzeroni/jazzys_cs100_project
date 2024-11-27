@@ -31,7 +31,6 @@ public:
 
      void attack(Character &opponent) override;
      MainCharacter(int x = 0, int y = 0); 
-     void WitchInteraction();
      void heal(int);
      bool isalive();
      void usePowers();
