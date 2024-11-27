@@ -46,7 +46,7 @@ void MainCharacter::heal(int amount) {
 // Uses a power
 void MainCharacter::usePowers() {
     cout << name << " uses a special power!" << endl;
-    powers.activate(); // Assuming `activate()` is a method in `Powers`
+    powers.usePower(); // Assuming `activate()` is a method in `Powers`
 }
 
 
@@ -133,23 +133,21 @@ MainCharacter::MainCharacter(int x, int y) : x(x), y(y) {}  // Ensure this initi
 
     // Attack function
     void MainCharacter::attack(Character &target) {
-        if (target.getType() == "goblin") { //todo change to enum
+        if (target.getType() == GOBLIN) { //todo change to enum
             // Assuming you have a method for attack calculation here
             Goblin &goblin = dynamic_cast<Goblin&>(target);
             // Do the attack logic here
         }
     }
 
-
-
     // Heal the character using a potion
-    void heal(int amount) {
+    void MainCharacter::heal(int amount) {
         setHealth(getHealth() + amount); // Assuming you have a setHealth method in Character
     }
 
-    // Check if the character is alive
-    bool isAlive() const {
-        return getHealth() > 0;
+    // todo Check if the character is alive
+    bool MainCharacter::isalive() const {
+        return (getHealth() > 0);
     };
 
 

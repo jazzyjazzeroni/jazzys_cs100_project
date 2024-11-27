@@ -36,9 +36,6 @@ public:
      pair<int, int> getPosition() const;
      void setPosition(int x, int y);
      
-
-    // string getAllegiance() const;   
-    // void setAllegiance(const string &newAllegiance);
 };
 
 #endif

@@ -96,7 +96,6 @@ void Level::Finalbosslevel(int power) {
     }
 }
 
-
 vector<Level> initializeLevels() { // todo call this in game manager pass it in
     vector<Level> levels;
 

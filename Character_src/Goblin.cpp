@@ -56,8 +56,3 @@ void Goblin::recieveDamage(int dam) {
 void Goblin::attack(Character &player) {
     player.recieveDamage(attackAmount);
 }
-
-// not really sure what this does
-void Goblin::SpecialAttack(int) {
-
-}
