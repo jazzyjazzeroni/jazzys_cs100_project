@@ -60,5 +60,3 @@ void Dragon::attack(Character &player)
         attack_amount = this->fire_ball;
     }
 }
-
-
