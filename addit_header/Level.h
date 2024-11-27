@@ -16,7 +16,7 @@ class Level {
 private:
     GameMap gameMap;
     std::map<int, Power_type> levelElements; // Map level number to element type
-    MainCharacter &player;
+    MainCharacter player;
     Inventory inventory;
     int goblinGoal;
     int levelNumber;
@@ -26,6 +26,7 @@ private:
 public:
     Level();
     Level(int power, const vector<vector<int>>& mapLayout, int numGoblins);
+
     void Level::Finalbosslevel(int power);
     static vector<Level> initializeLevels();
     void start();

@@ -10,12 +10,14 @@
 #include "../addit_header/Swords.h"
 #include "../addit_header/Potions.h"
 #include "../addit_header/Object.h"
+#include <string>
+#include <utility>
 using namespace std; 
 
 class MainCharacter : public Character {
 private:
     string allegiance;
-    Power_type powers;
+    Powers powers;
     Power_type currentElement;
     Inventory inventory;
     Level levels;
@@ -25,6 +27,7 @@ private:
 
 public:
      MainCharacter(const string &name, int health, int attackStrength, const string &allegiance);
+         MainCharacter(int x = 0, int y = 0);
 
      void attack(Character &opponent) override;
      MainCharacter(int x = 0, int y = 0); 
@@ -34,7 +37,7 @@ public:
      void usePowers();
      const Inventory& getInventory() const;
      void usePotion(const string &);
-     void equipSword(Sword &);
+     void equipSword(const Sword &);
      int mod(int value, int limit);
      Object move(char action, GameMap &gameMap);
      pair<int, int> getPosition() const;

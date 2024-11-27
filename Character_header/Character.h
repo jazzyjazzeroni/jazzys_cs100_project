@@ -17,8 +17,9 @@ int attackAmount;
 int damage_amount;
 string name;
 CharType type;
+Powers powers;
 Power_type currentElement;
-Level levels;
+Level level;
 
 public:
 Character::Character();

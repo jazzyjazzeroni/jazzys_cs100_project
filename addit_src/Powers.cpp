@@ -5,13 +5,31 @@
 using namespace std;
 //Water vs Fire, Wind vs Earth 
 
-Powers::Powers(const string &element) : currentElement(element) {}
+Powers::Powers(const string &element) : currentElement(element) {
+    if (element == "ICE") powers = ICE;
+    else if (element == "FIRE") powers = FIRE;
+    else if (element == "EARTH") powers = EARTH;
+    else if (element == "AIR") powers = AIR;
+    else if (element == "FUSED_POWER") powers = FUSED_POWER;
+    else throw invalid_argument("Unknown power type: " + element);
+}
+
+int Powers::calculateDamage() const {
+    switch (powers) {
+        case ICE: return 15;         // ICE does 15 damage
+        case FIRE: return 20;        // FIRE does 20 damage
+        case EARTH: return 10;       // EARTH does 10 damage
+        case AIR: return 12;         // AIR does 12 damage
+        case FUSED_POWER: return 50; // FUSED_POWER does 50 damage
+        default: return 0;           // Default is no damage
+    }
+}
 
 Power_type Powers::getPower () const {
-    return p_type;
+    return powers;
 }
 void Powers::setPower(const int powerTypeIndex) { 
-        p_type = static_cast<Power_type>(powerTypeIndex);
+        powers = static_cast<Power_type>(powerTypeIndex);
 //tbh not sure if static cast or dynamic
 }
 
@@ -27,7 +45,7 @@ void Powers::setDamage(int damage) {
 }
 
 int Powers::calculateDamage() const {
-    switch (p_type) {
+    switch (powers) {
         case ICE: return 15;         // ICE does 15 damage
         case FIRE: return 20;        // FIRE does 20 damage
         case EARTH: return 10;       // EARTH does 10 damage
@@ -37,17 +55,14 @@ int Powers::calculateDamage() const {
     }
 }
 
-//where is damage defined?
-
 void Powers::usePower(Power_type element, const string &enemyAllegiance) {
+powerDamage = calculateDamage(); // Ensure current power's damage is up-to-date
+
     if (canUsePower(element, enemyAllegiance)) {
         cout << "Elemental Power used!" << endl;
-        damage(powerDamage);
         cout << "Dealt " << powerDamage << " damage!" << endl;
-    }
-    else {
+    } else {
         cout << "This Elemental Power cannot be used against " << enemyAllegiance << " enemy type!" << endl;
-        damage(powerDamage);
         cout << "Dealt no damage!" << endl;
     }
 }
@@ -56,45 +71,37 @@ void Powers::usePower(Power_type element, const string &enemyAllegiance) {
 
 void Powers::handleAttack(const string &goblinElement, int &health) const {
         int currentDamage = calculateDamage();
-    if (canUsePower(p_type, goblinElement)) {
-        cout << "Your " << p_type << " power easily defeats the " << goblinElement << " goblin!" << endl;
-    } else if (p_type == static_cast<Power_type>(goblinElement)) {
-        cout << "You tried attacking a " << goblinElement << " goblin with the same power type! You take massive damage!" << endl;
-        health -= 50; // Massive damage for same power type
-        if (health <= 0) {
-            cout << "You have died due to your poor elemental choice!" << endl;
-            throw runtime_error("Game Over");
-        }
+        Power_type goblinPower;
+    if (goblinElement == "ICE") goblinPower = ICE;
+    else if (goblinElement == "FIRE") goblinPower = FIRE;
+    else if (goblinElement == "EARTH") goblinPower = EARTH;
+    else if (goblinElement == "AIR") goblinPower = AIR;
+    else throw invalid_argument("Unknown goblin element: " + goblinElement);
+    if (canUsePower(goblinPower, goblinElement)) {
+        cout << "Your " << currentElement << " power easily defeats the " << goblinElement << " goblin!" << endl;
+    } else if (powers == goblinPower) {
+        cout << "Using the same power type against the " << goblinElement << " goblin!" << endl;
+        health -= 50; // Self-damage
     } else {
-        cout << "Your " << p_type << " power is not effective against the " << goblinElement << " goblin. The goblin fights back!" << endl;
-        health -= 20; // Moderate damage for ineffective attacks
-        if (health <= 0) {
-            cout << "You have died in the battle with the goblin!" << endl;
-            throw runtime_error("Game Over");
-        }
+        cout << "Ineffective power! Goblin fights back!" << endl;
+        health -= 20; // Damage from goblin
+    }
+
+    if (health <= 0) {
+        cout << "You have died!" << endl;
+        throw runtime_error("Game Over");
     }
 }
 
-
-//confused about this function
-
-void Powers::useFusedPower () {
-    cout << "Ultimate ability used!" << endl;
-    int currentDamage = calculateDamage();
-    cout << "Dealt "<< powerDamage << " damage to Ignus!" << endl;
-}
-
-
-
-bool Powers::canUsePower(Power_type opponentPower, const string& opponentType) {
-    if ((p_type == ICE && opponentPower == FIRE) || 
-        (p_type == FIRE && opponentPower == ICE) ||
-        (p_type == EARTH && opponentPower == AIR) || 
-        (p_type == AIR && opponentPower == EARTH)) {
+bool Powers::canUsePower(Power_type opponentPower, const string& opponentType) const{
+    if ((powers == ICE && opponentPower == FIRE) || 
+        (powers == FIRE && opponentPower == ICE) ||
+        (powers == EARTH && opponentPower == AIR) || 
+        (powers == AIR && opponentPower == EARTH)) {
         return true; // Elemental advantage
     }
     
-    if (p_type == opponentPower) {
+    if (powers == opponentPower) {
         cout << "Warning: Using the same element against a " << opponentType 
              << " will result in high damage to yourself!" << endl;
         return false;
@@ -102,5 +109,6 @@ bool Powers::canUsePower(Power_type opponentPower, const string& opponentType) {
     
     // If no match, assume ineffective
     return false;
-
 }
+
+

@@ -4,8 +4,8 @@
 using namespace std;
 
 // Constructor
-MainCharacter::MainCharacter(const string &name, int health, int attackStrength, const string &allegiance)
-    : allegiance(allegiance) {
+MainCharacter::MainCharacter(const std::string &name, int health, int attackStrength, const std::string &allegiance)
+    : allegiance(allegiance), x(0), y(0), powers("FUSED_POWER") { // Default power as "FUSED_POWER"
     this->name = name;
     this->health = health;
     this->attackAmount = attackStrength;
@@ -16,6 +16,10 @@ MainCharacter::MainCharacter(const string &name, int health, int attackStrength,
 void MainCharacter::attack(Character &opponent) {
     cout << name << " attacks " << opponent.getType() << " with a sword, dealing " << attackAmount << " damage!" << endl;
     opponent.recieveDamage(attackAmount);
+
+    if (!opponent.isalive()) {
+        std::cout << "The opponent has been defeated!" << std::endl;
+    }
 }
 
 // Interaction with the Witch
@@ -25,10 +29,11 @@ void MainCharacter::WitchInteraction() {
     int choice;
     cin >> choice;
 
-    if (choice == 1) {
-        Power_type.useFusedPower(); // Assuming enhancement details in `Powers`
-        cout << "Your ultimate power has been enhanced!" << endl;
-    } else if (choice == 2) {
+    // if (choice == 1) {
+    //     Power_type.useFusedPower(); // Assuming enhancement details in `Powers`
+    //     cout << "Your ultimate power has been enhanced!" << endl;
+    // } 
+     if (choice == 2) {
         heal(50);
         cout << "Your health increased by 50!" << endl;
     } else {
@@ -46,7 +51,7 @@ void MainCharacter::heal(int amount) {
 // Uses a power
 void MainCharacter::usePowers() {
     cout << name << " uses a special power!" << endl;
-    powers.usePower(); // Assuming `activate()` is a method in `Powers`
+    powers.usePower(powers.getPower(), allegiance); // Assuming `activate()` is a method in `Powers`
 }
 
 
@@ -81,7 +86,7 @@ void MainCharacter::usePotion(const string &potionName) {
     }
 }
 // Add sword function (pick up a sword)
-    void MainCharacter::equipSword(Sword & newSword) {
+    void MainCharacter::equipSword(const Sword & newSword) {
         //todo give o[ption to swap or replace sword]
             // Swap or replace the sword
             this->sword = Sword(newSword.getValue(), "New Sword");
@@ -105,7 +110,7 @@ void MainCharacter::usePotion(const string &potionName) {
 // }
   
 
-MainCharacter::MainCharacter(int x, int y) : x(x), y(y) {}  // Ensure this initializes member variables x and y
+MainCharacter::MainCharacter(int x, int y) : x(x), y(y), powers("FUSED_POWER") {}
 
     // Modulo function to wrap around the coordinates
     int MainCharacter::mod(int value, int limit) {
