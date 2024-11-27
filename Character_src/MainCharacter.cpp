@@ -133,11 +133,20 @@ MainCharacter::MainCharacter(int x, int y) : x(x), y(y) {}  // Ensure this initi
 
     // Attack function
     void MainCharacter::attack(Character &target) {
-        if (target.getType() == GOBLIN) { //todo change to enum
-            // Assuming you have a method for attack calculation here
-            Goblin &goblin = dynamic_cast<Goblin&>(target);
-            // Do the attack logic here
-        }
+         if (target.getType() == GOBLIN) { 
+        Goblin &goblin = dynamic_cast<Goblin &>(target);
+        cout << name << " attacks the Goblin fiercely with a sword, dealing " 
+             << attackAmount << " damage!" << endl;
+        goblin.recieveDamage(attackAmount);
+    } else {
+        cout << name << " attacks the opponent with a sword, dealing " 
+             << attackAmount << " damage!" << endl;
+        target.recieveDamage(attackAmount);
+    }
+
+    if (!target.isalive()) {
+        cout << "The opponent has been defeated!" << endl;
+    }
     }
 
     // Heal the character using a potion

@@ -19,9 +19,10 @@ void setPower(const int);
 int getDamage() const;
 void setDamage(int);
 void usePower(Power_type, const string&);
+void handleAttack(const string &goblinElement, int &health) const;
 void useFusedPower(); //if battle is against dragon, all Power_type can be used
 
-private:
+// private:
 bool canUsePower(Power_type, const string&);
 
 };
