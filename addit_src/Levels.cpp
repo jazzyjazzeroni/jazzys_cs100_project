@@ -23,6 +23,37 @@ void Level::start() {
 }
 
 
+Levels::Levels() : currentLevel(1) {
+    // Initialize level-to-element mapping
+    levelElements[1] = ICE;
+    levelElements[2] = FIRE;
+    levelElements[3] = EARTH;
+    levelElements[4] = AIR;
+    levelElements[5] = FUSED_POWER; // Example ultimate ability level
+}
+
+Power_type Levels::getElementForLevel(int level) const {
+    auto it = levelElements.find(level);
+    if (it != levelElements.end()) {
+        return it->second;
+    } else {
+        throw std::out_of_range("Level not defined in levelElements.");
+    }
+}
+
+void Levels::setLevel(int level) {
+    if (level > 0 && level <= static_cast<int>(levelElements.size())) {
+        currentLevel = level;
+    } else {
+        throw std::invalid_argument("Invalid level number.");
+    }
+}
+
+int Levels::getCurrentLevel() const {
+    return currentLevel;
+}
+
+
 void Level::takeAction() {
     char action;
     cout << "Enter action: ";

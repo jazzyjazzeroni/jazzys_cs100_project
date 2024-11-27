@@ -62,6 +62,14 @@ void MainCharacter::usePotion(const string &potionName) {
     cout << "Potion not found in inventory!" << endl;
 }
 
+void Character::updateElementForLevel() {
+    currentElement = levels.getElementForLevel(levels.getCurrentLevel());
+}
+
+Power_type Character::getCurrentElement() const {
+    return currentElement;
+}
+
 void MainCharacter::usePotion(const string &potionName) {
     if (inventory.hasPotion(potionName)) {
         Potion potion = inventory.getPotion(potionName); // Get potion from inventory

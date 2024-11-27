@@ -5,6 +5,7 @@
 #include "Inventory.h"
 #include "MenuPrinter.h"
 #include "GameManager.h"
+#include "Powers.h"
 #include <vector>
 #ifndef LEVEL_H
 #define LEVEL_H
@@ -13,6 +14,7 @@ using namespace std;
 class Level {
 private:
     GameMap gameMap;
+    std::map<int, Power_type> levelElements; // Map level number to element type
     MainCharacter player;
     Inventory inventory;
     int goblinGoal;
@@ -26,6 +28,9 @@ public:
     void start();
     void takeAction();
     GameMap getGameMap() const{ return gameMap; }
+    Power_type getElementForLevel(int level) const; // Get element for a specific level
+    void setLevel(int level); // Set the current level
+    int getCurrentLevel() const;
 };
 
 #endif
