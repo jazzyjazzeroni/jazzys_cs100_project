@@ -6,14 +6,14 @@ using namespace std;
 //Water vs Fire, Wind vs Earth 
 
 Powers::Powers() {
-    p_type = AIR;
-    powerDamage = 80;
+    p_type = AIR; //why air?
+    powerDamage = 80; //why 80?
 }
 
 Power_type Powers::getPower () const {
     return p_type;
 }
-void Powers::setPower(const int option) {
+void Powers::setPower(const int option) { //why are we giving character option they dont get one
     if (option == 0) {
         p_type = ICE;
     }
@@ -35,6 +35,9 @@ void Powers::setDamage(int damage) {
     powerDamage = damage;
 }
 
+
+//where is damage defined?
+
 void Powers::usePower(Power_type element, const string &enemyAllegiance) {
     if (canUsePower(element, enemyAllegiance)) {
         cout << "Elemental Power used!" << endl;
@@ -48,11 +51,16 @@ void Powers::usePower(Power_type element, const string &enemyAllegiance) {
     }
 }
 
+//confused about this function
+
 void Powers::useFusedPower () {
     cout << "Ultimate ability used!" << endl;
     damage(powerDamage);
     cout << "Dealt "<< powerDamage << " damage to Ignus!" << endl;
 }
+
+
+//why so many if statements?
 
 bool Powers::canUsePower(Power_type element, const string& enemyAllegiance) {
     if (element == ICE) {

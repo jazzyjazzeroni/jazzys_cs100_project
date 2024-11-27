@@ -146,9 +146,9 @@ MainCharacter::MainCharacter(int x, int y) : x(x), y(y) {}  // Ensure this initi
     }
 
     // todo Check if the character is alive
-    bool MainCharacter::isalive() const {
-        return (getHealth() > 0);
-    };
+    // bool MainCharacter::isalive() const {
+    //     return (getHealth() > 0);
+    // };
 
 
 
