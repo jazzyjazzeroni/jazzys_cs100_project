@@ -13,7 +13,7 @@ Power_type p_type;
 int powerDamage;
 
 public:
-Power_type();
+Power_type(const string &); // fixing 
 Power_type getPower () const;
 void setPower(const int);
 int getDamage() const;

@@ -26,7 +26,7 @@ void MainCharacter::WitchInteraction() {
     cin >> choice;
 
     if (choice == 1) {
-        powers.useFusedPower(); // Assuming enhancement details in `Powers`
+        Power_type.useFusedPower(); // Assuming enhancement details in `Powers`
         cout << "Your ultimate power has been enhanced!" << endl;
     } else if (choice == 2) {
         heal(50);
@@ -63,7 +63,7 @@ void MainCharacter::usePotion(const string &potionName) {
 }
 
 void Character::updateElementForLevel() {
-    currentElement = levels.getElementForLevel(levels.getCurrentLevel());
+    currentElement = level.getElementForLevel(level.getCurrentLevel());
 }
 
 Power_type Character::getCurrentElement() const {

@@ -18,7 +18,7 @@ private:
     Power_type powers;
     Power_type currentElement;
     Inventory inventory;
-    Levels levels;
+    Level levels;
     Sword sword;
     char move;
     int x, y; 
