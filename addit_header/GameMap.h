@@ -19,6 +19,7 @@ private:
     vector<vector<Object>> mapMatrix;
 
 public:
+    GameMap();
     GameMap(const vector<vector<int>>& initMatrix, int w, int h);
     // void init(const vector<vector<int>>& layout);
     void killGoblin(int x, int y);

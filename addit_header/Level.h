@@ -16,7 +16,7 @@ class Level {
 private:
     GameMap gameMap;
     std::map<int, Power_type> levelElements; // Map level number to element type
-    MainCharacter player;
+    MainCharacter &player;
     Inventory inventory;
     int goblinGoal;
     int levelNumber;

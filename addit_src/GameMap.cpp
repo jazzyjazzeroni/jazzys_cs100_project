@@ -5,6 +5,10 @@
 
 using namespace std;
 
+GameMap::GameMap() : width(0), height(0), numGoblin(0), goblinKilled(0) {
+    mapMatrix.resize(0, vector<Object>(0));
+}
+
     void GameMap::killGoblin(int x, int y){
         mapMatrix[y][x] = Object();
         goblinKilled++;
@@ -66,6 +70,4 @@ GameMap::GameMap(const vector<vector<int>>& initMatrix, int w, int h) : width(w)
                 }
             }
         }
-    }
-    
-    
+    }   
