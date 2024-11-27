@@ -68,3 +68,4 @@ GameMap::GameMap(const vector<vector<int>>& initMatrix, int w, int h) : width(w)
         }
     }
     
+    

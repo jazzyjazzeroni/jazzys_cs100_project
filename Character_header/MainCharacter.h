@@ -6,7 +6,7 @@
 #include "../addit_header/Inventory.h"
 #include "../addit_header/GameManager.h"
 #include "../addit_header/GameMap.h"
-#include "../addit_header/Levels.h"
+#include "../addit_header/Level.h"
 #include "../addit_header/Swords.h"
 #include "../addit_header/Potions.h"
 #include "../addit_header/Object.h"
