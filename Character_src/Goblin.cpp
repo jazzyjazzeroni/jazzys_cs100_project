@@ -3,15 +3,6 @@
 
 using namespace std;
 
-// inhereted from character class:
-// int health;
-// int attackAmount;
-// int damage_amount;
-// string name;
-// CharType type;
-// from goblin class:
-// int specialPower;
-
 // the goblin constructor i believe
 Goblin::Goblin(const string &name, int health, int attackStrength, int specialPower, const string &allegiance) {
     this->name = name;

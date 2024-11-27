@@ -1,15 +1,7 @@
 #include "../Character_header/Character.h"
-// Character::Character()
-// {
-//     this->health = 0;
-//     this->attackAmount = 0;
-//     this->damage_amount = 0;
-//     this->name = " ";
-//     this->type = MAINCHAR;
-// }
 
 Character::Character(CharType type, const string &name, int health, int attackAmount, int damage_amount)
-{
+{ // todo fix this error no default constructor exists for class "Powers"C/C++(291)
     this->type = type;
     this->name = name;
     this->health = health;
