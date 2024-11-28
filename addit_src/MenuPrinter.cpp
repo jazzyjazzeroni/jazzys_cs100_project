@@ -15,6 +15,7 @@ void MenuPrinter::printMainMenu() {
     cout << endl;
 }
 
+<<<<<<< HEAD
 // prints when the player chooses to go to settings
 // void MenuPrinter::printSettingsMenu() {
 //     cout << "                  SETTINGS                " << endl;
@@ -26,6 +27,8 @@ void MenuPrinter::printMainMenu() {
 
 // prints when the player chooses to change languages
 
+=======
+>>>>>>> csong073/game_manager_feature
 // prints when the player is roaming in the levels
 void MenuPrinter::movementMenu() {
     cout << "   What direction do you want to move in? " << endl;

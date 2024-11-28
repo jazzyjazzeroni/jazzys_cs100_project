@@ -9,9 +9,13 @@ private:
     int fire_ball;
 
 public:
+<<<<<<< HEAD
     Dragon();
     ~Dragon();
     Dragon(const string &name, int pHealth, int pBreatheFire, int pFireBall);
+=======
+    Dragon(const string &name, double health, double attackStrength, const string &allegiance);
+>>>>>>> csong073/game_manager_feature
     int getfireAttack();
     int getfireBall();
     void setfireBall(int pFireBall);

@@ -1,5 +1,15 @@
+<<<<<<< HEAD
 #ifndef __INVENTORY_H__
 #define __INVENTORY_H__
+=======
+#ifndef INVENTORY_H
+#define INVENTORY_H
+#include <string>
+#include <iostream>
+#include <vector>
+using namespace std;
+
+>>>>>>> csong073/game_manager_feature
 
 #include <string>
 #include <iostream>
