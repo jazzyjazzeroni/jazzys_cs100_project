@@ -7,7 +7,6 @@ Powers::Powers(const string &element) : currentElement(element) {
     else if (element == "FIRE") powers = FIRE;
     else if (element == "EARTH") powers = EARTH;
     else if (element == "AIR") powers = AIR;
-    else if (element == "FUSED_POWER") powers = FUSED_POWER;
     else throw invalid_argument("Unknown power type: " + element);
 }
 
@@ -17,7 +16,6 @@ int Powers::calculateDamage() const {
         case FIRE: return 20;        // FIRE does 20 damage
         case EARTH: return 10;       // EARTH does 10 damage
         case AIR: return 12;         // AIR does 12 damage
-        case FUSED_POWER: return 50; // FUSED_POWER does 50 damage
         default: return 0;           // Default is no damage
     }
 }
