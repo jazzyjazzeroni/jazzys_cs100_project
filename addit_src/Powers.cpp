@@ -30,7 +30,6 @@ Power_type Powers::getPower () const {
 }
 void Powers::setPower(const int powerTypeIndex) { 
         powers = static_cast<Power_type>(powerTypeIndex);
-//tbh not sure if static cast or dynamic
 }
 
 int Powers::getDamage() const {
@@ -107,8 +106,7 @@ bool Powers::canUsePower(Power_type opponentPower, const string& opponentType) c
         return false;
     }
     
-    // If no match, assume ineffective
-    return false;
+        return false;
 }
 
 

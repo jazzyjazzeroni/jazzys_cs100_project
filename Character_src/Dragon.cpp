@@ -1,17 +1,4 @@
-#include "Dragon.h"
-// private:
-//     int breatheFire;
-//     int fireBall;
-
-// public:
-//     Dragon(const string &name, double health, double attackStrength, const string &allegiance);
-//     int getfireAttack();
-//     int getfireBall();
-//     void setfireBall();
-//     void setfireAttack();
-//     void attack(Character &opponent);
-
-
+#include "../Character_header/Dragon.h"
 Dragon::Dragon(const string &name, int pHealth, int pBreatheFire, int pFireBall)
 {
    this->name = "Ignus";

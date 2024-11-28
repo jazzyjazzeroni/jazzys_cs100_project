@@ -1,8 +1,7 @@
-#include "Goblin.h"
+#include "../Character_header/Goblin.h"
 #include <iostream>
 
 using namespace std;
-
 // the goblin constructor i believe
 Goblin::Goblin(const string &name, int health, int attackStrength, int specialPower, const string &allegiance) {
     this->name = name;
