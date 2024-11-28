@@ -1,14 +1,11 @@
 #include "../Character_header/Goblin.h"
-#include <iostream>
 
 using namespace std;
 // the goblin constructor i believe
-Goblin::Goblin(const string &name, int health, int attackStrength, int specialPower, const string &allegiance) {
+Goblin::Goblin(const string &name, int health, int attackStrength, const string &allegiance) {
     this->name = name;
     this->health = health;
     this->attackAmount = attackStrength;
-    this->specialPower = specialPower;
-
 }
 
 // returns goblin's current health

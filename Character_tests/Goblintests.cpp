@@ -1,189 +1,152 @@
-#include <gtest/gtest.h>
-#include <gmock/gmock.h>
-#include <string>
-#include "Character.h"
-#include "Goblin.h"
-using namespace std; 
+#include "gtest/gtest.h"
+#include "../Character_header/Goblin.h"
+#include "../Character_header/Character.h" // Assuming Character is a base class
+#include "../Character_header/MainCharacter.h"
 
+// Test Case 1: Test Goblin Constructor Air
+TEST(GoblinConstructorTest, testAirTypeGoblin) {
+    Goblin goblin("Air Goblin", 100, 5, "AIR"); // Assuming Goblin is a derived class of Character
+    
+    EXPECT_EQ(goblin.getHealth(), 100);  // Check initial health
+    EXPECT_EQ(goblin.getType(), GOBLIN);  // Assuming GOBLIN is a valid CharType
 
-private:
-    int specialPower;
-
-public:
-    Goblin(const string &name, double health, double attackStrength, int specialPower, const string &allegiance);
-
-    void attack(Character &opponent) override;
-    void SpecialAttack(int);
-
-
-
-
-class MockGoblin {
-public:
-    MOCK_METHOD(double, getHealth, (), (const));
-    MOCK_METHOD(void, takeDamage, (double));
-    MOCK_METHOD(void, heal, (double));
-    MOCK_METHOD(bool, isAlive, (), (const));
-
-    MOCK_METHOD(void, SpecialAttack, (int));
-    MOCK_METHOD(std::string, getType, (), (const));
-};
-
-TEST(MainCharacterTest, HealthManagementTest) {
-    MockMainChar mockMain;
-
-    EXPECT_CALL(mockMain, getHealth())
-        .Times(1)
-        .WillOnce(testing::Return(100.0));
-
-    EXPECT_EQ(mockMain.getHealth(), 100.0);
-
-    EXPECT_CALL(mockMain, takeDamage(20.0))
-        .Times(1);
-
-    mockMain.takeDamage(20.0);
-
-    EXPECT_CALL(mockMain, isAlive())
-        .Times(1)
-        .WillOnce(testing::Return(true));
-
-    EXPECT_TRUE(mockMain.isAlive());
 }
 
-TEST(MainCharacterTest, MovementTest) {
-    MockMainChar mockMain;
+// Test Case 2: Test Goblin Constructor Earth Type
+TEST(GoblinConstructorTest, testEarthTypeGoblin) {
+    Goblin goblin("Earth Goblin", 100, 10, "EARTH"); // Assuming Goblin is a derived class of Character
 
-    EXPECT_CALL(mockMain, move('W')).Times(1);
-    EXPECT_CALL(mockMain, move('A')).Times(1);
-    EXPECT_CALL(mockMain, move('S')).Times(1);
-    EXPECT_CALL(mockMain, move('D')).Times(1);
+    EXPECT_EQ(goblin.getHealth(), 100);  // Check initial health
+    EXPECT_EQ(goblin.getType(), GOBLIN);  // Assuming GOBLIN is a valid CharType
 
-    mockMain.move('W');
-    mockMain.move('A');
-    mockMain.move('S');
-    mockMain.move('D');
-
-    // Test invalid input handling
-    EXPECT_THROW({
-        EXPECT_CALL(mockMain, move('X')).Times(1);
-        mockMain.move('X'); 
-    }, std::runtime_error);
 }
 
-TEST(MainCharacterTest, TypeTest) {
-    MockMainChar mockMain;
+// Test Case 2: Test Goblin Constructor Water Type
+TEST(GoblinConstructorTest, testWaterTypeGoblin) {
+    Goblin goblin("Water Goblin", 100, 15, "WATER"); // Assuming Goblin is a derived class of Character
 
-    EXPECT_CALL(mockMain, getType())
-        .Times(1)
-        .WillOnce(testing::Return("Good"));
+    EXPECT_EQ(goblin.getHealth(), 100);  // Check initial health
+    EXPECT_EQ(goblin.getType(), GOBLIN);  // Assuming GOBLIN is a valid CharType
 
-    EXPECT_EQ(mockMain.getType(), "Good");
 }
 
+// Test Case 2: Test Goblin Constructor Fire Type
+TEST(GoblinConstructorTest, testFireTypeGoblin) {
+    Goblin goblin("Fire Goblin", 100, 20, "FIRE"); // Assuming Goblin is a derived class of Character
 
-TEST(MainCharacterTest, HealthValidation) {
-    MockMainChar mockMain;
+    EXPECT_EQ(goblin.getHealth(), 100);  // Check initial health
+    EXPECT_EQ(goblin.getType(), GOBLIN);  // Assuming GOBLIN is a valid CharType
 
-    EXPECT_CALL(mockMain, heal(0.0)).Times(0); 
-    EXPECT_CALL(mockMain, heal(-5.0)).Times(0); 
-
-    EXPECT_THROW({
-        mockMain.heal(0.0); 
-    }, std::invalid_argument);
-
-    EXPECT_THROW({
-        mockMain.heal(-5.0); // Should throw an exception
-    }, std::invalid_argument);
-
-    // Test upper limit for healing
-    EXPECT_THROW({
-        mockMain.heal(10.0); // Above allowed healing value should throw
-    }, std::invalid_argument);
-
-    EXPECT_CALL(mockMain, heal(5.0)).Times(1);
-    mockMain.heal(5.0); // Valid healing
 }
 
-TEST(MainCharacterTest, DamageValidation) {
-    MockMainChar mockMain;
+////////////////////// SET HEALTH TESTING//////////////////////////////////
+// Test Case 2: Test setHealth
+TEST(GoblinSetHealthTest, TestSetHealthAirGoblin) {
+    Goblin goblin("Air Goblin", 100, 5, "AIR"); // Assuming Goblin is a derived class of Character
 
-
-    EXPECT_CALL(mockMain, takeDamage(0.0)).Times(0); 
-    EXPECT_CALL(mockMain, takeDamage(-10.0)).Times(0); 
-
-    EXPECT_THROW({
-        mockMain.takeDamage(0.0); 
-    }, std::invalid_argument);
-
-    EXPECT_THROW({
-        mockMain.takeDamage(-10.0); 
-    }, std::invalid_argument);
-
-    // Valid damage value
-    EXPECT_CALL(mockMain, takeDamage(25.0)).Times(1);
-    mockMain.takeDamage(25.0);
+    goblin.setHealth(100);
+    EXPECT_EQ(goblin.getHealth(), 100);  // Check updated health
 }
 
-TEST(MainCharacterTest, IsAliveBehavior) {
-    MockMainChar mockMain;
+// Test Case 2: Test setHealth
+TEST(GoblinSetHealthTest, TestSetHealthEarthGoblin) {
+    Goblin goblin("Earth Goblin", 100, 10, "EARTH"); // Assuming Goblin is a derived class of Character
 
-    EXPECT_CALL(mockMain, isAlive())
-        .Times(1)
-        .WillOnce(testing::Return(true));
-
-    EXPECT_TRUE(mockMain.isAlive());
-
-    EXPECT_CALL(mockMain, isAlive())
-        .Times(1)
-        .WillOnce(testing::Return(false));
-
-    EXPECT_FALSE(mockMain.isAlive());
+    goblin.setHealth(100);
+    EXPECT_EQ(goblin.getHealth(), 100);  // Check updated health
 }
 
-TEST(MainCharacterTest, MovementValidation) {
-    MockMainChar mockMain;
+TEST(GoblinSetHealthTest, TestSetHealthWaterGoblin) {
+    Goblin goblin("Water Goblin", 100, 5, "WATER"); // Assuming Goblin is a derived class of Character
 
-    EXPECT_CALL(mockMain, move('W')).Times(1);
-    EXPECT_CALL(mockMain, move('A')).Times(1);
-    EXPECT_CALL(mockMain, move('S')).Times(1);
-    EXPECT_CALL(mockMain, move('D')).Times(1);
-
-    mockMain.move('W');
-    mockMain.move('A');
-    mockMain.move('S');
-    mockMain.move('D');
-
-    EXPECT_THROW({
-        mockMain.move('X'); 
-    }, std::invalid_argument);
-
-    EXPECT_THROW({
-        mockMain.move('1');
-    }, std::invalid_argument);
-
-    EXPECT_THROW({
-        mockMain.move('\0');
-    }, std::invalid_argument);
+    goblin.setHealth(100);
+    EXPECT_EQ(goblin.getHealth(), 100);  // Check updated health
 }
 
-TEST(MainCharacterTest, TypeValidation) {
-    MockMainChar mockMain;
+TEST(GoblinSetHealthTest, TestSetHealthFireGoblin) {
+    Goblin goblin("Fire Goblin", 100, 5, "FIRE"); // Assuming Goblin is a derived class of Character
 
-    EXPECT_CALL(mockMain, getType())
-        .Times(1)
-        .WillOnce(testing::Return("Good"));
+    goblin.setHealth(100);
+    EXPECT_EQ(goblin.getHealth(), 100);  // Check updated health
+}
 
-    EXPECT_EQ(mockMain.getType(), "Good");
+// Test Case 3: Test isAlive when health > 0
+TEST(GoblinTest, TestIsAlivePositiveHealth) {
+    Goblin goblin("Air Goblin", 100, 5, "AIR"); // Assuming Goblin is a derived class of Character
 
-    EXPECT_CALL(mockMain, getType())
-        .Times(1)
-        .WillOnce(testing::Return("Bad"));
+    EXPECT_TRUE(goblin.isalive());  // Goblin should be alive
+}
 
-    EXPECT_EQ(mockMain.getType(), "Bad");
+// Test Case 4: Test isAlive when health <= 0
+TEST(GoblinTest, TestIsAliveZeroHealth) {
+    Goblin goblin("Air Goblin", 0, 20, "AIR");
 
-    EXPECT_CALL(mockMain, getType())
-        .Times(1)
-        .WillOnce(testing::Return("Unknown"));
+    EXPECT_FALSE(goblin.isalive());  // Goblin should be dead
+}
 
-    EXPECT_EQ(mockMain.getType(), "Unknown");
+// // Test Case 5: Test dealtDamage sets the correct attackAmount
+// TEST(GoblinTest, TestDealtDamage) {
+//     Goblin goblin("Air Goblin", 100, 5, "AIR"); // Assuming Goblin is a derived class of Character
+
+//     goblin.dealtDamage(50);  // Set damage
+//     EXPECT_EQ(goblin.attackAmount, 50);  // Check updated attackAmount
+// }
+
+// Test Case 6: Test receiveDamage reduces health correctly
+TEST(GoblinTest, TestReceiveDamage) {
+    Goblin goblin("Air Type", 100, 5, "AIR");
+
+    goblin.recieveDamage(30);  // Apply damage
+    EXPECT_EQ(goblin.getHealth(), 70);  // Health should decrease by 30
+}
+
+// Test Case 7: Test receiveDamage with overkill
+TEST(GoblinTest, TestReceiveDamageOverkill) {
+    Goblin goblin("Air Type", 100, 5, "AIR");
+
+    goblin.recieveDamage(100);  // Apply damage greater than health
+    EXPECT_EQ(goblin.getHealth(), -50);  // Health decreases even below zero
+}
+
+//////////// TODO: FIX BUG
+// //MainCharacter::MainCharacter(const std::string &name, int health, int attackStrength, const std::string &allegiance)
+//     : allegiance(allegiance), x(0), y(0), powers("FUSED_POWER") { // Default power as "FUSED_POWER"
+//     this->name = name;
+//     this->health = health;
+//     this->attackAmount = attackStrength;
+//     this->type = MAINCHAR;
+// }
+
+// void MainCharacter::attack(Character &opponent) {
+//     cout << name << " attacks " << opponent.getType() << " with a sword, dealing " << attackAmount << " damage!" << endl;
+//     opponent.recieveDamage(attackAmount);
+
+//     if (!opponent.isalive()) {
+//         std::cout << "The opponent has been defeated!" << std::endl;
+//     }
+// }
+
+// Test Case 8: Test attack decreases player's health
+// TEST(GoblinTest, TestAttack) {
+//     Goblin goblin("Air Type", 100, 5, "AIR");
+//     Character player("Theodore", 100, 10,"EARTH"); // Create a player character of type Goblin
+
+//     goblin.attack(mc);  // Goblin attacks player
+//     EXPECT_EQ(player.getHealth(), 100);  // Player's health should decrease by goblin's attackAmount (20)
+// }
+
+// // Test Case 9: Test attack on a dead player
+// TEST(GoblinTest, TestAttackDeadPlayer) {
+//     Goblin goblin("Air Type", 100, 5, "AIR");
+//     Character player(MAINCHAR, "Player", 0, 15, 10);  // Dead player
+
+//     goblin.attack(player);  // Goblin attacks player
+//     EXPECT_EQ(player.getHealth(), -20);  // Player's health decreases even further
+// }
+
+// Test Case 10: Test getType returns correct type
+TEST(GoblinTest, TestGetType) {
+    Goblin goblin("Air Type", 100, 5, "AIR");
+
+    EXPECT_EQ(goblin.getType(), GOBLIN);  // Assuming GOBLIN is the correct type
 }
