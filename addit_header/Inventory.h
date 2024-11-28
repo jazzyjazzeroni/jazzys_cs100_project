@@ -7,7 +7,6 @@
 #include "Potions.h"   // Assuming you have a separate Potions class
 #include "Swords.h"    // Assuming you have a separate Swords class
 #include "../Character_header/MainCharacter.h" 
-// Assuming MainCharacter is the player character
 
 using namespace std;
 
@@ -19,11 +18,11 @@ private:
 public:
     void addSword(const Sword &sword);
     void removeSword(const string &name);
-    Sword getSword(const string &name) const;
+    const Sword& getSword(const string &name) const;
     bool hasSword(const std::string &name) const;
     void addPotion(const Potion &potion);
     void removePotion(const string &name);
-    Potion getPotion(const string &name) const;
+    const Potion& getPotion(const string &name) const;
     bool hasPotion(const std::string &name) const;
     void open(MainCharacter &player);
     const std::vector<Potion>& getPotions() const;  // Get list of potions
