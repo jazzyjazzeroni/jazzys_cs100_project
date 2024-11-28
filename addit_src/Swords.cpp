@@ -48,9 +48,9 @@ void Sword::print() const {
     cout << "Name: " << sword_name << ", Value: " << sword_dam << endl;
 }
 
-int main() {
-    Sword sword1(10, "Excalibur");
-    cout << "Sword Name: " << sword1.getName() << endl;
-    cout << "Sword Power: " << sword1.getPower() << endl;
-    return 0;
-}
+// int main() {
+//     Sword sword1(10, "Excalibur");
+//     cout << "Sword Name: " << sword1.getName() << endl;
+//     cout << "Sword Power: " << sword1.getPower() << endl;
+//     return 0;
+// }

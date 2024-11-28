@@ -39,22 +39,22 @@ void Potion::print() const {
 //     }
 // }
 
-int main() {
-    // Create a default potion
-    Potion defaultPotion;
-    cout << "Default Potion:" << endl;
-    defaultPotion.print();
+// int main() {
+//     // Create a default potion
+//     Potion defaultPotion;
+//     cout << "Default Potion:" << endl;
+//     defaultPotion.print();
 
-    // Create a healing potion with specific properties
-    Potion healingPotion(50, "Healing Potion");
-    cout << "\nCustom Potion:" << endl;
-    healingPotion.print();
+//     // Create a healing potion with specific properties
+//     Potion healingPotion(50, "Healing Potion");
+//     cout << "\nCustom Potion:" << endl;
+//     healingPotion.print();
 
-    // Modify the default potion
-    defaultPotion.setHealingAmount(30);
-    defaultPotion.setType("Small Healing Potion");
-    cout << "\nModified Default Potion:" << endl;
-    defaultPotion.print();
+//     // Modify the default potion
+//     defaultPotion.setHealingAmount(30);
+//     defaultPotion.setType("Small Healing Potion");
+//     cout << "\nModified Default Potion:" << endl;
+//     defaultPotion.print();
 
-    return 0;
-}
+//     return 0;
+// }
