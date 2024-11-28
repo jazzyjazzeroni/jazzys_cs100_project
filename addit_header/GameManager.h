@@ -23,8 +23,8 @@ public:
     // This function parses the input and determines the approporiate action
     void handleInput();
 
-    void nextLevel();
-    // update()
+
+    void update();
     //updates inventory
     // will trigger the event with goblin
     // 
