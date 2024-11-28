@@ -193,14 +193,6 @@ Inventory{
      }
 }
 
-
-Jasmyne Hardy - jhard025
-  1:59 PM
-It looks beautiful :face_holding_back_tears:
-
-
-Mel
-  2:00 PM
 gameManager()
 {
     GameMap gameMap;
@@ -385,3 +377,37 @@ Inventory{
         player.heal()
      }
 }
+
+
+Max health-100;
+
+level1 air damage- 5
+
+level2 fire damage- 10
+
+level3 water damage- 15
+
+level4 earth damage- 20
+
+
+if we can air, earth, water, fire
+
+sword 1 damage- 5
+
+sword 2 damage- 10
+
+sword 3 damage- 15
+
+potion 1 heal- 10
+
+potion 2 heal- 15
+
+dragon fire ball dmaage- 15
+
+dragon breathe fire damage-20
+
+dragon max health - 150
+
+
+
+
