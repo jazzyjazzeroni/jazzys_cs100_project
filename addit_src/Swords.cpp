@@ -23,24 +23,34 @@ void Sword::setName(const string& nm) {
     sword_name = nm;
 }
 
-// This method will deal damage to the opponent
-void Sword::dealDamage(Character &opponent) {
-    if (this->sword_name == "Normal Sword") {
-        damage(5);
-        cout << "You used your " << sword_name << " dealing " << sword_dam << " damage!" << endl;
-    }
-    else if (this->sword_name == "Better Sword") {
-        damage(10);
-        cout << "You used your " << sword_name << " dealing " << sword_dam << " damage!" << endl;
-    }
-    else if (this->sword_name == "Greatest Sword") {
-        damage(15);
-        cout << "You used your " << sword_name << " dealing " << sword_dam << " damage!" << endl;
-    }
+// void Sword::dealDamage(Character &opponent) {
+//     if (this->sword_name == "Normal Sword") {
+//         damage(5);
+//         cout << "You used your " << sword_name << " dealing " << sword_dam << " damage!" << endl;
+//     }
+//     else if (this->sword_name == "Better Sword") {
+//         damage(10);
+//         cout << "You used your " << sword_name << " dealing " << sword_dam << " damage!" << endl;
+//     }
+//     else if (this->sword_name == "Greatest Sword") {
+//         damage(15);
+//         cout << "You used your " << sword_name << " dealing " << sword_dam << " damage!" << endl;
+//     }
 
-    opponent.recieveDamage(sword_dam); 
-}
+//     opponent.recieveDamage(sword_dam); 
+// }
 
 void Sword::damage(int amount) {
     sword_dam = amount;
 }
+
+void Sword::print() const {
+    cout << "Name: " << sword_name << ", Value: " << sword_dam << endl;
+}
+
+// int main() {
+//     Sword sword1(10, "Excalibur");
+//     cout << "Sword Name: " << sword1.getName() << endl;
+//     cout << "Sword Power: " << sword1.getPower() << endl;
+//     return 0;
+// }

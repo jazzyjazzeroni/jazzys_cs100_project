@@ -1,9 +1,6 @@
 #include "../addit_header/Powers.h"
-#include "../Character_header/Character.h"
-
 
 using namespace std;
-//Water vs Fire, Wind vs Earth 
 
 Powers::Powers(const string &element) : currentElement(element) {
     if (element == "ICE") powers = ICE;
@@ -25,17 +22,18 @@ int Powers::calculateDamage() const {
     }
 }
 
-Power_type Powers::getPower () const {
+Power_type Powers::getPower() const {
     return powers;
 }
+
 void Powers::setPower(const int powerTypeIndex) { 
-        powers = static_cast<Power_type>(powerTypeIndex);
-//tbh not sure if static cast or dynamic
+    powers = static_cast<Power_type>(powerTypeIndex);
 }
 
 int Powers::getDamage() const {
     return powerDamage;
 }
+
 void Powers::setDamage(int damage) {
     if (damage >= 0) {
         powerDamage = damage;
@@ -44,47 +42,50 @@ void Powers::setDamage(int damage) {
     }
 }
 
-int Powers::calculateDamage() const {
-    switch (powers) {
-        case ICE: return 15;         // ICE does 15 damage
-        case FIRE: return 20;        // FIRE does 20 damage
-        case EARTH: return 10;       // EARTH does 10 damage
-        case AIR: return 12;         // AIR does 12 damage
-        case FUSED_POWER: return 50; // FUSED_POWER does 50 damage
-        default: return 0;           // Default is no damage
+bool Powers::canUsePower(Power_type opponentPower) const {
+    if ((powers == ICE && opponentPower == FIRE) || 
+        (powers == FIRE && opponentPower == ICE) ||
+        (powers == EARTH && opponentPower == AIR) || 
+        (powers == AIR && opponentPower == EARTH)) {
+        return true; // Elemental advantage
     }
+    return false; // Default: Ineffective power
 }
+void Powers::usePower(Power_type opponentPower, const string &enemyAllegiance) {
+    powerDamage = calculateDamage(); // Update power damage
 
-void Powers::usePower(Power_type element, const string &enemyAllegiance) {
-powerDamage = calculateDamage(); // Ensure current power's damage is up-to-date
-
-    if (canUsePower(element, enemyAllegiance)) {
-        cout << "Elemental Power used!" << endl;
+    if (canUsePower(opponentPower)) {
+        cout << "Elemental Power used against " << enemyAllegiance << "!" << endl;
         cout << "Dealt " << powerDamage << " damage!" << endl;
+    } else if (powers == opponentPower) {
+        cout << "Warning: Using the same element against " << enemyAllegiance 
+             << " results in self-damage!" << endl;
+        cout << "Dealt no damage!" << endl;
     } else {
-        cout << "This Elemental Power cannot be used against " << enemyAllegiance << " enemy type!" << endl;
+        cout << "This Elemental Power is ineffective against " << enemyAllegiance << "!" << endl;
         cout << "Dealt no damage!" << endl;
     }
 }
 
-
-
 void Powers::handleAttack(const string &goblinElement, int &health) const {
-        int currentDamage = calculateDamage();
-        Power_type goblinPower;
+    Power_type goblinPower;
+
     if (goblinElement == "ICE") goblinPower = ICE;
     else if (goblinElement == "FIRE") goblinPower = FIRE;
     else if (goblinElement == "EARTH") goblinPower = EARTH;
     else if (goblinElement == "AIR") goblinPower = AIR;
     else throw invalid_argument("Unknown goblin element: " + goblinElement);
-    if (canUsePower(goblinPower, goblinElement)) {
-        cout << "Your " << currentElement << " power easily defeats the " << goblinElement << " goblin!" << endl;
+
+    if (canUsePower(goblinPower)) {
+        cout << "Your " << currentElement << " power easily defeats the " 
+             << goblinElement << " goblin!" << endl;
     } else if (powers == goblinPower) {
-        cout << "Using the same power type against the " << goblinElement << " goblin!" << endl;
+        cout << "Using the same power type against the " << goblinElement 
+             << " goblin! You take self-damage!" << endl;
         health -= 50; // Self-damage
     } else {
         cout << "Ineffective power! Goblin fights back!" << endl;
-        health -= 20; // Damage from goblin
+        health -= 20; // Goblin damage
     }
 
     if (health <= 0) {
@@ -92,23 +93,20 @@ void Powers::handleAttack(const string &goblinElement, int &health) const {
         throw runtime_error("Game Over");
     }
 }
+// int main() {
+//     try {
+//         Powers firePower("FIRE");
+//         cout << "Using FIRE power:" << endl;
 
-bool Powers::canUsePower(Power_type opponentPower, const string& opponentType) const{
-    if ((powers == ICE && opponentPower == FIRE) || 
-        (powers == FIRE && opponentPower == ICE) ||
-        (powers == EARTH && opponentPower == AIR) || 
-        (powers == AIR && opponentPower == EARTH)) {
-        return true; // Elemental advantage
-    }
-    
-    if (powers == opponentPower) {
-        cout << "Warning: Using the same element against a " << opponentType 
-             << " will result in high damage to yourself!" << endl;
-        return false;
-    }
-    
-    // If no match, assume ineffective
-    return false;
-}
+//         firePower.usePower(ICE, "ICE");
+
+//         int health = 100;
+//         firePower.handleAttack("ICE", health);
+//         cout << "Remaining health: " << health << endl;
+//     } catch (const runtime_error &e) {
+//         cout << e.what() << endl;
+//     }
+//     return 0;
+// }
 
 

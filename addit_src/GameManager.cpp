@@ -1,14 +1,11 @@
-#include "GameManager.h"
-#include <iostream>
-
-using namespace std;
+#include "../addit_header/GameManager.h"
 
 // Constructor to initialize levels
-GameManager::GameManager() : currLevel(0), levels(initializeLevels()) {}
+GameManager::GameManager() : currLevel(0), level(initializeLevels()) {}
 
 // Start the game
 void GameManager::gameStart() {
-    cout << "Welcome to the RPG Game!" << endl;
+    cout << "Welcome to the Flames & Ice!" << endl;
     while (currLevel < levels.size()) {
         cout << "Starting Level " << currLevel + 1 << endl;
         levels[currLevel].start();
@@ -118,4 +115,28 @@ void GameManager::quit()
 {
     std::cout << "You ended the journey. See you again!\n"; // he added exclamatio point??
     exit(0);
+}
+
+// Progress to the next level
+void GameManager::nextLevel() {
+    
+    if (currLevel + 1 < levels.size()) {
+        currLevel++;
+        levels[currLevel].setLevel(currLevel + 1);
+        cout << "Proceeding to Level " << currLevel + 1 << "..." << endl;
+    } else {
+        cout << "No more levels available." << endl;
+    }
+}
+
+// Handle user input for global actions outside levels
+void GameManager::handleInput() {
+    char input;
+    cout << "Enter 'q' to quit or 'c' to continue: ";
+    cin >> input;
+
+    if (input == 'q') {
+        cout << "Thanks for playing!" << endl;
+        exit(0);
+    }
 }

@@ -1,17 +1,5 @@
-#include "Dragon.h"
-#include "MainCharacter.h"
-// private:
-//     int breatheFire;
-//     int fireBall;
-
-// public:
-//     Dragon(const string &name, double health, double attackStrength, const string &allegiance);
-//     int getfireAttack();
-//     int getfireBall();
-//     void setfireBall();
-//     void setfireAttack();
-//     void attack(Character &opponent);
-
+#include "../Character_header/Dragon.h"
+#include "../Character_header/MainCharacter.h"
 
 Dragon::Dragon(MainCharacter& mc, const string &name, int pHealth, int pBreatheFire, int pFireBall)
     : mc(mc), breathe_fire(pBreatheFire), fire_ball(pFireBall) {
@@ -55,18 +43,18 @@ void Dragon::setfireBall(int damage)
 {
     this->fire_ball = damage;
 }
-void Dragon::attack(Character &player)
+void Dragon::attack(MainCharacter &mc)
 {
     if(this->fire_ball > 0)
     {
         // this->attack_amount = this->fire_ball;
-        player.takeDamage(this->fire_ball);
+        mc.recieveDamage(this->fire_ball);
     }
 
     if(this->breathe_fire > 0)
     {
         // this->attack_amount = this->breathe_fire;
-        player.takeDamage(this->breathe_fire);
+        mc.recieveDamage(this->breathe_fire);
     }
 }
 void Dragon::startBattle()
@@ -87,7 +75,7 @@ void Dragon::startBattle()
             }
 
             // MainCharacter move
-            std::cout << "Theodore attacks Ignus!\n";
+            std::cout<< "Theodore attacks Ignus!\n";
             this->attack(mc);
             if(!mc.isalive())
             {
@@ -95,8 +83,8 @@ void Dragon::startBattle()
                 break;
             }
 
-            std::cout << "Theodore's health status: " << mc.getHealth() << '\n';
-            std::cout << "Ignus' health status: " << this->getHealth() << '\n';
+            std::cout<< "Theodore's health status: " << mc.getHealth() << '\n';
+            std::cout<< "Ignus' health status: " << this->getHealth() << '\n';
         }
 
         declareWinner();
@@ -115,4 +103,3 @@ void Dragon::declareWinner()
         else
             std::cout << "Both characters have been defeated. DRAW!\n";
     }
-

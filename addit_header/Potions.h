@@ -2,7 +2,6 @@
 #define POTIONS_H
 
 #include <string>
-#include "Inventory.h"
 #include "Object.h"
 #include "../Character_header/MainCharacter.h"
 using namespace std;
@@ -13,7 +12,7 @@ private:
     string type;  
 
 public:
-    Potion(){};
+    Potion();
     Potion(int healAmount, const string& potionType);
 
     int getHealingAmount() const;
@@ -21,6 +20,7 @@ public:
 
     string getType() const;
     void setType(const string& type);
+    void print() const override;
     void healCharacter(MainCharacter &character);
 };
 

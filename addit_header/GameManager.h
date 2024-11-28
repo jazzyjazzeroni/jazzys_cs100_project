@@ -8,7 +8,6 @@
 #include "../addit_header/Inventory.h"
 
 class GameManager: public MenuPrinter {
-class GameManager: public MenuPrinter {
 private:
     int currLevel;
     vector<Level> levels;
@@ -24,12 +23,11 @@ public:
     // This function parses the input and determines the approporiate action
     void handleInput();
 
-    // nextLevel()
+    void nextLevel();
     // update()
     //updates inventory
     // will trigger the event with goblin
     // 
-    void updateLevel();
 
     // will start the level against the final boss
     void finalBoss();

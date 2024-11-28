@@ -1,4 +1,4 @@
-#include "Object.h"
+#include "../addit_header/Object.h"
 #include <iostream>
 #include <string>
 using namespace std;
@@ -25,3 +25,13 @@ void Object::setValue(int newValue) {
 void Object::print() const {
     cout << "Name: " << type << ", Value: " << value << endl;
 }
+// int main() {
+//     Object sword("Sword", 10);
+//     sword.print();
+
+//     sword.setType("Potion");
+//     sword.setValue(15);
+//     sword.print();
+
+//     return 0;
+// } works fine

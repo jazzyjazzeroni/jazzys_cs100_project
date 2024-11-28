@@ -12,8 +12,6 @@ struct Map {
     vector<vector<char>> layout; 
 };
 
-// Level::Level(int power, const vector<vector<int>>& mapLayout, int numGoblins) : gameMap(mapLayout, mapLayout[0].size(), mapLayout.size()), player(power), inventory(), goblinGoal(numGoblins), end(false) {}
-
 Level::Level(int power, const vector<vector<int>>& mapLayout, int numGoblins)
     : gameMap(mapLayout, mapLayout[0].size(), mapLayout.size()), 
       player(power), 
@@ -31,7 +29,6 @@ void Level::start() {
 
 
 Level::Level() : levelNumber(1), currentLevel(1) {
-    // Initialize level-to-element mapping
     levelElements[1] = ICE;
     levelElements[2] = FIRE;
     levelElements[3] = EARTH;
@@ -59,7 +56,6 @@ void Level::setLevel(int level) {
 int Level::getCurrentLevel() const {
     return currentLevel;
 }
-
 
 void Level::takeAction() {
     char action;

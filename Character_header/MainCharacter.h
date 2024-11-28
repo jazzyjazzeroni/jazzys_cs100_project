@@ -2,6 +2,7 @@
 #define MAINCHARACTER_H
 
 #include "Character.h"
+#include "Dragon.h"
 #include "../addit_header/Powers.h"
 #include "../addit_header/Inventory.h"
 #include "../addit_header/GameManager.h"

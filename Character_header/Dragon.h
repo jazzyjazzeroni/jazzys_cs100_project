@@ -4,9 +4,8 @@
 #include "../addit_header/GameMap.h"
 #include "../addit_header/Inventory.h"
 #include "../addit_header/MenuPrinter.h"
-#include "../Character_header/MainCharacter.h"
-#include "../Character_header/Character.h"
-#include "../Character_header/Dragon.h"
+#include "MainCharacter.h"
+#include "Character.h"
 #include <vector>
 
 class Dragon : public Character {
@@ -23,7 +22,7 @@ public:
     int getfireBall();
     void setfireBall(int pFireBall);
     void setfireAttack(int pBreatheFire);
-    void attack(Character &opponent);
+    void attack(MainCharacter &opponent);
     void startBattle();
     void declareWinner();
     

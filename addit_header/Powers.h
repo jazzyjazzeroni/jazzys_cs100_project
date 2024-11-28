@@ -14,6 +14,7 @@ int powerDamage;
 string currentElement;
 
 public:
+Powers(){};
 Powers(const std::string& element); 
 Power_type getPower () const;
 void setPower(const int);
@@ -22,8 +23,7 @@ void setDamage(int);
 void usePower(Power_type, const string&);
 void handleAttack(const string &goblinElement, int &health) const;
 int calculateDamage() const;
-// private:
-bool canUsePower(Power_type, const string&) const;
+bool canUsePower(Power_type) const;
 
 };
 
