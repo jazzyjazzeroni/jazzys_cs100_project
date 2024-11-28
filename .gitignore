@@ -7,3 +7,5 @@ bin/
 .vscode/
 addit_src/gameManer().cs
 ncurses-6.1.tar.gz
+
+character-test

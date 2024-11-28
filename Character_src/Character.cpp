@@ -79,3 +79,6 @@ void Character::attack(Character &enemy)
 
 
 
+int main()
+{
+}
