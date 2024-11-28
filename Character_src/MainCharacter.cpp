@@ -12,7 +12,6 @@ MainCharacter::MainCharacter(const std::string &name, int health, int attackStre
     this->type = MAINCHAR;
 }
 
-// Attacks the opponent
 void MainCharacter::attack(Character &opponent) {
     cout << name << " attacks " << opponent.getType() << " with a sword, dealing " << attackAmount << " damage!" << endl;
     opponent.recieveDamage(attackAmount);
@@ -22,19 +21,15 @@ void MainCharacter::attack(Character &opponent) {
     }
 }
 
-// Heals the character
 void MainCharacter::heal(int amount) {
     health = min(health + amount, MAX_HEALTH); // Prevent exceeding MAX_HEALTH
     cout << name << " heals for " << amount << " health points. Current health: " << health << endl;
 }
 
-
-// Uses a power
 void MainCharacter::usePowers() {
     cout << name << " uses a special power!" << endl;
     powers.usePower(powers.getPower(), allegiance); // Assuming `activate()` is a method in `Powers`
 }
-
 
 void MainCharacter::usePotion(const string &potionName) {
     for (auto &potion : inventory.getPotions()) { // Access potions directly
@@ -92,13 +87,10 @@ void MainCharacter::usePotion(const string &potionName) {
   
 
 MainCharacter::MainCharacter(int x, int y) : x(x), y(y), powers("FUSED_POWER") {}
-
-    // Modulo function to wrap around the coordinates
     int MainCharacter::mod(int value, int limit) {
         return (value % limit + limit) % limit;  // Handle negative values properly
     }
 
-    // Movement function that uses modulo to ensure the character stays on the map
     Object MainCharacter::move(char action, GameMap &gameMap) {
         int New_x = x, New_y = y;
 
@@ -112,20 +104,16 @@ MainCharacter::MainCharacter(int x, int y) : x(x), y(y), powers("FUSED_POWER") {
             New_x = mod(x + 1, gameMap.getWidth()); // Wrap around horizontally
         }
 
-        // Update the player's position
         x = New_x;
         y = New_y;
 
-        // Return the object at the new position
         return gameMap.getObjectAt(x, y);
     }
 
-    // Get position of the character
     pair<int, int> MainCharacter::getPosition() const {
         return {x, y};
     }
 
-    // Attack function
     void MainCharacter::attack(Character &target) {
          if (target.getType() == GOBLIN) { 
         Goblin &goblin = dynamic_cast<Goblin &>(target);
@@ -143,7 +131,6 @@ MainCharacter::MainCharacter(int x, int y) : x(x), y(y), powers("FUSED_POWER") {
     }
     }
 
-    // Heal the character using a potion
     void MainCharacter::heal(int amount) {
         setHealth(getHealth() + amount); // Assuming you have a setHealth method in Character
     }

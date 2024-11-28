@@ -23,7 +23,6 @@ void Sword::setName(const string& nm) {
     sword_name = nm;
 }
 
-// This method will deal damage to the opponent
 void Sword::dealDamage(Character &opponent) {
     if (this->sword_name == "Normal Sword") {
         damage(5);

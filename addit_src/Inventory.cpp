@@ -4,12 +4,10 @@
 
 using namespace std;
 
-// Adds a sword to the inventory
 void Inventory::addSword(const Sword &sword) {
     swords.push_back(sword); // Adds a copy of the sword to the inventory
 }
 
-// Removes a sword from the inventory
 void Inventory::removeSword(const string &name) {
     for (auto it = swords.begin(); it != swords.end(); ++it) {
         if (it->getName() == name) {
@@ -19,7 +17,6 @@ void Inventory::removeSword(const string &name) {
     }
 }
 
-// Retrieves a sword by name from the inventory
 Sword Inventory::getSword(const string &name) const {
     for (const auto &sword : swords) {
         if (sword.getName() == name) {
@@ -38,12 +35,10 @@ bool Inventory::hasSword(const std::string &name) const {
     return false;
 }
 
-// Adds a potion to the inventory
 void Inventory::addPotion(const Potion &potion) {
     potions.push_back(potion); // Adds a copy of the potion to the inventory
 }
 
-// Removes a potion from the inventory
 void Inventory::removePotion(const string &name) {
     for (auto it = potions.begin(); it != potions.end(); ++it) {
         if (it->getType() == name) {
@@ -53,7 +48,6 @@ void Inventory::removePotion(const string &name) {
     }
 }
 
-// Retrieves a potion by name from the inventory
 Potion Inventory::getPotion(const string &name) const {
     for (const auto &potion : potions) {
         if (potion.getType() == name) {
@@ -76,12 +70,10 @@ const std::vector<Potion>& Inventory::getPotions() const {
     return potions;
 }
 
-// Getter for swords
 const std::vector<Sword>& Inventory::getSwords() const {
     return swords;
 }
 
-// Open inventory to display items
 void Inventory::open(MainCharacter &player) {
     cout << "Inventory:\n";
     cout << "Swords:\n";
