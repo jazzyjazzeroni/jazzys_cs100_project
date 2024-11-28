@@ -106,7 +106,6 @@ void Powers::handleAttack(const string &goblinElement, int &health) const {
 //     } catch (const runtime_error &e) {
 //         cout << e.what() << endl;
 //     }
-
 //     return 0;
 // }
 
