@@ -17,7 +17,7 @@ string name;
 CharType type;
 
 public:
-Character::Character();
+Character();
 int getHealth () const;
 CharType getType();
 void setHealth(int);
