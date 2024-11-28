@@ -2,8 +2,8 @@
 #define SWORD_H
 #include <string>
 #include "Inventory.h"
-#include "Object.h"
 #include "../Character_header/Character.h"
+#include "Object.h"
 
 
 using namespace std;
@@ -15,17 +15,15 @@ private:
 
 public:
     Sword(){};
-    // Sword(int pwr = 0, const string& nm = "Default Sword");
     Sword(int pwr, const string& nm);
 
     int getPower() const;
     string getName() const;
     void setPower(int pwr);
     void setName(const string& nm);
-    void dealDamage();
-    
-    private:
-    void damage(int amount);
+    void dealDamage(Character &);
+    void damage(int amount); // declare damage method
+    // todo add print
 };
 
 #endif

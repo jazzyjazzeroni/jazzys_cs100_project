@@ -5,17 +5,26 @@
 
 using namespace std;
 
+GameMap::GameMap() : width(0), height(0), numGoblin(0), goblinKilled(0) {
+    mapMatrix.resize(0, vector<Object>(0));
+}
+
     void GameMap::killGoblin(int x, int y){
         mapMatrix[y][x] = Object();
         goblinKilled++;
     }
+    int GameMap::getWidth() const { return width; }
+    int GameMap::getHeight() const { return height; }
     Object& GameMap::getObjectAt(int x, int y){
         if (x < 0 || x >= width || y < 0 || y >= height) {
         throw std::out_of_range("Invalid map coordinates");
-    }
+        }
         return mapMatrix[y][x];
     }
     void GameMap::setObjectAt(int x, int y, const Object& obj){
+        if (x < 0 || x >= width || y < 0 || y >= height) {
+        throw std::out_of_range("Invalid map coordinates");
+        }
         mapMatrix[y][x] = obj;
     }
 
@@ -61,6 +70,4 @@ GameMap::GameMap(const vector<vector<int>>& initMatrix, int w, int h) : width(w)
                 }
             }
         }
-    void init(); //maybe add?
-    }
-    
+    }   
