@@ -1,5 +1,4 @@
 #include "../Character_header/Goblin.h"
-#include <iostream>
 
 using namespace std;
 // the goblin constructor i believe

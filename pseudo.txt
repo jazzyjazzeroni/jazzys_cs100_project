@@ -1,0 +1,413 @@
+gameManager{
+    currlevel = 0
+    levels = [level(pwoer, map, numGoblin),level(pwoer, map, numGoblin),level(pwoer, map, numGoblin)]
+    gameStart
+    {
+        menuPrinter::printMainmenu()
+        while{
+        level[currlevel].start()
+        level ++
+        if(level > len(levels))
+        {
+            gameOver
+        }
+        
+    }
+    }
+}
+ menuPrinter
+{
+    static printMainMemnu()
+    static printGoblinMenu(left, killed)
+    {
+        // how manhy goblins u have left, and how many u killed
+    }
+    static printStus(player)
+    {
+        health, power rn
+    }
+}
+level()
+{
+    GameMap gameMap;
+    MainCharactor player;
+    Inventory inventory;
+    int goblinGoal;
+    bool end;
+
+    void start()
+    {
+        while !end
+        {
+            takeAction();
+            end = gameMap.goblinkill >= goblinGoal;
+        }
+    }
+
+    void takeAction()
+    {
+        char action;
+        menuprinter::printGoblinMenu()
+        cin >> action;
+        if(i)
+        {
+            inventory.open(player); // todo
+        }
+        if(wasd)
+        {
+            x,y = (player.move(action))
+            Object enconter = gmaemap[y][x]
+            if(enconter.type == "charactor")
+            {
+                player.attact(gamemap, x, y);
+            }
+            else if(encounter.type == 'sword')
+            {
+                player.addSword(gamemap, x, y) // todo
+            }
+            else if(enconter.type == "possion")
+            {
+                inventory.add(game, x, y)
+            }
+           //  check if plahyer is dead
+           if(dead)
+           {
+            end game
+           }
+        }
+    }
+}
+
+
+
+GameMap
+{
+    int height, width;
+    int numGoblin;
+    int goblinKilled;
+    vector <Object> mapMatrix;
+    void init();
+    void killgoblin(x,y)
+    {
+        set goblin[y]x] = Object
+        goblinkilledp ++
+    }
+}
+
+Object
+{
+    type : "charactor" | "sword" | "possion" |"empty"
+    Object()
+    {
+        type = empty
+    }
+}
+
+Charactor 
+{
+    damage
+    health
+    max health
+    type
+    power
+    +getHealth(): getter  
+    +setHealth(int): setter  void
+    +isAlive():  bool
+    +attack(Character &): virtual  void
+    +takeDamage(double): void (virtual)
+    +getPower() :string
+    +setPower(string)
+}
+
+Goblin : charactor
+{
+    type:"goblin"
+}
+
+MainCharactor : Character
+{
+    int x,y
+    heal(int)
+    Sword sword;
+    move(actionm gamemap&)
+    {
+        if w{
+            newx, newy = x, (y-1)%map.getheight()
+        }
+        x, y = newx, newy;
+        return gamemap[y][x]
+    }
+    getPosition
+    {
+        return x, y
+    }
+
+    attact(gamemap, x, y)
+    {
+        charactpr = gamemap[y][x]
+        if(charactpr is goblin)
+        {
+            if(power is not equal)
+            {
+                calculate the attach
+                expectDamage, expectAttact
+                character.takeDamage(experectAttact)
+                this.takeDamage(experectDamage)
+                if(charator.dead)
+                {
+                    gamemap.killGoblin(x,y)
+                }
+            }
+        }
+    }
+    addsword(gamemap, x, y)
+    {
+        print(current sword)
+        print(new sword)
+        int switch;
+        cin >> switch
+        if switch{
+            this.sword = newsword
+        }
+    }
+}
+
+Inventory{
+    possoin_10 = 0
+    possoin_15 = 0
+    possoin_20 = 0
+
+    add(gamemap, x, y)
+     {
+        item = gamemap[y]x;
+        if(item.posionanme == 10)
+        {
+            possion_10 ++
+        }
+     }
+     open(player)
+     {
+        printout all the stuff
+        if has possionp
+        player.heal()
+     }
+}
+
+gameManager()
+{
+    GameMap gameMap;
+    MainCharactor player;
+    Inventory inventory;
+
+    void gameStart()
+    {
+        while
+        {
+            takeAction();
+        }
+    }
+
+    void takeAction()
+    {
+        char action;
+        cin >> action;
+        if(i)
+        {
+            inventory.open(player); // todo
+        }
+        if(s)
+        {
+            menuPrinter::printStatus(player)
+        }
+        if(wasd)
+        {
+            x,y = (player.move(action))
+            Object enconter = gmaemap[y][x]
+            if(enconter.type == "charactor")
+            {
+                player.attact(gamemap, x, y);
+            }
+            else if(encounter.type == 'sword')
+            {
+                player.addSword(gamemap, x, y) // todo
+            }
+            else if(enconter.type == "possion")
+            {
+                inventory.add(game, x, y)
+            }
+           //  check if plahyer is dead
+           if(dead)
+           {
+            end game
+           }
+        }
+    }
+}
+
+
+
+GameMap
+{
+    int height, width;
+    int numGoblin;
+    int goblinKilled;
+    vector <Object> mapMatrix;
+    GameMap(vector<vector<int>> initMatrix, w, h)
+    {
+        mapMatrix
+        for y in range h:
+            for x in range w;
+                if(initMatrix[y][x] == 0)
+                {
+                    mapMatrix[y][x] = Object()
+                }
+                if(initMatrix[y][x] == 1)
+                {
+                    mapMatrix[y][x] = Sword(10, "swmall sword")
+                }
+                if(initMatrix[y][x] == 2)
+                {  mapMatrix[y][x] = Sword(15, "bigger sword")
+               
+                }
+              
+    }
+    void init();
+    void killgoblin(x,y)
+    {
+        set goblin[y]x] = Object
+        goblinkilledp ++
+    }
+}
+
+Object
+{
+    type : "charactor" | "sword" | "possion" |"empty"
+    Object()
+    {
+        type = empty
+    }
+}
+
+Charactor 
+{
+    damage
+    health
+    max health
+    type
+    power
+    +getHealth(): getter  
+    +setHealth(int): setter  void
+    +isAlive():  bool
+    +attack(Character &): virtual  void
+    +takeDamage(double): void (virtual)
+    +getPower() :string
+    +setPower(string)
+}
+
+Goblin : charactor
+{
+    type:"goblin"
+}
+
+MainCharactor : Character
+{
+    int x,y
+    heal(int)
+    Sword sword;
+    move(actionm gamemap&)
+    {
+        if w{
+            newx, newy = x, (y-1)%map.getheight()
+        }
+        x, y = newx, newy;
+        return gamemap[y][x]
+    }
+    getPosition
+    {
+        return x, y
+    }
+
+    attact(gamemap, x, y)
+    {
+        charactpr = gamemap[y][x]
+        if(charactpr is goblin)
+        {
+            if(power is not equal)
+            {
+                calculate the attach
+                expectDamage, expectAttact
+                character.takeDamage(experectAttact)
+                this.takeDamage(experectDamage)
+                if(charator.dead)
+                {
+                    gamemap.killGoblin(x,y)
+                }
+            }
+        }
+    }
+    addsword(gamemap, x, y)
+    {
+        print(current sword)
+        print(new sword)
+        int switch;
+        cin >> switch
+        if switch{
+            this.sword = newsword
+        }
+    }
+}
+
+Inventory{
+    possoin_10 = 0
+    possoin_15 = 0
+    possoin_20 = 0
+
+    add(gamemap, x, y)
+     {
+        item = gamemap[y]x;
+        if(item.posionanme == 10)
+        {
+            possion_10 ++
+        }
+     }
+     open(player)
+     {
+        printout all the stuff
+        if has possionp
+        player.heal()
+     }
+}
+
+
+Max health-100;
+
+level1 air damage- 5
+
+level2 fire damage- 10
+
+level3 water damage- 15
+
+level4 earth damage- 20
+
+
+if we can air, earth, water, fire
+
+sword 1 damage- 5
+
+sword 2 damage- 10
+
+sword 3 damage- 15
+
+potion 1 heal- 10
+
+potion 2 heal- 15
+
+dragon fire ball dmaage- 15
+
+dragon breathe fire damage-20
+
+dragon max health - 150
+
+
+
+

@@ -1,0 +1,71 @@
+cmake_minimum_required(VERSION 3.2)
+project(unit-test-exercise)
+
+# Output directories
+set(CMAKE_RUNTIME_OUTPUT_DIRECTORY "${PROJECT_BINARY_DIR}/bin")
+set(CMAKE_ARCHIVE_OUTPUT_DIRECTORY "${PROJECT_BINARY_DIR}/lib")
+set(CMAKE_LIBRARY_OUTPUT_DIRECTORY "${PROJECT_BINARY_DIR}/lib")
+
+# C++ flags
+set(CMAKE_CXX_FLAGS "${CMAKE_CXX_FLAGS} -std=c++1y")
+
+# Include directories
+include_directories(
+  ${CMAKE_SOURCE_DIR}/include
+  ${CMAKE_SOURCE_DIR}/Character_header
+  ${CMAKE_SOURCE_DIR}/addit_header
+  ${CMAKE_SOURCE_DIR}/test/lib/googletest/include/
+  ${CMAKE_SOURCE_DIR}/test/lib/googlemock/include/
+  ${CMAKE_SOURCE_DIR}/test/character_tests
+  ${CMAKE_SOURCE_DIR}/test/addit_tests
+)
+
+# Link directories
+link_directories(${LIBRARY_OUTPUT_PATH})
+
+add_subdirectory(googletest)
+
+# Define libraries
+# file(GLOB CHARACTER_HEADERS ${CMAKE_SOURCE_DIR}/Character_header/*.h)
+# add_library(CharacterLib STATIC ${CHARACTER_HEADERS})
+
+# file(GLOB ADDIT_HEADERS ${CMAKE_SOURCE_DIR}/addit_header/*.h)
+# add_library(AdditLib STATIC ${ADDIT_HEADERS})
+
+# Main application
+# add_executable(main_app main.cpp)
+# target_link_libraries(main_app CharacterLib AdditLib)
+
+# Test executables for character_tests
+add_executable(character_tests
+  Character_tests/Character_tests.cpp
+  Character_tests/Mainchartests.cpp
+  addit_src/Object.cpp
+)
+target_link_libraries(character_tests gtest gmock gtest_main)
+# target_link_libraries(Character_tests CharacterLib AdditLib gtest gmock)
+
+# Test executables for addit_tests
+add_executable(addit_tests
+  addit_tests/GameMaptest.cpp
+  addit_tests/Objecttest.cpp
+  addit_src/GameMap.cpp
+  addit_src/Object.cpp
+
+
+  # addit_tests/LevelsTest.cpp
+)
+# target_link_libraries(addit_tests gtest gmock gtest_main)
+target_link_libraries(addit_tests gtest gmock gtest_main)
+
+# Enable testing
+enable_testing()
+
+
+# Register tests with CTest
+# add_test(NAME CharacterTests COMMAND Character_tests)
+# add_test(NAME AdditTests COMMAND addit_tests)
+# add_subdirectory(addit_tests)
+# add_subdirectory(Character_tests)
+# add_subdirectory(addit_header)
+# add_subdirectory(Character_header)
