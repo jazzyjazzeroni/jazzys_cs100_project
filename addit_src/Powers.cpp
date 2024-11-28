@@ -94,21 +94,21 @@ void Powers::handleAttack(const string &goblinElement, int &health) const {
     }
 }
 
-
-
-int main() {
-    try {
-        Powers firePower("FIRE");
-        cout << "Using FIRE power:" << endl;
-
-        firePower.usePower(ICE, "ICE");
-
-        int health = 100;
-        firePower.handleAttack("ICE", health);
-        cout << "Remaining health: " << health << endl;
-    } catch (const runtime_error &e) {
-        cout << e.what() << endl;
+bool Powers::canUsePower(Power_type opponentPower) const{
+    if ((powers == ICE && opponentPower == FIRE) || 
+        (powers == FIRE && opponentPower == ICE) ||
+        (powers == EARTH && opponentPower == AIR) || 
+        (powers == AIR && opponentPower == EARTH)) {
+        return true; // Elemental advantage
     }
-
-    return 0;
+    
+    if (powers == opponentPower) {
+        cout << "Warning: Using the same element against a " << opponentType 
+             << " will result in high damage to yourself!" << endl;
+        return false;
+    }
+    
+        return false;
 }
+
+
