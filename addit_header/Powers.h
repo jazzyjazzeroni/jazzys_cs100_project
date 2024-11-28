@@ -14,6 +14,7 @@ int powerDamage;
 string currentElement;
 
 public:
+Powers(){};
 Powers(const std::string& element); 
 Power_type getPower () const;
 void setPower(const int);

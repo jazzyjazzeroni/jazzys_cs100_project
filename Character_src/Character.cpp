@@ -1,19 +1,13 @@
 #include "../Character_header/Character.h"
 #include "../addit_header/Powers.h" // Include the header file for Powers class
 
-Character::Character(CharType type, const string &name, int health, int attackAmount, int damage_amount)
-{ //todo no default constructor exists for class "Powers"C/C++(291)
+Character::Character(CharType type, const string &name, int health, int attackAmount, int damage_amount){ 
     this->type = type;
     this->name = name;
     this->health = health;
     this->attackAmount = attackAmount;
     this->damage_amount = damage_amount;
 }
-
-// Powers::Powers() // Define the default constructor for Powers class
-// {
-//     // Initialize default values for Powers class members
-// }
 
 int Character::getHealth() const
 {
