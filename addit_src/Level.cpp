@@ -12,6 +12,16 @@ struct Map {
     vector<vector<char>> layout; 
 };
 
+Level::Level() 
+    : gameMap({}, 0, 0), player(0), inventory(), goblinGoal(0), levelNumber(1), end(false), currentLevel(1) {
+    levelElements[1] = ICE;
+    levelElements[2] = FIRE;
+    levelElements[3] = EARTH;
+    levelElements[4] = AIR;
+    levelElements[5] = FUSED_POWER;
+}
+
+
 Level::Level(int power, const vector<vector<int>>& mapLayout, int numGoblins)
     : gameMap(mapLayout, mapLayout[0].size(), mapLayout.size()), 
       player(power), 
@@ -22,20 +32,12 @@ Level::Level(int power, const vector<vector<int>>& mapLayout, int numGoblins)
       
 void Level::start() {
     while (!end) {
-        // gameMap.printMap(player.getX(), player.getY());
+      //   gameMap.printMap(player.getX(), player.getY());
         takeAction();
-        end = (gameMap.getGoblinsKilled() >= goblinGoal);
+       // end = (gameMap.getGoblinsKilled() >= goblinGoal || !player.isAlive());
     }
 }
 
-
-Level::Level() : levelNumber(1), currentLevel(1) {
-    levelElements[1] = ICE;
-    levelElements[2] = FIRE;
-    levelElements[3] = EARTH;
-    levelElements[4] = AIR;
-    levelElements[5] = FUSED_POWER; // Example ultimate ability level
-}
 
 Power_type Level::getElementForLevel(int level) const {
     auto it = levelElements.find(level);

@@ -6,6 +6,10 @@
 #include "../addit_header/GameMap.h"
 #include "../Character_header/MainCharacter.h"
 #include "../addit_header/Inventory.h"
+#include "../addit_header/Swords.h"
+#include "../addit_header/Potions.h"
+#include "../Character_header/Character.h"
+#include "../Character_header/Dragon.h"
 
 class GameManager: public MenuPrinter {
 private:
@@ -13,7 +17,7 @@ private:
     vector<Level> levels;
     int currentLevelIndex;
 public:
-    GameManager::GameManager() 
+    GameManager() 
     : levels(initializeLevels()), currentLevelIndex(0) {}
     ~GameManager();
 
