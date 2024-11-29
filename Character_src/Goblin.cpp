@@ -2,9 +2,9 @@
 
 using namespace std;
 // the goblin constructor i believe
-Goblin::Goblin(const string &name, int health, int attackStrength, const string &allegiance)
-    : Character(GOBLIN, name, health, attackStrength, 0) { // Initialize base class
-}
+Goblin::Goblin(const std::string &name, int health, int damage, const std::string &element)
+    : Character(GOBLIN, name, health, damage, element), powers(element) {}
+
 
 // returns goblin's current health
 int Goblin::getHealth() const {
@@ -39,7 +39,7 @@ void Goblin::recieveDamage(int dam) {
 
 void Goblin::usePowers() {
     cout << name << " uses a special power!" << endl;
-    powers.usePower(powers.getPower(), allegiance); // Assuming `activate()` is a method in `Powers`
+    powers.usePower(powers.getPower(), "The enemy"); // Assuming `activate()` is a method in `Powers`
 }
 
 // probably used when the goblin goes to attack the player
