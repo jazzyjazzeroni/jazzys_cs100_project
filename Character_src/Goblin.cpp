@@ -41,5 +41,5 @@ void Goblin::recieveDamage(int dam) {
 
 // probably used when the goblin goes to attack the player
 void Goblin::attack(Character &player) {
-    player.recieveDamage(attackAmount);
+    player.receiveDamage(attackAmount);
 }

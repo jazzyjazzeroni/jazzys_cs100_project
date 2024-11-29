@@ -48,7 +48,7 @@ void Dragon::attack(MainCharacter &mc)
     if(this->fire_ball > 0)
     {
         // this->attack_amount = this->fire_ball;
-        mc.recieveDamage(this->fire_ball);
+        mc.receiveDamage(this->fire_ball);
     }
 
     if(this->breathe_fire > 0)
