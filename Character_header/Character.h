@@ -7,7 +7,7 @@
 // #include "../addit_header/Level.h"
 using namespace std;
 
-enum CharType{MAINCHAR, GOBLIN, DRAGON, NPC};
+enum CharType{MAINCHAR, GOBLIN, DRAGON};
 const int MAX_HEALTH = 200;
 
 class Character : public Object {
@@ -24,15 +24,14 @@ Power_type currentElement;
 public:
 Character(CharType, const string&, int, int ,int);
 int getHealth() const;
-CharType getType();
+string getType() const;
 void setHealth(int);
 bool isalive() const;
 Character(CharType, const string &, int, int);
- void dealtDamage(int);
  void receiveDamage(int);
  void updateElementForLevel(); // Updates element based on current level
     Power_type getCurrentElement() const;
 virtual void attack(Character &);
-
+ static string charTypeToString(CharType type) ;
 };
 #endif
