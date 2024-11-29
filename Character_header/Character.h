@@ -22,7 +22,7 @@ Power_type currentElement;
 // Level level;
 
 public:
-Character(CharType, const string&, int, int ,int);
+Character(){};
 int getHealth() const;
 string getType() const;
 void setHealth(int);

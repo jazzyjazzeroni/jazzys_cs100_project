@@ -7,21 +7,21 @@ using namespace std;
 
 class Goblin : public Character {
     private:
-        // Powers powers;
+        Powers powers;
         Power_type currentElement;
 
 
 public:
-    Goblin(const string &name, int health, int attackStrength, const string &allegiance);
-    // Goblin(int health);
-    // Goblin();
+    Goblin(const std::string &name, int health, int damage, const std::string &element)
+        : Character(name, health, damage), powers(element) {}
+    Goblin(){};
     int getHealth() const;
     string getType();
     void setHealth(int);
     bool isalive() const;
     void recieveDamage(int);
     void attack(Character &player) override;
-    // void usePowers();
+    void usePowers();
 };
 
 #endif
