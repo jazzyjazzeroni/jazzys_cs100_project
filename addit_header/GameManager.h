@@ -11,9 +11,10 @@ class GameManager: public MenuPrinter {
 private:
     int currLevel;
     vector<Level> levels;
-
+    int currentLevelIndex;
 public:
-    GameManager();
+    GameManager::GameManager() 
+    : levels(initializeLevels()), currentLevelIndex(0) {}
     ~GameManager();
 
     //Initializes the starting room, player, and levels
@@ -21,7 +22,7 @@ public:
 
     // Gets user input (hit w, hit a, hit s, hit d, "take sword", "take potion", "fight goblin")
     // This function parses the input and determines the approporiate action
-    void handleInput();
+    void nextLevel();
 
 
     void update();

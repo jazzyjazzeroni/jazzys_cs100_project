@@ -19,6 +19,7 @@ Level::Level(int power, const vector<vector<int>>& mapLayout, int numGoblins)
       goblinGoal(numGoblins), 
       levelNumber(1), 
       end(false) {}
+      
 void Level::start() {
     while (!end) {
         // gameMap.printMap(player.getX(), player.getY());
@@ -130,7 +131,7 @@ void Level::Finalbosslevel(int power) {
     }
 }
 
-vector<Level> initializeLevels() { // todo call this in game manager pass it in
+  vector<Level> initializeLevels() { // todo call this in game manager pass it in
     vector<Level> levels;
 
     // Level 1: Small map

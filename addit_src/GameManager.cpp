@@ -1,22 +1,33 @@
 #include "../addit_header/GameManager.h"
+#include "../addit_header/MenuPrinter.h"
+#include "../addit_header/Level.h"
+#include "../Character_header/Character.h"
+#include "../Character_header/MainCharacter.h"
+
 
 // Constructor to initialize levels
-GameManager::GameManager() : currLevel(0), level(initializeLevels()) {}
-
+GameManager::GameManager() : currentLevelIndex(0), player("Theodore", 100, 5, "AIR") {
+        levels = initializeLevels(); // Initialize levels using provided function
+    }
 // Start the game
 void GameManager::gameStart() {
-    cout << "Welcome to the Flames & Ice!" << endl;
-    while (currLevel < levels.size()) {
-        cout << "Starting Level " << currLevel + 1 << endl;
-        levels[currLevel].start();
+    std::cout << "Your Journey Begins...\n";
+    MenuPrinter::movementMenu(); // Will display keys and keys for attack
+     while (currentLevelIndex < levels.size()) {
+            cout << "Starting Level " << currentLevelIndex + 1 << endl;
+            levels[currentLevelIndex].start();
 
-        if (levels[currLevel].getCurrentLevel() == levels.size()) {
-            cout << "Congratulations! You've completed all levels!" << endl;
-            return;
+            if (levels[currentLevelIndex].isCompleted()) {
+                cout << "Level " << currentLevelIndex + 1 << " completed!" << endl;
+                currentLevelIndex++;
+                if (currentLevelIndex < levels.size()) {
+                    levels[currentLevelIndex].prepareNextLevel(player);
+                }
+            } else {
+                cout << "You have been defeated! Game over." << endl;
+                return;
+            }
         }
-
-        nextLevel();
-    }
 }
 
 // Progress to the next level
@@ -117,26 +128,4 @@ void GameManager::quit()
     exit(0);
 }
 
-// Progress to the next level
-void GameManager::nextLevel() {
-    
-    if (currLevel + 1 < levels.size()) {
-        currLevel++;
-        levels[currLevel].setLevel(currLevel + 1);
-        cout << "Proceeding to Level " << currLevel + 1 << "..." << endl;
-    } else {
-        cout << "No more levels available." << endl;
-    }
-}
 
-// Handle user input for global actions outside levels
-void GameManager::handleInput() {
-    char input;
-    cout << "Enter 'q' to quit or 'c' to continue: ";
-    cin >> input;
-
-    if (input == 'q') {
-        cout << "Thanks for playing!" << endl;
-        exit(0);
-    }
-}

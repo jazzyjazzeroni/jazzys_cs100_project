@@ -32,7 +32,7 @@ public:
     Level(int power, const vector<vector<int>>& mapLayout, int numGoblins);
 
     void Level::Finalbosslevel(int power);
-    static vector<Level> initializeLevels();
+    vector<Level> initializeLevels();
     void start();
     void takeAction();
     GameMap getGameMap() const{ return gameMap; }
