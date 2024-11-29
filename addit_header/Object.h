@@ -11,7 +11,7 @@ public:
     Object();
     Object(const string& type, int value);
 
-    string getType() const;
+    virtual string getType() const;
     void setType(const string& newType);
     int getValue() const;
     void setValue(int newValue);

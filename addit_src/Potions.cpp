@@ -38,23 +38,3 @@ void Potion::print() const {
 //         character.heal(healingAmount); 
 //     }
 // }
-
-// int main() {
-//     // Create a default potion
-//     Potion defaultPotion;
-//     cout << "Default Potion:" << endl;
-//     defaultPotion.print();
-
-//     // Create a healing potion with specific properties
-//     Potion healingPotion(50, "Healing Potion");
-//     cout << "\nCustom Potion:" << endl;
-//     healingPotion.print();
-
-//     // Modify the default potion
-//     defaultPotion.setHealingAmount(30);
-//     defaultPotion.setType("Small Healing Potion");
-//     cout << "\nModified Default Potion:" << endl;
-//     defaultPotion.print();
-
-//     return 0;
-// }

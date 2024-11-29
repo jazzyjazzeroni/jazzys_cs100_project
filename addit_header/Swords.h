@@ -8,13 +8,14 @@ using namespace std;
 
 class Sword : public Object {
 private:
+int type;
     int sword_dam;
     string sword_name;
 
 public:
-    Sword();
     Sword(int pwr, const string& nm);
-
+    Sword::Sword(int pwr, const string& nm) : Object("sword", pwr), sword_dam(pwr), sword_name(nm) {};
+    string getType() const override;
     int getPower() const;
     string getName() const;
     void setPower(int pwr);

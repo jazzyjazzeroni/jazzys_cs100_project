@@ -5,6 +5,10 @@ using namespace std;
 
 Sword::Sword() : sword_dam(0), sword_name("") {}
 
+    string Sword::getType() const {
+        return "Sword";
+    }
+
 Sword::Sword(int pwr, const string& nm) : sword_dam(pwr), sword_name(nm) {}
 
 int Sword::getPower() const {
@@ -48,9 +52,3 @@ void Sword::print() const {
     cout << "Name: " << sword_name << ", Value: " << sword_dam << endl;
 }
 
-// int main() {
-//     Sword sword1(10, "Excalibur");
-//     cout << "Sword Name: " << sword1.getName() << endl;
-//     cout << "Sword Power: " << sword1.getPower() << endl;
-//     return 0;
-// }
