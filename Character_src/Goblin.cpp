@@ -3,7 +3,11 @@
 using namespace std;
 // the goblin constructor i believe
 Goblin::Goblin(const std::string &name, int health, int damage, const std::string &element)
-    : Character(GOBLIN, name, health, damage, element), powers(element) {}
+    : Character(GOBLIN, name, health, damage, element), powers(element), currentElement(element) {
+    if (element != "Fire" && element != "Water" && element != "Earth" && element != "Air") {
+        throw std::invalid_argument("Unknown power type: " + element);
+    }
+}
 
 
 // returns goblin's current health
@@ -11,9 +15,13 @@ int Goblin::getHealth() const {
     return health;
 }
 
+ std::string Goblin::getGoblinType() const {
+        return currentElement;  // Return the type of the goblin (e.g., "Fire")
+    }
+
 // returns goblin's type of element maybe?
-string Goblin::getType() {
-    return charTypeToString(type);
+string Goblin::getType() const{
+    return "Goblin";
 }
 
 // set's goblin's health
@@ -53,4 +61,8 @@ void Goblin::attack(Character &target) {
     int targetHealth = target.getHealth();
     target.setHealth(targetHealth - powers.calculateDamage());
     cout << target.getType() << "'s health after attack: " << target.getHealth() << endl;
+}
+
+void Goblin::print() const {
+    cout << "Goblin: " << name << ", Health: " << health << ", Attack: " << attackAmount << endl;
 }

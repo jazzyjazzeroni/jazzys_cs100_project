@@ -1,17 +1,10 @@
 #ifndef INVENTORY_H
 #define INVENTORY_H
-#include <string>
-#include <iostream>
-#include <vector>
-using namespace std;
 
-
-#include <string>
-#include <iostream>
 #include <vector>
-#include "Potions.h"   // Assuming you have a separate Potions class
-#include "Swords.h"    // Assuming you have a separate Swords class
-#include "../Character_header/MainCharacter.h" 
+#include <string>
+#include "Swords.h"
+#include "Potions.h"
 
 using namespace std;
 
@@ -29,11 +22,12 @@ public:
     void removePotion(const string &name);
     const Potion& getPotion(const string &name) const;
     bool hasPotion(const std::string &name) const;
-    void open(MainCharacter &player);
     const std::vector<Potion>& getPotions() const;  // Get list of potions
     const std::vector<Sword>& getSwords() const;
-    void usePotion(MainCharacter &player, const string &name);
-    void equipSword(MainCharacter &player, const string &name);
+    // void usePotion(MainCharacter &player, const string &name);
+    // void equipSword(MainCharacter &player, const string &name);
+        // void open(MainCharacter &player);
+
 };
 
-#endif
+#endif // INVENTORY_H

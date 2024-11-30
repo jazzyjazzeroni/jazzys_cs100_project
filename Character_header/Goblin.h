@@ -3,22 +3,26 @@
 
 #include "Character.h"
 #include "../addit_header/Powers.h"
+#include "../addit_header/Object.h"
 using namespace std; 
 
-class Goblin : public Character {
+class Goblin : public Character{
     private:
         Powers powers;
-        Power_type currentElement;
+        string currentElement;
+
 public:
     Goblin(const std::string &name, int health, int damage, const std::string &element);
-    Goblin();
+    Goblin(){};
     int getHealth() const;
-    string getType();
+    string getType() const override ;
+    string getGoblinType() const;
     void setHealth(int);
     bool isalive() const;
     void recieveDamage(int);
     void attack(Character &player) override;
     void usePowers();
+    void print() const override;
 };
 
 #endif
