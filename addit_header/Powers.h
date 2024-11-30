@@ -5,7 +5,7 @@ using namespace std;
 #ifndef __Power_type_H__
 #define __Power_type_H__
 
-enum Power_type{ICE, EARTH, FIRE, AIR};
+enum Power_type{WATER, EARTH, FIRE, AIR};
 
 class Powers{
 protected:
