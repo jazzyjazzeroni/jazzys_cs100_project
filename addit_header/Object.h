@@ -15,7 +15,7 @@ public:
     void setType(const string& newType);
     int getValue() const;
     void setValue(int newValue);
-    virtual void print() const;
+    virtual void print() const = 0;
 };
 
 #endif

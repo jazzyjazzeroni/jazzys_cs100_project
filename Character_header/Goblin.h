@@ -21,6 +21,7 @@ public:
     void recieveDamage(int);
     void attack(Character &player) override;
     void usePowers();
+    void print() const override;
 };
 
 #endif
