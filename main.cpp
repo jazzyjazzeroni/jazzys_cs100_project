@@ -39,7 +39,7 @@ int main() {
     // atp, player should have chosen one of these options
 
     if (playerChoice == 3) {
-        return 0; // just end the program
+        exit(0); // just end the program
     }
 
     //else if (playerChoice == 2) {
@@ -67,7 +67,8 @@ int main() {
     }
     // now the actual game should run
     
-    
+    GameManager game;
+    game.gameStart();
 
     return 0;
 }
