@@ -67,6 +67,8 @@ int main() {
     }
     // now the actual game should run
     
+    // building theo (aka the player)
+    MainCharacter theo("Theodore", 250, )
     GameManager game;
     game.gameStart();
 
