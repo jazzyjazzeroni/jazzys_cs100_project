@@ -1,72 +1,56 @@
 #include <iostream>
-#include <vector>
 #include "addit_header/GameMap.h"
-#include "addit_header/Object.h"
 #include "addit_header/Swords.h"
 #include "addit_header/Potions.h"
 #include "Character_header/Goblin.h"
+#include "addit_header/Inventory.h"
+#include <vector>
 
 using namespace std;
 
 int main() {
-    // Define a map with various objects using integers
-    // 0: Empty, 1-3: Swords, 4: Goblin, 5-6: Potions
-    vector<vector<int>> initMatrix = {
-        {0, 1, 0, 4, 0},
-        {2, 0, 3, 0, 5},
-        {0, 4, 0, 6, 0},
-        {0, 0, 0, 4, 0}
+    // Create a map matrix to initialize the game map
+    vector<vector<int>> mapMatrix = {
+        {0, 0, 1, 4},
+        {5, 6, 0, 0},
+        {0, 3, 2, 4}
     };
-
-    // Initialize the GameMap with the matrix dimensions
-    GameMap gameMap(initMatrix, 5, 4);
-
-    // Display the initial map state
-    cout << "Initial Map State:\n";
-    for (int y = 0; y < gameMap.getHeight(); y++) {
-        for (int x = 0; x < gameMap.getWidth(); x++) {
-            try {
-                const Object& obj = gameMap.getObjectAt(x, y);
-                cout << obj.getType() << " ";
-            } catch (const std::out_of_range& e) {
-                cout << "Error: " << e.what() << endl;
-            }
-        }
-        cout << endl;
-    }
-
-    // Number of goblins in the map
-    cout << "\nNumber of Goblins on the map: " << gameMap.getNumGoblins() << endl;
-
-    // Kill a goblin at position (3, 0)
-    cout << "\nKilling Goblin at (3, 0)...\n";
-    gameMap.killGoblin(3, 0);
-
-    // Check if the goblin count updates
-    cout << "Number of Goblins killed: " << gameMap.getGoblinsKilled() << endl;
-
-    // Display the updated map state
-    cout << "\nUpdated Map State:\n";
-    for (int y = 0; y < gameMap.getHeight(); y++) {
-        for (int x = 0; x < gameMap.getWidth(); x++) {
-            try {
-                const Object& obj = gameMap.getObjectAt(x, y);
-                cout << obj.getType() << " ";
-            } catch (const std::out_of_range& e) {
-                cout << "Error: " << e.what() << endl;
-            }
-        }
-        cout << endl;
-    }
-
-    // Try to access an invalid position to test error handling
-    cout << "\nAttempting to access an invalid position (5, 5)...\n";
+    // Initialize the game map
+    GameMap gameMap(mapMatrix, 4, 3);
+    cout << "Map initialized." << endl;
+    // Test map dimensions
+    cout << "Map Dimensions: " << gameMap.getWidth() << "x" << gameMap.getHeight() << endl;
+    // Test retrieving and printing objects from the map
     try {
-        const Object& invalidObj = gameMap.getObjectAt(5, 5);
-        cout << invalidObj.getType() << endl;
-    } catch (const std::out_of_range& e) {
-        cout << "Caught exception: " << e.what() << endl;
+        cout << "Attempting to get object at (3, 0)" << endl;
+        Object& obj = gameMap.getObjectAt(3, 0); // Goblin at (0, 3)
+        cout << "Object at (3, 0): " << obj.getType() << " with value " << obj.getValue() << endl;
+        cout << "Attempting to get object at (2, 2)" << endl;
+        Object& sword = gameMap.getObjectAt(2, 2); // Sword at (2, 2)
+        cout << "Object at (2, 2): " << sword.getType() << " with value " << sword.getValue() << endl;
+        cout << "Attempting to get object at (1, 1)" << endl;
+        Object& potion = gameMap.getObjectAt(1, 1); // Potion at (1, 1)
+        cout << "Object at (1, 1): " << potion.getType() << " with value " << potion.getValue() << endl;
+    } catch (const std::exception& e) {
+        cout << "Error: " << e.what() << endl;
     }
-
+    // Test goblin count and goblin kill logic
+    cout << "Initial goblins: " << gameMap.getNumGoblins() << endl;
+    cout << "Attempting to kill goblin at (3, 0)" << endl;
+    gameMap.killGoblin(3, 0); // Kill the goblin at (0, 3)
+    cout << "Goblins killed: " << gameMap.getGoblinsKilled() << endl;
+    // Test adding objects to inventory
+    Inventory inventory;
+    inventory.addSword(Sword(15, "Greater Sword"));
+    inventory.addPotion(Potion(10, "Large Potion"));
+    cout << "Inventory contents:" << endl;
+    // Print swords in inventory
+    for (const auto& sword : inventory.getSwords()) {
+        cout << "Sword: " << sword.getName() << ", Damage: " << sword.getPower() << endl;
+    }
+    // Print potions in inventory
+    for (const auto& potion : inventory.getPotions()) {
+        cout << "Potion: " << potion.getType() << ", Healing Amount: " << potion.getHealingAmount() << endl;
+    }
     return 0;
 }

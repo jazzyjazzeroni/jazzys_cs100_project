@@ -10,7 +10,7 @@ using namespace std;
 enum CharType{MAINCHAR, GOBLIN, DRAGON};
 const int MAX_HEALTH = 200;
 
-class Character : public Object {
+class Character : public virtual Object {
 protected:
 string name;
     int health;
@@ -23,9 +23,11 @@ string name;
 public:
 Character() {}
     Character(CharType type, const string &name, int health, int damage, const string &element);
-
+virtual ~Character() = default;
+    virtual void print() const = 0;
     int getHealth() const;
     string getType() const;
+    // string getType() const ;
     void setHealth(int);
     bool isalive() const;
     void receiveDamage(int);

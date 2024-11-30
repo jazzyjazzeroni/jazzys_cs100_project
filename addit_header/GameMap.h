@@ -7,7 +7,6 @@
 #include "../Character_header/Goblin.h"
 #include "Potions.h"
 #include "../Character_header/Character.h"
-
 using namespace std;
 
 class GameMap {
@@ -21,6 +20,7 @@ private:
 public:
     GameMap();
     GameMap(const vector<vector<int>>& initMatrix, int w, int h);
+    ~GameMap(){};
     void killGoblin(int x, int y);
     Object& getObjectAt(int x, int y);
     void setObjectAt(int x, int y, const Object& obj);

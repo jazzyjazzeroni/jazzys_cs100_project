@@ -19,7 +19,7 @@ public:
     int getHealingAmount() const;
     void setHealingAmount(int amount);
 
-    string getType() const;
+    string getType() const override;
     void setType(const string& type);
     void print() const override;
     // void healCharacter(MainCharacter &character);

@@ -22,6 +22,6 @@ void Object::setValue(int newValue) {
     value = newValue;
 }   
 
-// void Object::print() const {
-//     cout << "Name: " << type << ", Value: " << value << endl;
-// }
+void Object::print() const {
+    cout << "Name: " << type << ", Value: " << value << endl;
+}

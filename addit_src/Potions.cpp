@@ -18,7 +18,7 @@ void Potion::setHealingAmount(int amount) {
 }
 
 string Potion::getType() const {
-    return type;
+    return "Potion";
 }
 
 void Potion::setType(const string &potionType) {

@@ -1,7 +1,6 @@
-#ifndef SWORD_H
-#define SWORD_H
+#ifndef SWORDS_H
+#define SWORDS_H
 #include <string>
-#include "Inventory.h"
 #include "../Character_header/Character.h"
 #include "Object.h"
 using namespace std;
@@ -14,8 +13,7 @@ int type;
 
 public:
     Sword(int pwr, const string& nm);
-    Sword::Sword(int pwr, const string& nm) : Object("sword", pwr), sword_dam(pwr), sword_name(nm) {};
-    string getType() const override;
+    string getType() const override ;
     int getPower() const;
     string getName() const;
     void setPower(int pwr);

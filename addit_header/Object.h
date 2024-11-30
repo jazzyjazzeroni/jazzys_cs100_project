@@ -5,17 +5,18 @@ using namespace std;
 
 class Object {
 public:
+
     string type; // "character" | "sword" | "potion" | "empty"
     int value; // 0 | 5 | 10 | 15
 
     Object();
     Object(const string& type, int value);
 
-    virtual string getType() const;
+     virtual string getType() const;
     void setType(const string& newType);
     int getValue() const;
     void setValue(int newValue);
-    virtual void print() const = 0;
+    virtual void print() const;
 };
 
 #endif
