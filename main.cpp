@@ -5,71 +5,63 @@
 using namespace std;
 
 int main() {
-    // Example map where 1 represents a Goblin, 6 is a Basic Sword, and 8 is a Small Potion
-    vector<vector<int>> mapData = {
+    // Example initialization of a GameMap
+    vector<vector<int>> initMatrix = {
         {0, 0, 0, 0, 0},
-        {0, 1, 0, 6, 0},
+        {0, 1, 0, 2, 0},
         {0, 0, 0, 0, 0},
-        {0, 8, 0, 0, 0},
+        {0, 0, 4, 0, 0},
         {0, 0, 0, 0, 0}
     };
 
-    // Create a GameMap with the given data (5x5 grid)
-    GameMap gameMap(mapData, 5, 5);
+    int mapWidth = 5;
+    int mapHeight = 5;
 
-    // Create the MainCharacter
+    // Create the GameMap
+    GameMap gameMap(initMatrix, mapWidth, mapHeight);
+
+    // Initialize MainCharacter at (1, 1)
     MainCharacter mainChar("Hero", 100, 20, "Fire");
+    mainChar.setPosition(1, 1);  // Start the character at position (1, 1)
 
-    // Print initial state of the game
-    cout << "Initial state:" << endl;
-    mainChar.print();
-    cout << "GameMap Size: " << gameMap.getWidth() << "x" << gameMap.getHeight() << endl;
+    char input;
+    bool running = true;
 
-    // Get initial position of the character
-    pair<int, int> charPosition = mainChar.getPosition();
-    cout << "Character's initial position: (" << charPosition.first << ", " << charPosition.second << ")\n";
+    cout << "Use WASD to move, q to quit." << endl;
 
-    // Interact with the map (attack a goblin and pick up a sword)
-    cout << "\nAttacking a goblin at position (1, 1):" << endl;
-    shared_ptr<Object> obj = gameMap.getObjectAt(1, 1);
-    if (obj->getType() == "Goblin") {
-        mainChar.attack(dynamic_cast<Character&>(*obj));  // Attack the goblin
-        gameMap.killGoblin(1, 1);  // Remove goblin from the map
-    }
+    // Main game loop
+    while (running) {
+        // Display current position of the character
+        auto [x, y] = mainChar.getPosition();
+        cout << "Current position: (" << x << ", " << y << ")" << endl;
 
-    // Check for sword pick-up (position 3, 0)
-    cout << "\nPicking up a sword at position (3, 0):" << endl;
-    obj = gameMap.getObjectAt(3, 0);
-    if (obj->getType() == "Sword") {
-        Sword* sword = dynamic_cast<Sword*>(obj.get());
-        if (sword) {
-            mainChar.equipSword(*sword);  // Equip the sword
+        // Get user input for movement
+        cout << "Enter movement (WASD): ";
+        cin >> input;
+
+        // Quit if user enters 'q'
+        if (input == 'q') {
+            running = false;
+            break;
+        }
+
+        // Move the character based on user input
+        shared_ptr<Object> obj = mainChar.move(input, gameMap);
+
+        // Check if there is an object at the new position and print message
+        if (obj->getType() == "Goblin") {
+            cout << "You encounter a Goblin!" << endl;
+        } else if (obj->getType() == "Sword") {
+            cout << "You found a sword!" << endl;
+        } else if (obj->getType() == "Potion") {
+            cout << "You found a potion!" << endl;
+        } else {
+            cout << "You moved to an empty space." << endl;
         }
     }
 
-    // Check for potion pick-up (position 3, 1)
-    cout << "\nPicking up a potion at position (3, 1):" << endl;
-    obj = gameMap.getObjectAt(3, 1);
-    if (obj->getType() == "Potion") {
-        Potion* potion = dynamic_cast<Potion*>(obj.get());
-        if (potion) {
-            mainChar.usePotion(potion->getType());  // Use the potion
-        }
-    }
-
-    // Print updated character stats
-    mainChar.print();
-
-    // Show number of goblins remaining on the map
-    cout << "Remaining goblins on the map: " << gameMap.getNumGoblins() << endl;
-
-    // Simulate movement (but we are not using `move()` since it's not working as per your instructions)
-    // Example: simulate character movement manually by updating its position
-    cout << "\nMoving the character manually to position (2, 3):" << endl;
-    mainChar.setPosition(2, 3);
-    charPosition = mainChar.getPosition();
-    cout << "Character's new position: (" << charPosition.first << ", " << charPosition.second << ")\n";
+    cout << "Game over. Final position: (" << mainChar.getPosition().first << ", " 
+         << mainChar.getPosition().second << ")" << endl;
 
     return 0;
 }
-

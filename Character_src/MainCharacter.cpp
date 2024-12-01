@@ -100,15 +100,19 @@ void MainCharacter::usePotion(const string &potionName) {
         newX = mod(x + 1, gameMap.getWidth());
     }
 
-    x = newX;
-    y = newY;
+    // x = newX;
+    // y = newY;
 
-    return gameMap.getObjectAt(x, y); // Ensure return type matches shared_ptr<Object>
+        setPosition(newX, newY);
+
+    return gameMap.getObjectAt(newX, newY); // Ensure return type matches shared_ptr<Object>
 }
 
-    void MainCharacter::setPosition(int x, int y) {
-        this->x = x;
-        this->y = y;
+    void MainCharacter::setPosition(int newX, int newY) {
+        x = newX;
+    y = newY;
+        // this->x = x;
+        // this->y = y;
     }
 
 
