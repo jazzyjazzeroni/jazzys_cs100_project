@@ -183,8 +183,7 @@ void Tutorial::tutorial() {
     cout << "                INVENTORY                 " << endl;
     cout << "                No Sword                  " << endl;
     cout << "           1. Small Potions x1            " << endl;
-    cout << "           2. Medium Potions x0           " << endl;
-    cout << "           3. Large Potions x0            " << endl;
+    cout << "           2. Large Potions x0            " << endl;
 
     cout << "      Press 1 to use a Small Potion.      " << endl;
     cout << endl;
@@ -212,5 +211,5 @@ void Tutorial::tutorial() {
     // if the player didn't want to play the tutorial
     // simply return
 
-    return 0;
+    return;
 }
