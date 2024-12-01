@@ -16,7 +16,7 @@ public:
     GameManager();
     ~GameManager();
 
-    //Initializes the starting room, player, and levels
+    // Initializes the starting room, player, and levels
     void gameStart();
 
     // Gets user input (hit w, hit a, hit s, hit d, "take sword", "take potion", "fight goblin")
@@ -25,7 +25,7 @@ public:
 
     // nextLevel()
     // update()
-    //updates inventory
+    // updates inventory
     // will trigger the event with goblin
     // 
     void updateLevel();

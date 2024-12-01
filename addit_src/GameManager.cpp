@@ -1,8 +1,10 @@
+#include <iostream>
 #include "../addit_header/GameManager.h"
 #include "../addit_header/MenuPrinter.h"
 #include "../addit_header/Level.h"
 #include "../Character_header/Character.h"
 #include "../Character_header/MainCharacter.h"
+using namespace std;
 
 // Constructor to initialize levels
 GameManager::GameManager() : current_level(0), main_char("Theodore", 100, 5, "AIR")
@@ -108,6 +110,8 @@ void GameManager::pause()
         {
             // resume the game
             std::cout << "Resuming...\n";
+            // resume the game
+            cout << "Resuming...\n";
             break;
         }
 
@@ -115,8 +119,8 @@ void GameManager::pause()
         else if (choice == 'q')
         {
             // output quit reassurance prompt
+            // output quit reassurance prompt
             MenuPrinter::quitReassuranceMenu();
-
             // get quit choice from user
             cin >> quit_choice;
 
@@ -147,6 +151,6 @@ void GameManager::pause()
 }
 void GameManager::quit()
 {
-    std::cout << "You ended the journey. See you again!\n"; // updated to an exclamation point....
+    std::cout << "You ended the journey. See you again!\n";
     exit(0);
 }
