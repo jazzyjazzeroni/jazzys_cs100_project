@@ -1,9 +1,10 @@
 #include <iostream>
 #include <fstream>
+#include "../addit_header/Tutorial.h"
 
 using namespace std;
 
-int tutorial() {
+void Tutorial::tutorial() {
     cout << "Would you like to play the tutorial first?" << endl;
     cout << "       1. Yes              2. No          " << endl;
     cout << endl;
@@ -23,9 +24,9 @@ int tutorial() {
 
     if (choice == 1) {
     
-    cout << "          To complete a level:             " << endl;
-    cout << "Defeat the specified number of enemies at" << endl;
-    cout << "each level. You will randomly encounter   " << endl;
+    cout << "          To complete a level:             "<< endl;
+    cout << "Defeat the specified number of enemies at"  << endl;
+    cout << " each level. You will randomly encounter  " << endl;
     cout << "these enemies as you traverse each level. " << endl;
     cout << endl;
     cout << "                 To move:                 " << endl;
