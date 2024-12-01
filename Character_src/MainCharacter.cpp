@@ -14,7 +14,7 @@ MainCharacter::MainCharacter(const std::string &name, int health, int attackStre
 
 void MainCharacter::attack(Character &opponent) {
     cout << name << " attacks " << opponent.getType() << " with a sword, dealing " << attackAmount << " damage!" << endl;
-    opponent.recieveDamage(attackAmount);
+    opponent.receiveDamage(attackAmount);
 
     if (!opponent.isalive()) {
         std::cout << "The opponent has been defeated!" << std::endl;
@@ -123,7 +123,7 @@ MainCharacter::MainCharacter(int x, int y) : x(x), y(y), powers("FUSED_POWER") {
     } else {
         cout << name << " attacks the opponent with a sword, dealing " 
              << attackAmount << " damage!" << endl;
-        target.recieveDamage(attackAmount);
+        target.receiveDamage(attackAmount);
     }
 
     if (!target.isalive()) {

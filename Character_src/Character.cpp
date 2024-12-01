@@ -1,13 +1,9 @@
 #include "../Character_header/Character.h"
 #include "../addit_header/Powers.h" // Include the header file for Powers class
 
-Character::Character(CharType type, const string &name, int health, int attackAmount, int damage_amount){ 
-    this->type = type;
-    this->name = name;
-    this->health = health;
-    this->attackAmount = attackAmount;
-    this->damage_amount = damage_amount;
-}
+
+Character::Character(CharType type, const string &name, int health, int damage, const string &element)
+    : name(name), health(health), type(type), attackAmount(damage), powers(element) {}
 
 string Character::charTypeToString(CharType type) {
     switch (type) {
@@ -17,6 +13,10 @@ string Character::charTypeToString(CharType type) {
         default: return "Unknown";
     }
 }
+
+Power_type Character::getPower() const {
+        return powers.getPower();
+    }
 
 int Character::getHealth() const
 {
@@ -54,6 +54,7 @@ void Character::receiveDamage(int damage)
         }
     }
 }
+
 void Character::attack(Character &enemy)
 {
     if (!enemy.isalive()) {
@@ -67,9 +68,9 @@ void Character::attack(Character &enemy)
     }
 }
 
-void Character::updateElementForLevel() {
-    currentElement = level.getElementForLevel(level.getCurrentLevel());
-}
+// void Character::updateElementForLevel() {
+//     currentElement = level.getElementForLevel(level.getCurrentLevel());
+// }
 
 Power_type Character::getCurrentElement() const {
     return currentElement;
