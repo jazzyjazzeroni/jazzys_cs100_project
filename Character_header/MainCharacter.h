@@ -13,6 +13,8 @@
 #include "../addit_header/Object.h"
 #include <string>
 #include <utility>
+#include <memory> // For shared_ptr
+
 using namespace std; 
 
 class MainCharacter : public Character {
@@ -27,7 +29,8 @@ private:
     int x, y; 
 
 public:
-     MainCharacter(const string &name, int health, int attackStrength, const string &allegiance);
+    MainCharacter(const std::string &name, int health, int attackStrength, const std::string &element);
+    MainCharacter() = default;
          MainCharacter(int x = 0, int y = 0);
 
      void attack(Character &opponent) override;
@@ -39,11 +42,13 @@ public:
      void usePotion(const string &);
      void equipSword(const Sword &);
      int mod(int value, int limit);
-     Object move(char action, GameMap &gameMap);
+     std::shared_ptr<Object> move(char action, GameMap &gameMap);
      pair<int, int> getPosition() const;
      void setPosition(int x, int y);
      void updateElementForLevel(); // Updates element based on current level
     Power_type getCurrentElement() const;
+        void print() const override;
+
      
 };
 

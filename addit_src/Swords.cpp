@@ -2,6 +2,7 @@
 #include <iostream>
 #include <string>
 using namespace std;
+Sword::Sword() : Object("sword", 0), sword_dam(0), sword_name("Unnamed Sword") {}
 
     Sword::Sword(int pwr, const string& nm) : Object("sword", pwr), sword_dam(pwr), sword_name(nm) {};
     string Sword::getType() const {

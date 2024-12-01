@@ -1,55 +1,31 @@
 #include <iostream>
 #include "addit_header/GameMap.h"
-#include "addit_header/Swords.h"
-#include "addit_header/Potions.h"
-#include "Character_header/Goblin.h"
-#include "addit_header/Inventory.h"
-#include <vector>
-  // Assuming the GameMap and related classes are in the same directory
+#include "Character_header/MainCharacter.h"
+
+using namespace std;
+
+
 int main() {
-    vector<vector<int>> initMatrix = {
-        {0, 0, 0, 0, 0},
-        {0, 1, 0, 2, 0},
-        {0, 0, 0, 0, 0},
-        {4, 0, 0, 3, 0},
-        {0, 0, 0, 0, 0}
+    // Initialize game map with some sample data
+    std::vector<std::vector<int>> mapData = {
+        {0, 0, 0, 0},
+        {0, 1, 0, 0},
+        {0, 0, 6, 0},
+        {0, 0, 0, 0}
     };
-    GameMap gameMap(initMatrix, 5, 5);
 
-    cout << "Initial Game Map Objects:\n";
-    for (int y = 0; y < gameMap.getHeight(); y++) {
-        for (int x = 0; x < gameMap.getWidth(); x++) {
-            shared_ptr<Object> obj = gameMap.getObjectAt(x, y);
-            cout << "(" << x << ", " << y << ") -> " << obj->getType();
+    GameMap gameMap(mapData, 4, 4); // 4x4 map
 
+    // Initialize MainCharacter at position (0, 0)
+    MainCharacter mainChar(0, 0);
 
-            if (obj->getType() == "Goblin") {
-                shared_ptr<Goblin> goblin = dynamic_pointer_cast<Goblin>(obj);
-                if (goblin) {
-                    cout << " (Goblin Type: " << goblin->getGoblinType() << ")";
-                }
-            }
-            cout << endl;
-        }
-    }
+    // Test movement: move right (to (1, 0))
+    auto obj = mainChar.move('d', gameMap);
+    std::cout << "Moved right: Object at new position type = " << obj->getType() << std::endl;
 
-    cout << "\nAttempting to kill a Goblin at (1, 1)...\n";
-    gameMap.killGoblin(1, 1);  // Goblin is at (1, 1)
-
-    cout << "After killing Goblin, Game Map Objects:\n";
-    for (int y = 0; y < gameMap.getHeight(); y++) {
-        for (int x = 0; x < gameMap.getWidth(); x++) {
-            shared_ptr<Object> obj = gameMap.getObjectAt(x, y);
-            cout << "(" << x << ", " << y << ") -> " << obj->getType();
-            if (obj->getType() == "Goblin") {
-                shared_ptr<Goblin> goblin = dynamic_pointer_cast<Goblin>(obj);
-                if (goblin) {
-                    cout << " (Goblin Type: " << goblin->getGoblinType() << ")";
-                }
-            }
-            cout << endl;
-        }
-    }
+    // Move down (to (1, 1), where there is a Goblin)
+    obj = mainChar.move('s', gameMap);
+    std::cout << "Moved down: Object at new position type = " << obj->getType() << std::endl;
 
     return 0;
 }

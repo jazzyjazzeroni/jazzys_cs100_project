@@ -12,6 +12,7 @@ int type;
     string sword_name;
 
 public:
+Sword();
     Sword(int pwr, const string& nm);
     string getType() const override ;
     int getPower() const;
