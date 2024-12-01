@@ -10,7 +10,7 @@ GameMap::GameMap() : width(0), height(0), numGoblin(0), goblinKilled(0) {
 }
 
     void GameMap::killGoblin(int x, int y){
-        mapMatrix[y][x] = Object();
+        GobmapMatrix[y][x] = Goblin();
         goblinKilled++;
     }
     int GameMap::getWidth() const { return width; }

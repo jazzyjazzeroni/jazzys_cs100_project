@@ -1,4 +1,4 @@
-#include "tutorial.cpp"
+#include "../addit_header/Tutorial.h"
 #include "../addit_header/GameManager.h"
 #include "../addit_header/GameMap.h"
 #include "../addit_header/Inventory.h"

@@ -11,6 +11,8 @@ class Potion  : public Object {
 private:
     int healingAmount; 
     string type;  
+    string type; // "character" | "sword" | "potion" | "empty"
+    int value; // 0 | 5 | 10 | 15
 
 public:
     Potion(){};
