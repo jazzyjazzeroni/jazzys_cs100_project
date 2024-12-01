@@ -5,7 +5,7 @@ using namespace std;
 #ifndef __Power_type_H__
 #define __Power_type_H__
 
-enum Power_type{ICE, EARTH, FIRE, AIR, FUSED_POWER};
+enum Power_type{WATER, EARTH, FIRE, AIR};
 
 class Powers{
 protected:
@@ -14,6 +14,7 @@ int powerDamage;
 string currentElement;
 
 public:
+Powers(){};
 Powers(const std::string& element); 
 Power_type getPower () const;
 void setPower(const int);
@@ -22,7 +23,7 @@ void setDamage(int);
 void usePower(Power_type, const string&);
 void handleAttack(const string &goblinElement, int &health) const;
 int calculateDamage() const;
-bool canUsePower(Power_type, const string&) const;
+bool canUsePower(Power_type) const;
 
 };
 

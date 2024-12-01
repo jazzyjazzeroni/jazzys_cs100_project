@@ -4,22 +4,18 @@
 using namespace std;
 
 // Constructor
-MainCharacter::MainCharacter(const std::string &name, int health, int attackStrength, const std::string &allegiance)
-    : allegiance(allegiance), x(0), y(0), powers("FUSED_POWER") { // Default power as "FUSED_POWER"
-    this->name = name;
-    this->health = health;
-    this->attackAmount = attackStrength;
-    this->type = MAINCHAR;
-}
+MainCharacter::MainCharacter(const std::string &name, int health, int damage, const std::string &element)
+    : Character(MAINCHAR, name, health, damage, element), powers(element), currentElement(powers.getPower()) {}
 
-void MainCharacter::attack(Character &opponent) {
-    cout << name << " attacks " << opponent.getType() << " with a sword, dealing " << attackAmount << " damage!" << endl;
-    opponent.recieveDamage(attackAmount);
 
-    if (!opponent.isalive()) {
-        std::cout << "The opponent has been defeated!" << std::endl;
-    }
-}
+// void MainCharacter::attack(Character &opponent) {
+//     cout << name << " attacks " << opponent.getType() << " with a sword, dealing " << attackAmount << " damage!" << endl;
+//     opponent.receiveDamage(attackAmount);
+
+//     if (!opponent.isalive()) {
+//         std::cout << "The opponent has been defeated!" << std::endl;
+//     }
+// }
 
 void MainCharacter::heal(int amount) {
     health = min(health + amount, MAX_HEALTH); // Prevent exceeding MAX_HEALTH
@@ -31,21 +27,21 @@ void MainCharacter::usePowers() {
     powers.usePower(powers.getPower(), allegiance); // Assuming `activate()` is a method in `Powers`
 }
 
-void MainCharacter::usePotion(const string &potionName) {
-    for (auto &potion : inventory.getPotions()) { // Access potions directly
-        if (potion.getType() == potionName) {
-            heal(potion.getHealingAmount()); // Heal the character
-            inventory.removePotion(potionName); // Remove used potion
-            cout << "Used potion: " << potionName << endl;
-            return;
-        }
-    }
-    cout << "Potion not found in inventory!" << endl;
-}
+// void MainCharacter::usePotion(const string &potionName) {
+//     for (auto &potion : inventory.getPotions()) { // Access potions directly
+//         if (potion.getType() == potionName) {
+//             heal(potion.getHealingAmount()); // Heal the character
+//             inventory.removePotion(potionName); // Remove used potion
+//             cout << "Used potion: " << potionName << endl;
+//             return;
+//         }
+//     }
+//     cout << "Potion not found in inventory!" << endl;
+// }
 
-void Character::updateElementForLevel() {
-    currentElement = level.getElementForLevel(level.getCurrentLevel());
-}
+// void Character::updateElementForLevel() {
+//     currentElement = level.getElementForLevel(level.getCurrentLevel());
+// }
 
 Power_type Character::getCurrentElement() const {
     return currentElement;
@@ -86,55 +82,65 @@ void MainCharacter::usePotion(const string &potionName) {
 // }
   
 
-MainCharacter::MainCharacter(int x, int y) : x(x), y(y), powers("FUSED_POWER") {}
     int MainCharacter::mod(int value, int limit) {
         return (value % limit + limit) % limit;  // Handle negative values properly
     }
 
-    Object MainCharacter::move(char action, GameMap &gameMap) {
-        int New_x = x, New_y = y;
+  std::shared_ptr<Object> MainCharacter::move(char action, GameMap &gameMap) {
+    int newX = x, newY = y;
+    
 
-        if (action == 'w') { // Move up
-            New_y = mod(y - 1, gameMap.getHeight()); // Wrap around vertically
-        } else if (action == 's') { // Move down
-            New_y = mod(y + 1, gameMap.getHeight()); // Wrap around vertically
-        } else if (action == 'a') { // Move left
-            New_x = mod(x - 1, gameMap.getWidth()); // Wrap around horizontally
-        } else if (action == 'd') { // Move right
-            New_x = mod(x + 1, gameMap.getWidth()); // Wrap around horizontally
-        }
-
-        x = New_x;
-        y = New_y;
-
-        return gameMap.getObjectAt(x, y);
+    if (action == 'w') { // Move up
+        newY = mod(y - 1, gameMap.getHeight());
+    } else if (action == 's') { // Move down
+        newY = mod(y + 1, gameMap.getHeight());
+    } else if (action == 'a') { // Move left
+        newX = mod(x - 1, gameMap.getWidth());
+    } else if (action == 'd') { // Move right
+        newX = mod(x + 1, gameMap.getWidth());
     }
+
+    // x = newX;
+    // y = newY;
+
+        setPosition(newX, newY);
+
+    return gameMap.getObjectAt(newX, newY); // Ensure return type matches shared_ptr<Object>
+}
+
+    void MainCharacter::setPosition(int newX, int newY) {
+        x = newX;
+    y = newY;
+        // this->x = x;
+        // this->y = y;
+    }
+
 
     pair<int, int> MainCharacter::getPosition() const {
         return {x, y};
     }
 
-    void MainCharacter::attack(Character &target) {
-         if (target.getType() == GOBLIN) { 
-        Goblin &goblin = dynamic_cast<Goblin &>(target);
+void MainCharacter::attack(Character &target) {
+    if (target.getType() == "Goblin") { 
         cout << name << " attacks the Goblin fiercely with a sword, dealing " 
              << attackAmount << " damage!" << endl;
-        goblin.recieveDamage(attackAmount);
     } else {
         cout << name << " attacks the opponent with a sword, dealing " 
              << attackAmount << " damage!" << endl;
-        target.recieveDamage(attackAmount);
     }
+    target.receiveDamage(attackAmount);
 
     if (!target.isalive()) {
         cout << "The opponent has been defeated!" << endl;
     }
-    }
+}
 
-    void MainCharacter::heal(int amount) {
-        setHealth(getHealth() + amount); // Assuming you have a setHealth method in Character
+    // void MainCharacter::heal(int amount) {
+    //     setHealth(getHealth() + amount); // Assuming you have a setHealth method in Character
+    // }
+    void MainCharacter::print() const {
+        cout << "Main Character: " << name << ", Health: " << health << ", Attack: " << attackAmount << endl;
     }
-
     // todo Check if the character is alive
     // bool MainCharacter::isalive() const {
     //     return (getHealth() > 0);

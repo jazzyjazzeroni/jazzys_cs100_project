@@ -1,24 +1,27 @@
 #include "../Character_header/Goblin.h"
-#include <iostream>
 
 using namespace std;
 // the goblin constructor i believe
-Goblin::Goblin(const string &name, int health, int attackStrength, int specialPower, const string &allegiance) {
-    this->name = name;
-    this->health = health;
-    this->attackAmount = attackStrength;
-    this->specialPower = specialPower;
-
+Goblin::Goblin(const std::string &name, int health, int damage, const std::string &element)
+    : Character(GOBLIN, name, health, damage, element), powers(element), currentElement(element) {
+    if (element != "Fire" && element != "Water" && element != "Earth" && element != "Air") {
+        throw std::invalid_argument("Unknown power type: " + element);
+    }
 }
+
 
 // returns goblin's current health
 int Goblin::getHealth() const {
     return health;
 }
 
+ std::string Goblin::getGoblinType() const {
+        return currentElement;  // Return the type of the goblin (e.g., "Fire")
+    }
+
 // returns goblin's type of element maybe?
-CharType Goblin::getType() {
-    return type;
+string Goblin::getType() const{
+    return "Goblin";
 }
 
 // set's goblin's health
@@ -33,16 +36,33 @@ bool Goblin::isalive() const {
 
 // sets attackAmount to however much damage
 // the goblin deals to the player i think
-void Goblin::dealtDamage(int dam) {
-    this->attackAmount = dam;
-}
 
 // decreases goblin's health by however much damage the player does
 void Goblin::recieveDamage(int dam) {
     this->health -= dam;
+    if (health < 0) {
+        health = 0;
+    }
+}
+
+void Goblin::usePowers() {
+    cout << name << " uses a special power!" << endl;
+    powers.usePower(powers.getPower(), "The enemy"); // Assuming `activate()` is a method in `Powers`
 }
 
 // probably used when the goblin goes to attack the player
-void Goblin::attack(Character &player) {
-    player.recieveDamage(attackAmount);
+void Goblin::attack(Character &target) {
+    cout << getType() << " attacks " << target.getType() << "!" << endl;
+    
+    // Assuming target has an element or you can pass some identifier
+    powers.usePower(target.getPower(), target.getType());
+
+    // Subtract damage (assuming target's `getHealth()` and `setHealth()` exist)
+    int targetHealth = target.getHealth();
+    target.setHealth(targetHealth - powers.calculateDamage());
+    cout << target.getType() << "'s health after attack: " << target.getHealth() << endl;
+}
+
+void Goblin::print() const {
+    cout << "Goblin: " << name << ", Health: " << health << ", Attack: " << attackAmount << endl;
 }

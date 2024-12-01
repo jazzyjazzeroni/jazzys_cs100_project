@@ -18,19 +18,23 @@ void Potion::setHealingAmount(int amount) {
 }
 
 string Potion::getType() const {
-    return type;
+    return "Potion";
 }
 
 void Potion::setType(const string &potionType) {
     type = potionType;
 }
 
-void Potion::healCharacter(MainCharacter &character) {
-    if (type == "Small Potion") {
-        character.heal(50); 
-    } else if (type == "Large Potion") {
-        character.heal(100); 
-    } else {
-        character.heal(healingAmount); 
-    }
+void Potion::print() const {
+    cout << "Name: " << type << ", Value: " << healingAmount << endl;
 }
+
+// void Potion::healCharacter(MainCharacter &character) {
+//     if (type == "Small Potion") {
+//         character.heal(50); 
+//     } else if (type == "Large Potion") {
+//         character.heal(100); 
+//     } else {
+//         character.heal(healingAmount); 
+//     }
+// }

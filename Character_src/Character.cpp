@@ -1,23 +1,30 @@
 #include "../Character_header/Character.h"
+#include "../addit_header/Powers.h" // Include the header file for Powers class
 
 
-Character::Character(CharType type, const string &name, int health, int attackAmount, int damage_amount)
-{ //todo no default constructor exists for class "Powers"C/C++(291)
-    this->type = type;
-    this->name = name;
-    this->health = health;
-    this->attackAmount = attackAmount;
-    this->damage_amount = damage_amount;
+Character::Character(CharType type, const string &name, int health, int damage, const string &element)
+    : name(name), health(health), type(type), attackAmount(damage), powers(element) {}
+
+string Character::charTypeToString(CharType type) {
+    switch (type) {
+        case MAINCHAR: return "Theodore";
+        case GOBLIN: return "Goblin";
+        case DRAGON: return "Dragon";
+        default: return "Unknown";
+    }
 }
+
+Power_type Character::getPower() const {
+        return powers.getPower();
+    }
 
 int Character::getHealth() const
 {
     return this->health;
 }
 
-CharType Character::getType() 
-{
-    return this->type;
+string Character::getType() const {
+    return Character::charTypeToString(type);
 }
 
 void Character::setHealth(int health)
@@ -38,41 +45,33 @@ bool Character::isalive() const
     return this->health > 0;
 }
 
-void Character::dealtDamage(int damage_amount)
+void Character::receiveDamage(int damage)
 {
-    if(damage_amount > 0)
-    {
-       this->health -= damage_amount;
-        if (this->health < 0) {
-            this->health = 0;
+    if (damage > 0) {
+        health -= damage;
+        if (health < 0) {
+            health = 0;
         }
     }
-}
-
-void Character::recieveDamage(int dam)
-{
-    std::cout << "Theodore loses " << damage_amount << '\n';
-    this->dealtDamage(dam);
-    std::cout << "Health Status: " << health << '\n';
 }
 
 void Character::attack(Character &enemy)
 {
     if (!enemy.isalive()) {
-        std::cout << enemy.name << " is already defeated! " << name << " cannot attack.\n";
+        std::cout << name << " is already defeated! " << enemy.getType() << " cannot attack.\n";
         return;
     }
-    std::cout << name << " attacks " << enemy.name << attackAmount << " hits!\n";
-    enemy.recieveDamage(this->attackAmount);
+    std::cout << name << " attacks " << enemy.getType() << attackAmount << " hits!\n";
+    enemy.receiveDamage(attackAmount);
     if (!enemy.isalive()) {
-        std::cout << enemy.name << " has been defeated!\n";
+        std::cout << enemy.getType()<< " has been defeated!\n";
     }
 }
 
-void Character::updateElementForLevel() {
-    currentElement = level.getElementForLevel(level.getCurrentLevel());
-}
+// void Character::updateElementForLevel() {
+//     currentElement = level.getElementForLevel(level.getCurrentLevel());
+// }
 
-Power_type Character::getCurrentElement() const {
-    return currentElement;
-}
+// Power_type Character::getCurrentElement() const {
+//     return currentElement;
+// }

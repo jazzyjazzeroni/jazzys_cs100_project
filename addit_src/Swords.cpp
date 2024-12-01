@@ -2,10 +2,12 @@
 #include <iostream>
 #include <string>
 using namespace std;
+Sword::Sword() : Object("sword", 0), sword_dam(0), sword_name("Unnamed Sword") {}
 
-Sword::Sword() : sword_dam(0), sword_name("") {}
-
-Sword::Sword(int pwr, const string& nm) : sword_dam(pwr), sword_name(nm) {}
+    Sword::Sword(int pwr, const string& nm) : Object("sword", pwr), sword_dam(pwr), sword_name(nm) {};
+    string Sword::getType() const {
+        return "Sword";
+    }
 
 int Sword::getPower() const {
     return sword_dam;
@@ -37,9 +39,14 @@ void Sword::dealDamage(Character &opponent) {
         cout << "You used your " << sword_name << " dealing " << sword_dam << " damage!" << endl;
     }
 
-    opponent.recieveDamage(sword_dam); 
+    opponent.receiveDamage(sword_dam); 
 }
 
 void Sword::damage(int amount) {
     sword_dam = amount;
 }
+
+void Sword::print() const {
+    cout << "Name: " << sword_name << ", Value: " << sword_dam << endl;
+}
+
