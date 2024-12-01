@@ -121,10 +121,9 @@ void GameManager::pause()
         }
     }
 }
-/////////////////////////////////////////////
 void GameManager::quit()
 {
-    std::cout << "You ended the journey. See you again!\n"; // he added exclamatio point??
+    std::cout << "You ended the journey. See you again!\n"; // updated to an exclamation point....
     exit(0);
 }
 
