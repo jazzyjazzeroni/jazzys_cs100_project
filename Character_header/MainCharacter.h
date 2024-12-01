@@ -25,13 +25,12 @@ private:
     Inventory inventory;
     // Level levels;
     Sword sword;
-    char move;
+    char move_action;
     int x, y; 
 
 public:
     MainCharacter(const std::string &name, int health, int attackStrength, const std::string &element);
     MainCharacter() = default;
-         MainCharacter(int x = 0, int y = 0);
 
      void attack(Character &opponent) override;
      MainCharacter(int x = 0, int y = 0); 
@@ -46,7 +45,7 @@ public:
      pair<int, int> getPosition() const;
      void setPosition(int x, int y);
      void updateElementForLevel(); // Updates element based on current level
-    Power_type getCurrentElement() const;
+    // Power_type getCurrentElement() const;
         void print() const override;
 
      

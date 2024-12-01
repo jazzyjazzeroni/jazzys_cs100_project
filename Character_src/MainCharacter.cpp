@@ -8,14 +8,14 @@ MainCharacter::MainCharacter(const std::string &name, int health, int damage, co
     : Character(MAINCHAR, name, health, damage, element), powers(element), currentElement(powers.getPower()) {}
 
 
-void MainCharacter::attack(Character &opponent) {
-    cout << name << " attacks " << opponent.getType() << " with a sword, dealing " << attackAmount << " damage!" << endl;
-    opponent.receiveDamage(attackAmount);
+// void MainCharacter::attack(Character &opponent) {
+//     cout << name << " attacks " << opponent.getType() << " with a sword, dealing " << attackAmount << " damage!" << endl;
+//     opponent.receiveDamage(attackAmount);
 
-    if (!opponent.isalive()) {
-        std::cout << "The opponent has been defeated!" << std::endl;
-    }
-}
+//     if (!opponent.isalive()) {
+//         std::cout << "The opponent has been defeated!" << std::endl;
+//     }
+// }
 
 void MainCharacter::heal(int amount) {
     health = min(health + amount, MAX_HEALTH); // Prevent exceeding MAX_HEALTH
@@ -27,17 +27,17 @@ void MainCharacter::usePowers() {
     powers.usePower(powers.getPower(), allegiance); // Assuming `activate()` is a method in `Powers`
 }
 
-void MainCharacter::usePotion(const string &potionName) {
-    for (auto &potion : inventory.getPotions()) { // Access potions directly
-        if (potion.getType() == potionName) {
-            heal(potion.getHealingAmount()); // Heal the character
-            inventory.removePotion(potionName); // Remove used potion
-            cout << "Used potion: " << potionName << endl;
-            return;
-        }
-    }
-    cout << "Potion not found in inventory!" << endl;
-}
+// void MainCharacter::usePotion(const string &potionName) {
+//     for (auto &potion : inventory.getPotions()) { // Access potions directly
+//         if (potion.getType() == potionName) {
+//             heal(potion.getHealingAmount()); // Heal the character
+//             inventory.removePotion(potionName); // Remove used potion
+//             cout << "Used potion: " << potionName << endl;
+//             return;
+//         }
+//     }
+//     cout << "Potion not found in inventory!" << endl;
+// }
 
 // void Character::updateElementForLevel() {
 //     currentElement = level.getElementForLevel(level.getCurrentLevel());
@@ -106,6 +106,11 @@ void MainCharacter::usePotion(const string &potionName) {
     return gameMap.getObjectAt(x, y); // Ensure return type matches shared_ptr<Object>
 }
 
+    void MainCharacter::setPosition(int x, int y) {
+        this->x = x;
+        this->y = y;
+    }
+
 
     pair<int, int> MainCharacter::getPosition() const {
         return {x, y};
@@ -126,9 +131,9 @@ void MainCharacter::attack(Character &target) {
     }
 }
 
-    void MainCharacter::heal(int amount) {
-        setHealth(getHealth() + amount); // Assuming you have a setHealth method in Character
-    }
+    // void MainCharacter::heal(int amount) {
+    //     setHealth(getHealth() + amount); // Assuming you have a setHealth method in Character
+    // }
     void MainCharacter::print() const {
         cout << "Main Character: " << name << ", Health: " << health << ", Attack: " << attackAmount << endl;
     }

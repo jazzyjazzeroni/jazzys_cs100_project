@@ -72,6 +72,6 @@ void Character::attack(Character &enemy)
 //     currentElement = level.getElementForLevel(level.getCurrentLevel());
 // }
 
-Power_type Character::getCurrentElement() const {
-    return currentElement;
-}
+// Power_type Character::getCurrentElement() const {
+//     return currentElement;
+// }
