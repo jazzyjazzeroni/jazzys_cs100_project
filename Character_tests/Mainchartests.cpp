@@ -81,23 +81,6 @@ TEST(MainCharacterTest, testPowers) {
     EXPECT_NO_THROW(mc.usePowers());
 }
 
-// Test moving the character within boundaries and wrapping around
-// TEST(MainCharacterTest, testMapMove) {
-//     MainCharacter mc;
-//     mc.setPosition(5, 5);
-//     auto obj = mc.move('w', gameMap); // Move up
-//     EXPECT_EQ(mc.getPosition(), std::make_pair(5, 4));
-//     EXPECT_EQ(obj.getType(), "Goblin");
-
-//     mc.move('d', gameMap); // Move right
-//     EXPECT_EQ(mc.getPosition(), std::make_pair(6, 4));
-
-//     mc.move('a', gameMap); // Move left
-//     EXPECT_EQ(mc.getPosition(), std::make_pair(5, 4));
-
-//     mc.move('s', gameMap); // Move down
-//     EXPECT_EQ(mainChar.getPosition(), std::make_pair(5, 5));
-// }
 
 TEST(MainCharacterAttackTest, testAttackPositive) {
     MainCharacter mc;
@@ -125,4 +108,57 @@ TEST(MainCharacterAttackTest, testAttackNegative) {
     mc.attack(goblin);  // TEST FOR NEGATIVE
     EXPECT_EQ(goblin.getHealth(), -5);
    
+}
+
+TEST(MainCharacterEdgeCaseTest, testHealNegative) {
+    MainCharacter mainCharacter("Theodore", 100, 15, "Fire");
+    mainCharacter.heal(-20);
+    ASSERT_EQ(mainCharacter.getHealth(), 100)  << "Health should not be negative";
+}
+
+TEST(MainCharacterEdgeCaseTest, testNonExistentPotion) {
+    MainCharacter mainCharacter("Theodore", 100, 15, "Fire");
+
+    std::string output;
+    testing::internal::CaptureStdout();
+    mainCharacter.usePotion("Ultra Potion");
+    output = testing::internal::GetCapturedStdout();
+
+    EXPECT_TRUE(output.find("Potion not found in inventory!") != std::string::npos)
+        << "Expected message for non-existent potion was not displayed.";
+}
+
+TEST(MainCharacterEdgeCaseTest, testOutOfBoundsPosition) {
+    MainCharacter mainCharacter("Theodore", 100, 15, "Fire");
+    MockGameMap gameMap(10, 10);
+    int initialPosition = mainCharacter.getPosition();
+
+    mainCharacter.setPosition(0, 0); 
+    mainCharacter.move('w', gameMap); 
+    EXPECT_NE(mainCharacter.getPosition(), initialPosition) << "This position is out of bounds from the map";
+}
+
+TEST(MainCharacterEdgeCaseTest, testInvalidSwordItem) {
+    MainCharacter mainCharacter("Theodore", 100, 15, "Fire");
+    Sword invalidSword(-21, "Mock Sword");
+
+    mainCharacter.equipSword(invalidSword);
+
+    EXPECT_GT(mainCharacter.getAttackAmount(), 0) << "Sword equipped is negative in attack";
+}
+
+TEST(MainCharacterEdgeCaseTest, testHealBeyondMax) {
+    MainCharacter mainCharacter("Theodore", 100, 15, "Fire");
+    mainCharacter.heal(500);
+
+    ASSERT_EQ(mainCharacter.getHealth(), MainCharacter::MAX_HEALTH) << "Main Character's health should not go beyond the Max Health of 150";
+}
+
+TEST(MainCharacterTest, MoveWithInvalidAction) {
+    MainCharacter mainCharacter("Theodore", 100, 15, "Fire");
+    MockGameMap gameMap(10, 10);
+    auto initialPosition = mainCharacter.getPosition();
+
+    mainCharacter.move('n', gameMap); // 
+    ASSERT_EQ(mainCharacter.getPosition(), initialPosition) << "Invalid action should not change the character's position.";
 }
