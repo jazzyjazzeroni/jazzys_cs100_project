@@ -1,29 +1,38 @@
-#include <string>
-#include <iostream>
-using namespace std;
 #ifndef __CHARACTER_H__
 #define __CHARACTER_H__
+#include <string>
+#include <iostream>
+#include "../addit_header/Object.h"
+#include "../addit_header/Powers.h"
+#include "../addit_header/Level.h"
+using namespace std;
 
 enum CharType{MAINCHAR, GOBLIN, DRAGON, NPC};
-const double MAX_HEALTH = 200.0;
+const int MAX_HEALTH = 200;
 
-class Character{
+class Character : public Object {
 protected:
-double health;
-double attackAmount;
-double damage_amount;
+int health;
+int attackAmount;
+int damage_amount;
 string name;
 CharType type;
+Powers powers;
+Power_type currentElement;
+Level level;
 
 public:
 Character::Character();
-virtual double getHealth () const =0;
-virtual CharType getType() =0;
-virtual void setHealth(double) =0;
-virtual bool isalive() const =0;
-Character(CharType, const string &, double, double);
-virtual void damage(double dam) = 0;
-virtual void takeDamage(double) = 0 ;
+Character::Character(CharType,const string &, int, int ,int);
+int getHealth() const;
+CharType getType();
+void setHealth(int);
+bool isalive() const;
+Character(CharType, const string &, int, int);
+ void dealtDamage(int);
+ void recieveDamage(int);
+ void updateElementForLevel(); // Updates element based on current level
+    Power_type getCurrentElement() const;
 virtual void attack(Character &) = 0;
 
 };

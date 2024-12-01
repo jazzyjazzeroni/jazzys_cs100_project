@@ -1,10 +1,12 @@
-#include <vector>
-#include "Swords.h"
-#include "Potions.h"
-#include "../Character_header/Goblin.h"
-
 #ifndef GAMEMAP_H
 #define GAMEMAP_H
+
+#include <vector>
+#include "Swords.h"
+#include "Goblin.h"
+#include "Potions.h"
+#include "../Character_header/Character.h"
+
 using namespace std;
 
 class GameMap {
@@ -19,9 +21,8 @@ private:
 
 
 public:
+    GameMap();
     GameMap(const vector<vector<int>>& initMatrix, int w, int h);
-    // void init(const vector<vector<int>>& layout);
- void init();
     void killGoblin(int x, int y);
     Sword& getSwordAt(int x, int y);
     Potion& getPotionAt(int x, int y);
@@ -31,6 +32,9 @@ public:
     void setGoblint(int x, int y, const Goblin& Gob_obj);
     int getNumGoblins() const;
     int getGoblinsKilled() const;
+    int getWidth() const;
+    int getHeight() const;
+    
 };
 
 #endif

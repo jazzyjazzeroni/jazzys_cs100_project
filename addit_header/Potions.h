@@ -1,9 +1,13 @@
-#include <string>
-using namespace std;
 #ifndef POTIONS_H
 #define POTIONS_H
 
-class Potion {
+#include <string>
+#include "Inventory.h"
+#include "Object.h"
+#include "../Character_header/MainCharacter.h"
+using namespace std;
+
+class Potion  : public Object {
 private:
     int healingAmount; 
     string type;  
@@ -11,7 +15,7 @@ private:
     int value; // 0 | 5 | 10 | 15
 
 public:
-    Potion();
+    Potion(){};
     Potion(int healAmount, const string& potionType);
 
     int getHealingAmount() const;
@@ -19,13 +23,7 @@ public:
 
     string getType() const;
     void setType(const string& type);
-
-    Potion(const string& type, int value);
-    string getType() const;
-    void setType(const string& newType);
-    int getValue() const;
-    void setValue(int newValue);
-    void print() const;
+    void healCharacter(MainCharacter &character);
 };
 
 #endif

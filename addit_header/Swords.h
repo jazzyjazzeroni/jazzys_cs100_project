@@ -1,31 +1,29 @@
-#include <string>
 #ifndef SWORD_H
 #define SWORD_H
+#include <string>
+#include "Inventory.h"
+#include "../Character_header/Character.h"
+#include "Object.h"
+
 
 using namespace std;
 
-class Sword {
+class Sword : public Object {
 private:
-    int power;
-    string name;
-    string type; // "character" | "sword" | "potion" | "empty"
-    int value; // 0 | 5 | 10 | 15
+    int sword_dam;
+    string sword_name;
 
 public:
-    Sword();
+    Sword(){};
     Sword(int pwr, const string& nm);
 
     int getPower() const;
     string getName() const;
     void setPower(int pwr);
     void setName(const string& nm);
-
-    Sword(const string& type, int value);
-    string getType() const;
-    void setType(const string& newType);
-    int getValue() const;
-    void setValue(int newValue);
-    void print() const;
+    void dealDamage(Character &);
+    void damage(int amount); // declare damage method
+    // todo add print
 };
 
 #endif

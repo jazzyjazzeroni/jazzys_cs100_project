@@ -12,19 +12,16 @@ private:
     
 
 public:
-    Goblin(const string &name, double health, double attackStrength, int specialPower, const string &allegiance);
-
-    void attack(Character &opponent) override;
-    void SpecialAttack(int);
-
+    Goblin(const string &name, int health, int attackStrength, int specialPower, const string &allegiance);
+Goblin(int);
     Goblin();
-    Goblin(const string& type, int value);
-
-    string getType() const;
-    void setType(const string& newType);
-    int getValue() const;
-    void setValue(int newValue);
-    void print() const;
+    int getHealth() const ;
+    CharType getType() ;
+    void setHealth(int) ;
+    bool isalive() const ;
+    void dealtDamage(int) ;
+    void recieveDamage(int) ;
+    void attack(Character &player) override;
     
 };
 

@@ -2,22 +2,21 @@
 #define DRAGON_H
 
 #include "Character.h"
-using namespace std; 
 
 class Dragon : public Character {
 private:
-    int breatheFire;
-    int fireBall;
-    // Powers specialpowers;
+    int breathe_fire;
+    int fire_ball;
 
 public:
-    Dragon(const string &name, double health, double attackStrength, const string &allegiance);
-    void fly(string);
+    Dragon();
+    ~Dragon();
+    Dragon(const string &name, int pHealth, int pBreatheFire, int pFireBall);
     int getfireAttack();
     int getfireBall();
-    void setfireBall();
-    void setfireAttack();
-    void attack(Character &opponent) override;
+    void setfireBall(int pFireBall);
+    void setfireAttack(int pBreatheFire);
+    void attack(Character &opponent);
     
 };
 
