@@ -4,7 +4,6 @@
 #include "Character.h"
 // #include "Dragon.h"
 #include "../addit_header/Powers.h"
-#include "../addit_header/Inventory.h"
 // #include "../addit_header/GameManager.h"
 #include "../addit_header/GameMap.h"
 #include "../addit_header/Level.h"
@@ -17,16 +16,19 @@
 
 using namespace std; 
 
+class Inventory;
+
 class MainCharacter : public Character {
 private:
     string allegiance;
     Powers powers;
     Power_type currentElement;
-    Inventory inventory;
     // Level levels;
     Sword sword;
     char move_action;
     int x, y; 
+        std::shared_ptr<Inventory> inventory;
+
 
 public:
     MainCharacter(const std::string &name, int health, int attackStrength, const std::string &element);

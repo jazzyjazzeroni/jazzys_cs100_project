@@ -15,7 +15,7 @@ MainCharacter::MainCharacter(const std::string &name, int health, int damage, co
 //     if (!opponent.isalive()) {
 //         std::cout << "The opponent has been defeated!" << std::endl;
 //     }
-// }
+// } might fix
 
 void MainCharacter::heal(int amount) {
     health = min(health + amount, MAX_HEALTH); // Prevent exceeding MAX_HEALTH
@@ -48,10 +48,10 @@ Power_type Character::getCurrentElement() const {
 }
 
 void MainCharacter::usePotion(const string &potionName) {
-    if (inventory.hasPotion(potionName)) {
-        Potion potion = inventory.getPotion(potionName); // Get potion from inventory
+    if (inventory->hasPotion(potionName)) {
+        Potion potion = inventory->getPotion(potionName); // Get potion from inventory
         heal(potion.getHealingAmount());                // Apply its effect
-        inventory.removePotion(potionName);             // Remove it from inventory
+        inventory->removePotion(potionName);             // Remove it from inventory
         cout << "Used potion: " << potionName << endl;
     } else {
         cout << "Potion not found in inventory!" << endl;

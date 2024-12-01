@@ -2,10 +2,11 @@
 #define POTIONS_H
 
 #include <string>
-// #include "Inventory.h"
 #include "Object.h"
-// #include "../Character_header/MainCharacter.h"
+#include "../Character_header/MainCharacter.h"
 using namespace std;
+
+class MainCharacter;
 
 class Potion  : public Object {
 private:
@@ -22,7 +23,7 @@ public:
     string getType() const override;
     void setType(const string& type);
     void print() const override;
-    // void healCharacter(MainCharacter &character);
+    void healCharacter(MainCharacter &character);
 };
 
 #endif

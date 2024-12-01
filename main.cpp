@@ -1,5 +1,8 @@
 #include <iostream>
 #include "Character_header/MainCharacter.h"
+#include "Character_header/Goblin.h"
+#include "addit_header/Swords.h"
+#include "addit_header/Potions.h"
 #include "addit_header/GameMap.h"
 
 using namespace std;

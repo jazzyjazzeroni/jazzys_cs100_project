@@ -8,6 +8,8 @@
 
 using namespace std;
 
+    class MainCharacter;
+
 class Inventory {
 private:
     vector<Sword> swords;        // Vector to hold swords
@@ -24,9 +26,9 @@ public:
     bool hasPotion(const std::string &name) const;
     const std::vector<Potion>& getPotions() const;  // Get list of potions
     const std::vector<Sword>& getSwords() const;
-    // void usePotion(MainCharacter &player, const string &name);
-    // void equipSword(MainCharacter &player, const string &name);
-        // void open(MainCharacter &player);
+    void usePotion(MainCharacter &player, const string &name);
+    void equipSword(MainCharacter &player, const string &name);
+        void open(MainCharacter &player);
 
 };
 
