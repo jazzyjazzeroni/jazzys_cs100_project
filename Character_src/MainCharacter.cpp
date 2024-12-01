@@ -5,8 +5,12 @@ using namespace std;
 
 // Constructor
 MainCharacter::MainCharacter(const std::string &name, int health, int damage, const std::string &element)
-    : Character(MAINCHAR, name, health, damage, element), powers(element), currentElement(powers.getPower()) {}
-
+    : Character(MAINCHAR, name, health, damage, element), powers(element), currentElement(powers.getPower()) {
+        inventory = std::make_shared<Inventory>();;
+    }
+MainCharacter::MainCharacter(int x, int y) : x(x), y(y) {
+    inventory = make_shared<Inventory>(); // Initialize inventory
+}
 
 // void MainCharacter::attack(Character &opponent) {
 //     cout << name << " attacks " << opponent.getType() << " with a sword, dealing " << attackAmount << " damage!" << endl;
@@ -49,9 +53,9 @@ Power_type Character::getCurrentElement() const {
 
 void MainCharacter::usePotion(const string &potionName) {
     if (inventory->hasPotion(potionName)) {
-        Potion potion = inventory->getPotion(potionName); // Get potion from inventory
-        heal(potion.getHealingAmount());                // Apply its effect
-        inventory->removePotion(potionName);             // Remove it from inventory
+        Potion potion = inventory->getPotion(potionName);
+        heal(potion.getHealingAmount());
+        inventory->removePotion(potionName);
         cout << "Used potion: " << potionName << endl;
     } else {
         cout << "Potion not found in inventory!" << endl;
@@ -62,7 +66,10 @@ void MainCharacter::usePotion(const string &potionName) {
         //todo give o[ption to swap or replace sword]
             // Swap or replace the sword
             this->sword = Sword(newSword.getValue(), "New Sword");
-            inventory.addSword(newSword);
+            inventory->addSword(newSword);
+            sword = newSword; // Equip the sword
+    // inventory->addSword(newSword); // Add to inventory
+    // cout << "Equipped sword: " << newSword.getName() << endl;
     }
     // Equips a sword
 //     void MainCharacter::equipSword(Object & newSword) {

@@ -1,5 +1,4 @@
 #include "../addit_header/Inventory.h"
-#include "../Character_header/MainCharacter.h"
 #include <iostream>
 #include <stdexcept>
 
@@ -65,23 +64,23 @@ bool Inventory::hasPotion(const std::string &name) const {
     return false;
 }
 
-const std::vector<Potion>& Inventory::getPotions() const {
-    return potions;
-}
+// const std::vector<Potion>& Inventory::getPotions() const {
+//     return potions;
+// }
 
-const std::vector<Sword>& Inventory::getSwords() const {
-    return swords;
-}
+// const std::vector<Sword>& Inventory::getSwords() const {
+//     return swords;
+// }
 
-void Inventory::open(MainCharacter &player) {
-    cout << "Inventory:\n";
-    cout << "Swords:\n";
-    for (const auto &sword : swords) {
-        cout << sword.getName() << " - Damage: " << sword.getPower() << endl;
-    }
-    cout << "Potions:\n";
-    for (const auto &potion : potions) {
-        cout << potion.getType() << " - Heal: " << potion.getHealingAmount() << endl;
-    }
-}
+// void Inventory::open(MainCharacter &player) {
+//     cout << "Inventory:\n";
+//     cout << "Swords:\n";
+//     for (const auto &sword : swords) {
+//         cout << sword.getName() << " - Damage: " << sword.getPower() << endl;
+//     }
+//     cout << "Potions:\n";
+//     for (const auto &potion : potions) {
+//         cout << potion.getType() << " - Heal: " << potion.getHealingAmount() << endl;
+//     }
+// }
 

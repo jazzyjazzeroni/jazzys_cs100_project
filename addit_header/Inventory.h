@@ -3,12 +3,12 @@
 
 #include <vector>
 #include <string>
+// #include "../Character_header/MainCharacter.h"
 #include "Swords.h"
 #include "Potions.h"
 
 using namespace std;
 
-    class MainCharacter;
 
 class Inventory {
 private:
@@ -24,11 +24,11 @@ public:
     void removePotion(const string &name);
     const Potion& getPotion(const string &name) const;
     bool hasPotion(const std::string &name) const;
-    const std::vector<Potion>& getPotions() const;  // Get list of potions
-    const std::vector<Sword>& getSwords() const;
-    void usePotion(MainCharacter &player, const string &name);
-    void equipSword(MainCharacter &player, const string &name);
-        void open(MainCharacter &player);
+    // const std::vector<Potion>& getPotions() const;  // Get list of potions
+    // const std::vector<Sword>& getSwords() const;
+    // void usePotion(MainCharacter &player, const string &name);
+    // void equipSword(MainCharacter &player, const string &name);
+    //     void open(MainCharacter &player);
 
 };
 
