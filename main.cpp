@@ -48,14 +48,17 @@ int main() {
 
     // if playerChoice is neither 2 or 3, then game will run
 
-    MenuPrinter::tutorialMenu();
-    
+    cout << "Would you like to play the tutorial first?" << endl;
+    cout << endl;
+    cout << "       1. Yes              2. No          " << endl;
+    cout << endl;
+
     // player should choose betwen 1. play tutorial or 2. don't
     cin >> playerChoice;
 
     // if the player chooses none of these, repeatedly get input
     while ((playerChoice != 1) && (playerChoice != 2)) {
-        cout << "Please enter '1' or '3.'" << endl;
+        cout << "Please enter '1' or '2.'" << endl;
         cin.clear();
         cin >> playerChoice;
     }
@@ -63,17 +66,24 @@ int main() {
     // atp, player should have chosen one of these options
 
     if (playerChoice == 1) {
-        // actually not sure how i would integrate the tutorial in here
+        Tutorial tutorialLoader;
+        tutorialLoader.tutorial(); // should play the tutorial
     }
     // now the actual game should run
     
-    // building theo (aka the player)
-    // note: theo starts level 1 with the Wind ability
-    MainCharacter theo("Theodore", 100, 5, "Wind");
+    // this should build the levels and theo
     GameManager game;
+
+    // assuming that this just loads and runs the first level
     game.gameStart();
 
-    
+    // loops for all 5 levels (including the boss i think)
+    for (int i = 1; i <= 5; i++) {
+        // assuming that nextLevel only loads the next level
+        game.nextLevel();
+        // assuming that update runs the new level
+        game.update();
+    }
 
     return 0;
 }
