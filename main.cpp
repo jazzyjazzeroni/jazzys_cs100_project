@@ -68,9 +68,12 @@ int main() {
     // now the actual game should run
     
     // building theo (aka the player)
-    MainCharacter theo("Theodore", 250, )
+    // note: theo starts level 1 with the Wind ability
+    MainCharacter theo("Theodore", 100, 5, "Wind");
     GameManager game;
     game.gameStart();
+
+    
 
     return 0;
 }
