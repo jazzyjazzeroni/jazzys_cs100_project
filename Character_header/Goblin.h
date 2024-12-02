@@ -2,8 +2,7 @@
 #define GOBLIN_H
 
 #include "Character.h"
-#include "../addit_header/Powers.h"
-#include "../addit_header/Object.h"
+
 using namespace std; 
 
 class Goblin : public Character{

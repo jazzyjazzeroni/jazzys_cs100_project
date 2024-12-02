@@ -3,6 +3,10 @@
 #include <string>
 // #include "../Character_header/Character.h"
 #include "Object.h"
+// #include "../Character_header/Character.h"
+#include <iostream>
+#include <string>
+
 using namespace std;
 
 class Sword : public Object {

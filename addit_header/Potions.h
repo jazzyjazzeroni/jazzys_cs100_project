@@ -2,8 +2,10 @@
 #define POTIONS_H
 
 #include <string>
+#include <iostream>
 #include "Object.h"
 #include "../Character_header/MainCharacter.h"
+
 using namespace std;
 
 class Potion  : public Object {

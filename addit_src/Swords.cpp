@@ -1,7 +1,5 @@
 #include "../addit_header/Swords.h"
-#include "../Character_header/Character.h"
-#include <iostream>
-#include <string>
+
 using namespace std;
 Sword::Sword() : Object("sword", 0), sword_dam(0), sword_name("Unnamed Sword") {}
 

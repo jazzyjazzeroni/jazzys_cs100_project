@@ -50,29 +50,28 @@ void MainCharacter::heal(int amount) {
         return (value % limit + limit) % limit;  // Handle negative values properly
     }
 
-  std::shared_ptr<Object> MainCharacter::move(char action, GameMap &gameMap) {
+   pair<int, int>  MainCharacter::move(char action,int height, int width) {
     int newX = x, newY = y;
     
 
     if (action == 'w') { // Move up
-        newY = mod(y - 1, gameMap.getHeight());
+        newY = mod(y - 1, height);
     } else if (action == 's') { // Move down
-        newY = mod(y + 1, gameMap.getHeight());
+        newY = mod(y + 1, height);
     } else if (action == 'a') { // Move left
-        newX = mod(x - 1, gameMap.getWidth());
+        newX = mod(x - 1, width);
     } else if (action == 'd') { // Move right
-        newX = mod(x + 1, gameMap.getWidth());
+        newX = mod(x + 1, width);
     }
 
-    // x = newX;
-    // y = newY;
+    setPosition(newX, newY);
 
-        setPosition(newX, newY);
-
-    return gameMap.getObjectAt(newX, newY); // Ensure return type matches shared_ptr<Object>
+    return {newX, newY}; // Ensure return type matches shared_ptr<Object>
+    // return gameMap.getObjectAt(newX, newY); // Ensure return type matches shared_ptr<Object>
 }
 
     void MainCharacter::setPosition(int newX, int newY) {
+        cout << "the player is moved to " << newX << " " << newY << endl;
         x = newX;
     y = newY;
         // this->x = x;

@@ -39,8 +39,10 @@
 
 #include <vector>
 #include <string>
-#include "Potions.h"
-#include "../Character_header/MainCharacter.h"
+#include "./Potions.h"
+#include <iostream>
+#include <algorithm>
+
 
 class Inventory {
 private:
@@ -55,7 +57,7 @@ public:
     void removePotion(const std::string& name);
     bool hasPotion(const std::string& name) const;
     Potion getPotion(const std::string& name) const;
-    void usePotion(MainCharacter );
+    // void usePotion(MainCharacter );
     // {
     //     print content
     //     choose potion

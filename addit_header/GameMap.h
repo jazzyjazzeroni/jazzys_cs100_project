@@ -3,10 +3,11 @@
 
 #include <vector>
 #include <memory> // For smart pointers
-#include "Object.h"
 #include "Swords.h"
+#include "Potions.h"
 #include "../Character_header/Goblin.h"
 #include "../Character_header/Character.h"
+#include "../Character_header/MainCharacter.h"
 using namespace std;
 
 class GameMap {

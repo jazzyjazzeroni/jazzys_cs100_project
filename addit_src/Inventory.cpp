@@ -65,8 +65,6 @@
 // }
 
 #include "../addit_header/Inventory.h"
-#include <iostream>
-#include <algorithm>
 
 using namespace std;
 

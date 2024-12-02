@@ -1,9 +1,4 @@
 #include "../addit_header/Level.h"
-#include "../addit_header/Potions.h"
-#include "../addit_header/MenuPrinter.h"
-#include <iostream>
-#include <vector>
-#include <string>
 
 using namespace std;
 
@@ -38,6 +33,7 @@ Level::Level(int power, const vector<vector<int>>& mapLayout, int goblinGoal)
 
       
 void Level::start() {
+    cout << "debug: start" << endl;
     while (!end) {
       //   gameMap.printMap(player.getX(), player.getY());
         takeAction();
@@ -68,6 +64,7 @@ int Level::getCurrentLevel() const {
 }
 
 void Level::takeAction() {
+    cout << "debug: takeAction" << endl;
     char action;
     cout << "Enter action: ";
     MenuPrinter::printGoblinStatus(
@@ -75,16 +72,30 @@ void Level::takeAction() {
             gameMap.getGoblinsKilled()
         );
     cin >> action;
+    cout << "debug: action is " << action << endl;
+
     if (action == 'i') {
-        inventory.usePotion(player);
+        // inventory.usePotion(player);
+               
                 // player.openInventory();
     } 
-    else if (action == 's') {
+    else if(action == 'q'){
+        cout << "You have quit the game." << endl;
+        exit(0);
+    }
+    else if(action == 'g'){
+        MenuPrinter::printGoblinStatus(
+            gameMap.getNumGoblins() - gameMap.getGoblinsKilled(), 
+            gameMap.getGoblinsKilled()
+        );
+    }
+    else if (action == 't') {
         MenuPrinter::printStatus(player);
     } 
     else if (action == 'w' || action == 'a' || action == 's' || action == 'd') {
-        shared_ptr<Object> encounter = player.move(action, gameMap);
-
+        cout << "debug: move" << endl;
+        pair<int, int> pos = player.move(action, gameMap.getHeight(), gameMap.getWidth());
+        shared_ptr<Object> encounter = gameMap.getObjectAt(pos.first, pos.second);
         // if (encounter.getType() == "character") {
         //     //todo add check for type character
         //     Character *charactor = dynamic_cast<Character*>(& encounter);
@@ -135,11 +146,12 @@ void Level::takeAction() {
             exit(0); // Terminate the game
         }
     }
-    else {
+   
+        }
+    }
+ else {
         cout << "Invalid action. Please try again." << endl;
     }
-        }
-}
 }
 
     

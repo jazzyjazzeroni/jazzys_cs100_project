@@ -1,18 +1,13 @@
 #ifndef LEVEL_H
 #define LEVEL_H
 using namespace std;
-#include "../Character_header/MainCharacter.h"
-#include "../Character_header/Character.h"
-#include "../Character_header/Goblin.h"
-// #include "../Character_header/Dragon.h"
-#include "GameMap.h"
-#include "Object.h"
 #include "Inventory.h"
-#include "Powers.h"
-// #include "MenuPrinter.h"
-// #include "GameManager.h"
+#include "GameMap.h"
+#include "MenuPrinter.h"
 #include <vector>
 #include <map>
+#include <iostream>
+#include <string>
 
 
 class Level {
