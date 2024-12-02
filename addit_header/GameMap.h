@@ -21,7 +21,17 @@ private:
 public:
     GameMap();
     GameMap(const vector<vector<int>>& initMatrix, int w, int h);
-    ~GameMap() = default;
+    ~GameMap() 
+    {
+        for (int i = 0; i < height; i++) {
+       
+            for(int j = 0; j < width; j++) {
+             mapMatrix[i][j].reset();
+            }
+            mapMatrix[i].clear();
+        }
+        mapMatrix.clear();
+    };
 
     void killGoblin(int x, int y);
     shared_ptr<Object> getObjectAt(int x, int y);
