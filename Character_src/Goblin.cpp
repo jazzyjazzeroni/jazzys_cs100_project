@@ -45,17 +45,17 @@ void Goblin::recieveDamage(int dam) {
     }
 }
 
-void Goblin::usePowers() {
-    cout << name << " uses a special power!" << endl;
-    powers.usePower(powers.getPower(), "The enemy"); // Assuming `activate()` is a method in `Powers`
-}
+// void Goblin::usePowers() {
+//     cout << name << " uses a special power!" << endl;
+//     powers.usePower(powers.getPower(), "The enemy"); // Assuming `activate()` is a method in `Powers`
+// }
 
-// probably used when the goblin goes to attack the player
+// // probably used when the goblin goes to attack the player
 void Goblin::attack(Character &target) {
     cout << getType() << " attacks " << target.getType() << "!" << endl;
     
     // Assuming target has an element or you can pass some identifier
-    powers.usePower(target.getPower(), target.getType());
+    // powers.usePower(target.getPower(), target.getType());
 
     // Subtract damage (assuming target's `getHealth()` and `setHealth()` exist)
     int targetHealth = target.getHealth();

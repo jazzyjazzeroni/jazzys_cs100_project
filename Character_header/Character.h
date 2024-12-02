@@ -17,7 +17,7 @@ string name;
     CharType type;
     int attackAmount;
     Powers powers;
-    Power_type currentElement;
+    Powers currentElement;
 // Level level;
 
 public:
@@ -31,9 +31,9 @@ virtual ~Character() = default;
     void setHealth(int);
     bool isalive() const;
     void receiveDamage(int);
-    Power_type getCurrentElement() const;
+    Powers getCurrentElement() const;
     virtual void attack(Character &);
-    Power_type getPower() const;
+    Powers getPower() const;
 
     static string charTypeToString(CharType type);
         // void updateElementForLevel();  // If you have Level class

@@ -34,56 +34,57 @@ void Powers::setDamage(int damage) {
         cout << "Invalid damage value. Damage cannot be negative." << endl;
     }
 }
-bool Powers::canUsePower(Power_type opponentPower) const {
-    if ((powers == WATER && opponentPower == FIRE) || 
-        (powers == FIRE && opponentPower == WATER) ||
-        (powers == EARTH && opponentPower == AIR) || 
-        (powers == AIR && opponentPower == EARTH)) {
+bool Powers::canUsePower(Powers opponentPower) const {
+    if ((powers == WATER && opponentPower.powers == FIRE) || 
+        (powers == FIRE && opponentPower.powers == WATER) ||
+        (powers == EARTH && opponentPower.powers == AIR) || 
+        (powers == AIR && opponentPower.powers == EARTH)) {
         return true; // Elemental advantage
     }
     return false; // Default: Ineffective power
 }
-void Powers::usePower(Power_type opponentPower, const string &enemyAllegiance) {
-    powerDamage = calculateDamage(); // Update power damage
+// void Powers::usePower(Power_type opponentPower, const string &enemyAllegiance) {
+//     powerDamage = calculateDamage(); // Update power damage
 
-    if (canUsePower(opponentPower)) {
-        cout << "Elemental Power used against " << enemyAllegiance << "!" << endl;
-        cout << "Dealt " << powerDamage << " damage!" << endl;
-    } else if (powers == opponentPower) {
-        cout << "Warning: Using the same element against " << enemyAllegiance 
-             << " results in self-damage!" << endl;
-        cout << "Dealt no damage!" << endl;
-    } else {
-        cout << "This Elemental Power is ineffective against " << enemyAllegiance << "!" << endl;
-        cout << "Dealt no damage!" << endl;
-    }
-}
-void Powers::handleAttack(const string &goblinElement, int &health) const {
-    Power_type goblinPower;
+//     if (canUsePower(opponentPower)) {
+//         cout << "Elemental Power used against " << enemyAllegiance << "!" << endl;
+//         cout << "Dealt " << powerDamage << " damage!" << endl;
+//         target.receiveDamage(attackAmount+sword.getPower());
+//     } else if (powers == opponentPower) {
+//         cout << "Warning: Using the same element against " << enemyAllegiance 
+//              << " results in self-damage!" << endl;
+//         cout << "Dealt no damage!" << endl;
+//     } else {
+//         cout << "This Elemental Power is ineffective against " << enemyAllegiance << "!" << endl;
+//         cout << "Dealt no damage!" << endl;
+//     }
+// }
+// void Powers::handleAttack(const string &goblinElement, int &health) const {
+//     Power_type goblinPower;
 
-    if (goblinElement == "Water") goblinPower = WATER;
-    else if (goblinElement == "Fire") goblinPower = FIRE;
-    else if (goblinElement == "Earth") goblinPower = EARTH;
-    else if (goblinElement == "Air") goblinPower = AIR;
-    else throw invalid_argument("Unknown goblin element: " + goblinElement);
+//     if (goblinElement == "Water") goblinPower = WATER;
+//     else if (goblinElement == "Fire") goblinPower = FIRE;
+//     else if (goblinElement == "Earth") goblinPower = EARTH;
+//     else if (goblinElement == "Air") goblinPower = AIR;
+//     else throw invalid_argument("Unknown goblin element: " + goblinElement);
 
-    if (canUsePower(goblinPower)) {
-        cout << "Your " << currentElement << " power easily defeats the " 
-             << goblinElement << " goblin!" << endl;
-    } else if (powers == goblinPower) {
-        cout << "Using the same power type against the " << goblinElement 
-             << " goblin! You take self-damage!" << endl;
-        health -= 50; // Self-damage
-    } else {
-        cout << "Ineffective power! Goblin fights back!" << endl;
-        health -= 20; // Goblin damage
-    }
+//     if (canUsePower(goblinPower)) {
+//         cout << "Your " << currentElement << " power easily defeats the " 
+//              << goblinElement << " goblin!" << endl;
+//     } else if (powers == goblinPower) {
+//         cout << "Using the same power type against the " << goblinElement 
+//              << " goblin! You take self-damage!" << endl;
+//         health -= 50; // Self-damage
+//     } else {
+//         cout << "Ineffective power! Goblin fights back!" << endl;
+//         health -= 20; // Goblin damage
+//     }
 
-    if (health <= 0) {
-        cout << "You have died!" << endl;
-        throw runtime_error("Game Over");
-    }
-}
+//     if (health <= 0) {
+//         cout << "You have died!" << endl;
+//         throw runtime_error("Game Over");
+//     }
+
 
 
 

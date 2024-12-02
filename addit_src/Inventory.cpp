@@ -71,34 +71,34 @@
 using namespace std;
 
 // Sword management
-void Inventory::addSword(const Sword& sword) {
-    swords.push_back(sword);
-}
+// void Inventory::addSword(const Sword& sword) {
+//     swords.push_back(sword);
+// }
 
-void Inventory::removeSword(const std::string& name) {
-    swords.erase(
-        remove_if(swords.begin(), swords.end(), [&name](const Sword& sword) {
-            return sword.getName() == name;
-        }),
-        swords.end()
-    );
-}
+// void Inventory::removeSword(const std::string& name) {
+//     swords.erase(
+//         remove_if(swords.begin(), swords.end(), [&name](const Sword& sword) {
+//             return sword.getName() == name;
+//         }),
+//         swords.end()
+//     );
+// }
 
-bool Inventory::hasSword(const std::string& name) const {
-    return any_of(swords.begin(), swords.end(), [&name](const Sword& sword) {
-        return sword.getName() == name;
-    });
-}
+// bool Inventory::hasSword(const std::string& name) const {
+//     return any_of(swords.begin(), swords.end(), [&name](const Sword& sword) {
+//         return sword.getName() == name;
+//     });
+// }
 
-Sword Inventory::getSword(const std::string& name) const {
-    auto it = find_if(swords.begin(), swords.end(), [&name](const Sword& sword) {
-        return sword.getName() == name;
-    });
-    if (it != swords.end()) {
-        return *it;
-    }
-    throw runtime_error("Sword not found");
-}
+// Sword Inventory::getSword(const std::string& name) const {
+//     auto it = find_if(swords.begin(), swords.end(), [&name](const Sword& sword) {
+//         return sword.getName() == name;
+//     });
+//     if (it != swords.end()) {
+//         return *it;
+//     }
+//     throw runtime_error("Sword not found");
+// }
 
 // Potion management
 void Inventory::addPotion(const Potion& potion) {
@@ -132,11 +132,6 @@ Potion Inventory::getPotion(const std::string& name) const {
 
 // Print inventory contents
 void Inventory::print() const {
-    cout << "Swords in inventory:" << endl;
-    for (const auto& sword : swords) {
-        sword.print();
-    }
-
     cout << "Potions in inventory:" << endl;
     for (const auto& potion : potions) {
         potion.print();

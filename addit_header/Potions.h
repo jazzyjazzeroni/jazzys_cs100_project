@@ -6,8 +6,6 @@
 #include "../Character_header/MainCharacter.h"
 using namespace std;
 
-class MainCharacter;
-
 class Potion  : public Object {
 private:
     int healingAmount; 

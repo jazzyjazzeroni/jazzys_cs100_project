@@ -39,29 +39,29 @@
 
 #include <vector>
 #include <string>
-#include "Swords.h"
 #include "Potions.h"
+#include "../Character_header/MainCharacter.h"
 
 class Inventory {
 private:
-    std::vector<Sword> swords;        // Vector to hold swords
     std::vector<Potion> potions;      // Vector to hold potions
 
 public:
     Inventory() = default; // Default constructor
     ~Inventory() = default; // Default destructor
 
-    // Sword management
-    void addSword(const Sword& sword);
-    void removeSword(const std::string& name);
-    bool hasSword(const std::string& name) const;
-    Sword getSword(const std::string& name) const;
-
     // Potion management
     void addPotion(const Potion& potion);
     void removePotion(const std::string& name);
     bool hasPotion(const std::string& name) const;
     Potion getPotion(const std::string& name) const;
+    void usePotion(MainCharacter );
+    // {
+    //     print content
+    //     choose potion
+    //     user potion potion.healCharacter(player)
+    //     remove potion from inventory
+    // }
 
     // Print inventory contents
     void print() const;

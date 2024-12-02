@@ -14,8 +14,8 @@ string Character::charTypeToString(CharType type) {
     }
 }
 
-Power_type Character::getPower() const {
-        return powers.getPower();
+Powers Character::getPower() const {
+        return powers;
     }
 
 int Character::getHealth() const
