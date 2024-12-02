@@ -1,5 +1,4 @@
 #include "../Character_header/Character.h"
-#include "../addit_header/Powers.h" // Include the header file for Powers class
 
 
 Character::Character(CharType type, const string &name, int health, int damage, const string &element)
