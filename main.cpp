@@ -17,6 +17,13 @@ int main() {
         {0, 0, 4, 0, 0},
         {0, 0, 0, 0, 0}
     };
+    vector<vector<int>> initMatrix2 = {
+        {0, 0, 0, 0, 0},
+        {0, 1, 0, 2, 0},
+        {0, 0, 0, 0, 0},
+        {0, 0, 4, 0, 0},
+        {0, 0, 0, 0, 0}
+    };
 
     // int mapWidth = 5;
     // int mapHeight = 5;
@@ -24,7 +31,10 @@ int main() {
     // Create the GameMap
     // GameMap gameMap(initMatrix, mapWidth, mapHeight);
     Level level(1, initMatrix, 2);
-    level.start(); 
+    Level level2(1, initMatrix2, 2);
+
+    level.start();
+    level2.start();
     // Initialize MainCharacter at (1, 1)
     // MainCharacter mainChar("Hero", 100, 20, "Fire");
     // mainChar.setPosition(1, 1);  // Start the character at position (1, 1)

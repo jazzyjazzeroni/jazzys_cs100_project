@@ -67,10 +67,10 @@ void Level::takeAction() {
     cout << "debug: takeAction" << endl;
     char action;
     cout << "Enter action: ";
-    MenuPrinter::printGoblinStatus(
-            gameMap.getNumGoblins() - gameMap.getGoblinsKilled(), 
-            gameMap.getGoblinsKilled()
-        );
+    // // MenuPrinter::printGoblinStatus(
+    // //         gameMap.getNumGoblins() - gameMap.getGoblinsKilled(), 
+    // //         gameMap.getGoblinsKilled()
+    //     );
     cin >> action;
     cout << "debug: action is " << action << endl;
 
