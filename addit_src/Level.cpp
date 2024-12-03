@@ -75,7 +75,7 @@ void Level::takeAction() {
     cout << "debug: action is " << action << endl;
 
     if (action == 'i') {
-        // inventory.usePotion(player);
+        inventory.usePotion(player);
                
                 // player.openInventory();
     } 
@@ -154,45 +154,7 @@ void Level::takeAction() {
     }
 }
 
-    
 
-// void Level::Finalbosslevel(int power) {
-//     cout << "You have reached the final boss level!" << endl;
-//     cout << "You have to defeat the final boss to win the game." << endl;
-//     cout << "The final boss is a dragon with 100 health points." << endl;
-//     cout << "You have to defeat the dragon to win the game." << endl;
-//     cout << "Good luck!" << endl;
-//     cout << endl;
-
-//     Dragon dragon(100);
-
-//     while (player.getHealth() > 0 && dragon.getHealth() > 0) {
-//         cout << "Player health: " << player.getHealth() << endl;
-//         cout << "Dragon health: " << dragon.getHealth() << endl;
-//         cout << endl;
-
-//         char action;
-//         cout << "Enter action: ";
-//         cin >> action;
-//         switch (action) {
-//         case 'a':
-//             player.attack(dragon);
-//             break;
-//         case 'd':
-//             dragon.attack(player);
-//             break;
-//         default:
-//             cout << "Invalid action" << endl;
-//         }
-//     }
-
-//     if (player.getHealth() > 0) {
-//         cout << "You defeated the dragon! You win!" << endl;
-//     }
-//     else {
-//         cout << "You were defeated by the dragon. Game over." << endl;
-//     }
-// }
 
 //   vector<Level> Level::initializeLevels() { // todo call this in game manager pass it in
 //     vector<Level> levels;

@@ -1,2 +1,0 @@
-clear
-g++ -std=c++17 -Wall -Werror -o main addit_src/Swords.cpp Character_src/Goblin.cpp addit_src/Object.cpp addit_src/Potions.cpp addit_src/GameMap.cpp Character_src/Character.cpp addit_src/Powers.cpp addit_src/Inventory.cpp Character_src/MainCharacter.cpp main.cpp
