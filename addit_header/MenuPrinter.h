@@ -1,11 +1,13 @@
-#include <string>
-#include <iostream>
-#include "../Character_header/MainCharacter.h"
-using namespace std;
 #ifndef __MENUPRINTER_H__
 #define __MENUPRINTER_H__
 
-class MenuPrinter{
+#include <string>
+#include <iostream>
+#include "../Character_header/MainCharacter.h"
+
+using namespace std;
+
+class MenuPrinter {
 
 public:
 // string getChar()const;
@@ -19,7 +21,7 @@ static void fireGoblinEncounterMenu();
 static void waterGoblinEncounterMenu();
 static void earthGoblinEncounterMenu();
 static void windGoblinEncounterMenu();
-static void playerTurnMenu(const MainCharacter& player);
+static void playerTurnMenu(const MainCharacter& playerTurnMenu);
 static void useItemsMenu();
 static void deathScreen();
 static void pauseMenu();
