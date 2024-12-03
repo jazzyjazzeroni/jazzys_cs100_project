@@ -12,10 +12,10 @@ using namespace std;
 
 class GameMap {
 private:
-    int height;
-    int width;
-    int numGoblin;
-    int goblinKilled;
+    int height{};
+    int width{};
+    int numGoblin{};
+    int goblinKilled{};
     vector<vector<shared_ptr<Object>>> mapMatrix;  // Use smart pointers to handle objects
 
 public:
@@ -23,14 +23,13 @@ public:
     GameMap(const vector<vector<int>>& initMatrix, int w, int h);
     ~GameMap() 
     {
-        for (int i = 0; i < height; i++) {
-       
-            for(int j = 0; j < width; j++) {
-             mapMatrix[i][j].reset();
-            }
-            mapMatrix[i].clear();
+        for (auto& row : mapMatrix) {
+        for (auto& obj : row) {
+            obj.reset(); // Reset each shared_ptr to release memory
         }
-        mapMatrix.clear();
+        row.clear(); // Clear each row vector
+    }
+    mapMatrix.clear();
     };
 
     void killGoblin(int x, int y);

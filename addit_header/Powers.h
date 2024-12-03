@@ -9,9 +9,9 @@ enum Power_type{WATER, EARTH, FIRE, AIR};
 
 class Powers{
 protected:
-Power_type powers;
-int powerDamage;
-string currentElement;
+Power_type powers{};
+int powerDamage{};
+string currentElement{};
 
 public:
 Powers(){};
