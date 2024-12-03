@@ -4,7 +4,6 @@
 #include <iostream>
 #include "../addit_header/Object.h"
 #include "../addit_header/Powers.h"
-// #include "../addit_header/Level.h"
 using namespace std;
 
 enum CharType{MAINCHAR, GOBLIN, DRAGON};
@@ -12,13 +11,12 @@ const int MAX_HEALTH = 200;
 
 class Character : public virtual Object {
 protected:
-string name;
+string name ;
     int health;
     CharType type;
     int attackAmount;
     Powers powers;
     Powers currentElement;
-// Level level;
 
 public:
 Character() {}
@@ -27,7 +25,6 @@ virtual ~Character() = default;
     virtual void print() const = 0;
     int getHealth() const;
     string getType() const;
-    // string getType() const ;
     void setHealth(int);
     bool isalive() const;
     void receiveDamage(int);
@@ -36,7 +33,7 @@ virtual ~Character() = default;
     Powers getPower() const;
 
     static string charTypeToString(CharType type);
-        // void updateElementForLevel();  // If you have Level class
+
 };
 #endif
 

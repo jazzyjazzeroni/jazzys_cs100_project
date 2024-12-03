@@ -10,8 +10,8 @@ using namespace std;
 
 class Potion  : public Object {
 private:
-    int healingAmount; 
-    string type;  
+    int healingAmount{}; 
+    string type{};  
 
 public:
     Potion();

@@ -21,7 +21,6 @@ public:
     bool isalive() const;
     void recieveDamage(int);
     void attack(Character &player) override;
-    // void usePowers();
     void print() const override;
 };
 

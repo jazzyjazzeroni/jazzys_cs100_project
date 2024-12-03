@@ -12,27 +12,28 @@ using namespace std;
 
 class GameMap {
 private:
-    int height;
-    int width;
-    int numGoblin;
-    int goblinKilled;
+    int height{};
+    int width{};
+    int numGoblin{};
+    int goblinKilled{};
     vector<vector<shared_ptr<Object>>> mapMatrix;  // Use smart pointers to handle objects
 
 public:
     GameMap();
     GameMap(const vector<vector<int>>& initMatrix, int w, int h);
-    ~GameMap() 
-    {
-        for (int i = 0; i < height; i++) {
+    // ~GameMap() 
+    // {
+    //     for (int i = 0; i < height; i++) {
        
-            for(int j = 0; j < width; j++) {
-             mapMatrix[i][j].reset();
-            }
-            mapMatrix[i].clear();
-        }
-        mapMatrix.clear();
-    };
+    //         for(int j = 0; j < width; j++) {
+    //          mapMatrix[i][j].reset();
+    //         }
+    //         mapMatrix[i].clear();
+    //     }
+    //     mapMatrix.clear();
+    // };
 
+~GameMap() =default;
     void killGoblin(int x, int y);
     shared_ptr<Object> getObjectAt(int x, int y);
     void setObjectAt(int x, int y, const shared_ptr<Object>& obj);

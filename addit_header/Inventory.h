@@ -11,7 +11,7 @@
 
 class Inventory {
 private:
-    std::vector<Potion> potions;      // Vector to hold potions
+    std::vector<Potion> potions{};      // Vector to hold potions
 
 public:
     Inventory() = default; // Default constructor

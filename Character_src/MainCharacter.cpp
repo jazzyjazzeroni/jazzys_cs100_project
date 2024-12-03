@@ -12,26 +12,11 @@ MainCharacter::MainCharacter(int x, int y) : x(x), y(y) {
     // inventory = make_shared<Inventory>(); // Initialize inventory
 }
 
-// void MainCharacter::attack(Character &opponent) {
-//     cout << name << " attacks " << opponent.getType() << " with a sword, dealing " << attackAmount << " damage!" << endl;
-//     opponent.receiveDamage(attackAmount);
-
-//     if (!opponent.isalive()) {
-//         std::cout << "The opponent has been defeated!" << std::endl;
-//     }
-// } might fix
 
 void MainCharacter::heal(int amount) {
     health = min(health + amount, MAX_HEALTH); // Prevent exceeding MAX_HEALTH
     cout << name << " heals for " << amount << " health points. Current health: " << health << endl;
 }
-
-// void MainCharacter::usePowers() {
-//     cout << name << " uses a special power!" << endl;
-//     powers.usePower(powers.getPower(), allegiance); // Assuming `activate()` is a method in `Powers`
-// }
-
-
 
 
 // Add sword function (pick up a sword)
@@ -117,10 +102,3 @@ void MainCharacter::attack(Character &target) {
     void MainCharacter::print() const {
         cout << "Main Character: " << name << ", Health: " << health << ", Attack: " << attackAmount << endl;
     }
-    // todo Check if the character is alive
-    // bool MainCharacter::isalive() const {
-    //     return (getHealth() > 0);
-    // };
-
-
-    // todo Update the element based on the current level

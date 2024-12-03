@@ -13,20 +13,19 @@ using namespace std;
 class Level {
 private:
     GameMap gameMap;
-    std::map<int, Power_type> levelElements; // Map level number to element type
+    std::map<int, Power_type> levelElements{}; // Map level number to element type
     MainCharacter player;
     Inventory inventory;
     // Dragon dragon;
-    int goblinGoal;
-    int levelNumber;
-    bool end;
-    int currentLevel;
+    int goblinGoal{};
+    int levelNumber{};
+    bool end{};
+    int currentLevel{};
 
 public:
     Level();
     Level(int power, const vector<vector<int>>& mapLayout, int numGoblins);
 
-    // void Level::Finalbosslevel(int power);
     vector<Level> initializeLevels();
     void start();
     void takeAction();
