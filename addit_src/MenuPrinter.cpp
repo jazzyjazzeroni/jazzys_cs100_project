@@ -15,17 +15,6 @@ void MenuPrinter::printMainMenu() {
     cout << endl;
 }
 
-// prints when the player chooses to go to settings
-// void MenuPrinter::printSettingsMenu() {
-//     cout << "                  SETTINGS                " << endl;
-//     cout << endl;
-//     cout << "             1. Change language           " << endl;
-//     cout << "             2. Return                    " << endl;
-//     cout << endl;
-// }
-
-// prints when the player chooses to change languages
-
 // prints when the player is roaming in the levels
 void MenuPrinter::movementMenu() {
     cout << "   What direction do you want to move in? " << endl;

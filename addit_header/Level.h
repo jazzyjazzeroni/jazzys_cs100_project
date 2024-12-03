@@ -1,18 +1,14 @@
-#include "GameMap.h"
-#include "../Character_header/MainCharacter.h"
-#include "../Character_header/Character.h"
-#include "../Character_header/Goblin.h"
-#include "../Character_header/Dragon.h"
-#include "Object.h"
-#include "Inventory.h"
-#include "MenuPrinter.h"
-#include "GameManager.h"
-#include "Powers.h"
-#include <vector>
-#include <map>
 #ifndef LEVEL_H
 #define LEVEL_H
 using namespace std;
+#include "Inventory.h"
+#include "GameMap.h"
+#include "MenuPrinter.h"
+#include <vector>
+#include <map>
+#include <iostream>
+#include <string>
+
 
 class Level {
 private:
@@ -20,7 +16,7 @@ private:
     std::map<int, Power_type> levelElements; // Map level number to element type
     MainCharacter player;
     Inventory inventory;
-    Dragon dragon;
+    // Dragon dragon;
     int goblinGoal;
     int levelNumber;
     bool end;
@@ -30,8 +26,8 @@ public:
     Level();
     Level(int power, const vector<vector<int>>& mapLayout, int numGoblins);
 
-    void Level::Finalbosslevel(int power);
-    static vector<Level> initializeLevels();
+    // void Level::Finalbosslevel(int power);
+    vector<Level> initializeLevels();
     void start();
     void takeAction();
     GameMap getGameMap() const{ return gameMap; }

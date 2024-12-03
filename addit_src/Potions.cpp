@@ -1,6 +1,5 @@
 #include "../addit_header/Potions.h"
-#include <iostream>
-#include <string>
+
 using namespace std;
 
 
@@ -18,11 +17,15 @@ void Potion::setHealingAmount(int amount) {
 }
 
 string Potion::getType() const {
-    return type;
+    return "Potion";
 }
 
 void Potion::setType(const string &potionType) {
     type = potionType;
+}
+
+void Potion::print() const {
+    cout << "Name: " << type << ", Value: " << healingAmount << endl;
 }
 
 void Potion::healCharacter(MainCharacter &character) {

@@ -1,4 +1,4 @@
-#include "Object.h"
+#include "../addit_header/Object.h"
 #include <iostream>
 #include <string>
 using namespace std;
@@ -8,7 +8,7 @@ Object::Object() : type("Null"), value(0) {}
 Object::Object(const string& type, int value) : type(type), value(value) {}
 
 string Object::getType() const {
-    return type;
+    return "Null";
 }
 
 int Object::getValue() const {
