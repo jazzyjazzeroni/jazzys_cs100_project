@@ -1,4 +1,5 @@
 #include "../addit_header/Level.h"
+#include "../addit_header/Potions.h"
 #include <iostream>
 #include <vector>
 #include <string>
@@ -11,8 +12,13 @@ struct Map {
     vector<vector<char>> layout; 
 };
 
-Level::Level(int power, const vector<vector<int>>& mapLayout, int numGoblins) : gameMap(mapLayout, mapLayout[0].size(), mapLayout.size()), player(power), inventory(), goblinGoal(numGoblins), end(false) {}
-
+Level::Level(int power, const vector<vector<int>>& mapLayout, int numGoblins)
+    : gameMap(mapLayout, mapLayout[0].size(), mapLayout.size()), 
+      player(power), 
+      inventory(), 
+      goblinGoal(numGoblins), 
+      levelNumber(1), 
+      end(false) {}
 void Level::start() {
     while (!end) {
         // gameMap.printMap(player.getX(), player.getY());
@@ -22,36 +28,69 @@ void Level::start() {
 }
 
 
+Level::Level() : levelNumber(1), currentLevel(1) {
+    levelElements[1] = ICE;
+    levelElements[2] = FIRE;
+    levelElements[3] = EARTH;
+    levelElements[4] = AIR;
+    levelElements[5] = FUSED_POWER; // Example ultimate ability level
+}
+
+Power_type Level::getElementForLevel(int level) const {
+    auto it = levelElements.find(level);
+    if (it != levelElements.end()) {
+        return it->second;
+    } else {
+        throw std::out_of_range("Level not defined in levelElements.");
+    }
+}
+
+void Level::setLevel(int level) {
+    if (level > 0 && level <= static_cast<int>(levelElements.size())) {
+        currentLevel = level;
+    } else {
+        throw std::invalid_argument("Invalid level number.");
+    }
+}
+
+int Level::getCurrentLevel() const {
+    return currentLevel;
+}
+
 void Level::takeAction() {
     char action;
     cout << "Enter action: ";
-    MenuPrinter::printGoblinMenu(
+    MenuPrinter::printGoblinStatus(
             gameMap.getNumGoblins() - gameMap.getGoblinsKilled(), 
             gameMap.getGoblinsKilled()
         );
     cin >> action;
     if (action == 'i') {
-            inventory.open(player);
-        } else if (action == 's') {
-            MenuPrinter::printStatus(player);
-        } else if (action == 'w' || action == 'a' || action == 's' || action == 'd') {
-            auto [x, y] = player.move(action, gameMap);
-            Object& encounter = gameMap.getObjectAt(x, y);
-
-            if (encounter.getType() == "character") {
-                player.attack(gameMap, x, y);
-            } else if (encounter.getType() == "sword") {
-                player.addSword(gameMap, x, y);
-            } else if (encounter.getType() == "potion") {
-                inventory.add(gameMap, x, y);
-            }
-
-            if (!player.isAlive()) {
-                std::cout << "Game over! The player has died." << std::endl;
-                exit(0); // Terminate the game
-            }
+        inventory.open(player);
+    } 
+    else if (action == 's') {
+        MenuPrinter::printStatus(player);
+    } 
+    else if (action == 'w' || action == 'a' || action == 's' || action == 'd') {
+        Object encounter = player.move(action, gameMap);
+        if (encounter.getType() == "character") {
+            //todo add check for type character
+            Character *charactor = dynamic_cast<Character*>(& encounter);
+            player.attack(*charactor);
+        } else if (encounter.getType() == "sword") {
+            Sword *sword = dynamic_cast<Sword*>(& encounter);
+            //todo add check for type sword
+            player.equipSword(*sword);
+        } else if (encounter.getType() == "potion") {
+            Potion *potion = dynamic_cast<Potion*>(& encounter);
+            inventory.addPotion(*potion);
         }
-    };
+        if (!player.isalive()) {
+            std::cout << "Game over! The player has died." << std::endl;
+            exit(0); // Terminate the game
+        }
+    }
+};
 
 void Level::Finalbosslevel(int power) {
     cout << "You have reached the final boss level!" << endl;
@@ -91,8 +130,7 @@ void Level::Finalbosslevel(int power) {
     }
 }
 
-
-vector<Level> initializeLevels() {
+vector<Level> initializeLevels() { // todo call this in game manager pass it in
     vector<Level> levels;
 
     // Level 1: Small map

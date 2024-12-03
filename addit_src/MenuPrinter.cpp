@@ -16,23 +16,15 @@ void MenuPrinter::printMainMenu() {
 }
 
 // prints when the player chooses to go to settings
-void MenuPrinter::printSettingsMenu() {
-    cout << "                  SETTINGS                " << endl;
-    cout << endl;
-    cout << "             1. Change language           " << endl;
-    cout << "             2. Return                    " << endl;
-    cout << endl;
-}
+// void MenuPrinter::printSettingsMenu() {
+//     cout << "                  SETTINGS                " << endl;
+//     cout << endl;
+//     cout << "             1. Change language           " << endl;
+//     cout << "             2. Return                    " << endl;
+//     cout << endl;
+// }
 
 // prints when the player chooses to change languages
-void MenuPrinter::printLanguageMenu() {
-    cout << "              CHANGE LANGUAGE             " << endl;
-    cout << endl;
-    cout << "                1. English                " << endl;
-    cout << "                2. Spanish                " << endl;
-    cout << "                3. Mandarin               " << endl;
-    cout << endl;
-}
 
 // prints when the player is roaming in the levels
 void MenuPrinter::movementMenu() {

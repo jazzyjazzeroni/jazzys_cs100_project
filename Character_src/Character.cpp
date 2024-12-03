@@ -1,20 +1,12 @@
 #include "../Character_header/Character.h"
 
-Character::Character()
-{
-    this->health = 0;
-    this->attack_amount = 0;
-    this->damage_amount = 0;
-    this->name = " ";
-    this->type = MAINCHAR;
-}
 
-Character::Character(CharType type, const string &name, int health, int attack_amount, int damage_amount)
-{
+Character::Character(CharType type, const string &name, int health, int attackAmount, int damage_amount)
+{ //todo no default constructor exists for class "Powers"C/C++(291)
     this->type = type;
     this->name = name;
     this->health = health;
-    this->attack_amount = attack_amount;
+    this->attackAmount = attackAmount;
     this->damage_amount = damage_amount;
 }
 
@@ -46,7 +38,7 @@ bool Character::isalive() const
     return this->health > 0;
 }
 
-void Character::damage(int damage_amount)
+void Character::dealtDamage(int damage_amount)
 {
     if(damage_amount > 0)
     {
@@ -57,10 +49,10 @@ void Character::damage(int damage_amount)
     }
 }
 
-void Character::takeDamage(int dam)
+void Character::recieveDamage(int dam)
 {
     std::cout << "Theodore loses " << damage_amount << '\n';
-    this->damage(dam);
+    this->dealtDamage(dam);
     std::cout << "Health Status: " << health << '\n';
 }
 
@@ -70,15 +62,17 @@ void Character::attack(Character &enemy)
         std::cout << enemy.name << " is already defeated! " << name << " cannot attack.\n";
         return;
     }
-    std::cout << name << " attacks " << enemy.name << attack_amount << " hits!\n";
-    enemy.takeDamage(this->attack_amount);
+    std::cout << name << " attacks " << enemy.name << attackAmount << " hits!\n";
+    enemy.recieveDamage(this->attackAmount);
     if (!enemy.isalive()) {
         std::cout << enemy.name << " has been defeated!\n";
     }
 }
 
+void Character::updateElementForLevel() {
+    currentElement = level.getElementForLevel(level.getCurrentLevel());
+}
 
-
-int main()
-{
+Power_type Character::getCurrentElement() const {
+    return currentElement;
 }
