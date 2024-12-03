@@ -21,19 +21,17 @@ private:
 public:
     GameMap();
     GameMap(const vector<vector<int>>& initMatrix, int w, int h);
-    // ~GameMap() 
-    // {
-    //     for (int i = 0; i < height; i++) {
-       
-    //         for(int j = 0; j < width; j++) {
-    //          mapMatrix[i][j].reset();
-    //         }
-    //         mapMatrix[i].clear();
-    //     }
-    //     mapMatrix.clear();
-    // };
+    ~GameMap() 
+    {
+        for (auto& row : mapMatrix) {
+        for (auto& obj : row) {
+            obj.reset(); // Reset each shared_ptr to release memory
+        }
+        row.clear(); // Clear each row vector
+    }
+    mapMatrix.clear();
+    };
 
-~GameMap() =default;
     void killGoblin(int x, int y);
     shared_ptr<Object> getObjectAt(int x, int y);
     void setObjectAt(int x, int y, const shared_ptr<Object>& obj);

@@ -17,7 +17,7 @@ Level::Level()
 }
 
 
-Level::Level(int power, const vector<vector<int>>& mapLayout, int goblinGoal)
+Level::Level(int power, const vector<vector<int>>& mapLayout, int goblinGoal, bool &isOver)
     : gameMap(mapLayout, mapLayout[0].size(), mapLayout.size()), 
       player("Hero", 100, power, "Fire"), 
       inventory(), 
@@ -29,12 +29,13 @@ Level::Level(int power, const vector<vector<int>>& mapLayout, int goblinGoal)
     levelElements[2] = FIRE;
     levelElements[3] = EARTH;
     levelElements[4] = AIR;
+    this->isOver = &isOver;
 }
 
       
 void Level::start() {
     cout << "debug: start" << endl;
-    while (!end) {
+    while (!end && !*isOver) {
       //   gameMap.printMap(player.getX(), player.getY());
         takeAction();
        // end = (gameMap.getGoblinsKilled() >= goblinGoal || !player.isAlive());
@@ -81,7 +82,7 @@ void Level::takeAction() {
     } 
     else if(action == 'q'){
         cout << "You have quit the game." << endl;
-        exit(0);
+        *isOver = true;
     }
     else if(action == 'g'){
         MenuPrinter::printGoblinStatus(

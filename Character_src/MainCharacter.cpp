@@ -6,7 +6,7 @@ using namespace std;
 // Constructor
 MainCharacter::MainCharacter(const std::string &name, int health, int damage, const std::string &element)
     : Character(MAINCHAR, name, health, damage, element), powers(element), currentElement(powers.getPower()) {
-        // inventory = std::make_shared<Inventory>();;
+      x = 0; y = 0;  // inventory = std::make_shared<Inventory>();;
     }
 MainCharacter::MainCharacter(int x, int y) : x(x), y(y) {
     // inventory = make_shared<Inventory>(); // Initialize inventory

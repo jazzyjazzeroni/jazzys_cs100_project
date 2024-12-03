@@ -4,6 +4,7 @@ using namespace std;
 #include "Inventory.h"
 #include "GameMap.h"
 #include "MenuPrinter.h"
+#include "GameManager.h"
 #include <vector>
 #include <map>
 #include <iostream>
@@ -12,6 +13,7 @@ using namespace std;
 
 class Level {
 private:
+    bool *isOver;
     GameMap gameMap;
     std::map<int, Power_type> levelElements{}; // Map level number to element type
     MainCharacter player;
@@ -24,8 +26,10 @@ private:
 
 public:
     Level();
-    Level(int power, const vector<vector<int>>& mapLayout, int numGoblins);
-
+    Level(int power, const vector<vector<int>>& mapLayout, int numGoblins, bool &isOver);
+    ~Level(){
+        cout << "Level destructor called" << endl;
+    };
     vector<Level> initializeLevels();
     void start();
     void takeAction();
