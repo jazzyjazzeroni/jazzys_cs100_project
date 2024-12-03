@@ -7,6 +7,157 @@
 #include "../addit_header/Potions.h"
 #include "../addit_header/Swords.h"
 
+#include "../Character_header/MainCharacter.h"
+#include <iostream>
+
+using namespace std;
+
+// // Constructor
+// MainCharacter::MainCharacter(const std::string &name, int health, int damage, const std::string &element)
+//     : Character(MAINCHAR, name, health, damage, element), powers(element), currentElement(powers.getPower()) {}
+
+
+// // void MainCharacter::attack(Character &opponent) {
+// //     cout << name << " attacks " << opponent.getType() << " with a sword, dealing " << attackAmount << " damage!" << endl;
+// //     opponent.receiveDamage(attackAmount);
+
+// //     if (!opponent.isalive()) {
+// //         std::cout << "The opponent has been defeated!" << std::endl;
+// //     }
+// // }
+
+// void MainCharacter::heal(int amount) {
+//     health = min(health + amount, MAX_HEALTH); // Prevent exceeding MAX_HEALTH
+//     cout << name << " heals for " << amount << " health points. Current health: " << health << endl;
+// }
+
+// void MainCharacter::usePowers() {
+//     cout << name << " uses a special power!" << endl;
+//     powers.usePower(powers.getPower(), allegiance); // Assuming `activate()` is a method in `Powers`
+// }
+
+// // void MainCharacter::usePotion(const string &potionName) {
+// //     for (auto &potion : inventory.getPotions()) { // Access potions directly
+// //         if (potion.getType() == potionName) {
+// //             heal(potion.getHealingAmount()); // Heal the character
+// //             inventory.removePotion(potionName); // Remove used potion
+// //             cout << "Used potion: " << potionName << endl;
+// //             return;
+// //         }
+// //     }
+// //     cout << "Potion not found in inventory!" << endl;
+// // }
+
+// // void Character::updateElementForLevel() {
+// //     currentElement = level.getElementForLevel(level.getCurrentLevel());
+// // }
+
+// Power_type Character::getCurrentElement() const {
+//     return currentElement;
+// }
+
+// void MainCharacter::usePotion(const string &potionName) {
+//     if (inventory.hasPotion(potionName)) {
+//         Potion potion = inventory.getPotion(potionName); // Get potion from inventory
+//         heal(potion.getHealingAmount());                // Apply its effect
+//         inventory.removePotion(potionName);             // Remove it from inventory
+//         cout << "Used potion: " << potionName << endl;
+//     } else {
+//         cout << "Potion not found in inventory!" << endl;
+//     }
+// }
+// // Add sword function (pick up a sword)
+//     void MainCharacter::equipSword(const Sword & newSword) {
+//         //todo give o[ption to swap or replace sword]
+//             // Swap or replace the sword
+//             this->sword = Sword(newSword.getValue(), "New Sword");
+//             inventory.addSword(newSword);
+//     }
+//     // Equips a sword
+// //     void MainCharacter::equipSword(Object & newSword) {
+// //         if (newSword.getType() == "sword") {
+// //             // Swap or replace the sword
+// //             this->sword = Sword(newSword.getValue(), "New Sword");
+
+// //         }
+// //     for (const auto &sword : inventory.getSwords()) { // Access swords directly
+// //         if (sword.getName() == swordName) {
+// //             attackAmount = sword.getPower(); // Equip and update attack strength
+// //             cout << "Equipped sword: " << swordName << " (Damage: " << sword.getPower() << ")" << endl;
+// //             return;
+// //         }
+// //     }
+// //     cout << "Sword not found in inventory!" << endl;
+// // }
+  
+
+//     int MainCharacter::mod(int value, int limit) {
+//         return (value % limit + limit) % limit;  // Handle negative values properly
+//     }
+
+//   std::shared_ptr<Object> MainCharacter::move(char action, GameMap &gameMap) {
+//     int newX = x, newY = y;
+    
+
+//     if (action == 'w') { // Move up
+//         newY = mod(y - 1, gameMap.getHeight());
+//     } else if (action == 's') { // Move down
+//         newY = mod(y + 1, gameMap.getHeight());
+//     } else if (action == 'a') { // Move left
+//         newX = mod(x - 1, gameMap.getWidth());
+//     } else if (action == 'd') { // Move right
+//         newX = mod(x + 1, gameMap.getWidth());
+//     }
+
+//     // x = newX;
+//     // y = newY;
+
+//         setPosition(newX, newY);
+
+//     return gameMap.getObjectAt(newX, newY); // Ensure return type matches shared_ptr<Object>
+// }
+
+//     void MainCharacter::setPosition(int newX, int newY) {
+//         x = newX;
+//     y = newY;
+//         // this->x = x;
+//         // this->y = y;
+//     }
+
+
+//     pair<int, int> MainCharacter::getPosition() const {
+//         return {x, y};
+//     }
+
+// void MainCharacter::attack(Character &target) {
+//     if (target.getType() == "Goblin") { 
+//         cout << name << " attacks the Goblin fiercely with a sword, dealing " 
+//              << attackAmount << " damage!" << endl;
+//     } else {
+//         cout << name << " attacks the opponent with a sword, dealing " 
+//              << attackAmount << " damage!" << endl;
+//     }
+//     target.receiveDamage(attackAmount);
+
+//     if (!target.isalive()) {
+//         cout << "The opponent has been defeated!" << endl;
+//     }
+// }
+
+//     // void MainCharacter::heal(int amount) {
+//     //     setHealth(getHealth() + amount); // Assuming you have a setHealth method in Character
+//     // }
+//     void MainCharacter::print() const {
+//         cout << "Main Character: " << name << ", Health: " << health << ", Attack: " << attackAmount << endl;
+//     }
+//     // todo Check if the character is alive
+//     // bool MainCharacter::isalive() const {
+//     //     return (getHealth() > 0);
+//     // };
+
+
+//     // todo Update the element based on the current level
+
 class MainCharacterTest : public ::testing::Test {
 protected:
     MainCharacter mc{"Theodore", 100, 15, "AIR"};
@@ -27,34 +178,34 @@ TEST(MainCharacterConstrutorTest, testDefaultCase)
 
 TEST(MainCharacterAliveTest, testIsAlivePositiveFull)
 {
-    MainCharacter mc;
+    MainCharacter mc("Theodore", 100, 5, "AIR");
     mc.setHealth(100);
     EXPECT_EQ(mc.isalive(), 100);
 }
 
 TEST(MainCharacterAliveTest, testIsAlivePositivePartial)
 {
-    MainCharacter mc;
+    MainCharacter mc("Theodore", 100, 5, "AIR");
     mc.setHealth(50);   //Partial Health
     EXPECT_EQ(mc.isalive(), 50);
 }
 
 TEST(MainCharacterAliveTest, testIsAliveNegative)
 {
-    MainCharacter mc;
+    MainCharacter mc("Theodore", -5, 5, "AIR");
     mc.setHealth(-5);
     ASSERT_FALSE(mc.isalive());
 }
 
 TEST(MainCharacterAliveTest, testIsAliveZero)
 {
-    MainCharacter mc;
+    MainCharacter mc("Theodore", 0, 5, "AIR");
     mc.setHealth(0);
     EXPECT_TRUE(mc.isalive());
 }
 TEST(MainCharacterPotionTest, testHealBigPotion)
 {
-    MainCharacter mc;
+    MainCharacter mc("Theodore", 100, 5, "AIR");
     // Using 2nd potion
     mc.heal(15);    
     EXPECT_EQ(mc.getHealth(), 100);
@@ -62,7 +213,7 @@ TEST(MainCharacterPotionTest, testHealBigPotion)
 
 TEST(MainCharacterPotionTest, testHealNegativePotion)
 {
-    MainCharacter mc;
+    MainCharacter mc("Theodore", -15, 5, "AIR");
     // Using 2nd potion
     mc.heal(-15);    
     EXPECT_FALSE(mc.getHealth());
@@ -70,20 +221,20 @@ TEST(MainCharacterPotionTest, testHealNegativePotion)
 
 TEST(MainCharacterPotionTest, testHealSmallPotion)
 {
-    MainCharacter mc;
+    MainCharacter mc("Theodore", 10, 5, "AIR");
     // Using 1st potion
     mc.heal(10);    
     EXPECT_EQ(mc.getHealth(), 100);
 }
 
 TEST(MainCharacterTest, testPowers) {
-    MainCharacter mc;
+    MainCharacter mc("Theodore", 100, 5, "AIR");
     EXPECT_NO_THROW(mc.usePowers());
 }
 
 
 TEST(MainCharacterAttackTest, testAttackPositive) {
-    MainCharacter mc;
+    MainCharacter mc("Theodore", 100, 5, "AIR");
     Goblin goblin;
 
     mc.attack(goblin);
@@ -95,7 +246,7 @@ TEST(MainCharacterAttackTest, testAttackPositive) {
 }
 
 TEST(MainCharacterAttackTest, testAttackNegative) {
-    MainCharacter mc;
+    MainCharacter mc("Theodore", 100, 5, "AIR");
     Goblin goblin;
 
     mc.attack(goblin);
@@ -111,17 +262,17 @@ TEST(MainCharacterAttackTest, testAttackNegative) {
 }
 
 TEST(MainCharacterEdgeCaseTest, testHealNegative) {
-    MainCharacter mainCharacter("Theodore", 100, 15, "Fire");
-    mainCharacter.heal(-20);
-    ASSERT_EQ(mainCharacter.getHealth(), 100)  << "Health should not be negative";
+    MainCharacter mc("Theodore", -20, 15, "Fire");
+    mc.heal(-20);
+    ASSERT_EQ(mc.getHealth(), 100)  << "Health should not be negative";
 }
 
 TEST(MainCharacterEdgeCaseTest, testNonExistentPotion) {
-    MainCharacter mainCharacter("Theodore", 100, 15, "Fire");
+    MainCharacter mc("Theodore", 100, 15, "Fire");
 
     std::string output;
     testing::internal::CaptureStdout();
-    mainCharacter.usePotion("Ultra Potion");
+    mc.usePotion("Ultimate Potion");
     output = testing::internal::GetCapturedStdout();
 
     EXPECT_TRUE(output.find("Potion not found in inventory!") != std::string::npos)
@@ -129,38 +280,36 @@ TEST(MainCharacterEdgeCaseTest, testNonExistentPotion) {
 }
 
 TEST(MainCharacterEdgeCaseTest, testOutOfBoundsPosition) {
-    MainCharacter mainCharacter("Theodore", 100, 15, "Fire");
-    MockGameMap gameMap(10, 10);
-    int initialPosition = mainCharacter.getPosition();
+    MainCharacter mc("Theodore", 100, 15, "Fire");
+    GameMap gameMap(0, 0);
+    int initialPosition = mc.getPosition();
 
-    mainCharacter.setPosition(0, 0); 
-    mainCharacter.move('w', gameMap); 
-    EXPECT_NE(mainCharacter.getPosition(), initialPosition) << "This position is out of bounds from the map";
+    mc.setPosition(0, 0); 
+    mc.move('w', gameMap); 
+    EXPECT_NE(mc.getPosition(), initialPosition) << "This position is out of bounds from the map";
 }
 
 TEST(MainCharacterEdgeCaseTest, testInvalidSwordItem) {
-    MainCharacter mainCharacter("Theodore", 100, 15, "Fire");
+    MainCharacter mc("Theodore", 100, 15, "Fire");
     Sword invalidSword(-21, "Mock Sword");
 
-    mainCharacter.equipSword(invalidSword);
+    mc.equipSword(invalidSword);
 
-    EXPECT_GT(mainCharacter.getAttackAmount(), 0) << "Sword equipped is negative in attack";
+    EXPECT_GT(mc.getAttackAmount(), 0) << "Sword equipped is negative in attack";
 }
 
 TEST(MainCharacterEdgeCaseTest, testHealBeyondMax) {
-    MainCharacter mainCharacter("Theodore", 100, 15, "Fire");
-    mainCharacter.heal(500);
+    MainCharacter mc("Theodore", 100, 15, "Fire");
+    mc.heal(500);
 
-    ASSERT_EQ(mainCharacter.getHealth(), MainCharacter::MAX_HEALTH) << "Main Character's health should not go beyond the Max Health of 150";
+    ASSERT_EQ(mc.getHealth(), MainCharacter::MAX_HEALTH) << "Main Character's health should not go beyond the Max Health of 150";
 }
 
+TEST(MainCharacterEdgeCaseTest, MoveWithInvalidAction) {
+    MainCharacter mc("Theodore", 100, 15, "Fire");
+    GameMap gameMap(10, 10);
+    auto initialPosition = mc.getPosition();
 
-// Test: Move with invalid action
-TEST(MainCharacterTest, MoveWithInvalidAction) {
-    MainCharacter mainCharacter("Theodore", 100, 15, "Fire");
-    MockGameMap gameMap(10, 10);
-    auto initialPosition = mainCharacter.getPosition();
-
-    mainCharacter.move('n', gameMap); // 
-    ASSERT_EQ(mainCharacter.getPosition(), initialPosition) << "Invalid action should not change the character's position.";
+    mc.move('n', gameMap); // 
+    ASSERT_EQ(mc.getPosition(), initialPosition) << "Invalid action should not change the character's position.";
 }
