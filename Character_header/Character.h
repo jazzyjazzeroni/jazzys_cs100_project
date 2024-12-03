@@ -22,17 +22,17 @@ Power_type currentElement;
 Level level;
 
 public:
-Character::Character();
-Character::Character(CharType,const string &, int, int ,int);
+Character();
+Character(CharType,const string &, int, int ,int);
 int getHealth() const;
 CharType getType();
 void setHealth(int);
 bool isalive() const;
 Character(CharType, const string &, int, int);
- void dealtDamage(int);
- void recieveDamage(int);
- void updateElementForLevel(); // Updates element based on current level
-    Power_type getCurrentElement() const;
+void dealtDamage(int);
+void recieveDamage(int);
+void updateElementForLevel(); // Updates element based on current level
+Power_type getCurrentElement() const;
 virtual void attack(Character &) = 0;
 
 };
