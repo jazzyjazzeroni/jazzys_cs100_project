@@ -6,7 +6,7 @@
 #include <vector>
 #include "Potions.h"   // Assuming you have a separate Potions class
 #include "Swords.h"    // Assuming you have a separate Swords class
-#include "MainCharacter.h" // Assuming MainCharacter is the player character
+#include "../Character_header/MainCharacter.h" // Assuming MainCharacter is the player character
 
 using namespace std;
 

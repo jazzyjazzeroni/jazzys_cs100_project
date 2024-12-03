@@ -10,7 +10,7 @@ private:
 
 public:
     Goblin(const string &name, int health, int attackStrength, int specialPower, const string &allegiance);
-Goblin(int);
+    Goblin(int);
     Goblin();
     int getHealth() const ;
     CharType getType() ;
