@@ -1,82 +1,80 @@
-#include "gtest/gtest.h"
+#include <gtest/gtest.h>
 #include "../Character_header/Goblin.h"
-#include "../Character_header/Character.h" // Assuming Character is a base class
 
-// Test Case 1: Test Goblin Initialization
-TEST(GoblinTest, TestInitialization) {
-    Goblin goblin("Gobbo", 100, 20, 15, "Evil Clan"); // Assuming Goblin is a derived class of Character
+class MockPlayer : public Character {
+public:
+    MockPlayer(const string &name, int health)
+        : Character(MAINCHAR, name, health, 0, 0) {}
 
-    EXPECT_EQ(goblin.getHealth(), 100);  // Check initial health
-    EXPECT_EQ(goblin.getType(), GOBLIN);  // Assuming GOBLIN is a valid CharType
+    void attack(Character &) override {
+        // Mock attack implementation
+    }
+};
+
+TEST(GoblinTest, ConstructorInitializesProperly) {
+    Goblin goblin("GOBLIN", 100, 20, 5, "AIR");
+    EXPECT_EQ(goblin.getHealth(), 100);
+    EXPECT_EQ(goblin.isalive(), true);
 }
 
-// Test Case 2: Test setHealth
-TEST(GoblinTest, TestSetHealth) {
-    Goblin goblin("Gobbo", 100, 20, 15, "Evil Clan"); // Assuming Goblin is a derived class of Character
-
+TEST(GoblinTest, HealthManipulation) {
+    Goblin goblin("GOBLIN", 100, 20, 5, "AIR");
     goblin.setHealth(80);
-    EXPECT_EQ(goblin.getHealth(), 80);  // Check updated health
+    EXPECT_EQ(goblin.getHealth(), 80);
+
+    goblin.recieveDamage(30);
+    EXPECT_EQ(goblin.getHealth(), 50);
+
+    goblin.recieveDamage(60);
+    EXPECT_EQ(goblin.getHealth(), -10);
+    EXPECT_FALSE(goblin.isalive());
 }
 
-// Test Case 3: Test isAlive when health > 0
-TEST(GoblinTest, TestIsAlivePositiveHealth) {
-    Goblin goblin("Gobbo", 100, 20, 15, "Evil Clan"); // Assuming Goblin is a derived class of Character
+TEST(GoblinTest, AttackDecreasesHealthOfOpponent) {
+    Goblin goblin("GOBLIN", 100, 20, 5, "AIR");
+    MockPlayer player("Theodore", 150);
 
-    EXPECT_TRUE(goblin.isalive());  // Goblin should be alive
+    goblin.attack(player);
+    EXPECT_EQ(player.getHealth(), 130); // Assuming attackAmount is set to 20
 }
 
-// Test Case 4: Test isAlive when health <= 0
-TEST(GoblinTest, TestIsAliveZeroHealth) {
-    Goblin goblin("Gobbo", 0, 20, 15, "Evil Clan");
+TEST(GoblinTest, DealtDamageChangesAttackAmount) {
+    Goblin goblin("GOBLIN", 100, 20, 5, "AIR");
 
-    EXPECT_FALSE(goblin.isalive());  // Goblin should be dead
+    goblin.dealtDamage(40);
+    MockPlayer player("Theodore", 150);
+
+    goblin.attack(player);
+    EXPECT_EQ(player.getHealth(), 110); // Assuming attackAmount is updated to 40
 }
 
-// Test Case 5: Test dealtDamage sets the correct attackAmount
-TEST(GoblinTest, TestDealtDamage) {
-    Goblin goblin("Gobbo", 100, 20, 15, "Evil Clan"); // Assuming Goblin is a derived class of Character
-
-    goblin.dealtDamage(50);  // Set damage
-    EXPECT_EQ(goblin.attackAmount, 50);  // Check updated attackAmount
+TEST(GoblinTest, NegativeHealthInitialization) {
+    Goblin goblin("GOBLIN", -50, 20, 5, "AIR");
+    EXPECT_EQ(goblin.getHealth(), -50);
+    EXPECT_FALSE(goblin.isalive());
 }
 
-// Test Case 6: Test receiveDamage reduces health correctly
-TEST(GoblinTest, TestReceiveDamage) {
-    Goblin goblin("Gobbo", 100, 20, 15, "Evil Clan");
-
-    goblin.recieveDamage(30);  // Apply damage
-    EXPECT_EQ(goblin.getHealth(), 70);  // Health should decrease by 30
+TEST(GoblinTest, NegativeDamageInReceiveDamage) {
+    Goblin goblin("GOBLIN", 100, 20, 5, "AIR");
+    goblin.recieveDamage(-30);
+    EXPECT_EQ(goblin.getHealth(), 130); // If health increases with negative damage
 }
 
-// Test Case 7: Test receiveDamage with overkill
-TEST(GoblinTest, TestReceiveDamageOverkill) {
-    Goblin goblin("Gobbo", 50, 20, 15, "Evil Clan");
+TEST(GoblinTest, NegativeAttackDamage) {
+    Goblin goblin("GOBLIN", 100, 20, 5, "AIR");
+    MockPlayer player("Hero", 150);
 
-    goblin.recieveDamage(100);  // Apply damage greater than health
-    EXPECT_EQ(goblin.getHealth(), -50);  // Health decreases even below zero
+    goblin.dealtDamage(-10);
+    goblin.attack(player);
+
+    EXPECT_EQ(player.getHealth(), 150); // Assuming negative attack damage does nothing
 }
 
-// Test Case 8: Test attack decreases player's health
-TEST(GoblinTest, TestAttack) {
-    Goblin goblin("Gobbo", 100, 20, 15, "Evil Clan");
-    Goblin player("Player", 100, 15, 10, "Evil Clan");  // Create a player character of type Goblin
+TEST(GoblinTest, NegativeHealthUpdate) {
+    Goblin goblin("GOBLIN", 100, 20, 5, "AIR");
 
-    goblin.attack(player);  // Goblin attacks player
-    EXPECT_EQ(player.getHealth(), 80);  // Player's health should decrease by goblin's attackAmount (20)
+    goblin.setHealth(-100);
+    EXPECT_EQ(goblin.getHealth(), -100);
+    EXPECT_FALSE(goblin.isalive());
 }
 
-// Test Case 9: Test attack on a dead player
-TEST(GoblinTest, TestAttackDeadPlayer) {
-    Goblin goblin("Gobbo", 100, 20, 15, "Evil Clan");
-    Character player(MAINCHAR, "Player", 0, 15, 10);  // Dead player
-
-    goblin.attack(player);  // Goblin attacks player
-    EXPECT_EQ(player.getHealth(), -20);  // Player's health decreases even further
-}
-
-// Test Case 10: Test getType returns correct type
-TEST(GoblinTest, TestGetType) {
-    Goblin goblin("Gobbo", 100, 20, 15, "Evil Clan");
-
-    EXPECT_EQ(goblin.getType(), GOBLIN);  // Assuming GOBLIN is the correct type
-}
