@@ -13,7 +13,7 @@ void Tutorial::tutorial() {
     cin >> choice;
 
     // if the player chooses anything other than Yes and No
-    while ((choice != 1) && (choice != 0)) {
+    while ((choice != 1) && (choice != 2)) {
         // get input again until they do
         cout << "Would you like to play the tutorial first?" << endl;
         cout << "       1. Yes              2. No          " << endl;
@@ -123,7 +123,7 @@ void Tutorial::tutorial() {
     cout << "  In every level, you will be given an    " << endl;
     cout << "elemental power that you can use against  " << endl;
     cout << "goblins with their own elemental powers.  " << endl;
-    cout << "For now, you can use the Wind element to  " << endl;
+    cout << " For now, you can use the AIR element to  " << endl;
     cout << "attack. Press 'p' to use the Power Attack." << endl;
     cout << endl;
 
@@ -197,6 +197,7 @@ void Tutorial::tutorial() {
         cout << "Please press 1 to use a Small Potion. " << endl;
         cout << endl;
         cin.clear();
+        cin.ignore(); // should fix this bug
         cin >> choice2;
     }
 
