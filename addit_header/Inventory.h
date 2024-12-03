@@ -1,34 +1,31 @@
-#ifndef __INVENTORY_H__
-#define __INVENTORY_H__
 
-#include <string>
-#include <iostream>
+#ifndef INVENTORY_H
+#define INVENTORY_H
+
 #include <vector>
-#include "Potions.h"   // Assuming you have a separate Potions class
-#include "Swords.h"    // Assuming you have a separate Swords class
-#include "MainCharacter.h" // Assuming MainCharacter is the player character
+#include <string>
+#include "./Potions.h"
+#include <iostream>
+#include <algorithm>
 
-using namespace std;
 
 class Inventory {
 private:
-    vector<Sword> swords;        // Vector to hold swords
-    vector<Potion> potions;      // Vector to hold potions
+    std::vector<Potion> potions{};      // Vector to hold potions
 
 public:
-    void addSword(const Sword &sword);
-    void removeSword(const string &name);
-    Sword getSword(const string &name) const;
-    bool hasSword(const std::string &name) const;
-    void addPotion(const Potion &potion);
-    void removePotion(const string &name);
-    Potion getPotion(const string &name) const;
-    bool hasPotion(const std::string &name) const;
-    void open(MainCharacter &player);
-    const std::vector<Potion>& getPotions() const;  // Get list of potions
-    const std::vector<Sword>& getSwords() const;
-    void usePotion(MainCharacter &player, const string &name);
-    void equipSword(MainCharacter &player, const string &name);
+    Inventory() = default; // Default constructor
+    ~Inventory() = default; // Default destructor
+
+    // Potion management
+    void addPotion(const Potion& potion);
+    void removePotion(const std::string& name);
+    bool hasPotion(const std::string& name) const;
+    Potion getPotion(const std::string& name) const;
+    void usePotion(MainCharacter& );
+
+    // Print inventory contents
+    void print() const;
 };
 
 #endif
