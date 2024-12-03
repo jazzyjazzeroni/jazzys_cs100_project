@@ -11,10 +11,10 @@ using namespace std;
 int main() {
     // Example initialization of a GameMap
     vector<vector<int>> initMatrix = {
-        {0, 0, 0, 0, 0},
-        {0, 1, 0, 2, 0},
-        {0, 0, 0, 0, 0},
-        {0, 0, 4, 0, 0},
+        {0, 9, 0, 0, 0},
+        {7, 1, 0, 2, 0},
+        {4, 0, 8, 0, 0},
+        {0, 0, 4, 10, 0},
         {0, 0, 0, 0, 0}
     };
     vector<vector<int>> initMatrix2 = {

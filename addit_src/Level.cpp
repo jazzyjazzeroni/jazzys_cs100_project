@@ -126,10 +126,6 @@ void Level::takeAction() {
                     cout << "You picked up a potion: " << potion->getType() << endl;
                 }
         }
-        // else if (encounter.getType() == "potion") {
-        //     Potion *potion = dynamic_cast<Potion*>(& encounter);
-        //     inventory.addPotion(*potion);
-        // }
         else if (type == "Sword") {
                 Sword* sword = dynamic_cast<Sword*>(encounter.get());
                 if (sword) {

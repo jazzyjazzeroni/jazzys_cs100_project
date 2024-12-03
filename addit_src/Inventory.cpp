@@ -56,12 +56,12 @@ void Inventory::usePotion(MainCharacter& mainCharacter) {
     int choice;
     cout << "Enter choice: ";
     cin >> choice;
-    if (choice < 1 || choice > static_cast<int>(potions.size())) {
+    if (choice < 1 || choice > (potions.size())) {
         cout << "Invalid choice" << endl;
         return;
     }
 
-    mainCharacter.heal(potions[choice - 1].getValue());
+    mainCharacter.heal(potions[choice - 1].getHealingAmount());
     removePotion(potions[choice - 1].getType());
 }
 
