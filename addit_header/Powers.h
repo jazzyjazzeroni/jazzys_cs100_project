@@ -23,12 +23,8 @@ void setDamage(int);
 void usePower(Powers, const string&);
 void handleAttack(const string &goblinElement, int &health) const;
 int calculateDamage() const;
-<<<<<<< HEAD
-bool canUsePower(Power_type) const;
-=======
 bool canUsePower(Powers) const;
 string getcurrentElement() const {return currentElement;}
->>>>>>> master
 
 };
 
