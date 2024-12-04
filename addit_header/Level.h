@@ -1,29 +1,41 @@
-#include <string>
+#ifndef LEVEL_H
+#define LEVEL_H
+#include "Inventory.h"
+#include "GameMap.h"
+//#include "../addit_header/MenuPrinter.h"
+#include "GameManager.h"
+#include <vector>
+#include <map>
 #include <iostream>
-#include "../Character_header/MainCharacter.h"
+#include <string>
 using namespace std;
-#ifndef __MENUPRINTER_H__
-#define __MENUPRINTER_H__
 
-class MenuPrinter{
+
+class Level {
+private:
+    bool *isOver;
+    GameMap gameMap;
+    std::map<int, Power_type> levelElements{}; // Map level number to element type
+    MainCharacter player;
+    Inventory inventory;
+    // Dragon dragon;
+    int goblinGoal{};
+    int levelNumber{};
+    bool end{};
+    int currentLevel{};
 
 public:
-// string getChar()const;
-// void setChar(string);
-static void printMainMenu();
-static void printGoblinStatus(int left, int killed);
-static void printStatus(const MainCharacter& player);
-static void tutorialMenu();
-static void movementMenu();
-static void fireGoblinEncounterMenu();
-static void waterGoblinEncounterMenu();
-static void earthGoblinEncounterMenu();
-static void windGoblinEncounterMenu();
-static void playerTurnMenu(const MainCharacter& player);
-static void useItemsMenu();
-static void deathScreen();
-static void pauseMenu();
-static void quitReassuranceMenu();
-
+    Level();
+    Level(int power, const vector<vector<int>>& mapLayout, int numGoblins, bool &isOver);
+    ~Level(){
+        cout << "Level destructor called" << endl;
+    };
+    vector<Level> initializeLevels();
+    void start();
+    void takeAction();
+    GameMap getGameMap() const{ return gameMap; }
+    Power_type getElementForLevel(int level) const; // Get element for a specific level
+    void setLevel(int level); // Set the current level
+    int getCurrentLevel() const;
 };
 #endif
