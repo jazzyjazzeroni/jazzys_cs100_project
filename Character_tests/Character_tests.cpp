@@ -7,14 +7,13 @@
 const int MAX_HEALTH = 100;
 
 // Test fixture for the Character class
-class CharacterTest : public ::testing::Test {
+class CharacterTestSuite : public ::testing::Test {
 protected:
     Goblin goblin{"Goblin", 50, 10, "Fire"};
     MainCharacter mainCharacter{"Theodore", 100, 20, "Water"};
 };
 
-// Test Constructor Initialization
-TEST_F(CharacterTest, ConstructorInitialization) {
+TEST_F(CharacterTestSuite, testOverloadedConstructor) {
     EXPECT_EQ(goblin.getHealth(), 50);
     EXPECT_EQ(goblin.getType(), "Goblin");
     EXPECT_EQ(mainCharacter.getHealth(), 100);
@@ -22,7 +21,7 @@ TEST_F(CharacterTest, ConstructorInitialization) {
 }
 
 // Test setHealth with edge cases
-TEST_F(CharacterTest, SetHealthEdgeCases) {
+TEST_F(CharacterTestSuite, SetHealthEdgeCases) {
     goblin.setHealth(200); // Beyond max health
     EXPECT_EQ(goblin.getHealth(), MAX_HEALTH);
 
@@ -34,7 +33,7 @@ TEST_F(CharacterTest, SetHealthEdgeCases) {
 }
 
 // Test receiveDamage with edge cases
-TEST_F(CharacterTest, ReceiveDamageEdgeCases) {
+TEST_F(CharacterTestSuite, ReceiveDamageEdgeCases) {
     goblin.receiveDamage(20); // Regular damage
     EXPECT_EQ(goblin.getHealth(), 30);
 
@@ -46,7 +45,7 @@ TEST_F(CharacterTest, ReceiveDamageEdgeCases) {
 }
 
 // Test isalive method
-TEST_F(CharacterTest, IsAlive) {
+TEST_F(CharacterTestSuite, IsAlive) {
     EXPECT_TRUE(goblin.isalive());
 
     goblin.setHealth(0);
@@ -54,7 +53,7 @@ TEST_F(CharacterTest, IsAlive) {
 }
 
 // Test attack method
-TEST_F(CharacterTest, Attack) {
+TEST_F(CharacterTestSuite, Attack) {
     goblin.attack(mainCharacter);
     EXPECT_EQ(mainCharacter.getHealth(), 90); // Goblin does 10 damage
 
@@ -63,7 +62,7 @@ TEST_F(CharacterTest, Attack) {
 }
 
 // Test character defeated scenario
-TEST_F(CharacterTest, AttackDefeatedCharacter) {
+TEST_F(CharacterTestSuite, AttackDefeatedCharacter) {
     goblin.setHealth(0);
     EXPECT_FALSE(goblin.isalive());
 
@@ -73,7 +72,7 @@ TEST_F(CharacterTest, AttackDefeatedCharacter) {
 }
 
 // Test heal method (MainCharacter specific)
-TEST_F(CharacterTest, Heal) {
+TEST_F(CharacterTestSuite, Heal) {
     mainCharacter.receiveDamage(50); // Reduce health to 50
     EXPECT_EQ(mainCharacter.getHealth(), 50);
 
@@ -85,7 +84,7 @@ TEST_F(CharacterTest, Heal) {
 }
 
 // Test move method (MainCharacter specific)
-TEST_F(CharacterTest, Movement) {
+TEST_F(CharacterTestSuite, Movement) {
     auto position = mainCharacter.move('w', 10, 10); // Move up
     EXPECT_EQ(position, std::make_pair(0, 9));
 
