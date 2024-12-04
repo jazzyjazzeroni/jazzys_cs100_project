@@ -11,11 +11,11 @@ Powers::Powers(const string &element) : currentElement(element) {
 }
 int Powers::calculateDamage() const {
     switch (powers) {
-        case FIRE: return 20;        // FIRE does 20 damage
-        case WATER: return 15;       // WATER does 15 damage
-        case EARTH: return 10;       // EARTH does 10 damage
-        case AIR: return 12;         // AIR does 12 damage
-        default: return 0;           // Default is no damage
+        case FIRE: return 20;
+        case WATER: return 15;
+        case EARTH: return 10;
+        case AIR: return 12; 
+        default: return 0; 
     }
 }
 Power_type Powers::getPower() const {
@@ -39,9 +39,9 @@ bool Powers::canUsePower(Powers opponentPower) const {
         (powers == FIRE && opponentPower.powers == WATER) ||
         (powers == EARTH && opponentPower.powers == AIR) || 
         (powers == AIR && opponentPower.powers == EARTH)) {
-        return true; // Elemental advantage
+        return true;
     }
-    return false; // Default: Ineffective power
+    return false; 
 }
 
 

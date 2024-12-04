@@ -1,5 +1,4 @@
 #include "../addit_header/Level.h"
-
 using namespace std;
 
 struct Map {

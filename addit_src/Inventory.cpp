@@ -3,7 +3,6 @@
 
 using namespace std;
 
-// Potion management
 void Inventory::addPotion(const Potion& potion) {
     potions.push_back(potion);
 }

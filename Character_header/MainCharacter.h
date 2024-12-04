@@ -33,7 +33,7 @@ public:
      pair<int, int> move(char action, int height, int width);
      pair<int, int> getPosition() const;
      void setPosition(int x, int y);
-     void updateElementForLevel(); // Updates element based on current level
+     void updateElementForLevel(); 
   
         void print() const override;
 

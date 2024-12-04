@@ -8,8 +8,6 @@ using namespace std;
 class MenuPrinter{
 
 public:
-// string getChar()const;
-// void setChar(string);
 static void printMainMenu();
 static void printGoblinStatus(int left, int killed);
 static void printStatus(const MainCharacter& player);

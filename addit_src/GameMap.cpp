@@ -55,7 +55,7 @@ void GameMap::killGoblin(int x, int y) {
 
     shared_ptr<Object>& obj = mapMatrix[y][x];
     if (obj->getType() == "Goblin") {
-        obj = make_shared<Object>();  // Replace with an empty object
+        obj = make_shared<Object>();
         goblinKilled++;
     } else {
         cerr << "No goblin at the specified coordinates" << endl;
