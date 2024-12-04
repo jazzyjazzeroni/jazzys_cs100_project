@@ -34,15 +34,24 @@ void Powers::setDamage(int damage) {
         cout << "Invalid damage value. Damage cannot be negative." << endl;
     }
 }
+<<<<<<< HEAD
 bool Powers::canUsePower(Power_type opponentPower) const {
     if ((powers == WATER && opponentPower == FIRE) || 
         (powers == FIRE && opponentPower == WATER) ||
         (powers == EARTH && opponentPower == AIR) || 
         (powers == AIR && opponentPower == EARTH)) {
+=======
+bool Powers::canUsePower(Powers opponentPower) const {
+    if ((powers == WATER && opponentPower.powers == FIRE) || 
+        (powers == FIRE && opponentPower.powers == WATER) ||
+        (powers == EARTH && opponentPower.powers == AIR) || 
+        (powers == AIR && opponentPower.powers == EARTH)) {
+>>>>>>> master
         return true; // Elemental advantage
     }
     return false; // Default: Ineffective power
 }
+<<<<<<< HEAD
 void Powers::usePower(Power_type opponentPower, const string &enemyAllegiance) {
     powerDamage = calculateDamage(); // Update power damage
 
@@ -84,6 +93,11 @@ void Powers::handleAttack(const string &goblinElement, int &health) const {
         throw runtime_error("Game Over");
     }
 }
+
+=======
+>>>>>>> master
+
+
 
 
 

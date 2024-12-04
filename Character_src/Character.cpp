@@ -1,77 +1,58 @@
-#include "../Character_header/Character.h"
-#include "../addit_header/Powers.h" // Include the header file for Powers class
+#include "../Character_header/Goblin.h"
 
-
-Character::Character(CharType type, const string &name, int health, int damage, const string &element)
-    : name(name), health(health), type(type), attackAmount(damage), powers(element) {}
-
-string Character::charTypeToString(CharType type) {
-    switch (type) {
-        case MAINCHAR: return "Theodore";
-        case GOBLIN: return "Goblin";
-        case DRAGON: return "Dragon";
-        default: return "Unknown";
+using namespace std;
+// the goblin constructor i believe
+Goblin::Goblin(const std::string &name, int health, int damage, const std::string &element)
+    : Character(GOBLIN, name, health, damage, element), powers(element), currentElement(element) {
+    if (element != "Fire" && element != "Water" && element != "Earth" && element != "Air") {
+        throw std::invalid_argument("Unknown power type: " + element);
     }
 }
 
-Power_type Character::getPower() const {
-        return powers.getPower();
+
+// returns goblin's current health
+int Goblin::getHealth() const {
+    return health;
+}
+
+ std::string Goblin::getGoblinType() const {
+        return currentElement;  // Return the type of the goblin (e.g., "Fire")
     }
 
-int Character::getHealth() const
-{
-    return this->health;
+// returns goblin's type of element maybe?
+string Goblin::getType() const{
+    return "Goblin";
 }
 
-string Character::getType() const {
-    return Character::charTypeToString(type);
+// set's goblin's health
+void Goblin::setHealth(int health) {
+    this->health = health;
 }
 
-void Character::setHealth(int health)
-{
-    if (health > 0) // Character still has health
-    {
-        if (health <= MAX_HEALTH)
-            this->health = health;
-        else
-            this->health = MAX_HEALTH;
-    } 
-   else // Character has no more health
-        this->health = 0;   
+// returns true if goblin is still alive
+bool Goblin::isalive() const {
+    return (getHealth() > 0);
 }
 
-bool Character::isalive() const
-{
-    return this->health > 0;
-}
 
-void Character::receiveDamage(int damage)
-{
-    if (damage > 0) {
-        health -= damage;
-        if (health < 0) {
-            health = 0;
-        }
+void Goblin::recieveDamage(int dam) {
+    this->health -= dam;
+    if (health < 0) {
+        health = 0;
     }
 }
 
-void Character::attack(Character &enemy)
-{
-    if (!enemy.isalive()) {
-        std::cout << name << " is already defeated! " << enemy.getType() << " cannot attack.\n";
-        return;
-    }
-    std::cout << name << " attacks " << enemy.getType() << attackAmount << " hits!\n";
-    enemy.receiveDamage(attackAmount);
-    if (!enemy.isalive()) {
-        std::cout << enemy.getType()<< " has been defeated!\n";
-    }
+
+
+// // probably used when the goblin goes to attack the player
+void Goblin::attack(Character &target) {
+    cout << getType() << " attacks " << target.getType() << "!" << endl;
+
+    int targetHealth = target.getHealth();
+    target.setHealth(targetHealth - powers.calculateDamage());
+    cout << target.getType() << "'s health after attack: " << target.getHealth() << endl;
 }
 
-// void Character::updateElementForLevel() {
-//     currentElement = level.getElementForLevel(level.getCurrentLevel());
-// }
-
-// Power_type Character::getCurrentElement() const {
-//     return currentElement;
-// }
+void Goblin::print() const {
+    cout << "Goblin: " << name << ", Health: " << health << ", Attack: " << attackAmount << endl;
+}

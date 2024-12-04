@@ -1,3 +1,4 @@
+<<<<<<< HEAD
 #ifndef INVENTORY_H
 #define INVENTORY_H
 
@@ -5,15 +6,25 @@
 #include <string>
 #include "Swords.h"
 #include "Potions.h"
+=======
 
-using namespace std;
+#ifndef INVENTORY_H
+#define INVENTORY_H
+
+#include <vector>
+#include <string>
+#include "./Potions.h"
+#include <iostream>
+#include <algorithm>
+>>>>>>> master
+
 
 class Inventory {
 private:
-    vector<Sword> swords;        // Vector to hold swords
-    vector<Potion> potions;      // Vector to hold potions
+    std::vector<Potion> potions{};      // Vector to hold potions
 
 public:
+<<<<<<< HEAD
     void addSword(const Sword &sword);
     void removeSword(const string &name);
     const Sword& getSword(const string &name) const;
@@ -31,3 +42,20 @@ public:
 };
 
 #endif // INVENTORY_H
+=======
+    Inventory() = default; // Default constructor
+    ~Inventory() = default; // Default destructor
+
+    // Potion management
+    void addPotion(const Potion& potion);
+    void removePotion(const std::string& name);
+    bool hasPotion(const std::string& name) const;
+    Potion getPotion(const std::string& name) const;
+    void usePotion(MainCharacter& );
+
+    // Print inventory contents
+    void print() const;
+};
+
+#endif
+>>>>>>> master

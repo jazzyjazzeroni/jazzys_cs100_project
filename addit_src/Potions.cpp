@@ -1,6 +1,5 @@
 #include "../addit_header/Potions.h"
-#include <iostream>
-#include <string>
+
 using namespace std;
 
 
@@ -29,6 +28,7 @@ void Potion::print() const {
     cout << "Name: " << type << ", Value: " << healingAmount << endl;
 }
 
+<<<<<<< HEAD
 // void Potion::healCharacter(MainCharacter &character) {
 //     if (type == "Small Potion") {
 //         character.heal(50); 
@@ -38,3 +38,14 @@ void Potion::print() const {
 //         character.heal(healingAmount); 
 //     }
 // }
+=======
+void Potion::healCharacter(MainCharacter &character) {
+    if (type == "Small Potion") {
+        character.heal(50); 
+    } else if (type == "Large Potion") {
+        character.heal(100); 
+    } else {
+        character.heal(healingAmount); 
+    }
+}
+>>>>>>> master

@@ -1,29 +1,58 @@
-#ifndef GOBLIN_H
-#define GOBLIN_H
+#include "../Character_header/Goblin.h"
 
-#include "Character.h"
-#include "../addit_header/Powers.h"
-#include "../addit_header/Object.h"
-using namespace std; 
+using namespace std;
+// the goblin constructor i believe
+Goblin::Goblin(const std::string &name, int health, int damage, const std::string &element)
+    : Character(GOBLIN, name, health, damage, element), powers(element), currentElement(element) {
+    if (element != "Fire" && element != "Water" && element != "Earth" && element != "Air") {
+        throw std::invalid_argument("Unknown power type: " + element);
+    }
+}
 
-class Goblin : public Character{
-    private:
-        Powers powers;
-        string currentElement;
-        
 
-public:
-    Goblin(const std::string &name, int health, int damage, const std::string &element);
-    Goblin(){};
-    int getHealth() const;
-    string getType() const override ;
-    string getGoblinType() const;
-    void setHealth(int);
-    bool isalive() const;
-    void recieveDamage(int);
-    void attack(Character &player) override;
-    void usePowers();
-    void print() const override;
-};
+// returns goblin's current health
+int Goblin::getHealth() const {
+    return health;
+}
 
-#endif
+ std::string Goblin::getGoblinType() const {
+        return currentElement;  // Return the type of the goblin (e.g., "Fire")
+    }
+
+// returns goblin's type of element maybe?
+string Goblin::getType() const{
+    return "Goblin";
+}
+
+// set's goblin's health
+void Goblin::setHealth(int health) {
+    this->health = health;
+}
+
+// returns true if goblin is still alive
+bool Goblin::isalive() const {
+    return (getHealth() > 0);
+}
+
+
+void Goblin::recieveDamage(int dam) {
+    this->health -= dam;
+    if (health < 0) {
+        health = 0;
+    }
+}
+
+
+
+// // probably used when the goblin goes to attack the player
+void Goblin::attack(Character &target) {
+    cout << getType() << " attacks " << target.getType() << "!" << endl;
+
+    int targetHealth = target.getHealth();
+    target.setHealth(targetHealth - powers.calculateDamage());
+    cout << target.getType() << "'s health after attack: " << target.getHealth() << endl;
+}
+
+void Goblin::print() const {
+    cout << "Goblin: " << name << ", Health: " << health << ", Attack: " << attackAmount << endl;
+}

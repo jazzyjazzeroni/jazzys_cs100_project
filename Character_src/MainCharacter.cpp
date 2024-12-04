@@ -5,110 +5,58 @@ using namespace std;
 
 // Constructor
 MainCharacter::MainCharacter(const std::string &name, int health, int damage, const std::string &element)
-    : Character(MAINCHAR, name, health, damage, element), powers(element), currentElement(powers.getPower()) {}
+    : Character(MAINCHAR, name, health, damage, element), powers(element), currentElement(powers.getPower()) {
+      x = 0; y = 0;  // inventory = std::make_shared<Inventory>();;
+    }
+MainCharacter::MainCharacter(int x, int y) : x(x), y(y) {
+    // inventory = make_shared<Inventory>(); // Initialize inventory
+}
 
-
-// void MainCharacter::attack(Character &opponent) {
-//     cout << name << " attacks " << opponent.getType() << " with a sword, dealing " << attackAmount << " damage!" << endl;
-//     opponent.receiveDamage(attackAmount);
-
-//     if (!opponent.isalive()) {
-//         std::cout << "The opponent has been defeated!" << std::endl;
-//     }
-// }
 
 void MainCharacter::heal(int amount) {
     health = min(health + amount, MAX_HEALTH); // Prevent exceeding MAX_HEALTH
     cout << name << " heals for " << amount << " health points. Current health: " << health << endl;
 }
 
-void MainCharacter::usePowers() {
-    cout << name << " uses a special power!" << endl;
-    powers.usePower(powers.getPower(), allegiance); // Assuming `activate()` is a method in `Powers`
-}
 
-// void MainCharacter::usePotion(const string &potionName) {
-//     for (auto &potion : inventory.getPotions()) { // Access potions directly
-//         if (potion.getType() == potionName) {
-//             heal(potion.getHealingAmount()); // Heal the character
-//             inventory.removePotion(potionName); // Remove used potion
-//             cout << "Used potion: " << potionName << endl;
-//             return;
-//         }
-//     }
-//     cout << "Potion not found in inventory!" << endl;
-// }
-
-// void Character::updateElementForLevel() {
-//     currentElement = level.getElementForLevel(level.getCurrentLevel());
-// }
-
-Power_type Character::getCurrentElement() const {
-    return currentElement;
-}
-
-void MainCharacter::usePotion(const string &potionName) {
-    if (inventory.hasPotion(potionName)) {
-        Potion potion = inventory.getPotion(potionName); // Get potion from inventory
-        heal(potion.getHealingAmount());                // Apply its effect
-        inventory.removePotion(potionName);             // Remove it from inventory
-        cout << "Used potion: " << potionName << endl;
-    } else {
-        cout << "Potion not found in inventory!" << endl;
-    }
-}
 // Add sword function (pick up a sword)
     void MainCharacter::equipSword(const Sword & newSword) {
         //todo give o[ption to swap or replace sword]
             // Swap or replace the sword
             this->sword = Sword(newSword.getValue(), "New Sword");
-            inventory.addSword(newSword);
+            // inventory->addSword(newSword);
+            sword = newSword; // Equip the sword
+    // inventory->addSword(newSword); // Add to inventory
+    // cout << "Equipped sword: " << newSword.getName() << endl;
     }
     // Equips a sword
-//     void MainCharacter::equipSword(Object & newSword) {
-//         if (newSword.getType() == "sword") {
-//             // Swap or replace the sword
-//             this->sword = Sword(newSword.getValue(), "New Sword");
-
-//         }
-//     for (const auto &sword : inventory.getSwords()) { // Access swords directly
-//         if (sword.getName() == swordName) {
-//             attackAmount = sword.getPower(); // Equip and update attack strength
-//             cout << "Equipped sword: " << swordName << " (Damage: " << sword.getPower() << ")" << endl;
-//             return;
-//         }
-//     }
-//     cout << "Sword not found in inventory!" << endl;
-// }
-  
 
     int MainCharacter::mod(int value, int limit) {
         return (value % limit + limit) % limit;  // Handle negative values properly
     }
 
-  std::shared_ptr<Object> MainCharacter::move(char action, GameMap &gameMap) {
+   pair<int, int>  MainCharacter::move(char action,int height, int width) {
     int newX = x, newY = y;
     
 
     if (action == 'w') { // Move up
-        newY = mod(y - 1, gameMap.getHeight());
+        newY = mod(y - 1, height);
     } else if (action == 's') { // Move down
-        newY = mod(y + 1, gameMap.getHeight());
+        newY = mod(y + 1, height);
     } else if (action == 'a') { // Move left
-        newX = mod(x - 1, gameMap.getWidth());
+        newX = mod(x - 1, width);
     } else if (action == 'd') { // Move right
-        newX = mod(x + 1, gameMap.getWidth());
+        newX = mod(x + 1, width);
     }
 
-    // x = newX;
-    // y = newY;
+    setPosition(newX, newY);
 
-        setPosition(newX, newY);
-
-    return gameMap.getObjectAt(newX, newY); // Ensure return type matches shared_ptr<Object>
+    return {newX, newY}; // Ensure return type matches shared_ptr<Object>
+    // return gameMap.getObjectAt(newX, newY); // Ensure return type matches shared_ptr<Object>
 }
 
     void MainCharacter::setPosition(int newX, int newY) {
+        cout << "the player is moved to " << newX << " " << newY << endl;
         x = newX;
     y = newY;
         // this->x = x;
@@ -122,13 +70,26 @@ void MainCharacter::usePotion(const string &potionName) {
 
 void MainCharacter::attack(Character &target) {
     if (target.getType() == "Goblin") { 
-        cout << name << " attacks the Goblin fiercely with a sword, dealing " 
-             << attackAmount << " damage!" << endl;
-    } else {
-        cout << name << " attacks the opponent with a sword, dealing " 
-             << attackAmount << " damage!" << endl;
-    }
-    target.receiveDamage(attackAmount);
+        Powers opponentPower = target.getPower();
+        string enemyAllegiance = opponentPower.getcurrentElement() ;
+        // cout << name << " attacks the Goblin fiercely with a sword, dealing " 
+        //      << attackAmount << " damage!" << endl;
+        if (powers.canUsePower(opponentPower)) {
+            int powerDamage = powers.calculateDamage(); // Update power damage
+            cout << "Elemental Power used against " << enemyAllegiance << "!" << endl;
+            cout << "Dealt " << powerDamage << " damage!" << endl;
+            target.receiveDamage(attackAmount+sword.getPower()+powerDamage);
+        } else if (powers.getPower() == opponentPower.getPower()) {
+            cout << "Warning: Using the same element against " << enemyAllegiance 
+                << " results in self-damage!" << endl;
+            cout << "Dealt no damage!" << endl;
+        } else {
+            cout << "This Elemental Power is ineffective against " << enemyAllegiance << "!" << endl;
+            cout << "Dealt no damage!" << endl;
+            target.attack(*this);
+            // todo take damage from goblin
+        }
+    } 
 
     if (!target.isalive()) {
         cout << "The opponent has been defeated!" << endl;
@@ -141,10 +102,3 @@ void MainCharacter::attack(Character &target) {
     void MainCharacter::print() const {
         cout << "Main Character: " << name << ", Health: " << health << ", Attack: " << attackAmount << endl;
     }
-    // todo Check if the character is alive
-    // bool MainCharacter::isalive() const {
-    //     return (getHealth() > 0);
-    // };
-
-
-    // todo Update the element based on the current level

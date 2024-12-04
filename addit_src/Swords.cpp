@@ -1,6 +1,5 @@
 #include "../addit_header/Swords.h"
-#include <iostream>
-#include <string>
+
 using namespace std;
 Sword::Sword() : Object("sword", 0), sword_dam(0), sword_name("Unnamed Sword") {}
 
@@ -25,6 +24,7 @@ void Sword::setName(const string& nm) {
     sword_name = nm;
 }
 
+<<<<<<< HEAD
 void Sword::dealDamage(Character &opponent) {
     if (this->sword_name == "Normal Sword") {
         damage(5);
@@ -42,6 +42,8 @@ void Sword::dealDamage(Character &opponent) {
     opponent.receiveDamage(sword_dam); 
 }
 
+=======
+>>>>>>> master
 void Sword::damage(int amount) {
     sword_dam = amount;
 }
