@@ -1,272 +1,91 @@
-#include "gtest/gtest.h"
-#include "../addit_header/Level.h"
+#include <gtest/gtest.h>
+#include "../Levels/Levels.cpp"
 
-TEST(LevelsTest, testLevel1) {
-    vector<vector<int>> level1Map = {
-        {0, 1, 0, 5, 0},  
-        {0, 0, 2, 0, 6},  
-        {4, 0, 0, 1, 0},  
-        {0, 5, 0, 4, 0} 
-    };
-    Level level1(1, level1Map, 2);
-    level1.start();
-    ASSERT_EQ(level1.getGameMap().getGoblinsKilled(), 2);
+// Test fixture
+class LevelsTest : public ::testing::Test {
+protected:
+    bool isOver = false;
+    Level defaultLevel;
+    Level customLevel;
+
+    void SetUp() override {
+        std::vector<std::vector<int>> map = {
+            {0, 1, 0},
+            {1, 0, 2},
+            {0, 2, 0}
+        };
+        customLevel = Level(10, map, 2, isOver);
+    }
+};
+
+// Test default constructor
+TEST_F(LevelsTest, DefaultConstructorInitialization) {
+    EXPECT_EQ(defaultLevel.getCurrentLevel(), 1);
+    EXPECT_THROW(defaultLevel.getElementForLevel(5), std::out_of_range);
 }
 
-TEST(LevelsTest, testLevel2) {
-    vector<vector<int>> level2Map = {
-        {0, 1, 0, 5, 4},  
-        {1, 0, 2, 0, 6},  
-        {4, 0, 0, 0, 2},  
-        {0, 5, 0, 4, 0},  
-        {0, 4, 0, 0, 0}
-    };
-    Level level2(2, level2Map, 3);
-    level2.start();
-    ASSERT_EQ(level2.getGameMap().getGoblinsKilled(), 3);
+// Test parameterized constructor
+TEST_F(LevelsTest, ParameterizedConstructorInitialization) {
+    EXPECT_EQ(customLevel.getCurrentLevel(), 1);
+    EXPECT_EQ(customLevel.getElementForLevel(2), FIRE);
 }
 
+// Test setLevel
+TEST_F(LevelsTest, SetLevel) {
+    customLevel.setLevel(2);
+    EXPECT_EQ(customLevel.getCurrentLevel(), 2);
 
-TEST(LevelsTest, testLevel3) {
-    vector<vector<int>> level3Map = {
-        {0, 1, 0, 5, 4},  
-        {1, 0, 2, 0, 6},  
-        {4, 0, 0, 0, 2},  
-        {0, 5, 3, 4, 0},  
-        {0, 4, 0, 0, 0},
-        {6, 4, 0, 4, 0}
-    };
-    Level level3(3, level3Map, 4);
-    level3.start();
-    ASSERT_EQ(level3.getGameMap().getGoblinsKilled(), 4);
+    EXPECT_THROW(customLevel.setLevel(0), std::invalid_argument);
+    EXPECT_THROW(customLevel.setLevel(10), std::invalid_argument);
 }
 
-TEST(LevelsTest, testLevel4) {
-    vector<vector<int>> level4Map = {
-        {0, 1, 0, 5, 4, 0},  
-        {1, 0, 2, 0, 6, 4},  
-        {4, 0, 0, 0, 2, 3},  
-        {0, 5, 3, 4, 0, 0},  
-        {0, 4, 0, 0, 0, 5},
-        {6, 4, 0, 4, 0, 4}
-    };
-    Level level4(4, level4Map, 5);
-    level4.start();
-    ASSERT_EQ(level4.getGameMap().getGoblinsKilled(), 5);
+// Test element retrieval
+TEST_F(LevelsTest, GetElementForLevel) {
+    EXPECT_EQ(customLevel.getElementForLevel(1), WATER);
+    EXPECT_THROW(customLevel.getElementForLevel(10), std::out_of_range);
 }
 
-vector<vector<int>> createLevelMatrix(int width, int height, int value = 0) {
-    return vector<vector<int>>(height, vector<int>(width, value));
+// Test takeAction with valid inputs
+TEST_F(LevelsTest, TakeActionValidInputs) {
+    std::istringstream input("i\nq\n");
+    std::cin.rdbuf(input.rdbuf()); // Redirect std::cin
+
+    customLevel.takeAction(); // Use inventory
+    EXPECT_FALSE(isOver);
+
+    customLevel.takeAction(); // Quit
+    EXPECT_TRUE(isOver);
 }
 
-TEST(LevelsTest, ValidInitialLevelTest) {
-    vector<vector<int>> layout = createLevelMatrix(3, 3);
-    layout[0][0] = 4; 
-    layout[1][1] = 1; 
-    layout[2][2] = 2; 
+// Test character movement at edges
+TEST_F(LevelsTest, MainCharacterMovement) {
+    MainCharacter character("Hero", 100, 10, "Fire");
 
-    Levels levels(layout, 3, 3);
+    auto pos = character.move('w', 3, 3); // Wrap around up
+    EXPECT_EQ(pos, std::make_pair(0, 2));
 
-    EXPECT_EQ(levels.getNumGoblins(), 1);
-    EXPECT_EQ(levels.getGoblinsKilled(), 0);
-
-    EXPECT_EQ(levels.getObjectAt(0, 0).getType(), "Goblin");
-    EXPECT_EQ(levels.getObjectAt(1, 1).getType(), "Sword");
-    EXPECT_EQ(levels.getObjectAt(2, 2).getType(), "Potion");
+    pos = character.move('s', 3, 3); // Wrap around down
+    EXPECT_EQ(pos, std::make_pair(0, 0));
 }
 
-TEST(LevelsTest, ValidInitializeLevelTest) {
-    vector<vector<int>> layout = {
-        {0, 1, 2},
-        {4, 5, 6},
-        {3, 4, 0}
-    };
-    Level levels(layout, 3, 3);
+// Test interaction with objects
+TEST_F(LevelsTest, ObjectInteractions) {
+    Object sword("Sword", 10);
+    Object potion("Potion", 5);
 
-    EXPECT_EQ(levels.getNumGoblins(), 2);
-    EXPECT_EQ(levels.getGoblinsKilled(), 0);
+    EXPECT_EQ(sword.getType(), "Sword");
+    EXPECT_EQ(potion.getValue(), 5);
 
-    EXPECT_EQ(levels.getObjectAt(0, 1).getType(), "Goblin");
-    EXPECT_EQ(levels.getObjectAt(1, 0).getType(), "Sword");
-    EXPECT_EQ(levels.getObjectAt(1, 1).getType(), "Potion");
+    MainCharacter character("Hero", 100, 10, "Fire");
+    character.equipSword(sword);
+    EXPECT_EQ(character.getAttack(), 20); // Assuming sword adds 10 attack
 }
 
-TEST(LevelsTest, EmptyLevelInitialiseTest) {
-    vector<vector<int>> layout = createLevelMatrix(5, 5);
-    Levels levels(layout, 5, 5);
+// Test invalid actions
+TEST_F(LevelsTest, InvalidAction) {
+    std::istringstream input("x\n");
+    std::cin.rdbuf(input.rdbuf());
 
-    EXPECT_EQ(levels.getNumGoblins(), 0);
-    EXPECT_EQ(levels.getGoblinsKilled(), 0);
-
-    EXPECT_EQ(levels.getObjectAt(0, 0).getType(), "Null");
-    EXPECT_EQ(levels.getObjectAt(1, 1).getType(), "Null");
-    EXPECT_EQ(levels.getObjectAt(2, 2).getType(), "Null");
-}
-
-TEST(LevelsTest, InvalidLevelSizeTest) {
-    vector<vector<int>> layout = {
-        {0, 1, 2},
-        {4, 5, 6},
-        {3, 4, 0},
-        {5, 5, 3} 
-    };
-    EXPECT_ANY_THROW(Levels levels(layout, 3, 3)); 
-}
-
-TEST(LevelsTest, KillGoblinValidTest) {
-    vector<vector<int>> layout = {
-        {0, 4, 0},
-        {0, 0, 0},
-        {4, 0, 0}
-    };
-    Levels levels(layout, 3, 3);
-
-    EXPECT_EQ(levels.getNumGoblins(), 2);
-    EXPECT_EQ(levels.getGoblinsKilled(), 0);
-
-    levels.killGoblin(1, 0);
-
-    EXPECT_EQ(levels.getGoblinsKilled(), 1);
-    EXPECT_EQ(levels.getObjectAt(1, 0).getType(), "Null");
-    EXPECT_EQ(levels.getNumGoblins(), 2); 
-}
-
-TEST(LevelsTest, KillGoblinInvalidCoordinateTest) {
-    vector<vector<int>> layout = {
-        {0, 4, 0},
-        {0, 0, 0},
-        {4, 0, 0}
-    };
-    Levels levels(layout, 3, 3);
-
-    EXPECT_ANY_THROW(levels.killGoblin(-10, 0)); 
-    EXPECT_ANY_THROW(levels.killGoblin(5, 0)); 
-    EXPECT_ANY_THROW(levels.killGoblin(0, 5)); 
-}
-
-TEST(LevelsTest, GetObjectAtValidTest) {
-    vector<vector<int>> layout = createLevelMatrix(3, 3);
-    layout[0][0] = 4;
-    layout[1][1] = 1;
-    layout[2][2] = 2;
-
-    Levels levels(layout, 3, 3);
-
-    EXPECT_EQ(levels.getObjectAt(0, 0).getType(), "Goblin");
-    EXPECT_EQ(levels.getObjectAt(1, 1).getType(), "Sword");
-    EXPECT_EQ(levels.getObjectAt(2, 2).getType(), "Potion");
-}
-
-TEST(LevelsTest, SetObjectValidTest) {
-    vector<vector<int>> layout = createLevelMatrix(3, 3);
-    Levels levels(layout, 3, 3);
-
-    Sword sword(10, "Long Sword");
-    levels.setObjectAt(1, 1, sword);
-
-    EXPECT_EQ(levels.getObjectAt(1, 1).getType(), "Sword");
-    EXPECT_EQ(levels.getObjectAt(1, 1).getValue(), 10);
-}
-
-TEST(LevelsTest, SetObjectInvalidTest) {
-    vector<vector<int>> layout = createLevelMatrix(3, 3);
-    Levels levels(layout, 3, 3);
-
-    Sword sword(10, "Long Sword");
-    EXPECT_ANY_THROW(levels.setObjectAt(-1, 0, sword)); 
-    EXPECT_ANY_THROW(levels.setObjectAt(5, 0, sword)); 
-    EXPECT_ANY_THROW(levels.setObjectAt(0, 5, sword)); 
-}
-
-TEST(LevelsTest, SetObjectAtInvalidObjectTest) {
-    vector<vector<int>> layout = createLevelMatrix(3, 3);
-    Levels levels(layout, 3, 3);
-
-    Sword sword(10, "Long Sword");
-    levels.setObjectAt(1, 1, sword);
-
-    Goblin goblin(10);
-    EXPECT_ANY_THROW(levels.setObjectAt(1, 1, goblin)); 
-}
-
-TEST(LevelsTest, GetNumGoblinsAndKilledTests) {
-    vector<vector<int>> layout = {
-        {4, 4, 4},
-        {0, 0, 0},
-        {0, 0, 0}
-    };
-    Levels levels(layout, 3, 3);
-
-    EXPECT_EQ(levels.getNumGoblins(), 3);
-    EXPECT_EQ(levels.getGoblinsKilled(), 0);
-
-    levels.killGoblin(0, 0);
-    levels.killGoblin(1, 0);
-
-    EXPECT_EQ(levels.getNumGoblins(), 3);
-    EXPECT_EQ(levels.getGoblinsKilled(), 2);
-}
-
-TEST(LevelsTest, testEmptyMap) {
-    vector<vector<int>> emptyMap = createLevelMatrix(5, 5);
-    Level emptyLevel(1, emptyMap, 0); 
-    emptyLevel.start();
-    ASSERT_EQ(emptyLevel.getGameMap().getGoblinsKilled(), 0);  
-}
-
-TEST(LevelsTest, testPlayerStartsOnGoblin) {
-    vector<vector<int>> level1Map = {
-        {0, 1, 0, 5, 0},  
-        {0, 0, 2, 0, 6},  
-        {4, 0, 0, 1, 0},  
-        {0, 5, 0, 4, 0}
-    };
-    Level level1(1, level1Map, 2);
-    level1.start();
-    ASSERT_EQ(level1.getGameMap().getGoblinsKilled(), 1); 
-}
-
-TEST(LevelsTest, testNonRectangularMap) {
-    vector<vector<int>> irregularMap = {
-        {0, 1, 0},
-        {4, 0, 2, 0},
-        {0, 0, 3}
-    };
-    EXPECT_ANY_THROW(Level level(1, irregularMap, 1)); 
-}
-
-TEST(LevelsTest, testMaxGoblins) {
-    vector<vector<int>> maxGoblinsMap = {
-        {4, 4, 4, 4, 4},  
-        {4, 4, 4, 4, 4},  
-        {4, 4, 4, 4, 4},  
-        {4, 4, 4, 4, 4}
-    };
-    Level maxGoblinsLevel(1, maxGoblinsMap, 16);  
-    maxGoblinsLevel.start();
-    ASSERT_EQ(maxGoblinsLevel.getGameMap().getGoblinsKilled(), 16); 
-}
-
-TEST(LevelsTest, testPlayerDiesOnFirstAction) {
-    vector<vector<int>> level1Map = {
-        {0, 1, 0, 5, 0},  
-        {0, 0, 2, 0, 6},  
-        {4, 0, 0, 1, 0},  
-        {0, 5, 0, 4, 0}
-    };
-    Level level1(1, level1Map, 1);  
-    level1.start();
-    ASSERT_EQ(level1.getGameMap().getGoblinsKilled(), 0); 
-}
-
-TEST(LevelsTest, testUnreachableGoblin) {
-    vector<vector<int>> level1Map = {
-        {0, 1, 0, 5, 0},  
-        {0, 0, 2, 0, 6},  
-        {4, 0, 0, 1, 0},  
-        {0, 5, 0, 4, 0}
-    };
-    Level unreachableLevel(1, level1Map, 3); 
-    unreachableLevel.start();
-    ASSERT_EQ(unreachableLevel.getGameMap().getGoblinsKilled(), 2);
+    customLevel.takeAction(); // Invalid action
+    EXPECT_FALSE(isOver);
 }
