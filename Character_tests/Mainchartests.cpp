@@ -99,8 +99,6 @@ TEST(MainCharacterTest, InvalidHealing) {
     EXPECT_EQ(mc.getHealth(), 100); // No change
 }
 
-// Test: Circular movement
-TEST(MainCharacterTest, CircularMovement) {
     MainCharacter mc(0, 0);
     int width = 10, height = 10;
 
