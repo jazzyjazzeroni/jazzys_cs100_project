@@ -1,166 +1,105 @@
 #include <gtest/gtest.h>
 #include "../Character_header/Character.h"
+#include "../Character_header/Goblin.h"
+#include "../Character_header/MainCharacter.h"
 
-// Define test fixture for Character class
+// Constants for testing
+const int MAX_HEALTH = 100;
+
+// Test fixture for the Character class
 class CharacterTest : public ::testing::Test {
 protected:
-    Character *mainChar;
-    Character *goblin;
-
-    void TearDown() override {
-        delete mainChar;
-        delete goblin;
-    }
+    Goblin goblin{"Goblin", 50, 10, "Fire"};
+    MainCharacter mainCharacter{"Theodore", 100, 20, "Water"};
 };
 
-// Test charTypeToString()
-TEST(CharacterTest, CharTypeToString) {
-    EXPECT_EQ(mainChar->getType(), "Theodore");
-    EXPECT_EQ(goblin->getType(), "Goblin");
+// Test Constructor Initialization
+TEST_F(CharacterTest, ConstructorInitialization) {
+    EXPECT_EQ(goblin.getHealth(), 50);
+    EXPECT_EQ(goblin.getType(), "Goblin");
+    EXPECT_EQ(mainCharacter.getHealth(), 100);
+    EXPECT_EQ(mainCharacter.getType(), "Theodore");
 }
 
-// Test getHealth()
-TEST(CharacterTest, GetHealth) {
-    EXPECT_EQ(mainChar->getHealth(), 100);
-    EXPECT_EQ(goblin->getHealth(), 50);
+// Test setHealth with edge cases
+TEST_F(CharacterTest, SetHealthEdgeCases) {
+    goblin.setHealth(200); // Beyond max health
+    EXPECT_EQ(goblin.getHealth(), MAX_HEALTH);
+
+    goblin.setHealth(-10); // Negative health
+    EXPECT_EQ(goblin.getHealth(), 0);
+
+    mainCharacter.setHealth(80); // Within valid range
+    EXPECT_EQ(mainCharacter.getHealth(), 80);
 }
 
-// Test setHealth()
-TEST(CharacterTest, SetHealth) {
-    mainChar->setHealth(80);
-    EXPECT_EQ(mainChar->getHealth(), 80);
+// Test receiveDamage with edge cases
+TEST_F(CharacterTest, ReceiveDamageEdgeCases) {
+    goblin.receiveDamage(20); // Regular damage
+    EXPECT_EQ(goblin.getHealth(), 30);
 
-    mainChar->setHealth(120); // Above MAX_HEALTH
-    EXPECT_EQ(mainChar->getHealth(), MAX_HEALTH);
+    goblin.receiveDamage(40); // Damage greater than current health
+    EXPECT_EQ(goblin.getHealth(), 0);
 
-    mainChar->setHealth(-10); // Negative health
-    EXPECT_EQ(mainChar->getHealth(), 0);
+    goblin.receiveDamage(-10); // Negative damage
+    EXPECT_EQ(goblin.getHealth(), 0); // Health should not change
 }
 
-// Test isalive()
-TEST(CharacterTest, IsAlive) {
-    EXPECT_TRUE(mainChar->isalive());
-    mainChar->setHealth(0);
-    EXPECT_FALSE(mainChar->isalive());
+// Test isalive method
+TEST_F(CharacterTest, IsAlive) {
+    EXPECT_TRUE(goblin.isalive());
+
+    goblin.setHealth(0);
+    EXPECT_FALSE(goblin.isalive());
 }
 
-// Test receiveDamage()
-TEST(CharacterTest, ReceiveDamage) {
-    goblin->receiveDamage(20);
-    EXPECT_EQ(goblin->getHealth(), 30);
+// Test attack method
+TEST_F(CharacterTest, Attack) {
+    goblin.attack(mainCharacter);
+    EXPECT_EQ(mainCharacter.getHealth(), 90); // Goblin does 10 damage
 
-    goblin->receiveDamage(40); // More than remaining health
-    EXPECT_EQ(goblin->getHealth(), 0);
+    mainCharacter.attack(goblin);
+    EXPECT_EQ(goblin.getHealth(), 10); // MainCharacter does 20 damage
 }
 
-// Test attack()
-TEST(CharacterTest, Attack) {
-    mainChar->attack(*goblin);
-    EXPECT_EQ(goblin->getHealth(), 30);
+// Test character defeated scenario
+TEST_F(CharacterTest, AttackDefeatedCharacter) {
+    goblin.setHealth(0);
+    EXPECT_FALSE(goblin.isalive());
 
-    mainChar->attack(*goblin);
-    mainChar->attack(*goblin); // Goblin should now be at 0 health
-    EXPECT_EQ(goblin->getHealth(), 0);
-    EXPECT_FALSE(goblin->isalive());
+    // Attempt to attack a defeated Goblin
+    mainCharacter.attack(goblin);
+    EXPECT_EQ(goblin.getHealth(), 0); // Health should remain 0
 }
 
-// Test getPower()
-TEST(CharacterTest, GetPower) {
-    EXPECT_EQ(mainChar->getPower(), "Fire");
-    EXPECT_EQ(goblin->getPower(), "Earth");
-}
-TEST(CharacterTest, ZeroHealthInitialization) {
-    Character deadChar(MAINCHAR, "DeadCharacter", 0, 15, "Dark");
-    EXPECT_EQ(deadChar.getHealth(), 0);
-    EXPECT_FALSE(deadChar.isalive());
-}
+// Test heal method (MainCharacter specific)
+TEST_F(CharacterTest, Heal) {
+    mainCharacter.receiveDamage(50); // Reduce health to 50
+    EXPECT_EQ(mainCharacter.getHealth(), 50);
 
-// Test setHealth with zero
-TEST(CharacterTest, SetHealthToZero) {
-    goblin->setHealth(0);
-    EXPECT_EQ(goblin->getHealth(), 0);
-    EXPECT_FALSE(goblin->isalive());
+    mainCharacter.heal(30); // Heal by 30
+    EXPECT_EQ(mainCharacter.getHealth(), 80);
+
+    mainCharacter.heal(50); // Heal exceeding max health
+    EXPECT_EQ(mainCharacter.getHealth(), MAX_HEALTH);
 }
 
-// Test negative health initialization
-TEST(CharacterTest, NegativeHealthInitialization) {
-    Character woundedChar(GOBLIN, "WoundedGoblin", -10, 15, "Earth");
-    EXPECT_EQ(woundedChar.getHealth(), 0); // Should be corrected to 0
-    EXPECT_FALSE(woundedChar.isalive());
+// Test move method (MainCharacter specific)
+TEST_F(CharacterTest, Movement) {
+    auto position = mainCharacter.move('w', 10, 10); // Move up
+    EXPECT_EQ(position, std::make_pair(0, 9));
+
+    position = mainCharacter.move('s', 10, 10); // Move down
+    EXPECT_EQ(position, std::make_pair(0, 0));
+
+    position = mainCharacter.move('a', 10, 10); // Move left
+    EXPECT_EQ(position, std::make_pair(9, 0));
+
+    position = mainCharacter.move('d', 10, 10); // Move right
+    EXPECT_EQ(position, std::make_pair(0, 0));
 }
 
-// Test overkill damage
-TEST(CharacterTest, OverkillDamage) {
-    goblin->receiveDamage(100); // Damage exceeds current health
-    EXPECT_EQ(goblin->getHealth(), 0);
-    EXPECT_FALSE(goblin->isalive());
-}
-
-// Test attack on a dead character
-TEST(CharacterTest, AttackDeadCharacter) {
-    goblin->setHealth(0); // Goblin is dead
-    mainChar->attack(*goblin); // Should not change goblin's health
-    EXPECT_EQ(goblin->getHealth(), 0);
-    EXPECT_FALSE(goblin->isalive());
-}
-
-// Test self-attack
-TEST(CharacterTest, SelfAttack) {
-    mainChar->attack(*mainChar);
-    EXPECT_EQ(mainChar->getHealth(), 80); // Health reduced by attack amount
-    EXPECT_TRUE(mainChar->isalive());
-}
-
-// Test extreme health values
-TEST(CharacterTest, SetExtremeHealthValues) {
-    mainChar->setHealth(9999); // Set health to a value much larger than MAX_HEALTH
-    EXPECT_EQ(mainChar->getHealth(), MAX_HEALTH);
-
-    mainChar->setHealth(-9999); // Set health to a value much less than 0
-    EXPECT_EQ(mainChar->getHealth(), 0);
-}
-
-// Test minimal non-zero damage
-TEST(CharacterTest, MinimalNonZeroDamage) {
-    goblin->receiveDamage(1); // Minimal non-zero damage
-    EXPECT_EQ(goblin->getHealth(), 49);
-    EXPECT_TRUE(goblin->isalive());
-}
-
-// Test attack with zero damage
-TEST(CharacterTest, ZeroDamageAttack) {
-    Character weakChar(MAINCHAR, "WeakTheodore", 100, 0, "Fire");
-    weakChar.attack(*goblin); // Should not reduce goblin's health
-    EXPECT_EQ(goblin->getHealth(), 50);
-    EXPECT_TRUE(goblin->isalive());
-}
-
-// Test simultaneous death in battle
-TEST(CharacterTest, SimultaneousDeath) {
-    mainChar->setHealth(20); // Reduce health so both characters can die in one attack
-    goblin->attack(*mainChar);
-    mainChar->attack(*goblin);
-
-    EXPECT_EQ(mainChar->getHealth(), 0);
-    EXPECT_FALSE(mainChar->isalive());
-
-    EXPECT_EQ(goblin->getHealth(), 0);
-    EXPECT_FALSE(goblin->isalive());
-}
-
-// Test multiple consecutive attacks
-TEST(CharacterTest, MultipleConsecutiveAttacks) {
-    for (int i = 0; i < 3; ++i) {
-        mainChar->attack(*goblin);
-    }
-    EXPECT_EQ(goblin->getHealth(), 0);
-    EXPECT_FALSE(goblin->isalive());
-}
-
-// Test attack when attacker is dead
-TEST(CharacterTest, DeadCharacterAttack) {
-    mainChar->setHealth(0); // Attacker is dead
-    mainChar->attack(*goblin);
-    EXPECT_EQ(goblin->getHealth(), 50); // Goblin's health remains unchanged
-    EXPECT_TRUE(goblin->isalive());
+// Test invalid power type for Goblin
+TEST(CharacterEdgeCases, InvalidPowerType) {
+    EXPECT_THROW(Goblin("Goblin", 50, 10, "InvalidType"), std::invalid_argument);
 }
