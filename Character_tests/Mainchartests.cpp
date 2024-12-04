@@ -5,7 +5,7 @@
 #include "../addit_header/Potions.h"
 
 // Test: Constructor Initialization
-TEST(MainCharacterTest, ConstructorInitialization) {
+TEST(MainCharacterTestSuite, testDefaultConstructor) {
     MainCharacter mc("Theodore", 100, 5, "Air");
 
     EXPECT_EQ(mc.getHealth(), 100);
@@ -14,7 +14,7 @@ TEST(MainCharacterTest, ConstructorInitialization) {
 }
 
 // Test: Movement at boundaries (edge cases)
-TEST(MainCharacterTest, MovementBoundaries) {
+TEST(MainCharacterTestSuite, testCharacterMovement) {
     MainCharacter mc(0, 0);
     int width = 5, height = 5;
 
@@ -31,8 +31,7 @@ TEST(MainCharacterTest, MovementBoundaries) {
     EXPECT_EQ(newPosition, std::make_pair(0, 0)); // Wrap around to the left
 }
 
-// Test: Healing (normal and edge cases)
-TEST(MainCharacterTest, Healing) {
+TEST(MainCharacterTestSuite, testHealingValid) {
     MainCharacter mc("Theodore", 90, 15, "Air");
     mc.heal(15); // Normal heal
     EXPECT_EQ(mc.getHealth(), 100);
@@ -40,13 +39,33 @@ TEST(MainCharacterTest, Healing) {
     mc.heal(10); // Overheal test
     EXPECT_EQ(mc.getHealth(), 100);
 
-    MainCharacter lowHealthMc("Theodore", 1, 15, "Water");
+
+}
+
+TEST(MainCharacterTestSuite, testHealingBeyondLimit) {
+    MainCharacter mc("Theodore", 90, 15, "Air");
+
+    mc.heal(110); // Healing beyond the range
+    EXPECT_EQ(mc.getHealth(), 100);
+}
+
+TEST(MainCharacterTestSuite, testHealingLowCapacity) {
+    MainCharacter mc("Theodore", 90, 15, "Air");
+
+    MainCharacter lowHealthMc("Theodore", 1, 15, "Air");
     lowHealthMc.heal(5); // Low health heal
     EXPECT_EQ(lowHealthMc.getHealth(), 6);
 }
 
+TEST(MainCharacterTestSuite, testHealingInvalidNegativeCase) {
+    MainCharacter mc("Theodore", 90, 15, "Air");
+
+    MainCharacter lowHealthMc("Theodore", 1, 15, "Air");
+    lowHealthMc.heal(-5); // Low health heal
+    EXPECT_FALSE(lowHealthMc.getHealth()) << "INVALID: Healing cannot be negative!";
+}
 // Test: Equipping a sword
-TEST(MainCharacterTest, EquipSword) {
+TEST(MainCharacterTestSuite, EquipSword) {
     MainCharacter mc("Theodore", 100, 15, "Fire");
     Sword basicSword(10, "Basic Sword");
 
@@ -57,29 +76,28 @@ TEST(MainCharacterTest, EquipSword) {
 }
 
 // Test: Attacking a Goblin
-TEST(MainCharacterTest, AttackGoblin) {
+TEST(MainCharacterTestSuite, AttackGoblin) {
     MainCharacter mc("Theodore", 100, 15, "Fire");
-    Goblin goblin("Enemy Goblin", 50, 10, "Water");
+    Goblin goblin("Air Goblin", 50, 10, "Air");
 
     mc.attack(goblin);
-    EXPECT_LT(goblin.getHealth(), 50); // Goblin should lose health
-    EXPECT_TRUE(goblin.isalive()); // Goblin is still alive
+    EXPECT_LT(goblin.getHealth(), 50); 
+    EXPECT_TRUE(goblin.isalive()); 
 
-    mc.attack(goblin); // Continue attacking
+    mc.attack(goblin); 
     EXPECT_FALSE(goblin.isalive()); // Goblin is defeated
 }
 
-// Test: Attacking with Elemental Mismatch
-TEST(MainCharacterTest, AttackElementMismatch) {
+TEST(MainCharacterTestSuite, testInvalidAttack) {
     MainCharacter mc("Theodore", 100, 15, "Fire");
-    Goblin goblin("Enemy Goblin", 50, 10, "Fire"); // Same element
+    Goblin goblin("Fire Goblin", 50, 10, "Fire"); // Same element
 
     mc.attack(goblin); // Should result in no damage
     EXPECT_EQ(goblin.getHealth(), 50); // Health should remain the same
 }
 
 // Test: Using a potion
-TEST(MainCharacterTest, UsePotion) {
+TEST(MainCharacterTestSuite, testUsePotionSmall) {
     MainCharacter mc("Theodore", 50, 15, "Fire");
     Potion smallPotion(50, "Small Potion");
 
@@ -92,18 +110,41 @@ TEST(MainCharacterTest, UsePotion) {
     EXPECT_EQ(mc.getHealth(), 100); // Fully healed, no overheal
 }
 
+TEST(MainCharacterTestSuite, testUsePotionSmallInvalid) {
+    MainCharacter mc("Theodore", 50, 15, "Fire");
+    Potion smallPotion(-20, "Small Potion");
+
+    smallPotion.healCharacter(mc);
+    EXPECT_FALSE(mc.getHealth()) << "ERROR: Small potion is negative in value";
+}
+
+
+TEST(MainCharacterTestSuite, testUsePotionBig) {
+    MainCharacter mc("Theodore", 50, 15, "Fire");
+    Potion bigPotion(-50, "Big Potion");
+
+    bigPotion.healCharacter(mc);
+    EXPECT_EQ(mc.getHealth(), 100); // Fully healed
+
+    Potion largePotion(100, "Big Potion");
+    mc.heal(-20); // Simulate health loss
+    largePotion.healCharacter(mc);
+    EXPECT_EQ(mc.getHealth(), 100); // Fully healed, no overheal
+}
+
+TEST(MainCharacterTestSuite, testUsePotionBigInvalid) {
+    MainCharacter mc("Theodore", 50, 15, "Fire");
+    Potion bigPotion(-50, "Big Potion");
+
+    bigPotion.healCharacter(mc);
+    EXPECT_FALSE(mc.getHealth()) << "ERROR: Big potion is negative in value";
+}
+
+
 // Test: Invalid position (negative health recovery)
-TEST(MainCharacterTest, InvalidHealing) {
+TEST(MainCharacterTestSuite, InvalidHealing) {
     MainCharacter mc("Theodore", 100, 15, "Fire");
     mc.heal(-10); // Invalid negative healing
     EXPECT_EQ(mc.getHealth(), 100); // No change
 }
 
-    MainCharacter mc(0, 0);
-    int width = 10, height = 10;
-
-    for (int i = 0; i < 11; ++i) {
-        mc.move('d', height, width); // Move right in a loop
-    }
-    EXPECT_EQ(mc.getPosition(), std::make_pair(1, 0));
-}
