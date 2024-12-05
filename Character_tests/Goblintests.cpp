@@ -41,3 +41,11 @@ TEST(GoblinTestSuite, testEarthGobDefaultConstructor) {
 
 }
 
+// i don't think setHealth even gets used but i made a test for it anyways
+TEST(GoblinTestSuite, testSetGoblinHealth) {
+    Goblin gob("Goblin", 65, 5, "Earth");
+    gob.setHealth(75);
+
+    EXPECT_EQ(gob.getHealth(), 75);
+}
+
