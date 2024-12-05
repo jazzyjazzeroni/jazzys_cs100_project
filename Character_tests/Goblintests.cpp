@@ -31,3 +31,13 @@ TEST(GoblinTestSuite, testAirGobDefaultConstructor) {
 
 }
 
+// Test: Constructor Initialization for earth goblins
+TEST(GoblinTestSuite, testEarthGobDefaultConstructor) {
+    Goblin gob("Goblin", 65, 5, "Earth");
+
+    EXPECT_EQ(gob.getHealth(), 65);
+    EXPECT_EQ(gob.getType(), "Goblin");
+    EXPECT_EQ(gob.getGoblinType(), "Earth");
+
+}
+
