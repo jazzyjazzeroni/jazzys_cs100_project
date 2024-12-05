@@ -40,6 +40,7 @@ public:
     int getGoblinsKilled() const;
     int getWidth() const;
     int getHeight() const;
+    void printMap(int playerX, int playerY) const;
 };
 
 #endif
