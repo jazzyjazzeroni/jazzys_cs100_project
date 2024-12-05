@@ -5,7 +5,7 @@ using namespace std;
 
 // Test: Constructor Initialization for fire goblins
 TEST(GoblinTestSuite, testFireGobDefaultConstructor) {
-    Goblin gob("Goblin", 100, 15, "Fire");
+    Goblin gob("Fire Goblin", 100, 15, "Fire");
 
     EXPECT_EQ(gob.getHealth(), 100);
     EXPECT_EQ(gob.getType(), "Goblin");
@@ -15,7 +15,7 @@ TEST(GoblinTestSuite, testFireGobDefaultConstructor) {
 
 // Test: Constructor Initialization for water goblins
 TEST(GoblinTestSuite, testWaterGobDefaultConstructor) {
-    Goblin gob("Goblin", 75, 10, "Water");
+    Goblin gob("Water Goblin", 75, 10, "Water");
 
     EXPECT_EQ(gob.getHealth(), 75);
     EXPECT_EQ(gob.getType(), "Goblin");
@@ -25,7 +25,7 @@ TEST(GoblinTestSuite, testWaterGobDefaultConstructor) {
 
 // Test: Constructor Initialization for air goblins
 TEST(GoblinTestSuite, testAirGobDefaultConstructor) {
-    Goblin gob("Goblin", 70, 7, "Air");
+    Goblin gob("Air Goblin", 70, 7, "Air");
 
     EXPECT_EQ(gob.getHealth(), 70);
     EXPECT_EQ(gob.getType(), "Goblin");
@@ -35,7 +35,7 @@ TEST(GoblinTestSuite, testAirGobDefaultConstructor) {
 
 // Test: Constructor Initialization for earth goblins
 TEST(GoblinTestSuite, testEarthGobDefaultConstructor) {
-    Goblin gob("Goblin", 65, 5, "Earth");
+    Goblin gob("Earth Goblin", 65, 5, "Earth");
 
     EXPECT_EQ(gob.getHealth(), 65);
     EXPECT_EQ(gob.getType(), "Goblin");
@@ -52,7 +52,7 @@ TEST(GoblinTestSuite, testInvalidGobDefaultConstructor) {
 
 // i don't think setHealth even gets used but i made a test for it anyways
 TEST(GoblinTestSuite, testSetGoblinHealth) {
-    Goblin gob("Goblin", 65, 5, "Earth");
+    Goblin gob("Earth Goblin", 65, 5, "Earth");
     gob.setHealth(75);
 
     EXPECT_EQ(gob.getHealth(), 75);
@@ -60,14 +60,14 @@ TEST(GoblinTestSuite, testSetGoblinHealth) {
 
 // Test: tests if isAlive correctly returns true for an alive goblin
 TEST(GoblinTestSuite, testGoblinIsAlive) {
-    Goblin gob("Goblin", 65, 5, "Earth");
+    Goblin gob("Earth Goblin", 65, 5, "Earth");
 
     EXPECT_TRUE(gob.isalive());
 }
 
 // Test: tests if isAlive correctly returns false for a dead goblin
 TEST(GoblinTestSuite, testGoblinIsAlive) {
-    Goblin gob("Goblin", 65, 5, "Earth");
+    Goblin gob("Earth Goblin", 65, 5, "Earth");
     gob.setHealth(0);
 
     EXPECT_FALSE(gob.isalive());
@@ -75,7 +75,7 @@ TEST(GoblinTestSuite, testGoblinIsAlive) {
 
 // Test: tests if receiveDamage correctly updates goblin's health
 TEST(GoblinTestSuite, testGoblinReceiveCorrectDamage) {
-    Goblin gob("Goblin", 65, 5, "Earth");
+    Goblin gob("Earth Goblin", 65, 5, "Earth");
     gob.recieveDamage(25);
 
     EXPECT_EQ(gob.getHealth(), 40);
@@ -84,13 +84,14 @@ TEST(GoblinTestSuite, testGoblinReceiveCorrectDamage) {
 // Test: tests if receiveDamage correctly returns 0 for any
 // attack that is inflicted on it that's more than its current health
 TEST(GoblinTestSuite, testGoblinReceiveOverkillDamage) {
-    Goblin gob("Goblin", 65, 5, "Earth");
+    Goblin gob("Earth Goblin", 65, 5, "Earth");
     gob.receiveDamage(70);
 
     EXPECT_EQ(gob.getHealth(), 0);
 }
 
 // Test: Goblin attacking the player
+// might need tweaks
 TEST(GoblinTestSuite, testAttackPlayer) {
     MainCharacter mc("Theodore", 100, 15, "Fire");
     Goblin gob("Air Goblin", 50, 50, "Air");
