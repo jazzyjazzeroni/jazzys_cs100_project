@@ -11,7 +11,7 @@ protected:
 };
 
 // Test Constructor Initialization
-TEST_F(PowersTest, ConstructorInitialization) {
+TEST_F(PowersTest, testDefaultConstructor) {
     EXPECT_EQ(firePower.getPower(), FIRE);
     EXPECT_EQ(waterPower.getPower(), WATER);
     EXPECT_EQ(earthPower.getPower(), EARTH);
@@ -19,16 +19,23 @@ TEST_F(PowersTest, ConstructorInitialization) {
 }
 
 // Test invalid power type
-TEST(PowersEdgeCases, InvalidPowerType) {
-    EXPECT_THROW(Powers("Invalid"), std::invalid_argument);
+TEST(PowersEdgeCases, testInvalidPowerTypeThrow) {
+    EXPECT_THROW(Powers("Invalid"), std::invalid_argument); // CANNOT OPERATE WITHOUT THE std::invalid_argument
 }
 
 // Test calculateDamage method
-TEST_F(PowersTest, CalculateDamage) {
+TEST_F(PowersTest, testCalculateDamageValid) {
     EXPECT_EQ(firePower.calculateDamage(), 20);
     EXPECT_EQ(waterPower.calculateDamage(), 15);
     EXPECT_EQ(earthPower.calculateDamage(), 10);
     EXPECT_EQ(airPower.calculateDamage(), 12);
+}
+
+TEST_F(PowersTest, testCalculateDamageInvalid) {
+    EXPECT_EQ(firePower.calculateDamage(), -20) << "ERROR: calculateDamage cannot hold a negative value for any power type";
+    EXPECT_EQ(waterPower.calculateDamage(), -15) << "ERROR: calculateDamage cannot hold a negative value for any power type";
+    EXPECT_EQ(earthPower.calculateDamage(), -10) << "ERROR: calculateDamage cannot hold a negative value for any power type";
+    EXPECT_EQ(airPower.calculateDamage(), -12) << "ERROR: calculateDamage cannot hold a negative value for any power type";
 }
 
 // Test setPower and getPower methods
