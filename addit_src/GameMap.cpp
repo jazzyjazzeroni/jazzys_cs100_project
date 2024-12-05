@@ -22,24 +22,24 @@ GameMap::GameMap(const vector<vector<int>>& initMatrix, int w, int h) : height(h
                 mapMatrix[y][x] = make_shared<Goblin>("Goblin", 75, 10, "Water");
                 numGoblin++;
                 break;
-            case 4:
+            case 3:
                 mapMatrix[y][x] = make_shared<Goblin>("Goblin", 70, 7, "Air");
                 numGoblin++;
                 break;
-            case 5:
+            case 4:
                 mapMatrix[y][x] = make_shared<Goblin>("Goblin", 65, 5, "Earth");
                 numGoblin++;
                 break;
-            case 6:
+            case 5:
                 mapMatrix[y][x] = make_shared<Sword>(10, "Basic Sword");
                 break;
-            case 7:
+            case 6:
                 mapMatrix[y][x] = make_shared<Sword>(15, "Greater Sword");
                 break;
-            case 8:
+            case 7:
                 mapMatrix[y][x] = make_shared<Potion>(5, "Small Potion");
                 break;
-            case 9:
+            case 8:
                 mapMatrix[y][x] = make_shared<Potion>(10, "Large Potion");
                 break;
             default:
