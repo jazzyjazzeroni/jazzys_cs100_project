@@ -1,13 +1,13 @@
 #ifndef LEVEL_H
 #define LEVEL_H
+using namespace std;
 #include "Inventory.h"
 #include "GameMap.h"
-//#include "../addit_header/MenuPrinter.h"
+#include "MenuPrinter.h"
 #include <vector>
 #include <map>
 #include <iostream>
 #include <string>
-using namespace std;
 
 
 class Level {
@@ -17,7 +17,6 @@ private:
     std::map<int, Power_type> levelElements{}; // Map level number to element type
     MainCharacter player;
     Inventory inventory;
-    // Dragon dragon;
     int goblinGoal{};
     int levelNumber{};
     bool end{};

@@ -8,7 +8,6 @@ string Character::charTypeToString(CharType type) {
     switch (type) {
         case MAINCHAR: return "Theodore";
         case GOBLIN: return "Goblin";
-        case DRAGON: return "Dragon";
         default: return "Unknown";
     }
 }
@@ -28,14 +27,14 @@ string Character::getType() const {
 
 void Character::setHealth(int health)
 {
-    if (health > 0) // Character still has health
+    if (health > 0)
     {
         if (health <= MAX_HEALTH)
             this->health = health;
         else
             this->health = MAX_HEALTH;
     } 
-   else // Character has no more health
+   else 
         this->health = 0;   
 }
 
@@ -66,11 +65,3 @@ void Character::attack(Character &enemy)
         std::cout << enemy.getType()<< " has been defeated!\n";
     }
 }
-
-// void Character::updateElementForLevel() {
-//     currentElement = level.getElementForLevel(level.getCurrentLevel());
-// }
-
-// Power_type Character::getCurrentElement() const {
-//     return currentElement;
-// }

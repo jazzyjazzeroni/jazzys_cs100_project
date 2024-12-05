@@ -1,4 +1,3 @@
-#include <gtest/gtest.h>
-#include "../Character_header/Goblin.h"
 
-//REVAMP
+#include <gtest/gtest.h>
+#include "../Character_header/Goblin.h

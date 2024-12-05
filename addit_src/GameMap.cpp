@@ -1,10 +1,4 @@
-<<<<<<< HEAD
-#include <vector>
 #include "../addit_header/GameMap.h"
-#include <memory> // For shared_ptr
-=======
-#include "../addit_header/GameMap.h"
->>>>>>> master
 
 using namespace std;
 
@@ -61,7 +55,7 @@ void GameMap::killGoblin(int x, int y) {
 
     shared_ptr<Object>& obj = mapMatrix[y][x];
     if (obj->getType() == "Goblin") {
-        obj = make_shared<Object>();  // Replace with an empty object
+        obj = make_shared<Object>();
         goblinKilled++;
     } else {
         cerr << "No goblin at the specified coordinates" << endl;
@@ -106,7 +100,3 @@ int GameMap::getHeight() const {
     return height;
 }
 
-<<<<<<< HEAD
-=======
-
->>>>>>> master

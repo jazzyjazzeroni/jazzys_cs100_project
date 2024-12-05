@@ -1,9 +1,7 @@
 #ifndef SWORDS_H
 #define SWORDS_H
 #include <string>
-// #include "../Character_header/Character.h"
 #include "Object.h"
-// #include "../Character_header/Character.h"
 #include <iostream>
 #include <string>
 
@@ -23,9 +21,7 @@ Sword();
     string getName() const;
     void setPower(int pwr);
     void setName(const string& nm);
-    // void dealDamage(Character &);
-    void damage(int amount); // declare damage method
-    // todo add print
+    void damage(int amount);
     void print() const override;
 };
 
