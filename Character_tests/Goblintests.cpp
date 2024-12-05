@@ -21,3 +21,13 @@ TEST(GoblinTestSuite, testWaterGobDefaultConstructor) {
 
 }
 
+// Test: Constructor Initialization for air goblins
+TEST(GoblinTestSuite, testAirGobDefaultConstructor) {
+    Goblin gob("Goblin", 70, 7, "Air");
+
+    EXPECT_EQ(gob.getHealth(), 70);
+    EXPECT_EQ(gob.getType(), "Goblin");
+    EXPECT_EQ(gob.getGoblinType(), "Air");
+
+}
+
