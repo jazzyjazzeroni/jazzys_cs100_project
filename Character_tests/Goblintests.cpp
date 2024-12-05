@@ -1,5 +1,6 @@
 #include <gtest/gtest.h>
 #include "../Character_header/Goblin.h"
+#include "../Character_header/MainCharacter.h"
 using namespace std;
 
 // Test: Constructor Initialization for fire goblins
@@ -89,3 +90,15 @@ TEST(GoblinTestSuite, testGoblinReceiveOverkillDamage) {
     EXPECT_EQ(gob.getHealth(), 0);
 }
 
+// Test: Goblin attacking the player
+TEST(GoblinTestSuite, testAttackPlayer) {
+    MainCharacter mc("Theodore", 100, 15, "Fire");
+    Goblin gob("Air Goblin", 50, 50, "Air");
+
+    gob.attack(mc);
+    EXPECT_LT(mc.getHealth(), 100);
+    EXPECT_TRUE(mc.isalive());
+
+    gob.attack(mc);
+    EXPECT_FALSE(mc.isalive()); // theo ded  
+}

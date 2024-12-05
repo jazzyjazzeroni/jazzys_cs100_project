@@ -43,8 +43,6 @@ void Goblin::recieveDamage(int dam) {
     }
 }
 
-
-
 // // probably used when the goblin goes to attack the player
 void Goblin::attack(Character &target) {
     cout << getType() << " attacks " << target.getType() << "!" << endl;
