@@ -15,11 +15,12 @@ int Goblin::getHealth() const {
     return health;
 }
 
- std::string Goblin::getGoblinType() const {
+// returns the goblin's element type
+std::string Goblin::getGoblinType() const {
         return currentElement;  
     }
 
-// returns goblin's type of element maybe?
+// returns that this is a goblin
 string Goblin::getType() const{
     return "Goblin";
 }
