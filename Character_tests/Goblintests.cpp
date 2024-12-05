@@ -1,5 +1,6 @@
 #include <gtest/gtest.h>
 #include "../Character_header/Goblin.h"
+using namespace std;
 
 // Test: Constructor Initialization for fire goblins
 TEST(GoblinTestSuite, testFireGobDefaultConstructor) {
@@ -54,5 +55,20 @@ TEST(GoblinTestSuite, testSetGoblinHealth) {
     gob.setHealth(75);
 
     EXPECT_EQ(gob.getHealth(), 75);
+}
+
+// Test: tests if isAlive correctly returns true for an alive goblin
+TEST(GoblinTestSuite, testGoblinIsAlive) {
+    Goblin gob("Goblin", 65, 5, "Earth");
+
+    EXPECT_TRUE(gob.isalive());
+}
+
+// Test: tests if isAlive correctly returns false for a dead goblin
+TEST(GoblinTestSuite, testGoblinIsAlive) {
+    Goblin gob("Goblin", 65, 5, "Earth");
+    gob.setHealth(0);
+
+    EXPECT_FALSE(gob.isalive());
 }
 
