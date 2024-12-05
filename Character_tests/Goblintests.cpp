@@ -72,3 +72,20 @@ TEST(GoblinTestSuite, testGoblinIsAlive) {
     EXPECT_FALSE(gob.isalive());
 }
 
+// Test: tests if receiveDamage correctly updates goblin's health
+TEST(GoblinTestSuite, testGoblinReceiveCorrectDamage) {
+    Goblin gob("Goblin", 65, 5, "Earth");
+    gob.recieveDamage(25);
+
+    EXPECT_EQ(gob.getHealth(), 40);
+}
+
+// Test: tests if receiveDamage correctly returns 0 for any
+// attack that is inflicted on it that's more than its current health
+TEST(GoblinTestSuite, testGoblinReceiveOverkillDamage) {
+    Goblin gob("Goblin", 65, 5, "Earth");
+    gob.receiveDamage(70);
+
+    EXPECT_EQ(gob.getHealth(), 0);
+}
+
