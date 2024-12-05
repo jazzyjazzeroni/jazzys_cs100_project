@@ -12,9 +12,11 @@ int main() {
     bool isOver = false;
 
     // Example initialization of a GameMap
+       MenuPrinter::printMainMenu();
+        MenuPrinter::movementMenu();
     vector<vector<int>> initMatrix = {
-        {0, 9, 0, 0, 2},
-        {7, 1, 0, 2, 0},
+        {0, 4, 6, 6, 6},
+        {7, 4, 5, 6, 6},
         {4, 0, 8, 0, 0},
         {0, 0, 4, 10, 0},
         {0, 0, 0, 0, 0}
@@ -27,53 +29,51 @@ int main() {
         {0, 0, 0, 0, 0}
     };
 
+    vector<vector<int>> initMatrix3 = {
+        {0, 1, 0, 5, 4, 0},  
+        {1, 0, 2, 0, 6, 4},  
+        {4, 0, 0, 0, 2, 3},  
+        {0, 5, 3, 4, 0, 0},  
+        {0, 4, 0, 0, 0, 5},
+        {6, 4, 0, 4, 0, 4},
+        {6, 4, 0, 4, 0, 4},
+        {1, 0, 2, 4, 6, 1},  
+        {4, 0, 4, 0, 2, 2},
+        {1, 0, 2, 0, 6, 0},  
+        {4, 0, 0, 0, 2, 3}
+    };
+
+    vector<vector<int>> initMatrix4 = {
+        {0, 1, 0, 5, 4, 0},  
+        {1, 0, 2, 0, 6, 4},  
+        {4, 0, 0, 0, 2, 3},  
+        {0, 5, 3, 4, 0, 0},  
+        {0, 4, 0, 0, 0, 5},
+        {6, 4, 0, 4, 0, 4},
+        {6, 4, 0, 4, 0, 4},
+        {1, 0, 2, 4, 6, 1},  
+        {4, 0, 4, 0, 2, 2},
+        {1, 0, 2, 0, 6, 0},  
+        {4, 0, 0, 0, 2, 3},
+        {1, 0, 2, 0, 6, 0},  
+        {4, 0, 0, 0, 2, 3}
+    };
+
+
     Level level(1, initMatrix, 2, isOver);
-    Level level2(1, initMatrix2, 2, isOver);
+    Level level2(1, initMatrix2, 3, isOver);
+    Level level3(1, initMatrix3, 4, isOver);
+    Level level4(1, initMatrix4, 5, isOver);
+    
 
     level.start();
     level2.start();
-    // Initialize MainCharacter at (1, 1)
-    // MainCharacter mainChar("Hero", 100, 20, "Fire");
-    // mainChar.setPosition(1, 1);  // Start the character at position (1, 1)
+    level3.start();
+    level4.start();
 
-    // char input;
-    // bool running = true;
 
     // cout << "Use WASD to move, q to quit." << endl;
 
-    // // Main game loop
-    // while (running) {
-    //     // Display current position of the character
-    //     auto [x, y] = mainChar.getPosition();
-    //     cout << "Current position: (" << x << ", " << y << ")" << endl;
-
-    //     // Get user input for movement
-    //     cout << "Enter movement (WASD): ";
-    //     cin >> input;
-
-    //     // Quit if user enters 'q'
-    //     if (input == 'q') {
-    //         running = false;
-    //         break;
-    //     }
-
-    //     // Move the character based on user input
-    //     shared_ptr<Object> obj = mainChar.move(input, gameMap);
-
-    //     // Check if there is an object at the new position and print message
-    //     if (obj->getType() == "Goblin") {
-    //         cout << "You encounter a Goblin!" << endl;
-    //     } else if (obj->getType() == "Sword") {
-    //         cout << "You found a sword!" << endl;
-    //     } else if (obj->getType() == "Potion") {
-    //         cout << "You found a potion!" << endl;
-    //     } else {
-    //         cout << "You moved to an empty space." << endl;
-    //     }
-    // }
-
-    // cout << "Game over. Final position: (" << mainChar.getPosition().first << ", " 
-    //      << mainChar.getPosition().second << ")" << endl;
 
     return 0;
 }
