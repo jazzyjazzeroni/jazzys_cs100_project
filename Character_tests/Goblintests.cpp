@@ -101,7 +101,7 @@ TEST(GoblinTestSuite, testAttackPlayer) {
     EXPECT_TRUE(mc.isalive());
 
     gob.attack(mc);
-    EXPECT_FALSE(mc.isalive()); // theo ded  
+    EXPECT_FALSE(mc.isalive());
 }
 
 // Test: tests that goblin of same element as mc does no damage
@@ -112,4 +112,3 @@ TEST(GoblinTestSuite, testInvalidAttack) {
     gob.attack(mc); // Should result in no damage
     EXPECT_EQ(mc.getHealth(), 100); // Health should remain the same
 }
-
