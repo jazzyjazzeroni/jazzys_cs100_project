@@ -1,5 +1,6 @@
 #include <gtest/gtest.h>
-#include "../addit_src/Level.cpp"
+#include "../addit_header/GameMap.h"
+#include "../addit_header/Level.h"
 
 class LevelTestSuite : public ::testing::Test {
 protected:
@@ -36,15 +37,15 @@ TEST_F(LevelTestSuite, testSetLevelValid) {
 }
 
 // Test element retrieval
-TEST_F(LevelTestSuite, GetElementForLevel) {
-    EXPECT_EQ(level.getElementForLevel(1), WATER);
+TEST_F(LevelTestSuite, testGetElementLevel) {
+    EXPECT_EQ(level.getElementForLevel(1), AIR);
     EXPECT_THROW(level.getElementForLevel(10), std::out_of_range);
 }
 
 // Test takeAction with valid inputs
 TEST_F(LevelTestSuite, testTakeActionInventoryChoiceValid) {
     std::istringstream input("i\nq\n");
-    std::cin.rdbuf(input.rdbuf()); // Redirect std::cin
+    std::cin.rdbuf(input.rdbuf());  // Saw this on stack overflow to test cin test fixturess
 
     level.takeAction(); // Use inventory
     EXPECT_FALSE(isOver);
@@ -55,7 +56,7 @@ TEST_F(LevelTestSuite, testTakeActionInventoryChoiceValid) {
 
 TEST_F(LevelTestSuite, testTakeActionInventoryChoiceValid) {
     std::istringstream input("i\n");
-    std::cin.rdbuf(input.rdbuf()); // Saw this on stack overflow to test cin test fixtures
+    std::cin.rdbuf(input.rdbuf()); 
 
     level.takeAction(); // Use inventory
     EXPECT_FALSE(inventory);   // uses quit action instead of inventory action
