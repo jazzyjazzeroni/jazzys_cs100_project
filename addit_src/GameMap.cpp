@@ -1,5 +1,7 @@
 #include "../addit_header/GameMap.h"
-
+#define YELLOW "\033[33m"      // Yellow
+#define PINK "\033[35m"     // Pink~
+#define RESET "\033[0m"        // Reset color
 using namespace std;
 
 GameMap::GameMap() : height(0), width(0), numGoblin(0), goblinKilled(0) {
@@ -55,7 +57,7 @@ void GameMap::killGoblin(int x, int y) {
 
     shared_ptr<Object>& obj = mapMatrix[y][x];
     if (obj->getType() == "Goblin") {
-        obj = make_shared<Object>();
+        obj = make_shared<Object>();  // Replace with an empty object
         goblinKilled++;
     } else {
         cerr << "No goblin at the specified coordinates" << endl;
@@ -98,5 +100,23 @@ int GameMap::getWidth() const {
 
 int GameMap::getHeight() const {
     return height;
+}
+
+void GameMap::printMap(int playerX, int playerY) const {
+    for (int y = 0; y < height; y++) {
+        for (int x = 0; x < width; x++) {
+            if (x == playerX && y == playerY) {
+                cout << PINK << "(^o^) " << RESET;  // Represent the player with 'P'
+            } else {
+                auto obj = mapMatrix[y][x];
+                if (obj->getType() == "Goblin"||obj->getType() == "Sword"||obj->getType() == "Potion") {
+                    cout << YELLOW << "*" << RESET;
+                } else {
+                    cout << ". ";  // Represent empty spaces with '.'
+                }
+            }
+        }
+        cout << endl;
+    }
 }
 
