@@ -28,17 +28,6 @@ void Potion::print() const {
     cout << "Name: " << type << ", Value: " << healingAmount << endl;
 }
 
-<<<<<<< HEAD
-// void Potion::healCharacter(MainCharacter &character) {
-//     if (type == "Small Potion") {
-//         character.heal(50); 
-//     } else if (type == "Large Potion") {
-//         character.heal(100); 
-//     } else {
-//         character.heal(healingAmount); 
-//     }
-// }
-=======
 void Potion::healCharacter(MainCharacter &character) {
     if (type == "Small Potion") {
         character.heal(50); 
@@ -48,4 +37,3 @@ void Potion::healCharacter(MainCharacter &character) {
         character.heal(healingAmount); 
     }
 }
->>>>>>> master
