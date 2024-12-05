@@ -36,3 +36,4 @@ virtual ~Character() = default;
 
 };
 #endif
+

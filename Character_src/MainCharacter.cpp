@@ -6,20 +6,18 @@ using namespace std;
 // Constructor
 MainCharacter::MainCharacter(const std::string &name, int health, int damage, const std::string &element)
     : Character(MAINCHAR, name, health, damage, element), powers(element), currentElement(powers.getPower()) {
-      x = 0; y = 0;  // inventory = std::make_shared<Inventory>();;
+      x = 0; y = 0; 
     }
 MainCharacter::MainCharacter(int x, int y) : x(x), y(y) {
-    // inventory = make_shared<Inventory>(); // Initialize inventory
 }
 
 
 void MainCharacter::heal(int amount) {
-    health = min(health + amount, MAX_HEALTH); // Prevent exceeding MAX_HEALTH
+    health = min(health + amount, MAX_HEALTH); 
     cout << name << " heals for " << amount << " health points. Current health: " << health << endl;
 }
 
 
-// Add sword function (pick up a sword)
     void MainCharacter::equipSword(const Sword & newSword) {
         //todo give o[ption to swap or replace sword]
             // Swap or replace the sword
@@ -32,7 +30,7 @@ void MainCharacter::heal(int amount) {
     // Equips a sword
 
     int MainCharacter::mod(int value, int limit) {
-        return (value % limit + limit) % limit;  // Handle negative values properly
+        return (value % limit + limit) % limit;  
     }
 
    pair<int, int>  MainCharacter::move(char action,int height, int width) {
@@ -51,16 +49,14 @@ void MainCharacter::heal(int amount) {
 
     setPosition(newX, newY);
 
-    return {newX, newY}; // Ensure return type matches shared_ptr<Object>
-    // return gameMap.getObjectAt(newX, newY); // Ensure return type matches shared_ptr<Object>
+    return {newX, newY}; 
 }
 
     void MainCharacter::setPosition(int newX, int newY) {
         cout << "the player is moved to " << newX << " " << newY << endl;
         x = newX;
     y = newY;
-        // this->x = x;
-        // this->y = y;
+
     }
 
 
@@ -96,9 +92,6 @@ void MainCharacter::attack(Character &target) {
     }
 }
 
-    // void MainCharacter::heal(int amount) {
-    //     setHealth(getHealth() + amount); // Assuming you have a setHealth method in Character
-    // }
     void MainCharacter::print() const {
         cout << "Main Character: " << name << ", Health: " << health << ", Attack: " << attackAmount << endl;
     }
