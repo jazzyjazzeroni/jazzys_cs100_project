@@ -3,7 +3,6 @@
 #include "Inventory.h"
 #include "GameMap.h"
 //#include "../addit_header/MenuPrinter.h"
-#include "GameManager.h"
 #include <vector>
 #include <map>
 #include <iostream>

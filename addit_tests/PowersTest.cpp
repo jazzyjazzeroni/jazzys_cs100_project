@@ -57,7 +57,7 @@ TEST_F(PowersTest, GetAndSetDamage) {
 }
 
 // Test canUsePower method
-TEST_F(PowersTest, CanUsePower) {
+TEST_F(PowersTest, testCanUsePower) {
     EXPECT_TRUE(waterPower.canUsePower(firePower)); // Water > Fire
     EXPECT_TRUE(firePower.canUsePower(waterPower)); // Fire > Water
     EXPECT_TRUE(earthPower.canUsePower(airPower));  // Earth > Air
@@ -68,7 +68,7 @@ TEST_F(PowersTest, CanUsePower) {
 }
 
 // Test calculateDamage with invalid states
-TEST_F(PowersTest, CalculateDamageEdgeCases) {
+TEST_F(PowersTest, testCalculateDamageEdgeCases) {
     firePower.setDamage(-10); // Invalid damage
     EXPECT_EQ(firePower.calculateDamage(), 20); // Should still use default FIRE damage
 
