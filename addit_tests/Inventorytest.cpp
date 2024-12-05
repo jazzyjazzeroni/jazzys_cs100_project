@@ -2,7 +2,7 @@
 #include "../addit_header/Inventory.h"
 #include "../addit_header/Potions.h"
 
-class InventoryTest : public ::testing::Test {
+class InventoryTestSuite : public ::testing::Test {
 protected:
     Inventory inventory;
     Potion smallPotion{50, "Small Potion"};
@@ -10,7 +10,7 @@ protected:
     MainCharacter character; // Assuming MainCharacter has `heal` and related methods
 };
 
-TEST_F(InventoryTest, testRemovePotionValid) {
+TEST_F(InventoryTestSuite, testRemovePotionValid) {
     inventory.addPotion(smallPotion);
     inventory.addPotion(largePotion);
     inventory.removePotion("Small Potion");
@@ -18,9 +18,9 @@ TEST_F(InventoryTest, testRemovePotionValid) {
     EXPECT_TRUE(inventory.hasPotion("Large Potion"));
 
     // Edge case: removing non-existent potion
-    EXPECT_TRUE(inventory.hasPotion("Large Potion"));
+    EXPECT_TRUE(inventory.hasPotion("Null Potion"));
 }
-TEST_F(InventoryTest, testRemovePotionInalid) {
+TEST_F(InventoryTestSuite, testRemovePotionInalid) {
     inventory.addPotion(smallPotion);
     inventory.addPotion(largePotion);
 
@@ -28,7 +28,7 @@ TEST_F(InventoryTest, testRemovePotionInalid) {
     EXPECT_TRUE(inventory.hasPotion("Large Potion"));
 }
 
-TEST_F(InventoryTest, GetPotion) {
+TEST_F(InventoryTestSuite, testGetPotion) {
     inventory.addPotion(smallPotion);
     Potion retrieved = inventory.getPotion("Small Potion");
     EXPECT_EQ(retrieved.getType(), "Small Potion");
@@ -38,7 +38,7 @@ TEST_F(InventoryTest, GetPotion) {
     EXPECT_THROW(inventory.getPotion("Mysterious Potion"), std::runtime_error);
 }
 
-TEST_F(InventoryTest, testUsePotionValid) {
+TEST_F(InventoryTestSuite, testUsePotionValid) {
     inventory.addPotion(smallPotion);
     inventory.addPotion(largePotion);
     
@@ -48,13 +48,13 @@ TEST_F(InventoryTest, testUsePotionValid) {
     EXPECT_TRUE(inventory.hasPotion("Large Potion"));
 }
 
-TEST_F(InventoryTest, testUsePotionInvalid) {
+TEST_F(InventoryTestSuite, testUsePotionInvalid) {
 
     // Edge case: inventory empty
     EXPECT_NO_THROW(inventory.usePotion(character));
 }
 
-TEST_F(InventoryTest, PrintInventory) {
+TEST_F(InventoryTestSuite, PrintInventory) {
     inventory.addPotion(smallPotion);
     inventory.addPotion(largePotion);
 
