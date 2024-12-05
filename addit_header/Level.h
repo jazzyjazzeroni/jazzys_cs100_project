@@ -1,14 +1,13 @@
 #ifndef LEVEL_H
 #define LEVEL_H
-using namespace std;
 #include "Inventory.h"
 #include "GameMap.h"
-#include "MenuPrinter.h"
-#include "GameManager.h"
+//#include "../addit_header/MenuPrinter.h"
 #include <vector>
 #include <map>
 #include <iostream>
 #include <string>
+using namespace std;
 
 
 class Level {

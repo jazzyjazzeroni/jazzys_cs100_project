@@ -47,4 +47,3 @@ bool Powers::canUsePower(Powers opponentPower) const {
 
 
 
-

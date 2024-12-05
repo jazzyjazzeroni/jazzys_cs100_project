@@ -1,4 +1,10 @@
+<<<<<<< HEAD
+#include <vector>
 #include "../addit_header/GameMap.h"
+#include <memory> // For shared_ptr
+=======
+#include "../addit_header/GameMap.h"
+>>>>>>> master
 
 using namespace std;
 
@@ -100,4 +106,7 @@ int GameMap::getHeight() const {
     return height;
 }
 
+<<<<<<< HEAD
+=======
 
+>>>>>>> master

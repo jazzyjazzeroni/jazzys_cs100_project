@@ -36,9 +36,7 @@ Level::Level(int power, const vector<vector<int>>& mapLayout, int goblinGoal, bo
 void Level::start() {
     cout << "debug: start" << endl;
     while (!end && !*isOver) {
-      //   gameMap.printMap(player.getX(), player.getY());
         takeAction();
-       // end = (gameMap.getGoblinsKilled() >= goblinGoal || !player.isAlive());
     }
 }
 

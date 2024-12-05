@@ -1,104 +1,104 @@
-#include "gtest/gtest.h"
+#include <gtest/gtest.h>
 #include "../Character_header/Character.h"
-#include "../addit_header/Object.h"
+#include "../Character_header/Goblin.h"
+#include "../Character_header/MainCharacter.h"
 
-TEST(CharacterTest, TestCharacterInitialization) {
-    Character character(MAINCHAR, "TestCharacter", 100, 10, 5);
+// Constants for testing
+const int MAX_HEALTH = 100;
 
-    // Test the initial health, attack amount, and type
-    EXPECT_EQ(character.getHealth(), 100);
-    EXPECT_EQ(character.getType(), MAINCHAR);
+// Test fixture for the Character class
+class CharacterTestSuite : public ::testing::Test {
+protected:
+    Goblin goblin{"Goblin", 50, 10, "Fire"};
+    MainCharacter mainCharacter{"Theodore", 100, 20, "Water"};
+};
+
+TEST_F(CharacterTestSuite, testOverloadedConstructor) {
+    EXPECT_EQ(goblin.getHealth(), 50);
+    EXPECT_EQ(goblin.getType(), "Goblin");
+    EXPECT_EQ(mainCharacter.getHealth(), 100);
+    EXPECT_EQ(mainCharacter.getType(), "Theodore");
 }
 
-// Test Case 2: Test setting health to a valid value
-TEST(CharacterTest, TestSetHealthValid) {
-    Character character(MAINCHAR, "TestCharacter", 100, 10, 5);
+// Test setHealth with edge cases
+TEST_F(CharacterTestSuite, SetHealthEdgeCases) {
+    goblin.setHealth(200); // Beyond max health
+    EXPECT_EQ(goblin.getHealth(), MAX_HEALTH);
 
-    character.setHealth(50);
-    EXPECT_EQ(character.getHealth(), 50);
+    goblin.setHealth(-10); // Negative health
+    EXPECT_EQ(goblin.getHealth(), 0);
+
+    mainCharacter.setHealth(80); // Within valid range
+    EXPECT_EQ(mainCharacter.getHealth(), 80);
 }
 
-// Test Case 3: Test setting health to a value greater than MAX_HEALTH
-TEST(CharacterTest, TestSetHealthAboveMax) {
-    Character character(MAINCHAR, "TestCharacter", 100, 10, 5);
+// Test receiveDamage with edge cases
+TEST_F(CharacterTestSuite, ReceiveDamageEdgeCases) {
+    goblin.receiveDamage(20); // Regular damage
+    EXPECT_EQ(goblin.getHealth(), 30);
 
-    character.setHealth(200);  // Assuming MAX_HEALTH is 100
-    EXPECT_EQ(character.getHealth(), MAX_HEALTH);
+    goblin.receiveDamage(40); // Damage greater than current health
+    EXPECT_EQ(goblin.getHealth(), 0);
+
+    goblin.receiveDamage(-10); // Negative damage
+    EXPECT_EQ(goblin.getHealth(), 0); // Health should not change
 }
 
-// Test Case 4: Test setting health to a value less than or equal to zero
-TEST(CharacterTest, TestSetHealthBelowZero) {
-    Character character(MAINCHAR, "TestCharacter", 100, 10, 5);
+// Test isalive method
+TEST_F(CharacterTestSuite, IsAlive) {
+    EXPECT_TRUE(goblin.isalive());
 
-    character.setHealth(-10);
-    EXPECT_EQ(character.getHealth(), 0);  // Health should not be negative
+    goblin.setHealth(0);
+    EXPECT_FALSE(goblin.isalive());
 }
 
-// Test Case 5: Test isAlive when health is greater than zero
-TEST(CharacterTest, TestIsAlive) {
-    Character character(MAINCHAR, "TestCharacter", 100, 10, 5);
+// Test attack method
+TEST_F(CharacterTestSuite, Attack) {
+    goblin.attack(mainCharacter);
+    EXPECT_EQ(mainCharacter.getHealth(), 90); // Goblin does 10 damage
 
-    EXPECT_TRUE(character.isalive());  // Should be alive with positive health
+    mainCharacter.attack(goblin);
+    EXPECT_EQ(goblin.getHealth(), 10); // MainCharacter does 20 damage
 }
 
-// Test Case 6: Test isAlive when health is zero
-TEST(CharacterTest, TestIsAliveWhenDead) {
-    Character character(MAINCHAR, "TestCharacter", 0, 10, 5);
+// Test character defeated scenario
+TEST_F(CharacterTestSuite, AttackDefeatedCharacter) {
+    goblin.setHealth(0);
+    EXPECT_FALSE(goblin.isalive());
 
-    EXPECT_FALSE(character.isalive());  // Should be dead with zero health
+    // Attempt to attack a defeated Goblin
+    mainCharacter.attack(goblin);
+    EXPECT_EQ(goblin.getHealth(), 0); // Health should remain 0
 }
 
-// Test Case 7: Test dealtDamage function
-TEST(CharacterTest, TestDealtDamage) {
-    Character character(MAINCHAR, "TestCharacter", 100, 10, 5);
+// Test heal method (MainCharacter specific)
+TEST_F(CharacterTestSuite, Heal) {
+    mainCharacter.receiveDamage(50); // Reduce health to 50
+    EXPECT_EQ(mainCharacter.getHealth(), 50);
 
-    character.dealtDamage(30);
-    EXPECT_EQ(character.getHealth(), 70);  // Health should decrease by 30
+    mainCharacter.heal(30); // Heal by 30
+    EXPECT_EQ(mainCharacter.getHealth(), 80);
+
+    mainCharacter.heal(50); // Heal exceeding max health
+    EXPECT_EQ(mainCharacter.getHealth(), MAX_HEALTH);
 }
 
-// Test Case 8: Test dealtDamage with overkill (damage more than current health)
-TEST(CharacterTest, TestDealtDamageOverkill) {
-    Character character(MAINCHAR, "TestCharacter", 50, 10, 5);
+// Test move method (MainCharacter specific)
+TEST_F(CharacterTestSuite, Movement) {
+    auto position = mainCharacter.move('w', 10, 10); // Move up
+    EXPECT_EQ(position, std::make_pair(0, 9));
 
-    character.dealtDamage(100);
-    EXPECT_EQ(character.getHealth(), 0);  // Health should not go below 0
+    position = mainCharacter.move('s', 10, 10); // Move down
+    EXPECT_EQ(position, std::make_pair(0, 0));
+
+    position = mainCharacter.move('a', 10, 10); // Move left
+    EXPECT_EQ(position, std::make_pair(9, 0));
+
+    position = mainCharacter.move('d', 10, 10); // Move right
+    EXPECT_EQ(position, std::make_pair(0, 0));
 }
 
-// Test Case 9: Test receiveDamage function, which indirectly tests dealtDamage
-TEST(CharacterTest, TestReceiveDamage) {
-    Character character(MAINCHAR, "TestCharacter", 100, 10, 5);
-
-    character.recieveDamage(20);
-    EXPECT_EQ(character.getHealth(), 80);  // Health should decrease by 20
+// Test invalid power type for Goblin
+TEST(CharacterEdgeCases, InvalidPowerType) {
+    EXPECT_THROW(Goblin("Goblin", 50, 10, "InvalidType"), std::invalid_argument);
 }
-
-// Test Case 10: Test attack function with a living enemy
-TEST(CharacterTest, TestAttackAliveEnemy) {
-    Character attacker(MAINCHAR, "Attacker", 100, 20, 5);
-    Character defender(MAINCHAR, "Defender", 100, 10, 5);
-
-    attacker.attack(defender);
-    EXPECT_EQ(defender.getHealth(), 80);  // Defender should lose health (attacker's attackAmount)
-}
-
-// Test Case 11: Test attack function on a dead enemy
-TEST(CharacterTest, TestAttackDeadEnemy) {
-    Character attacker(MAINCHAR, "Attacker", 100, 20, 5);
-    Character defender(MAINCHAR, "Defender", 0, 10, 5);  // Defender is dead
-
-    attacker.attack(defender);
-    EXPECT_EQ(defender.getHealth(), 0);  // Defender should remain dead
-}
-
-// Test Case 12: Test health is correctly printed in receiveDamage
-TEST(CharacterTest, TestHealthPrintInReceiveDamage) {
-    // Test if health status message is printed correctly (requires capturing stdout)
-    // We may use a redirect of std::cout if necessary, but this is generally
-    // outside the unit test scope.
-    testing::internal::CaptureStdout();
-    Character character(MAINCHAR, "TestCharacter", 100, 10, 5);
-    character.recieveDamage(30);
-    std::string output = testing::internal::GetCapturedStdout();
-    EXPECT_TRUE(output.find("Health Status: 70") != std::string::npos);  // Check if health status is printed
-}
-
