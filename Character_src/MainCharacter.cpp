@@ -14,7 +14,7 @@ MainCharacter::MainCharacter(int x, int y) : x(x), y(y) {
 
 void MainCharacter::heal(int amount) {
     health = min(health + amount, MAX_HEALTH); 
-    cout << name << " heals for " << amount << " health points. Current health: " << health << endl;
+    cout << "Theodore" << " heals for " << amount << " health points. Current health: " << health << endl;
 }
 
 

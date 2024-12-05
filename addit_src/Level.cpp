@@ -36,7 +36,6 @@ void Level::start() {
     while (!end && !*isOver) {
       ////   gameMap.printMap(player.getX(), player.getY());
 
-    cout << "debug: start" << endl;
         while (!end && !*isOver) {
         pair<int, int> playerPos = player.getPosition();
         gameMap.printMap(playerPos.first, playerPos.second); //// Print the map
@@ -77,22 +76,27 @@ void Level::takeAction() {
     ////     );
     cin >> action;
     if (action == 'i') {
+        cout << endl;
         inventory.usePotion(player);
     } 
     else if (action == 'm'){
+        cout << endl;
         MenuPrinter::movementMenu();
     }
     else if(action == 'q'){
-        cout << "You have quit the game." << endl;
+        cout << endl;
+        cout << "You have quit the game." << endl << endl;
         *isOver = true;
     }
     else if(action == 'g'){
+        cout << endl;
         MenuPrinter::printGoblinStatus(
             gameMap.getNumGoblins() - gameMap.getGoblinsKilled(), 
             gameMap.getGoblinsKilled()
         );
     }
     else if (action == 't') {
+        cout << endl;
         MenuPrinter::printStatus(player);
     } 
     else if (action == 'w' || action == 'a' || action == 's' || action == 'd') {
@@ -112,7 +116,7 @@ void Level::takeAction() {
                         while (inCombat) {
                             //// Player's turn to attack
                             cout << "It's your turn. Press 'k' to attack!" << endl;
-                            cout << "Press 'r' to run away." << endl;
+                            cout << "Or press 'r' to run away." << endl;
                             char attackChoice;
                             cin >> attackChoice;
                             if (attackChoice == 'k') {
@@ -136,8 +140,9 @@ void Level::takeAction() {
                                 }
                             }
                             else if (attackChoice == 'r') {
-                                cout << "You ran away from the goblin." << endl;
+                                cout << "You ran away from the goblin." << endl << endl;
                                 inCombat = false;
+                                break;
                             }
                             
                             if (!goblin->isalive()) break; //// Goblin defeated, exit combat
