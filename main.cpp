@@ -5,7 +5,6 @@
 #include "addit_header/Potions.h"
 #include "addit_header/GameMap.h"
 #include "addit_header/Level.h"
-#include "addit_header/GameManager.h"
 
 using namespace std;
 
@@ -28,11 +27,6 @@ int main() {
         {0, 0, 0, 0, 0}
     };
 
-    // int mapWidth = 5;
-    // int mapHeight = 5;
-
-    // Create the GameMap
-    // GameMap gameMap(initMatrix, mapWidth, mapHeight);
     Level level(1, initMatrix, 2, isOver);
     Level level2(1, initMatrix2, 2, isOver);
 
