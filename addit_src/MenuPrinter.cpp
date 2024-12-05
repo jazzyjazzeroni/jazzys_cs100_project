@@ -2,67 +2,45 @@
 #include <iostream>
 #include "../addit_header/MenuPrinter.h"
 #include "../Character_header/MainCharacter.h"
+#include "../addit_header/Level.h"
 using namespace std;
 
 // prints the main/title screen
 void MenuPrinter::printMainMenu() {
     cout << "                 FLAMES  OF               " << endl;
-    cout << "                    =ICE=                 " << endl;
+    cout << "                   =ICE=                 " << endl;
     cout << endl;
     cout << "                  1. Start                " << endl;
-    cout << "                  2. Settings             " << endl;
-    cout << "                  3. Exit                 " << endl;
+    cout << "                  2. Exit                 " << endl;
     cout << endl;
 }
 
 // prints when the player is roaming in the levels
 void MenuPrinter::movementMenu() {
-    cout << "   What direction do you want to move in? " << endl;
+    cout << "   What action do you want to take ? " << endl << endl;
     cout << endl;
-    cout << "           UP: press 'w'                  " << endl;
-    cout << "           LEFT: press 'a'                " << endl;
-    cout << "           RIGHT: press 'd'               " << endl;
-    cout << "           DOWN: press 's'                " << endl;
-    cout << "           OPEN INVENTORY: press 'i'      " << endl;
-    cout << "           PAUSE: press 'p'               " << endl;
+    cout << "           UP: press 'w'                  " << endl << endl;
+    cout << "           LEFT: press 'a'                " << endl << endl;
+    cout << "           RIGHT: press 'd'               " << endl << endl;
+    cout << "           DOWN: press 's'                " << endl << endl;
+    cout << "           OPEN INVENTORY: press 'i'      " << endl << endl;
+    cout << "           QUIT: press 'q'               " << endl << endl;
+    cout << "           GOBLIN STATUS: press 'g'               " << endl << endl;
+    cout << "           CHECK HEALTH: press 't'               " << endl << endl;
+    cout << "           ACTION MENU: press 'm'               " << endl << endl;
     cout << endl;
 }
 
 // prints when a fire goblin is encountered
-void MenuPrinter::fireGoblinEncounterMenu() {
-    cout << "      A fire goblin has appeared!        " << endl;
+void MenuPrinter::GoblinEncounterMenu(const Goblin& goblin) {
+    cout << "      A goblin has appeared!        " << endl << endl;
+        cout << "      Element: " << goblin.getGoblinType() << endl << endl;
     cout << "         Do you choose to fight?         " << endl;
     cout << endl;
     cout << "       1. Yes              2. No         " << endl;
     cout << endl;
 }
 
-// prints when a water goblin is encountered
-void MenuPrinter::waterGoblinEncounterMenu() {
-    cout << "      A water goblin has appeared!        " << endl;
-    cout << "         Do you choose to fight?         " << endl;
-    cout << endl;
-    cout << "       1. Yes              2. No         " << endl;
-    cout << endl;
-}
-
-// prints when a earth goblin is encountered
-void MenuPrinter::earthGoblinEncounterMenu() {
-    cout << "      A earth goblin has appeared!        " << endl;
-    cout << "         Do you choose to fight?         " << endl;
-    cout << endl;
-    cout << "       1. Yes              2. No         " << endl;
-    cout << endl;
-}
-
-// prints when a wind goblin is encountered
-void MenuPrinter::windGoblinEncounterMenu() {
-    cout << "       A wind goblin has appeared!       " << endl;
-    cout << "         Do you choose to fight?         " << endl;
-    cout << endl;
-    cout << "       1. Yes              2. No         " << endl;
-    cout << endl;
-}
 
 // prints when it's the player's turn during combat
 void MenuPrinter::playerTurnMenu(const MainCharacter& player) {
@@ -91,15 +69,6 @@ void MenuPrinter::deathScreen() {
     cout << endl;
 }
 
-// prints after player chooses to pause
-void MenuPrinter::pauseMenu() {
-    cout << "                PAUSED                    " << endl;
-    cout << endl;
-    cout << "           1. Resume                      " << endl;
-    cout << "           2. Settings                    " << endl;
-    cout << "           3. Save and quit               " << endl;
-    cout << endl;
-}
 
 // prints after player chooses to save and quit
 void MenuPrinter::quitReassuranceMenu() {

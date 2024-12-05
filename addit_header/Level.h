@@ -26,7 +26,6 @@ public:
     Level();
     Level(int power, const vector<vector<int>>& mapLayout, int numGoblins, bool &isOver);
     ~Level(){
-        cout << "Level destructor called" << endl;
     };
     vector<Level> initializeLevels();
     void start();
