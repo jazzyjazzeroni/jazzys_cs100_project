@@ -100,4 +100,3 @@ int GameMap::getHeight() const {
     return height;
 }
 
-

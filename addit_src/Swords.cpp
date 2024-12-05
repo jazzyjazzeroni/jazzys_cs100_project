@@ -31,4 +31,3 @@ void Sword::damage(int amount) {
 void Sword::print() const {
     cout << "Name: " << sword_name << ", Value: " << sword_dam << endl;
 }
-

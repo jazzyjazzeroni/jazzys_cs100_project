@@ -1,149 +1,71 @@
 #include "gtest/gtest.h"
 #include "../addit_header/Inventory.h"
+#include "../addit_header/Potions.h"
 
-
-TEST(InventoryTest, AddItemTest) {
+class InventoryTestSuite : public ::testing::Test {
+protected:
     Inventory inventory;
-    Sword sword(5, "Normal Sword");
-    inventory.addItem(sword);
+    Potion smallPotion{50, "Small Potion"};
+    Potion largePotion{100, "Large Potion"};
+    MainCharacter character; // Assuming MainCharacter has `heal` and related methods
+};
 
-    EXPECT_EQ(inventory.getNumItems(), 1);
-    EXPECT_EQ(inventory.getItemAt(0).getType(), "Sword");
-    EXPECT_EQ(inventory.getItemAt(0).getDamage(), 5);
-    EXPECT_EQ(inventory.getItemAt(0).getName(), "Normal Sword");
+TEST_F(InventoryTestSuite, testRemovePotionValid) {
+    inventory.addPotion(smallPotion);
+    inventory.addPotion(largePotion);
+    inventory.removePotion("Small Potion");
+    EXPECT_FALSE(inventory.hasPotion("Small Potion"));
+    EXPECT_TRUE(inventory.hasPotion("Large Potion"));
+
+    // Edge case: removing non-existent potion
+    EXPECT_TRUE(inventory.hasPotion("Null Potion"));
+}
+TEST_F(InventoryTestSuite, testRemovePotionInalid) {
+    inventory.addPotion(smallPotion);
+    inventory.addPotion(largePotion);
+
+    inventory.removePotion("Mysterious Potion");    // this potion does not exist in our program
+    EXPECT_TRUE(inventory.hasPotion("Large Potion"));
 }
 
-TEST(InventoryTest, AddMultipleItemsTest) {
-    Inventory inventory;
-    Sword sword(5, "Normal Sword");
-    Sword sword2(10, "Better Sword");
-    Sword sword3(15, "Greater Sword");
-    inventory.addItem(sword);
-    inventory.addItem(sword2);
-    inventory.addItem(sword3);
+TEST_F(InventoryTestSuite, testGetPotion) {
+    inventory.addPotion(smallPotion);
+    Potion retrieved = inventory.getPotion("Small Potion");
+    EXPECT_EQ(retrieved.getType(), "Small Potion");
+    EXPECT_EQ(retrieved.getHealingAmount(), 25);
 
-    EXPECT_EQ(inventory.getNumItems(), 3);
-    EXPECT_EQ(inventory.getItemAt(0).getType(), "Sword");
-    EXPECT_EQ(inventory.getItemAt(0).getDamage(), 5);
-    EXPECT_EQ(inventory.getItemAt(0).getName(), "Normal Sword");
-    EXPECT_EQ(inventory.getItemAt(1).getType(), "Sword");
-    EXPECT_EQ(inventory.getItemAt(1).getDamage(), 10);
-    EXPECT_EQ(inventory.getItemAt(1).getName(), "Better Sword");
-    EXPECT_EQ(inventory.getItemAt(2).getType(), "Sword");
-    EXPECT_EQ(inventory.getItemAt(2).getDamage(), 15);
-    EXPECT_EQ(inventory.getItemAt(2).getName(), "Greater Sword");
+    // Edge case: potion not found
+    EXPECT_THROW(inventory.getPotion("Mysterious Potion"), std::runtime_error);
 }
 
-TEST(InventoryTest, RemoveItemTest) {
-    Inventory inventory;
-    Sword sword(5, "Normal Sword");
-    inventory.addItem(sword);
-    inventory.removeItem(0);
-
-    EXPECT_EQ(inventory.getNumItems(), 0);
+TEST_F(InventoryTestSuite, testUsePotionValid) {
+    inventory.addPotion(smallPotion);
+    inventory.addPotion(largePotion);
+    
+    inventory.usePotion(character);
+    
+    EXPECT_FALSE(inventory.hasPotion("Small Potion"));
+    EXPECT_TRUE(inventory.hasPotion("Large Potion"));
 }
 
+TEST_F(InventoryTestSuite, testUsePotionInvalid) {
 
-TEST(InventoryTest, RemoveMultipleItemsTest) {
-    Inventory inventory;
-    Sword sword(5, "Normal Sword");
-    Sword sword2(10, "Better Sword");
-    Sword sword3(15, "Greater Sword");
-    inventory.addItem(sword);
-    inventory.addItem(sword2);
-    inventory.addItem(sword3);
-    inventory.removeItem(0);
-    inventory.removeItem(1);
-
-    EXPECT_EQ(inventory.getNumItems(), 1);
-    EXPECT_EQ(inventory.getItemAt(0).getType(), "Sword");
-    EXPECT_EQ(inventory.getItemAt(0).getDamage(), 10);
-    EXPECT_EQ(inventory.getItemAt(0).getName(), "Better Sword");
+    // Edge case: inventory empty
+    EXPECT_NO_THROW(inventory.usePotion(character));
 }
 
-TEST(InventoryTest, RemoveInvalidItemTest) {
-    Inventory inventory;
-    Sword sword(5, "Normal Sword");
-    inventory.addItem(sword);
+TEST_F(InventoryTestSuite, PrintInventory) {
+    inventory.addPotion(smallPotion);
+    inventory.addPotion(largePotion);
 
-    EXPECT_ANY_THROW(inventory.removeItem(1));
-}
+    std::ostringstream output;
+    std::cout.rdbuf(output.rdbuf());
+    inventory.print();
 
-TEST(InventoryTest, RemoveInvalidItemTest2) {
-    Inventory inventory;
-    Sword sword(5, "Normal Sword");
-    inventory.addItem(sword);
+    std::string expectedOutput = 
+        "Potions in inventory:\n"
+        "Name: Small Potion, Value: 50\n"
+        "Name: Large Potion, Value: 100\n";
 
-    EXPECT_ANY_THROW(inventory.removeItem(-1));
-}
-
-TEST(InventoryTest, GetItemTest) {
-    Inventory inventory;
-    Sword sword(5, "Normal Sword");
-    inventory.addItem(sword);
-
-    EXPECT_EQ(inventory.getItemAt(0).getType(), "Sword");
-    EXPECT_EQ(inventory.getItemAt(0).getDamage(), 5);
-    EXPECT_EQ(inventory.getItemAt(0).getName(), "Normal Sword");
-}
-
-TEST(InventoryTest, GetInvalidItemTest) {
-    Inventory inventory;
-    Sword sword(5, "Normal Sword");
-    inventory.addItem(sword);
-
-    EXPECT_ANY_THROW(inventory.getItemAt(1));
-}
-
-TEST(InventoryTest, GetInvalidItemTest2) {
-    Inventory inventory;
-    Sword sword(5, "Normal Sword");
-    inventory.addItem(sword);
-
-    EXPECT_ANY_THROW(inventory.getItemAt(-1));
-}
-
-TEST(InventoryTest, GetNumItemsTest) {
-    Inventory inventory;
-    Sword sword(5, "Normal Sword");
-    inventory.addItem(sword);
-
-    EXPECT_EQ(inventory.getNumItems(), 1);
-}
-
-TEST(InventoryTest, GetNumItemsTest2) {
-    Inventory inventory;
-
-    EXPECT_EQ(inventory.getNumItems(), 0);
-}
-
-TEST(InventoryTest, GetNumItemsTest3) {
-    Inventory inventory;
-    Sword sword(5, "Normal Sword");
-    Sword sword2(10, "Better Sword");
-    Sword sword3(15, "Greater Sword");
-    inventory.addItem(sword);
-    inventory.addItem(sword2);
-    inventory.addItem(sword3);
-
-    EXPECT_EQ(inventory.getNumItems(), 3);
-}
-
-TEST(InventoryTest, GetNumItemsTest4) {
-    Inventory inventory;
-    Sword sword(5, "Normal Sword");
-    inventory.addItem(sword);
-    inventory.removeItem(0);
-
-    EXPECT_EQ(inventory.getNumItems(), 0);
-}
-
-TEST(InventoryTest, GetNumItemsTest5) {
-    Inventory inventory;
-    Sword sword(5, "Normal Sword");
-    inventory.addItem(sword);
-    inventory.removeItem(0);
-    inventory.removeItem(0);
-
-    EXPECT_EQ(inventory.getNumItems(), 0);
+    EXPECT_EQ(output.str(), expectedOutput);
 }

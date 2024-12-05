@@ -1,174 +1,150 @@
 #include <gtest/gtest.h>
-#include <gmock/gmock.h>
-#include <string>
+#include "../Character_header/MainCharacter.h"
+#include "../addit_header/Swords.h"
+#include "../Character_header/Goblin.h"
+#include "../addit_header/Potions.h"
 
-class MockMainChar {
-public:
-    MOCK_METHOD(double, getHealth, (), (const));
-    MOCK_METHOD(void, takeDamage, (double));
-    MOCK_METHOD(void, heal, (double));
-    MOCK_METHOD(bool, isAlive, (), (const));
+// Test: Constructor Initialization
+TEST(MainCharacterTestSuite, testDefaultConstructor) {
+    MainCharacter mc("Theodore", 100, 5, "Air");
 
-    MOCK_METHOD(void, move, (char direction));
-    MOCK_METHOD(std::string, getType, (), (const));
-};
-
-TEST(MainCharacterTest, HealthManagementTest) {
-    MockMainChar mockMain;
-
-    EXPECT_CALL(mockMain, getHealth())
-        .Times(1)
-        .WillOnce(testing::Return(100.0));
-
-    EXPECT_EQ(mockMain.getHealth(), 100.0);
-
-    EXPECT_CALL(mockMain, takeDamage(20.0))
-        .Times(1);
-
-    mockMain.takeDamage(20.0);
-
-    EXPECT_CALL(mockMain, isAlive())
-        .Times(1)
-        .WillOnce(testing::Return(true));
-
-    EXPECT_TRUE(mockMain.isAlive());
+    EXPECT_EQ(mc.getHealth(), 100);
+    EXPECT_EQ(mc.getPosition(), std::make_pair(0, 0)); 
+    EXPECT_EQ(mc.getType(), "Air");
 }
 
-TEST(MainCharacterTest, MovementTest) {
-    MockMainChar mockMain;
+// Test: Movement at boundaries (edge cases)
+TEST(MainCharacterTestSuite, testCharacterMovement) {
+    MainCharacter mc(0, 0);
+    int width = 5, height = 5;
 
-    EXPECT_CALL(mockMain, move('W')).Times(1);
-    EXPECT_CALL(mockMain, move('A')).Times(1);
-    EXPECT_CALL(mockMain, move('S')).Times(1);
-    EXPECT_CALL(mockMain, move('D')).Times(1);
+    auto newPosition = mc.move('w', height, width);
+    EXPECT_EQ(newPosition, std::make_pair(0, 4)); // Wrap around to the bottom
 
-    mockMain.move('W');
-    mockMain.move('A');
-    mockMain.move('S');
-    mockMain.move('D');
+    newPosition = mc.move('a', height, width);
+    EXPECT_EQ(newPosition, std::make_pair(4, 4)); // Wrap around to the right
 
-    // Test invalid input handling
-    EXPECT_THROW({
-        EXPECT_CALL(mockMain, move('X')).Times(1);
-        mockMain.move('X'); 
-    }, std::runtime_error);
+    newPosition = mc.move('s', height, width);
+    EXPECT_EQ(newPosition, std::make_pair(4, 0)); // Wrap around to the top
+
+    newPosition = mc.move('d', height, width);
+    EXPECT_EQ(newPosition, std::make_pair(0, 0)); // Wrap around to the left
 }
 
-TEST(MainCharacterTest, TypeTest) {
-    MockMainChar mockMain;
+TEST(MainCharacterTestSuite, testHealingValid) {
+    MainCharacter mc("Theodore", 90, 15, "Air");
+    mc.heal(15); // Normal heal
+    EXPECT_EQ(mc.getHealth(), 100);
 
-    EXPECT_CALL(mockMain, getType())
-        .Times(1)
-        .WillOnce(testing::Return("Good"));
+    mc.heal(10); // Overheal test
+    EXPECT_EQ(mc.getHealth(), 100);
 
-    EXPECT_EQ(mockMain.getType(), "Good");
+
+}
+
+TEST(MainCharacterTestSuite, testHealingBeyondLimit) {
+    MainCharacter mc("Theodore", 90, 15, "Air");
+
+    mc.heal(110); // Healing beyond the range
+    EXPECT_EQ(mc.getHealth(), 100);
+}
+
+TEST(MainCharacterTestSuite, testHealingLowCapacity) {
+    MainCharacter mc("Theodore", 90, 15, "Air");
+
+    MainCharacter lowHealthMc("Theodore", 1, 15, "Air");
+    lowHealthMc.heal(5); // Low health heal
+    EXPECT_EQ(lowHealthMc.getHealth(), 6);
+}
+
+TEST(MainCharacterTestSuite, testHealingInvalidNegativeCase) {
+    MainCharacter mc("Theodore", 90, 15, "Air");
+
+    MainCharacter lowHealthMc("Theodore", 1, 15, "Air");
+    lowHealthMc.heal(-5); // Low health heal
+    EXPECT_FALSE(lowHealthMc.getHealth()) << "INVALID: Healing cannot be negative!";
+}
+// Test: Equipping a sword
+TEST(MainCharacterTestSuite, EquipSword) {
+    MainCharacter mc("Theodore", 100, 15, "Fire");
+    Sword basicSword(10, "Basic Sword");
+
+    mc.equipSword(basicSword);
+
+    EXPECT_EQ(mc.getType(), "Theodore");
+    EXPECT_NO_THROW(mc.equipSword(Sword(15, "Greater Sword")));
+}
+
+// Test: Attacking a Goblin
+TEST(MainCharacterTestSuite, AttackGoblin) {
+    MainCharacter mc("Theodore", 100, 15, "Fire");
+    Goblin goblin("Air Goblin", 50, 10, "Air");
+
+    mc.attack(goblin);
+    EXPECT_LT(goblin.getHealth(), 50); 
+    EXPECT_TRUE(goblin.isalive()); 
+
+    mc.attack(goblin); 
+    EXPECT_FALSE(goblin.isalive()); // Goblin is defeated
+}
+
+TEST(MainCharacterTestSuite, testInvalidAttack) {
+    MainCharacter mc("Theodore", 100, 15, "Fire");
+    Goblin goblin("Fire Goblin", 50, 10, "Fire"); // Same element
+
+    mc.attack(goblin); // Should result in no damage
+    EXPECT_EQ(goblin.getHealth(), 50); // Health should remain the same
+}
+
+// Test: Using a potion
+TEST(MainCharacterTestSuite, testUsePotionSmall) {
+    MainCharacter mc("Theodore", 50, 15, "Fire");
+    Potion smallPotion(50, "Small Potion");
+
+    smallPotion.healCharacter(mc);
+    EXPECT_EQ(mc.getHealth(), 100); // Fully healed
+
+    Potion largePotion(100, "Large Potion");
+    mc.heal(-20); // Simulate health loss
+    largePotion.healCharacter(mc);
+    EXPECT_EQ(mc.getHealth(), 100); // Fully healed, no overheal
+}
+
+TEST(MainCharacterTestSuite, testUsePotionSmallInvalid) {
+    MainCharacter mc("Theodore", 50, 15, "Fire");
+    Potion smallPotion(-20, "Small Potion");
+
+    smallPotion.healCharacter(mc);
+    EXPECT_FALSE(mc.getHealth()) << "ERROR: Small potion is negative in value";
 }
 
 
-TEST(MainCharacterTest, HealthValidation) {
-    MockMainChar mockMain;
+TEST(MainCharacterTestSuite, testUsePotionBig) {
+    MainCharacter mc("Theodore", 50, 15, "Fire");
+    Potion bigPotion(-50, "Big Potion");
 
-    EXPECT_CALL(mockMain, heal(0.0)).Times(0); 
-    EXPECT_CALL(mockMain, heal(-5.0)).Times(0); 
+    bigPotion.healCharacter(mc);
+    EXPECT_EQ(mc.getHealth(), 100); // Fully healed
 
-    EXPECT_THROW({
-        mockMain.heal(0.0); 
-    }, std::invalid_argument);
-
-    EXPECT_THROW({
-        mockMain.heal(-5.0); // Should throw an exception
-    }, std::invalid_argument);
-
-    // Test upper limit for healing
-    EXPECT_THROW({
-        mockMain.heal(10.0); // Above allowed healing value should throw
-    }, std::invalid_argument);
-
-    EXPECT_CALL(mockMain, heal(5.0)).Times(1);
-    mockMain.heal(5.0); // Valid healing
+    Potion largePotion(100, "Big Potion");
+    mc.heal(-20); // Simulate health loss
+    largePotion.healCharacter(mc);
+    EXPECT_EQ(mc.getHealth(), 100); // Fully healed, no overheal
 }
 
-TEST(MainCharacterTest, DamageValidation) {
-    MockMainChar mockMain;
+TEST(MainCharacterTestSuite, testUsePotionBigInvalid) {
+    MainCharacter mc("Theodore", 50, 15, "Fire");
+    Potion bigPotion(-50, "Big Potion");
 
-
-    EXPECT_CALL(mockMain, takeDamage(0.0)).Times(0); 
-    EXPECT_CALL(mockMain, takeDamage(-10.0)).Times(0); 
-
-    EXPECT_THROW({
-        mockMain.takeDamage(0.0); 
-    }, std::invalid_argument);
-
-    EXPECT_THROW({
-        mockMain.takeDamage(-10.0); 
-    }, std::invalid_argument);
-
-    // Valid damage value
-    EXPECT_CALL(mockMain, takeDamage(25.0)).Times(1);
-    mockMain.takeDamage(25.0);
+    bigPotion.healCharacter(mc);
+    EXPECT_FALSE(mc.getHealth()) << "ERROR: Big potion is negative in value";
 }
 
-TEST(MainCharacterTest, IsAliveBehavior) {
-    MockMainChar mockMain;
 
-    EXPECT_CALL(mockMain, isAlive())
-        .Times(1)
-        .WillOnce(testing::Return(true));
-
-    EXPECT_TRUE(mockMain.isAlive());
-
-    EXPECT_CALL(mockMain, isAlive())
-        .Times(1)
-        .WillOnce(testing::Return(false));
-
-    EXPECT_FALSE(mockMain.isAlive());
-}
-
-TEST(MainCharacterTest, MovementValidation) {
-    MockMainChar mockMain;
-
-    EXPECT_CALL(mockMain, move('W')).Times(1);
-    EXPECT_CALL(mockMain, move('A')).Times(1);
-    EXPECT_CALL(mockMain, move('S')).Times(1);
-    EXPECT_CALL(mockMain, move('D')).Times(1);
-
-    mockMain.move('W');
-    mockMain.move('A');
-    mockMain.move('S');
-    mockMain.move('D');
-
-    EXPECT_THROW({
-        mockMain.move('X'); 
-    }, std::invalid_argument);
-
-    EXPECT_THROW({
-        mockMain.move('1');
-    }, std::invalid_argument);
-
-    EXPECT_THROW({
-        mockMain.move('\0');
-    }, std::invalid_argument);
-}
-
-TEST(MainCharacterTest, TypeValidation) {
-    MockMainChar mockMain;
-
-    EXPECT_CALL(mockMain, getType())
-        .Times(1)
-        .WillOnce(testing::Return("Good"));
-
-    EXPECT_EQ(mockMain.getType(), "Good");
-
-    EXPECT_CALL(mockMain, getType())
-        .Times(1)
-        .WillOnce(testing::Return("Bad"));
-
-    EXPECT_EQ(mockMain.getType(), "Bad");
-
-    EXPECT_CALL(mockMain, getType())
-        .Times(1)
-        .WillOnce(testing::Return("Unknown"));
-
-    EXPECT_EQ(mockMain.getType(), "Unknown");
+// Test: Invalid position (negative health recovery)
+TEST(MainCharacterTestSuite, InvalidHealing) {
+    MainCharacter mc("Theodore", 100, 15, "Fire");
+    mc.heal(-10); // Invalid negative healing
+    EXPECT_EQ(mc.getHealth(), 100); // No change
 }
 
