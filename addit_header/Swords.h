@@ -12,8 +12,8 @@ using namespace std;
 class Sword : public Object {
 private:
 int type;
-    int sword_dam;
-    string sword_name;
+    int sword_dam{};
+    string sword_name{};
 
 public:
 Sword();

@@ -17,7 +17,7 @@ Level::Level()
 }
 
 
-Level::Level(int power, const vector<vector<int>>& mapLayout, int goblinGoal)
+Level::Level(int power, const vector<vector<int>>& mapLayout, int goblinGoal, bool &isOver)
     : gameMap(mapLayout, mapLayout[0].size(), mapLayout.size()), 
       player("Hero", 100, power, "Fire"), 
       inventory(), 
@@ -29,15 +29,14 @@ Level::Level(int power, const vector<vector<int>>& mapLayout, int goblinGoal)
     levelElements[2] = FIRE;
     levelElements[3] = EARTH;
     levelElements[4] = AIR;
+    this->isOver = &isOver;
 }
 
       
 void Level::start() {
     cout << "debug: start" << endl;
-    while (!end) {
-      //   gameMap.printMap(player.getX(), player.getY());
+    while (!end && !*isOver) {
         takeAction();
-       // end = (gameMap.getGoblinsKilled() >= goblinGoal || !player.isAlive());
     }
 }
 
@@ -75,13 +74,13 @@ void Level::takeAction() {
     cout << "debug: action is " << action << endl;
 
     if (action == 'i') {
-        // inventory.usePotion(player);
+        inventory.usePotion(player);
                
                 // player.openInventory();
     } 
     else if(action == 'q'){
         cout << "You have quit the game." << endl;
-        exit(0);
+        *isOver = true;
     }
     else if(action == 'g'){
         MenuPrinter::printGoblinStatus(
@@ -126,10 +125,6 @@ void Level::takeAction() {
                     cout << "You picked up a potion: " << potion->getType() << endl;
                 }
         }
-        // else if (encounter.getType() == "potion") {
-        //     Potion *potion = dynamic_cast<Potion*>(& encounter);
-        //     inventory.addPotion(*potion);
-        // }
         else if (type == "Sword") {
                 Sword* sword = dynamic_cast<Sword*>(encounter.get());
                 if (sword) {
@@ -154,45 +149,7 @@ void Level::takeAction() {
     }
 }
 
-    
 
-// void Level::Finalbosslevel(int power) {
-//     cout << "You have reached the final boss level!" << endl;
-//     cout << "You have to defeat the final boss to win the game." << endl;
-//     cout << "The final boss is a dragon with 100 health points." << endl;
-//     cout << "You have to defeat the dragon to win the game." << endl;
-//     cout << "Good luck!" << endl;
-//     cout << endl;
-
-//     Dragon dragon(100);
-
-//     while (player.getHealth() > 0 && dragon.getHealth() > 0) {
-//         cout << "Player health: " << player.getHealth() << endl;
-//         cout << "Dragon health: " << dragon.getHealth() << endl;
-//         cout << endl;
-
-//         char action;
-//         cout << "Enter action: ";
-//         cin >> action;
-//         switch (action) {
-//         case 'a':
-//             player.attack(dragon);
-//             break;
-//         case 'd':
-//             dragon.attack(player);
-//             break;
-//         default:
-//             cout << "Invalid action" << endl;
-//         }
-//     }
-
-//     if (player.getHealth() > 0) {
-//         cout << "You defeated the dragon! You win!" << endl;
-//     }
-//     else {
-//         cout << "You were defeated by the dragon. Game over." << endl;
-//     }
-// }
 
 //   vector<Level> Level::initializeLevels() { // todo call this in game manager pass it in
 //     vector<Level> levels;

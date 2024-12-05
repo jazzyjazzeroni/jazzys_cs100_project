@@ -24,23 +24,6 @@ void Sword::setName(const string& nm) {
     sword_name = nm;
 }
 
-// void Sword::dealDamage(Character &opponent) {
-//     if (this->sword_name == "Normal Sword") {
-//         damage(5);
-//         cout << "You used your " << sword_name << " dealing " << sword_dam << " damage!" << endl;
-//     }
-//     else if (this->sword_name == "Better Sword") {
-//         damage(10);
-//         cout << "You used your " << sword_name << " dealing " << sword_dam << " damage!" << endl;
-//     }
-//     else if (this->sword_name == "Greatest Sword") {
-//         damage(15);
-//         cout << "You used your " << sword_name << " dealing " << sword_dam << " damage!" << endl;
-//     }
-
-//     opponent.receiveDamage(sword_dam); 
-// }
-
 void Sword::damage(int amount) {
     sword_dam = amount;
 }

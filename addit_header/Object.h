@@ -6,8 +6,8 @@ using namespace std;
 class Object {
 public:
 
-    string type; // "character" | "sword" | "potion" | "empty"
-    int value; // 0 | 5 | 10 | 15
+    string type{}; // "character" | "sword" | "potion" | "empty"
+    int value{}; // 0 | 5 | 10 | 15
     
     Object();
     virtual ~Object() {};

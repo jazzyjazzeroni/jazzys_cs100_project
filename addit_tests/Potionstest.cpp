@@ -1,74 +1,74 @@
 #include "gtest/gtest.h"
 #include "../addit_header/Potions.h"
 
-#include "gtest/gtest.h"
-#include "../addit_header/Potions.h"
-
-TEST(PotionTest, PotionConstructorGetHealingAmount){
-    Potion miniPotion;
-    EXPECT_EQ(miniPotion.getHealingAmount(), 1);
+TEST(PotionTestSuite, testDefaultPotionConstructor){
+    Potion smallPotion;
+    EXPECT_EQ(smallPotion.getHealingAmount(), 1);
 };
 
-TEST(PotionTest, PotionConstructorSetHealingAmount){
-    Potion miniPotion;
-    miniPotion.setHealingAmount(50);
-    EXPECT_EQ(miniPotion.getHealingAmount(), 50);
+TEST(PotionTestSuite, testOverloadedConstructorInvalidPotion) {
+    Potion smallPotion(-1, "Not a Potion");
+    EXPECT_EQ(smallPotion.getHealingAmount(), 0);
+    EXPECT_EQ(smallPotion.getType(), "");
 };
 
-TEST(PotionTest, InvalidPotionHealing) {
-    Potion miniPotion;
-    miniPotion.setHealingAmount(-50);
-    EXPECT_EQ(miniPotion.getHealingAmount(), 0);
+TEST(PotionTestSuite, testSmallPotionInvalid) {
+    Potion smallPotion;
+    smallPotion.setHealingAmount(-1);
+    EXPECT_EQ(smallPotion.getHealingAmount(), 0);
 };
 
-TEST(PotionTest, PotionConstructorGetType){
-    Potion miniPotion;
-    EXPECT_EQ(miniPotion.getType(), "");
+TEST(PotionTestSuite, testSmallPotionValid){
+    Potion smallPotion;
+    smallPotion.setHealingAmount(50);
+    EXPECT_EQ(smallPotion.getHealingAmount(), 50);
 };
 
-TEST(PotionTest, SwordConstructorSetType) {
-    Potion miniPotion;
-    miniPotion.setType("Mini Potion");
-    EXPECT_EQ(miniPotion.getType(), "Mini Potion");
+TEST(PotionTestSuite, testLargePotionInvalid) {
+    Potion largePotion;
+    largePotion.setHealingAmount(-50);
+    EXPECT_EQ(largePotion.getHealingAmount(), 0);
 };
 
-TEST(PotionTest, InvalidPotionType) {
-    Potion miniPotion;
-    miniPotion.setType("Insane Potion");
-    EXPECT_EQ(miniPotion.getType(), "");
+TEST(PotionTestSuite, testPotionGetType){
+    Potion smallPotion;
+    EXPECT_EQ(smallPotion.getType(), "");
 };
 
-TEST(PotionTest, InvalidPotionConstructorParameters) {
-    Potion miniPotion;
-    miniPotion.setHealingAmount(-1);
-    EXPECT_EQ(miniPotion.getHealingAmount(), 0);
+TEST(PotionTestSuite, testPotionSetTypeValid) {
+    Potion smallPotion;
+    smallPotion.setType("Small Potion");
+    EXPECT_EQ(smallPotion.getType(), "Small Potion");
 };
 
-TEST(PotionTest, PotionFullConstructorGetHealingAmount){
+TEST(PotionTestSuite, testPotionSetTypeInvalid) {
+    Potion smallPotion;
+    smallPotion.setType("Null Potion");
+    EXPECT_EQ(smallPotion.getType(), "");
+};
+
+
+TEST(PotionTestSuite, testSmallPotionFullGetHealingAmount){
     Potion smallPotion (50, "Small Potion");
     EXPECT_EQ(smallPotion.getHealingAmount(), 50);
 };
 
-TEST(PotionTest, PotionFullConstructorSetHealingAmount){
+TEST(PotionTestSuite, PotionSmallPotionHalfSetHealingAmount){
     Potion smallPotion (50, "Small Potion");
     smallPotion.setHealingAmount(100);
     EXPECT_EQ(smallPotion.getHealingAmount(), 100);
 };
 
-TEST(PotionTest, PotionFullConstructorGetType){
+TEST(PotionTestSuite, testSmallPotionFullConstructorGetType){
     Potion smallPotion (50, "Small Potion");
     EXPECT_EQ(smallPotion.getType(), "Small Potion");
 };
 
-TEST(PotionTest, PotionFullConstructorSetType) {
+TEST(PotionTestSuite, testSmallPotionFullConstructorSetType) {
     Potion smallPotion (50, "Small Potion");
     smallPotion.setType("Smaller Potion");
     EXPECT_EQ(smallPotion.getType(), "Smaller Potion");
 };
 
-TEST(PotionTest, InvalidPotionFullConstructorParameters) {
-    Potion miniPotion(-1, "Not a Potion");
-    EXPECT_EQ(miniPotion.getHealingAmount(), 0);
-    EXPECT_EQ(miniPotion.getType(), "");
-};
+
 
