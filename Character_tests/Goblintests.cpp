@@ -41,6 +41,13 @@ TEST(GoblinTestSuite, testEarthGobDefaultConstructor) {
 
 }
 
+// Test: Constructor Initialization for invalid element goblins
+TEST(GoblinTestSuite, testInvalidGobDefaultConstructor) {
+
+    EXPECT_THROW(Goblin gob("Goblin", 65, 5, "idk"), invalid_argument);
+
+}
+
 // i don't think setHealth even gets used but i made a test for it anyways
 TEST(GoblinTestSuite, testSetGoblinHealth) {
     Goblin gob("Goblin", 65, 5, "Earth");
