@@ -115,6 +115,7 @@ void GameMap::printMap(int playerX, int playerY) const {
                     cout << ". ";  // Represent empty spaces with '.'
                 }
             }
+            cout << "\t";
         }
         cout << endl;
     }
