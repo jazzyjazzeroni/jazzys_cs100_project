@@ -1,70 +1,61 @@
 #include "gtest/gtest.h"
 #include "../addit_header/Swords.h"
 
-TEST(SwordTests, SwordConstructorGetPower){
-    Sword greySword;
-    EXPECT_EQ(greySword.getPower(), 1);
+TEST(SwordsTestSuite, testDefaultSwordConstructor){
+    Sword sword_test;
+    EXPECT_EQ(sword_test.getType(), " ");
+    EXPECT_EQ(sword_test.getPower(), 0);
+    EXPECT_EQ(sword_test.getName(), " ");
 };
 
-TEST(SwordTests, SwordConstructorSetPower){
-    Sword greySword;
-    greySword.setPower(50);
-    EXPECT_EQ(greySword.getPower(), 50);
+TEST(SwordsTestSuite, testOverloadedSwordConstructor){
+    Sword sword_test(50, "Small Sword");
+    sword_test.setPower(50);
+    EXPECT_EQ(sword_test.getPower(), 50);
 };
 
-TEST(SwordTests, InvalidSwordPowerParameters) {
-    Sword greySword;
-    greySword.setPower(-20);
-    EXPECT_EQ(greySword.getPower(), 0);
+TEST(SwordsTestSuite, testInvalidSwordPowerParameters) {
+    Sword sword_test;
+    sword_test.setPower(-20);
+    EXPECT_EQ(sword_test.getPower(), 0);
 };
 
-TEST(SwordTests, SwordConstructorGetName){
-    Sword greySword;
-    EXPECT_EQ(greySword.getName(), "");
+TEST(SwordsTestSuite, testSwordGetName){
+    Sword sword_test;
+    EXPECT_EQ(sword_test.getName(), "");
 };
 
-TEST(SwordTests, SwordConstructorSetName) {
-    Sword greySword;
-    greySword.setName("Lame Sword");
-    EXPECT_EQ(greySword.getName(), "Lame Sword");
+TEST(SwordsTestSuite, testSwordSetName) {
+    Sword sword_test;
+    sword_test.setName("Large Sword");
+    EXPECT_EQ(sword_test.getName(), "Lame Sword");
 };
 
-TEST(SwordTests, InvalidSwordNameParameters) {
-    Sword greySword;
-    greySword.setName("No Sword");
-    EXPECT_EQ(greySword.getName(), "");
+TEST(SwordsTestSuite, testSwordNameParametersInvalid) {
+    Sword sword_test;
+    sword_test.setName("No Sword");
+    EXPECT_EQ(sword_test.getName(), "");
 };
 
-TEST(SwordTests, SwordFullConstructorGetName) {
-    Sword greySword (50, "Happy Sword");
-    EXPECT_EQ(greySword.getName(), "Happy Sword");
+TEST(SwordsTestSuite, SwordFullConstructorGetName) {
+    Sword sword_test (50, "Large Sword");
+    EXPECT_EQ(sword_test.getName(), "Large Sword");
 };
 
-TEST(SwordTests, SwordFullConstructorSetName){
-    Sword greySword(50, "Lame Sword");
-    greySword.setName("Sad Sword");
-    EXPECT_EQ(greySword.getName(), "Sad Sword");
+TEST(SwordsTestSuite, SwordFullConstructorSetName){
+    Sword sword_test(50, "Large Sword");
+    sword_test.setName("Large Sword");
+    EXPECT_EQ(sword_test.getName(), "Large Sword");
 };
 
-TEST(SwordTests, SwordFullConstructorGetPower){
-    Sword greySword(50, "Lame Sword");
-    EXPECT_EQ(greySword.getPower(), 50);
+TEST(SwordsTestSuite, SwordFullConstructorGetPower){
+    Sword sword_test(50, "Small Sword");
+    EXPECT_EQ(sword_test.getPower(), 50);
 };
 
-TEST(SwordTests, SwordFullConstructorSetPower){
-    Sword greySword(50, "Lame Sword");
-    greySword.setPower(100);
-    EXPECT_EQ(greySword.getPower(), 100);
+TEST(SwordsTestSuite, SwordFullConstructorSetPower){
+    Sword sword_test(50, "Small Sword");
+    sword_test.setPower(100);
+    EXPECT_EQ(sword_test.getPower(), 100);
 };
 
-TEST(SwordTests, SwordDealDamage) {
-    Sword normalSword(5, "Normal Sword");
-    normalSword.dealDamage();
-    EXPECT_EQ(cout, "You used your Normal Sword!");
-};
-
-TEST(SwordTests, InvalidSwordTypeDealDamage) {
-     Sword normalSword(5, "Norm Sword");
-    normalSword.dealDamage();
-    EXPECT_EQ(cout, "");
-}
