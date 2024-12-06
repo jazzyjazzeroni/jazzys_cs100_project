@@ -73,6 +73,21 @@ add_executable(game
 
   # addit_tests/LevelsTest.cpp
 )
+
+add_executable(character_tests
+  Character_tests/Character_tests.cpp
+  Character_tests/Mainchartests.cpp
+  Character_tests/Goblintests.cpp
+)
+
+add_executable(addit_tests
+  addit_tests/GameMaptest.cpp
+  addit_tests/Objecttest.cpp
+  addit_tests/Potionstest.cpp
+  addit_tests/PowersTest.cpp
+  addit_tests/Swordstest.cpp
+  addit_tests/Inventorytest.cpp
+)
 # # target_link_libraries(addit_tests gtest gmock gtest_main)
 # target_link_libraries(addit_tests gtest gmock gtest_main)
 
