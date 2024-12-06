@@ -133,7 +133,6 @@ void Level::takeAction() {
 "         ___\\ \\|--|// //___"<<endl<<
 "       //`    \\      //    `\\"<<endl<<
 "  jgs //       '----'       \\"<<endl << endl;
-                    //MenuPrinter::GoblinEncounterMenu(*goblin); //// Show goblin info and ask for fight choice
                     MenuPrinter::GoblinEncounterMenu(*goblin, player); // Show goblin info and ask for fight choice
                     char choice;
                     cin >> choice;
