@@ -19,15 +19,23 @@ void MainCharacter::heal(int amount) {
 
 
     void MainCharacter::equipSword(const Sword & newSword) {
-        //todo give o[ption to swap or replace sword]
-            // Swap or replace the sword
-            this->sword = Sword(newSword.getValue(), "New Sword");
-            // inventory->addSword(newSword);
-            sword = newSword; // Equip the sword
-    // inventory->addSword(newSword); // Add to inventory
-    // cout << "Equipped sword: " << newSword.getName() << endl;
+            cout << "Do you want to equip and/or swap exisiting sword? (y/n): ";
+            char choice;
+            cin >> choice;
+
+            if (choice == 'y') {
+                this->sword = Sword(newSword.getValue(), "New Sword"); // Replace the sword
+                cout << "New sword: " << newSword.getName() << endl;
+
+            } else if (choice == 'n') {
+                cout << " Sword remains unchanged." << endl;
+            } else {
+                cout << "Invalid choice. Sword remains unchanged." << endl;
+            }
     }
-    // Equips a sword
+
+    
+ 
 
     int MainCharacter::mod(int value, int limit) {
         return (value % limit + limit) % limit;  
@@ -59,7 +67,6 @@ void MainCharacter::heal(int amount) {
 
     }
 
-
     pair<int, int> MainCharacter::getPosition() const {
         return {x, y};
     }
@@ -85,6 +92,7 @@ void MainCharacter::attack(Character &target) {
             target.attack(*this);
             // todo take damage from goblin
         }
+        
     } 
 
     if (!target.isalive()) {
