@@ -204,7 +204,10 @@ One principle that helped our group was the Single Responsibility Principle sinc
  ## Screenshots
   Screenshots of the input/output after running your application
  ## Installation/Usage
-  Instructions on installing and running your application
+  In the command line on VS Code:
+  cmake .
+  make
+  ./bin/game
  ## Testing
   How was your project tested/validated? If you used CI, you should have a "build passing" badge in this README.
  
