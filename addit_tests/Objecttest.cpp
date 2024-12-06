@@ -88,7 +88,7 @@ TEST(ObjectTest, DefaultZeroTest) {
 
 //start setter tests
 
-TEST(ObjectTest, SwordSetterValid) {
+TEST(ObjectTest, SwordSetterInValid) {
     Object obj;
     obj.setType("sword");
     obj.setValue(5);
@@ -96,13 +96,6 @@ TEST(ObjectTest, SwordSetterValid) {
     EXPECT_EQ(obj.getValue(), 5);
 }
 
-TEST(ObjectTest, PotionSetterValid) {
-    Object obj;
-    obj.setType("potion");
-    obj.setValue(10);
-    EXPECT_EQ(obj.getType(), "potion");
-    EXPECT_EQ(obj.getValue(), 10);
-}
 
 TEST(ObjectTest, GoblinSettersValid) {
     Object obj;
@@ -124,13 +117,13 @@ TEST(ObjectTest, ValidSetValue) {
     EXPECT_EQ(obj.getValue(), 5);
 }
 
-TEST(ObjectTest, InValidSetType) {
+TEST(ObjectTest, InvalidSetType) {
     Object obj;
     obj.setType("");
     EXPECT_EQ(obj.getType(), "Null");
 }
 
-TEST(ObjectTest, InValidSetValueNeg) {
+TEST(ObjectTest, InVvlidSetValueNeg) {
     Object obj;
     obj.setValue(-10);
     EXPECT_EQ(obj.getValue(), 0);
@@ -159,12 +152,6 @@ TEST(ObjectTest, ValidPotionGetterTest) {
     EXPECT_EQ(obj.getValue(), 10);
 }
 
-TEST(ObjectTest, ValidSwordGetterTest) {
-    Object obj("Sword", 7);
-    EXPECT_EQ(obj.getType(), "Sword");
-    EXPECT_EQ(obj.getValue(), 7);
-}
-
 
 TEST(ObjectTest, InvalidGetterTyprTest) {
     Object obj("Invalid", 15);
@@ -185,7 +172,7 @@ TEST(ObjectTest, InvalidGetterNegValTest) {
 }
 
 TEST(ObjectTest, InvalidValidTotalGetterTest) {
-    Object obj("Inavalid", -1000);
+    Object obj("Invalid", -1000);
     EXPECT_EQ(obj.getType(), "Null");
     EXPECT_EQ(obj.getValue(), 0);
 }

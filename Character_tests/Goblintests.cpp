@@ -65,10 +65,17 @@
 //     EXPECT_TRUE(gob.isalive());
 // }
 
+<<<<<<< HEAD
 // // Test: tests if isAlive correctly returns false for a dead goblin
 // TEST(GoblinTestSuite, testGoblinIsAlive) {
 //     Goblin gob("Earth Goblin", 65, 5, "Earth");
 //     gob.setHealth(0);
+=======
+// Test: tests if isAlive correctly returns false for a dead goblin
+TEST(GoblinTestSuite, testGoblinIsAliveAfterSetTo0) {
+    Goblin gob("Earth Goblin", 65, 5, "Earth");
+    gob.setHealth(0);
+>>>>>>> master
 
 //     EXPECT_FALSE(gob.isalive());
 // }
@@ -90,6 +97,7 @@
 //     EXPECT_EQ(gob.getHealth(), 0);
 // }
 
+<<<<<<< HEAD
 // // Test: Goblin attacking the player
 // // might need tweaks
 // TEST(GoblinTestSuite, testAttackPlayer) {
@@ -112,3 +120,39 @@
 //     gob.attack(mc); // Should result in no damage
 //     EXPECT_EQ(mc.getHealth(), 100); // Health should remain the same
 // }
+=======
+// Test: Goblin attacking the player
+// might need tweaks
+TEST(GoblinTestSuite, testAttackPlayer) {
+    MainCharacter mc("Theodore", 100, 15, "Water");
+    Goblin gob("Fire Goblin", 50, 10, "Fire");
+
+    gob.attack(mc);
+    EXPECT_LT(mc.getHealth(), 100);
+    EXPECT_TRUE(mc.isalive()); // theo should have 80
+
+    gob.attack(mc);
+    EXPECT_LT(mc.getHealth(), 100);
+    EXPECT_TRUE(mc.isalive()); // theo should have 60
+
+    gob.attack(mc);
+    EXPECT_LT(mc.getHealth(), 100);
+    EXPECT_TRUE(mc.isalive()); // theo should have 40
+
+    gob.attack(mc);
+    EXPECT_LT(mc.getHealth(), 100);
+    EXPECT_TRUE(mc.isalive()); // theo should have 20
+
+    gob.attack(mc);
+    EXPECT_FALSE(mc.isalive()); // theo ded
+}
+
+// Test: tests that goblin of same element as mc does no damage
+TEST(GoblinTestSuite, testInvalidAttack) {
+    MainCharacter mc("Theodore", 100, 15, "Fire");
+    Goblin gob("Fire Goblin", 50, 10, "Fire");
+
+    gob.attack(mc); // theo should take 20 damage
+    EXPECT_EQ(mc.getHealth(), 80);
+}
+>>>>>>> master

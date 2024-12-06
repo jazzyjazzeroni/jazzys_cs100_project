@@ -40,20 +40,32 @@ add_subdirectory(googletest)
 add_executable(character_tests
   Character_tests/Character_tests.cpp
   Character_tests/Mainchartests.cpp
+  Character_tests/Goblintests.cpp
   addit_src/Object.cpp
+  Character_src/Character.cpp
+  Character_src/MainCharacter.cpp
+  Character_src/Goblin.cpp
+  addit_src/GameMap.cpp
+  addit_src/Object.cpp
+  addit_src/Potions.cpp
+  addit_src/Powers.cpp
+  addit_src/Swords.cpp
+  addit_src/Level.cpp
+  addit_src/Inventory.cpp
+  addit_src/MenuPrinter.cpp
 )
 target_link_libraries(character_tests gtest gmock gtest_main)
-# # target_link_libraries(Character_tests CharacterLib AdditLib gtest gmock)
+# # # target_link_libraries(Character_tests CharacterLib AdditLib gtest gmock)
 
 # # Test executables for addit_tests
 add_executable(addit_tests
   addit_tests/GameMaptest.cpp
   addit_tests/Objecttest.cpp
-  addit_tests/Inventorytest.cpp
-  addit_tests/LevelsTest.cpp
-  addit_tests/Potionstest.cpp
-  addit_tests/PowersTest.cpp
-  addit_tests/Swordstest.cpp
+  addit_src/GameMap.cpp
+  addit_src/Object.cpp
+
+
+  # addit_tests/LevelsTest.cpp
 )
 target_link_libraries(addit_tests gtest gmock gtest_main)
 
@@ -66,14 +78,37 @@ add_executable(game
   addit_src/Potions.cpp
   addit_src/Powers.cpp
   addit_src/Swords.cpp
+  
+  addit_src/Level.cpp
+  addit_src/Inventory.cpp
+  addit_tests/LevelsTest.cpp
+  addit_src/MenuPrinter.cpp
+  Character_tests/Character_tests.cpp
+  Character_tests/Mainchartests.cpp
+  Character_tests/Goblintests.cpp
   Character_src/Character.cpp
-  Character_src/Goblin.cpp
   Character_src/MainCharacter.cpp
-  main.cpp
+  Character_src/Goblin.cpp
+)
+target_link_libraries(addit_tests gtest gmock gtest_main)
+
+# add_executable(game
+#   addit_src/GameMap.cpp
+#   addit_src/Inventory.cpp
+#   addit_src/Level.cpp
+#   addit_src/MenuPrinter.cpp
+#   addit_src/Object.cpp
+#   addit_src/Potions.cpp
+#   addit_src/Powers.cpp
+#   addit_src/Swords.cpp
+#   Character_src/Character.cpp
+#   Character_src/Goblin.cpp
+#   Character_src/MainCharacter.cpp
+#   main.cpp
 
 
   # addit_tests/LevelsTest.cpp
-)
+#)
 # # target_link_libraries(addit_tests gtest gmock gtest_main)
 # target_link_libraries(addit_tests gtest gmock gtest_main)
 

@@ -119,9 +119,15 @@
 // }
 
 
+<<<<<<< HEAD
 // TEST(MainCharacterTestSuite, testUsePotionBig) {
 //     MainCharacter mc("Theodore", 50, 15, "Fire");
 //     Potion bigPotion(-50, "Big Potion");
+=======
+TEST(MainCharacterTestSuite, testUsePotionBig) {
+    MainCharacter mc("Theodore", 50, 15, "Fire");
+    Potion bigPotion(50, "Big Potion");
+>>>>>>> master
 
 //     bigPotion.healCharacter(mc);
 //     EXPECT_EQ(mc.getHealth(), 100); // Fully healed

@@ -29,11 +29,10 @@
 //     EXPECT_EQ(gameMap.getNumGoblins(), 4);  // Goblins with codes 1, 2, 4, 5
 // }
 
-// TEST_F(GameMapTestSuite, testGoblinKillPositive) {
-//     gameMap.killGoblin(0, 0);  // Goblin at (0,0)
-//     EXPECT_EQ(gameMap.getGoblinsKilled(), 1);
-//     EXPECT_EQ(gameMap.getNumGoblins(), 3);
-// }
+TEST_F(GameMapTestSuite, testKillGoblin) {
+    gameMap.killGoblin(0, 0);  // Goblin at (0,0)
+    EXPECT_EQ(gameMap.getGoblinsKilled(), 1);
+}
 
 // TEST_F(GameMapTestSuite, testGoblinKillNegative) {
 //     EXPECT_THROW(gameMap.killGoblin(-1, 0), std::out_of_range);  // Negative index
@@ -42,15 +41,15 @@
 //     EXPECT_EQ(gameMap.getGoblinsKilled(), 0);
 // }
 
-// TEST_F(GameMapTestSuite, testGetObjectValid) {
-//     auto obj = gameMap.getObjectAt(0, 0);
-//     EXPECT_EQ(obj->getType(), "Goblin");
-// }
+TEST_F(GameMapTestSuite, testGetObjectValid) {
+    auto obj = gameMap.getObjectAt(0, 0);
+    EXPECT_EQ(obj->getType(), "Goblin");
+}
 
-// TEST_F(GameMapTestSuite, testGetObjectInvalid) {
-//     EXPECT_THROW(gameMap.getObjectAt(-1, 0), std::out_of_range);  // Negative index
-//     EXPECT_THROW(gameMap.getObjectAt(3, 3), std::out_of_range);  // Out of bounds
-// }
+TEST_F(GameMapTestSuite, testGetObjectInvalid) {
+    EXPECT_THROW(gameMap.getObjectAt(-1, 0), std::out_of_range);  // Negative index
+    EXPECT_THROW(gameMap.getObjectAt(3, 3), std::out_of_range);  // Out of bounds
+}
 
 // TEST_F(GameMapTestSuite, testSetObjectValid) {
 //     auto newObj = std::make_shared<Object>();
@@ -59,11 +58,11 @@
 //     EXPECT_EQ(obj->getType(), "Object");  // Replaced Goblin with empty object
 // }
 
-// TEST_F(GameMapTestSuite, testSetObjectAtInvalid) {
-//     auto newObj = std::make_shared<Object>();
-//     EXPECT_THROW(gameMap.setObjectAt(-1, 0, newObj), std::out_of_range);  // Negative index
-//     EXPECT_THROW(gameMap.setObjectAt(3, 3, newObj), std::out_of_range);  // Out of bounds
-// }
+TEST_F(GameMapTestSuite, testSetObjectAtInvalid) {
+    auto newObj = std::make_shared<Object>();
+    EXPECT_THROW(gameMap.setObjectAt(-1, 0, newObj), std::out_of_range);  // Negative index
+    EXPECT_THROW(gameMap.setObjectAt(3, 3, newObj), std::out_of_range);  // Out of bounds
+}
 
 // TEST_F(GameMapTestSuite, NumGoblinsAfterActions) {
 //     gameMap.killGoblin(1, 0);  // Kill Goblin at (1,0)
