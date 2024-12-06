@@ -42,6 +42,7 @@ void Level::start() {
         gameMap.printMap(playerPos.first, playerPos.second); // Print the map
         takeAction();
 
+        }
     }
 }
 
