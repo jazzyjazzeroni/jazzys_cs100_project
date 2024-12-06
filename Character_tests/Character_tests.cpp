@@ -4,7 +4,6 @@
 #include "../Character_header/MainCharacter.h"
 
 // Constants for testing
-const int MAX_HEALTH = 100;
 
 // Test fixture for the Character class
 class CharacterTestSuite : public ::testing::Test {

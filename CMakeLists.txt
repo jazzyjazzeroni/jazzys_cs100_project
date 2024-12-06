@@ -36,25 +36,24 @@ add_subdirectory(googletest)
 # add_executable(main_app main.cpp)
 # target_link_libraries(main_app CharacterLib AdditLib)
 
-
 # Test executables for character_tests
 add_executable(character_tests
   Character_tests/Character_tests.cpp
   Character_tests/Mainchartests.cpp
-  Character_src/Goblintests.cpp
+  addit_src/Object.cpp
 )
 target_link_libraries(character_tests gtest gmock gtest_main)
+# target_link_libraries(Character_tests CharacterLib AdditLib gtest gmock)
 
-# Test executables for addit_tests
+# # Test executables for addit_tests
 add_executable(addit_tests
   addit_tests/GameMaptest.cpp
   addit_tests/Objecttest.cpp
-  addit_tests/Potiontest.cpp
-  addit_tests/PowersTest.cpp
-  addit_tests/Swordstest.cpp
+  addit_src/GameMap.cpp
+  addit_src/Object.cpp
+
+
   addit_tests/LevelsTest.cpp
-
-
 )
 target_link_libraries(addit_tests gtest gmock gtest_main)
 
@@ -71,24 +70,9 @@ add_executable(game
   Character_src/Goblin.cpp
   Character_src/MainCharacter.cpp
   main.cpp
- 
+
 
   # addit_tests/LevelsTest.cpp
-)
-
-add_executable(character_tests
-  Character_tests/Character_tests.cpp
-  Character_tests/Mainchartests.cpp
-  Character_tests/Goblintests.cpp
-)
-
-add_executable(addit_tests
-  addit_tests/GameMaptest.cpp
-  addit_tests/Objecttest.cpp
-  addit_tests/Potionstest.cpp
-  addit_tests/PowersTest.cpp
-  addit_tests/Swordstest.cpp
-  addit_tests/Inventorytest.cpp
 )
 # # target_link_libraries(addit_tests gtest gmock gtest_main)
 # target_link_libraries(addit_tests gtest gmock gtest_main)
