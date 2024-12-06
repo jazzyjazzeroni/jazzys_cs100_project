@@ -66,7 +66,7 @@ TEST(GoblinTestSuite, testGoblinIsAlive) {
 }
 
 // Test: tests if isAlive correctly returns false for a dead goblin
-TEST(GoblinTestSuite, testGoblinIsAlive) {
+TEST(GoblinTestSuite, testGoblinIsAliveAfterSetTo0) {
     Goblin gob("Earth Goblin", 65, 5, "Earth");
     gob.setHealth(0);
 
