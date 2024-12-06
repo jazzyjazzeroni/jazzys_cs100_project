@@ -14,6 +14,8 @@ int main() {
     // Example initialization of a GameMap
        MenuPrinter::printMainMenu();
         MenuPrinter::movementMenu();
+        cout << endl;
+        cout << "You will have a fire power elemnt you need to defeat the most ideal goblin. Deafeat 2 goblins in this level!"  << endl;
     vector<vector<int>> initMatrix = {
         {0, 0, 0, 5, 4, 0, 1, 0, 2, 0, 6, 4},  
         {1, 0, 2, 0, 6, 4, 4, 3, 0, 0, 2, 3},  

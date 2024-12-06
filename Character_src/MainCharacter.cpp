@@ -61,7 +61,6 @@ void MainCharacter::heal(int amount) {
 }
 
     void MainCharacter::setPosition(int newX, int newY) {
-        cout << "the player is moved to " << newX << " " << newY << endl;
         x = newX;
     y = newY;
 
