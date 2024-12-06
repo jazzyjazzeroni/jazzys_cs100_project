@@ -28,7 +28,7 @@ TEST(SwordsTestSuite, testSwordGetName){
 TEST(SwordsTestSuite, testSwordSetName) {
     Sword sword_test;
     sword_test.setName("Large Sword");
-    EXPECT_EQ(sword_test.getName(), "Lame Sword");
+    EXPECT_EQ(sword_test.getName(), "Large Sword");
 };
 
 TEST(SwordsTestSuite, testSwordNameParametersInvalid) {

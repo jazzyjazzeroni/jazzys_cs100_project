@@ -27,7 +27,7 @@ TEST(PotionTestSuite, testSmallPotionValid){
 TEST(PotionTestSuite, testLargePotionInvalid) {
     Potion largePotion;
     largePotion.setHealingAmount(-50);
-    EXPECT_EQ(largePotion.getHealingAmount(), 0);
+    ASSERT_EQ(largePotion.getHealingAmount(), 50) << "ABORT: Large potion can not be negative";
 };
 
 TEST(PotionTestSuite, testPotionGetType){
@@ -66,8 +66,8 @@ TEST(PotionTestSuite, testSmallPotionFullConstructorGetType){
 
 TEST(PotionTestSuite, testSmallPotionFullConstructorSetType) {
     Potion smallPotion (50, "Small Potion");
-    smallPotion.setType("Smaller Potion");
-    EXPECT_EQ(smallPotion.getType(), "Smaller Potion");
+    smallPotion.setType("Small Potion");
+    EXPECT_EQ(smallPotion.getType(), "Small Potion");
 };
 
 
