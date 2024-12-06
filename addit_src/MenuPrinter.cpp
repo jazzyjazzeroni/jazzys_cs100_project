@@ -7,11 +7,11 @@ using namespace std;
 
 // prints the main/title screen
 void MenuPrinter::printMainMenu() {
-    cout << "                 FLAMES  OF               " << endl;
-    cout << "                   =ICE=                 " << endl;
+    cout << "              FLAMES OF               " << endl;
+    cout << "                =ICE=                 " << endl;
     cout << endl;
-    cout << "                  1. Start                " << endl;
-    cout << "                  2. Exit                 " << endl;
+    cout << "               1. Start                " << endl;
+    cout << "               2. Exit                 " << endl;
     cout << endl;
 }
 
@@ -33,8 +33,8 @@ void MenuPrinter::movementMenu() {
 
 // prints when a fire goblin is encountered
 void MenuPrinter::GoblinEncounterMenu(const Goblin& goblin) {
-    cout << "      A goblin has appeared!        " << endl << endl;
-        cout << "      Element: " << goblin.getGoblinType() << endl << endl;
+    cout << "         A goblin has appeared!        " << endl << endl;
+    cout << "              Element: " << goblin.getGoblinType() << endl << endl;
     cout << "         Do you choose to fight?         " << endl;
     cout << endl;
     cout << "       1. Yes              2. No         " << endl;
