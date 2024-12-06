@@ -184,6 +184,21 @@ One principle that helped our group was the Single Responsibility Principle sinc
  
  ## Screenshots
   Screenshots of the input/output after running your application
+
+  <img width="853" alt="Screenshot 2024-12-06 at 1 14 58 PM" src="https://github.com/user-attachments/assets/12a570fa-6d26-4681-93e1-31b4cb35f7a2">
+
+<img width="565" alt="Screenshot 2024-12-06 at 1 15 13 PM" src="https://github.com/user-attachments/assets/732924d3-c2b0-4e30-9c05-ba150dad9a74">
+
+
+<img width="410" alt="Screenshot 2024-12-06 at 1 15 47 PM" src="https://github.com/user-attachments/assets/1b1dabc2-5093-40c8-8d4c-d71b62e401b8">
+
+
+
+<img width="745" alt="Screenshot 2024-12-06 at 1 15 34 PM" src="https://github.com/user-attachments/assets/9697a2eb-9a10-4122-8cfd-4dfbe7a9ed66">
+
+
+  
+
  ## Installation/Usage
   In the command line on VS Code:
   cmake .
