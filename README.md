@@ -113,7 +113,8 @@ The class diagram exemplifies inheritance, polymorphism, aggregation, and compos
 
 
   ### Updated Class Diagram
-![latestuml drawio](https://github.com/user-attachments/assets/e3d2b760-3882-41b2-abe1-9180a1698b15)
+![final drawio](https://github.com/user-attachments/assets/c90516b1-33a9-4211-9f71-c153977e7945)
+
 
 
 <strong>UML Diagram associations:</strong>
@@ -203,7 +204,10 @@ One principle that helped our group was the Single Responsibility Principle sinc
  ## Screenshots
   Screenshots of the input/output after running your application
  ## Installation/Usage
-  Instructions on installing and running your application
+  In the command line on VS Code:
+  cmake .
+  make
+  ./bin/game
  ## Testing
   How was your project tested/validated? If you used CI, you should have a "build passing" badge in this README.
  

@@ -7,7 +7,7 @@
 using namespace std;
 
 enum CharType{MAINCHAR, GOBLIN, DRAGON};
-const int MAX_HEALTH = 200;
+const int MAX_HEALTH = 100;
 
 class Character : public virtual Object {
 protected:
