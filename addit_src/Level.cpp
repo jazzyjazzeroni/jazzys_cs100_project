@@ -101,7 +101,7 @@ void Level::takeAction() {
         if (encounter) {
             string type = encounter->getType();
         if (type == "Goblin") {
-                cout << "A goblin appeared!" << endl;
+                //cout << "A goblin appeared!" << endl;
                 Goblin* goblin = dynamic_cast<Goblin*>(encounter.get());
                 if (goblin) {
                     MenuPrinter::GoblinEncounterMenu(*goblin); // Show goblin info and ask for fight choice
