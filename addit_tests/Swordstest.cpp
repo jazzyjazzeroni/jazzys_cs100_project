@@ -1,7 +1,7 @@
 #include "gtest/gtest.h"
 #include "../addit_header/Swords.h"
 
-TEST(SwordsTestSuite, testDefaultSwordConstructor){
+TEST(SwordsTestSuite, testDefaultSwordConstructorInvalid){
     Sword sword_test;
     EXPECT_EQ(sword_test.getType(), " ");
     EXPECT_EQ(sword_test.getPower(), 0);

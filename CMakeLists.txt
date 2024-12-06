@@ -57,7 +57,7 @@ add_executable(character_tests
 target_link_libraries(character_tests gtest gmock gtest_main)
 # # # target_link_libraries(Character_tests CharacterLib AdditLib gtest gmock)
 
-# # # Test executables for addit_tests
+# # Test executables for addit_tests
 add_executable(addit_tests
   addit_tests/GameMaptest.cpp
   addit_tests/Objecttest.cpp
@@ -71,11 +71,19 @@ add_executable(addit_tests
   addit_src/Potions.cpp
   addit_src/Powers.cpp
   addit_src/Swords.cpp
+  
   addit_src/Level.cpp
   addit_src/Inventory.cpp
   addit_tests/LevelsTest.cpp
+  addit_src/MenuPrinter.cpp
+  Character_tests/Character_tests.cpp
+  Character_tests/Mainchartests.cpp
+  Character_tests/Goblintests.cpp
+  Character_src/Character.cpp
+  Character_src/MainCharacter.cpp
+  Character_src/Goblin.cpp
 )
-# target_link_libraries(addit_tests gtest gmock gtest_main)
+target_link_libraries(addit_tests gtest gmock gtest_main)
 
 # add_executable(game
 #   addit_src/GameMap.cpp

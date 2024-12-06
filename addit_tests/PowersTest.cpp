@@ -48,7 +48,7 @@ TEST_F(PowersTest, SetAndGetPower) {
 }
 
 // Test getDamage and setDamage methods
-TEST_F(PowersTest, GetAndSetDamage) {
+TEST_F(PowersTest, InvalidGetAndSetDamage) {
     firePower.setDamage(25);
     EXPECT_EQ(firePower.getDamage(), 25);
 

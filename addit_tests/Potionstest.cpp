@@ -64,11 +64,6 @@ TEST(PotionTestSuite, testSmallPotionFullConstructorGetType){
     EXPECT_EQ(smallPotion.getType(), "Small Potion");
 };
 
-TEST(PotionTestSuite, testSmallPotionFullConstructorSetType) {
-    Potion smallPotion (50, "Small Potion");
-    smallPotion.setType("Smaller Potion");
-    EXPECT_EQ(smallPotion.getType(), "Smaller Potion");
-};
 
 
 

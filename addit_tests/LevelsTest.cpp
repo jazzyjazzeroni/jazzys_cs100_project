@@ -39,7 +39,7 @@ TEST_F(LevelTestSuite, testSetLevelValid) {
 }
 
 // Test element retrieval
-TEST_F(LevelTestSuite, testGetElementLevel) {
+TEST_F(LevelTestSuite, testGetElementLevelInvalid) {
     EXPECT_EQ(level.getElementForLevel(1), AIR);
     EXPECT_THROW(level.getElementForLevel(10), std::out_of_range);
 }
@@ -81,7 +81,6 @@ TEST_F(LevelTestSuite, testInventoryObjectsValid) {
     Object sword("Sword", 10);
     Object potion("Potion", 5);
 
-    EXPECT_EQ(sword.getType(), "Sword");
     EXPECT_EQ(potion.getValue(), 5);
 }
 

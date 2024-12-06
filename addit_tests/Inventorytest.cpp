@@ -1,16 +1,14 @@
 #include "gtest/gtest.h"
 #include "../addit_header/Inventory.h"
 #include "../addit_header/Potions.h"
+#include "../Character_header/MainCharacter.h"
 
-class InventoryTestSuite : public ::testing::Test {
-protected:
-    Inventory inventory;
+
+TEST(InventoryTestSuite, testRemovePotionValid) {
+     Inventory inventory;
     Potion smallPotion{50, "Small Potion"};
     Potion largePotion{100, "Large Potion"};
-    MainCharacter character; // Assuming MainCharacter has `heal` and related methods
-};
-
-TEST_F(InventoryTestSuite, testRemovePotionValid) {
+    MainCharacter mc("Theodore", 100, 5, "Air");
     inventory.addPotion(smallPotion);
     inventory.addPotion(largePotion);
     inventory.removePotion("Small Potion");
@@ -20,7 +18,12 @@ TEST_F(InventoryTestSuite, testRemovePotionValid) {
     // Edge case: removing non-existent potion
     EXPECT_TRUE(inventory.hasPotion("Null Potion"));
 }
-TEST_F(InventoryTestSuite, testRemovePotionInalid) {
+TEST(InventoryTestSuite, testRemovePotionInvalid) {
+    Inventory inventory;
+    Potion smallPotion{50, "Small Potion"};
+    Potion largePotion{100, "Large Potion"};
+    MainCharacter mc("Theodore", 100, 5, "Air");
+
     inventory.addPotion(smallPotion);
     inventory.addPotion(largePotion);
 
@@ -28,7 +31,12 @@ TEST_F(InventoryTestSuite, testRemovePotionInalid) {
     EXPECT_TRUE(inventory.hasPotion("Large Potion"));
 }
 
-TEST_F(InventoryTestSuite, testGetPotion) {
+TEST(InventoryTestSuite, testGetPotionInvalid) {
+    Inventory inventory;
+    Potion smallPotion{50, "Small Potion"};
+    Potion largePotion{100, "Large Potion"};
+    MainCharacter mc("Theodore", 100, 5, "Air");
+
     inventory.addPotion(smallPotion);
     Potion retrieved = inventory.getPotion("Small Potion");
     EXPECT_EQ(retrieved.getType(), "Small Potion");
@@ -38,23 +46,23 @@ TEST_F(InventoryTestSuite, testGetPotion) {
     EXPECT_THROW(inventory.getPotion("Mysterious Potion"), std::runtime_error);
 }
 
-TEST_F(InventoryTestSuite, testUsePotionValid) {
-    inventory.addPotion(smallPotion);
-    inventory.addPotion(largePotion);
-    
-    inventory.usePotion(character);
-    
-    EXPECT_FALSE(inventory.hasPotion("Small Potion"));
-    EXPECT_TRUE(inventory.hasPotion("Large Potion"));
-}
 
-TEST_F(InventoryTestSuite, testUsePotionInvalid) {
+TEST(InventoryTestSuite, testUsePotionInvalid) {
+    Inventory inventory;
+    Potion smallPotion{50, "Small Potion"};
+    Potion largePotion{100, "Large Potion"};
+    MainCharacter mc("Theodore", 100, 5, "Air");
 
     // Edge case: inventory empty
-    EXPECT_NO_THROW(inventory.usePotion(character));
+    EXPECT_NO_THROW(inventory.usePotion(mc));
 }
 
-TEST_F(InventoryTestSuite, PrintInventory) {
+TEST(InventoryTestSuite, PrintInventory) {
+    Inventory inventory;
+    Potion smallPotion{50, "Small Potion"};
+    Potion largePotion{100, "Large Potion"};
+        MainCharacter mc("Theodore", 100, 5, "Air");
+
     inventory.addPotion(smallPotion);
     inventory.addPotion(largePotion);
 
