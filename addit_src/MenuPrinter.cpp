@@ -7,11 +7,23 @@ using namespace std;
 
 // prints the main/title screen
 void MenuPrinter::printMainMenu() {
+    cout << endl;
+    cout << "                 WELCOME TO               " << endl;
     cout << "                 FLAMES  OF               " << endl;
     cout << "                   =ICE=                 " << endl;
     cout << endl;
-    cout << "                  1. Start                " << endl;
-    cout << "                  2. Exit                 " << endl;
+    cout << "   The objective of the game is to defeat a number of goblins in each level." << endl;
+    cout << "   You can move around the map and encounter goblins." << endl;
+    cout << "   The dot indicates an empty space, the player is represented by (^o^), and the object is represented by a yellow star." << endl;
+    cout << "   You can move up, down, left, and right using 'w', 's', 'a', and 'd' respectively." << endl;
+    cout << "   You will have a different power element per level" << endl;
+    cout << "   You must decide whether to fight or flee when you encounter a goblin depending on your health." << endl;
+    cout << "   You must also decide to attack if you elemntal power is effective against that goblin." << endl;
+    cout << "   You can also pick up swords and potions to help you in your journey." << endl;
+    cout << "   The sword will help you deal more damage and the potion will help you heal." << endl;
+    cout << "   You can only have one sword on you at a time. You have an option to swap." << endl;
+    cout << "   You can have multiple potions in your inventory." << endl << endl;
+    cout << "   Good luck!" << endl;
     cout << endl;
 }
 
@@ -46,10 +58,10 @@ void MenuPrinter::GoblinEncounterMenu(const Goblin& goblin) {
 void MenuPrinter::playerTurnMenu(const MainCharacter& player) {
     cout << "               YOUR TURN                  " << endl;
     cout << endl;
-    cout << "       Health: " << player.getHealth()      << endl;
-    cout << "          Choose your action:             " << endl;
-    cout << "            k: Sword Attack               " << endl;
-    cout << "            p: Power Attack               " << endl;
+    cout << "             Health: " << player.getHealth()      << endl << endl;
+    cout << "          Choose your action:             " << endl << endl;
+    cout << "             k: Attack               " << endl << endl;
+    cout << "             r: Flee               " << endl << endl;
     cout << endl;
 }
 
