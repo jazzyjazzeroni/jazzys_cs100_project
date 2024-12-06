@@ -198,25 +198,25 @@ One principle that helped our group was the Single Responsibility Principle sinc
 
 
   
-</br></br>
+<br/><br/>
  ## Installation/Usage
- 
+ <br/><br/>
   In the command line on VS Code:
   cmake .
-  <br/>
+  <br/> 
   make
   <br/>
   ./bin/game
   <br/>
  ## Testing
-  </br>
+  <br/>
   How was your project tested/validated? If you used CI, you should have a "build passing" badge in this README.
   We have used google unit tests for testing our program. Below are the screen shots of these testings.
-  </br>
+  <br/><br/>
 <img width="566" alt="Screenshot 2024-12-06 at 1 00 46 PM" src="https://github.com/user-attachments/assets/13d2997d-3801-468f-a006-fe462bffe8cc">
-
+<br/>
   <img width="502" alt="Screenshot 2024-12-06 at 1 00 14 PM" src="https://github.com/user-attachments/assets/6b886a56-4e05-410d-a72a-554167a44f30">
-
+<br/>
 <img width="682" alt="Screenshot 2024-12-06 at 1 00 02 PM" src="https://github.com/user-attachments/assets/925d9f47-f372-47f4-8f55-fa20dbacf549">
 
 
