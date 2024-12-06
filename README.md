@@ -137,10 +137,10 @@ Initially, the main character will start off with wind powers. The mechanics of 
 
 <strong>Mechanics:</strong>
 	<ul>
- 	<li>Level 1: Easy Breezy - The game starts with the main character, Theodore having air elemental powers. He will only be able to fight Earth-type goblins in this round. Once Theodore is able to defeat 5 fire 		goblins, he will move to the next level.</li>
-	<li>Level 2: Getting Heated - Theodore levels up and now has fire elemental powers. He can now fight Earth-type and Wind-type goblins. Theodore will have to battle 10 goblins to move to the next round. </li>
-	<li>Level 3: Frigid Flights - Theodore has leveled-up to the third round and now has water-elemental powers. He is now able to fight Earth, Wind, and Fire type goblins. He will then be able to move on to the final stage 	once he defeats 15 goblins</li>
-	<li>Level 4: Earthbound - Theodore has all elements (Earth, Wind, Fire, Water), he can fight all kinds of goblins and can finally move to the boss stage (Dragon’s stage) once he defeats 15 goblins. (Note: The group has 	decided on 15 goblins for this stage for less time-consumption on the client’s end)</li>
+ 	<li>Level 1: Easy Breezy - The game starts with the main character, Theodore having air elemental powers. He will only be able to fight Earth-type goblins in this round. Once Theodore is able to defeat 2 fire 		goblins, he will move to the next level.</li>
+	<li>Level 2: Getting Heated - Theodore levels up and now has fire elemental powers. He can now fight Earth-type and Wind-type goblins. Theodore will have to battle 3 goblins to move to the next round. </li>
+	<li>Level 3: Frigid Flights - Theodore has leveled-up to the third round and now has water-elemental powers. He is now able to fight Earth, Wind, and Fire type goblins. He will then be able to move on to the final stage 	once he defeats 4 goblins</li>
+	<li>Level 4: Earthbound - Theodore has all elements (Earth, Wind, Fire, Water), he can fight all kinds of goblins and can finally move to the boss stage (Dragon’s stage) once he defeats 15 goblins. (Note: The group has 	decided on 5 goblins for this stage for less time-consumption on the client’s end)</li>
 	</ul>
 Once the player has completed all of the four levels they have one the game.
 
