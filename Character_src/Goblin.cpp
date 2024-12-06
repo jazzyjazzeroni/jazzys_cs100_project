@@ -15,11 +15,12 @@ int Goblin::getHealth() const {
     return health;
 }
 
- std::string Goblin::getGoblinType() const {
+// returns the goblin's element type
+std::string Goblin::getGoblinType() const {
         return currentElement;  
     }
 
-// returns goblin's type of element maybe?
+// returns that this is a goblin
 string Goblin::getType() const{
     return "Goblin";
 }
@@ -42,15 +43,13 @@ void Goblin::recieveDamage(int dam) {
     }
 }
 
-
-
 // // probably used when the goblin goes to attack the player
 void Goblin::attack(Character &target) {
-    cout << getType() << " attacks " << target.getType() << "!" << endl;
+    cout << getType() << " attacks " << target.getType() << "!" << endl << endl;
 
     int targetHealth = target.getHealth();
     target.setHealth(targetHealth - powers.calculateDamage());
-    cout << target.getType() << "'s health after attack: " << target.getHealth() << endl;
+    cout << target.getType() << "'s health after attack: " << target.getHealth() << endl << endl;
 }
 
 void Goblin::print() const {

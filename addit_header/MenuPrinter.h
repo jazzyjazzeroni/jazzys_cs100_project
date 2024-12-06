@@ -18,7 +18,6 @@ static void GoblinEncounterMenu(const Goblin& goblin);
 static void playerTurnMenu(const MainCharacter& player);
 static void useItemsMenu();
 static void deathScreen();
-static void pauseMenu();
 static void quitReassuranceMenu();
 
 };
