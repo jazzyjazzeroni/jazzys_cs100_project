@@ -61,7 +61,7 @@ TEST(ObjectTest, InvalidOutBoundsConstructor) {
 TEST(ObjectTest, InvalidParameterConstructor) {
     Object obj("worng_obj", -1500);
     EXPECT_EQ(obj.getType(), "Null");
-    EXPECT_EQ(obj.getValue(), 00);
+    EXPECT_EQ(obj.getValue(), 0);
 }
 
 //end parameterized constructor tests
@@ -190,5 +190,81 @@ TEST(ObjectTest, InvalidValidTotalGetterTest) {
     EXPECT_EQ(obj.getValue(), 0);
 }
 
-//end getter tests
+// //end getter tests
 
+
+// #include <gtest/gtest.h>
+// #include "../addit_header/Object.h"
+
+// // Test default constructor
+// TEST(ObjectTests, DefaultConstructor) {
+//     Object obj;
+//     ASSERT_EQ(obj.getType(), "Null");
+//     ASSERT_EQ(obj.getValue(), 0);
+// }
+
+// // Test parameterized constructor
+// TEST(ObjectTests, ParameterizedConstructor) {
+//     Object obj("TestType", 100);
+//     ASSERT_EQ(obj.getType(), "TestType");
+//     ASSERT_EQ(obj.getValue(), 100);
+// }
+
+// // Test setType and getType
+// TEST(ObjectTests, SetType) {
+//     Object obj;
+//     obj.setType("NewType");
+//     ASSERT_EQ(obj.getType(), "NewType");
+// }
+
+// // Test setValue and getValue
+// TEST(ObjectTests, SetValue) {
+//     Object obj;
+//     obj.setValue(200);
+//     ASSERT_EQ(obj.getValue(), 200);
+// }
+
+// // Test print function
+// TEST(ObjectTests, Print) {
+//     Object obj("PrintType", 300);
+//     testing::internal::CaptureStdout();
+//     obj.print();
+//     std::string output = testing::internal::GetCapturedStdout();
+//     ASSERT_EQ(output, "Name: PrintType, Value: 300\n");
+// }
+
+// // Edge case: Set empty type
+// TEST(ObjectTests, SetEmptyType) {
+//     Object obj;
+//     obj.setType("");
+//     ASSERT_EQ(obj.getType(), "");
+// }
+
+// // Edge case: Set negative value
+// TEST(ObjectTests, SetNegativeValue) {
+//     Object obj;
+//     obj.setValue(-100);
+//     ASSERT_EQ(obj.getValue(), -100);
+// }
+
+// // Invalid read: Accessing uninitialized object
+// TEST(ObjectTests, UninitializedObject) {
+//     Object* obj = new Object();
+//     ASSERT_EQ(obj->getType(), "Null");
+//     ASSERT_EQ(obj->getValue(), 0);
+//     delete obj;
+// }
+
+// // Invalid read: Accessing deleted object
+// TEST(ObjectTests, DeletedObject) {
+//     Object* obj = new Object("DeletedType", 400);
+//     delete obj;
+//     // Accessing deleted object is undefined behavior, so we just ensure no crash
+//     // ASSERT_EQ(obj->getType(), "DeletedType"); // This line is commented out to avoid undefined behavior
+//     // ASSERT_EQ(obj->getValue(), 400); // This line is commented out to avoid undefined behavior
+// }
+
+// int main(int argc, char **argv) {
+//     ::testing::InitGoogleTest(&argc, argv);
+//     return RUN_ALL_TESTS();
+// }
