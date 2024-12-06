@@ -93,15 +93,27 @@ TEST(GoblinTestSuite, testGoblinReceiveOverkillDamage) {
 // Test: Goblin attacking the player
 // might need tweaks
 TEST(GoblinTestSuite, testAttackPlayer) {
-    MainCharacter mc("Theodore", 100, 15, "Fire");
-    Goblin gob("Air Goblin", 50, 50, "Air");
+    MainCharacter mc("Theodore", 100, 15, "Water");
+    Goblin gob("Fire Goblin", 50, 10, "Fire");
 
     gob.attack(mc);
     EXPECT_LT(mc.getHealth(), 100);
-    EXPECT_TRUE(mc.isalive());
+    EXPECT_TRUE(mc.isalive()); // theo should have 80
 
     gob.attack(mc);
-    EXPECT_FALSE(mc.isalive());
+    EXPECT_LT(mc.getHealth(), 100);
+    EXPECT_TRUE(mc.isalive()); // theo should have 60
+
+    gob.attack(mc);
+    EXPECT_LT(mc.getHealth(), 100);
+    EXPECT_TRUE(mc.isalive()); // theo should have 40
+
+    gob.attack(mc);
+    EXPECT_LT(mc.getHealth(), 100);
+    EXPECT_TRUE(mc.isalive()); // theo should have 20
+
+    gob.attack(mc);
+    EXPECT_FALSE(mc.isalive()); // theo ded
 }
 
 // Test: tests that goblin of same element as mc does no damage
