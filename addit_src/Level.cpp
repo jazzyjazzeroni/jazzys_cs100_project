@@ -85,8 +85,21 @@ void Level::takeAction() {
     }
     else if(action == 'q'){
         cout << endl;
-        cout << "You have quit the game." << endl << endl;
-        *isOver = true;
+        MenuPrinter::quitReassuranceMenu();
+        char choice;
+        cin >> choice;
+        if (choice == '1') {
+            cout << "You have quit the game." << endl << endl;
+            *isOver = true;
+        }
+        else if (choice == '2') {
+            cout << "You have chosen not to quit the game." << endl << endl;
+        }
+        else {
+            cout << "Invalid action. Please try again." << endl;
+        }
+        // cout << "You have quit the game." << endl << endl;
+        // *isOver = true;
     }
     else if(action == 'g'){
         cout << endl;
@@ -105,7 +118,6 @@ void Level::takeAction() {
         if (encounter) {
             string type = encounter->getType();
         if (type == "Goblin") {
-                cout << "A goblin appeared!" << endl;
                 Goblin* goblin = dynamic_cast<Goblin*>(encounter.get());
                 if (goblin) {
                     MenuPrinter::GoblinEncounterMenu(*goblin); //// Show goblin info and ask for fight choice
@@ -115,8 +127,9 @@ void Level::takeAction() {
                         bool inCombat = true;
                         while (inCombat) {
                             //// Player's turn to attack
-                            cout << "It's your turn. Press 'k' to attack!" << endl;
-                            cout << "Or press 'r' to run away." << endl;
+                            // cout << "It's your turn. Press 'k' to attack!" << endl << endl;
+                            // cout << "   Or press 'r' to run away." << endl;
+                            MenuPrinter::playerTurnMenu(player);
                             char attackChoice;
                             cin >> attackChoice;
                             if (attackChoice == 'k') {

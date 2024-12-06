@@ -79,16 +79,16 @@ void MainCharacter::attack(Character &target) {
         //      << attackAmount << " damage!" << endl;
         if (powers.canUsePower(opponentPower)) {
             int powerDamage = powers.calculateDamage(); // Update power damage
-            cout << "Elemental Power used against " << enemyAllegiance << "!" << endl;
-            cout << "Dealt " << powerDamage << " damage!" << endl;
+            cout << "Elemental Power used against " << enemyAllegiance << "!" << endl << endl; //to do change to actula power
+            cout << "You dealt " << powerDamage << " damage!" << endl;
             target.receiveDamage(attackAmount+sword.getPower()+powerDamage);
         } else if (powers.getPower() == opponentPower.getPower()) {
             cout << "Warning: Using the same element against " << enemyAllegiance 
-                << " results in self-damage!" << endl;
-            cout << "Dealt no damage!" << endl;
+                << " results in self-damage!" << endl << endl;
+            cout << "Dealt no damage!" << endl << endl;
         } else {
-            cout << "This Elemental Power is ineffective against " << enemyAllegiance << "!" << endl;
-            cout << "Dealt no damage!" << endl;
+            cout << "This Elemental Power is ineffective against " << enemyAllegiance << "!" << endl << endl;
+            cout << "Dealt no damage!" << endl << endl;
             target.attack(*this);
             // todo take damage from goblin
         }

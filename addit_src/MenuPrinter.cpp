@@ -46,10 +46,10 @@ void MenuPrinter::GoblinEncounterMenu(const Goblin& goblin) {
 void MenuPrinter::playerTurnMenu(const MainCharacter& player) {
     cout << "               YOUR TURN                  " << endl;
     cout << endl;
-    cout << "       Health: " << player.getHealth()      << endl;
-    cout << "          Choose your action:             " << endl;
-    cout << "            k: Sword Attack               " << endl;
-    cout << "            p: Power Attack               " << endl;
+    cout << "             Health: " << player.getHealth()      << endl << endl;
+    cout << "          Choose your action:             " << endl << endl;
+    cout << "             k: Attack               " << endl << endl;
+    cout << "             r: Flee               " << endl << endl;
     cout << endl;
 }
 

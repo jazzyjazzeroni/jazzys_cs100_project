@@ -46,11 +46,11 @@ void Goblin::recieveDamage(int dam) {
 
 // // probably used when the goblin goes to attack the player
 void Goblin::attack(Character &target) {
-    cout << getType() << " attacks " << target.getType() << "!" << endl;
+    cout << getType() << " attacks " << target.getType() << "!" << endl << endl;
 
     int targetHealth = target.getHealth();
     target.setHealth(targetHealth - powers.calculateDamage());
-    cout << target.getType() << "'s health after attack: " << target.getHealth() << endl;
+    cout << target.getType() << "'s health after attack: " << target.getHealth() << endl << endl;
 }
 
 void Goblin::print() const {
