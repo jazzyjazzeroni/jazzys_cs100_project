@@ -94,10 +94,10 @@ int GameMap::getGoblinsKilled() const {
     return count;
 }
 
+
 int GameMap::getWidth() const {
     return width;
 }
-
 int GameMap::getHeight() const {
     return height;
 }
@@ -112,7 +112,7 @@ void GameMap::printMap(int playerX, int playerY) const {
                 if (obj->getType() == "Goblin"||obj->getType() == "Sword"||obj->getType() == "Potion") {
                     cout << YELLOW << "*" << RESET;
                 } else {
-                    cout << ". ";  // Represent empty spaces with '.'
+                    cout << "|. ";  // Represent empty spaces with '.'
                 }
             }
         }

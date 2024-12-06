@@ -123,6 +123,9 @@ void Level::takeAction() {
         else if (type == "Potion") {
                 Potion* potion = dynamic_cast<Potion*>(encounter.get());
                 if (potion) {
+                    
+                    
+                    
                    inventory.addPotion(*potion);
                     cout << "You picked up a potion: " << potion->getType() << endl;
                 }
