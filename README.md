@@ -203,11 +203,13 @@ One principle that helped our group was the Single Responsibility Principle sinc
  
   In the command line on VS Code:
   cmake .
+  <br/>
   make
+  <br/>
   ./bin/game
-</br>
+  <br/>
  ## Testing
-</br>
+  </br>
   How was your project tested/validated? If you used CI, you should have a "build passing" badge in this README.
   We have used google unit tests for testing our program. Below are the screen shots of these testings.
   </br>
