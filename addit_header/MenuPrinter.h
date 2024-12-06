@@ -14,7 +14,7 @@ static void printGoblinStatus(int left, int killed);
 static void printStatus(const MainCharacter& player);
 static void tutorialMenu();
 static void movementMenu();
-static void GoblinEncounterMenu(const Goblin& goblin);
+static void GoblinEncounterMenu(const Goblin& goblin, const MainCharacter& player);
 static void playerTurnMenu(const MainCharacter& player);
 static void useItemsMenu();
 static void deathScreen();

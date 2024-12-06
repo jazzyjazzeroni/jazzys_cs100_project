@@ -32,9 +32,26 @@ void MenuPrinter::movementMenu() {
 }
 
 // prints when a fire goblin is encountered
-void MenuPrinter::GoblinEncounterMenu(const Goblin& goblin) {
+void MenuPrinter::GoblinEncounterMenu(const Goblin& goblin, const MainCharacter& player) {
     cout << "         A goblin has appeared!        " << endl << endl;
     cout << "              Element: " << goblin.getGoblinType() << endl << endl;
+    
+    Powers goblinPower = goblin.getPower();
+    Powers mcPower = player.getPower();
+    
+    if (!mcPower.canUsePower(goblinPower)) {
+
+        // if the player's element is the same as goblin's
+        if (mcPower.getPower() == goblinPower.getPower()) {
+        cout << "Warning: You have the same element type    " << endl;
+        cout << "You will not be able to deal any damage    " << endl;
+    }   // if the player's element is not the same but innefective
+        else {
+        cout << "Warning: You're current element type will  " << endl;
+        cout << "be ineffective against this type of goblin " << endl;
+        }
+    } 
+    
     cout << "         Do you choose to fight?         " << endl;
     cout << endl;
     cout << "       1. Yes              2. No         " << endl;

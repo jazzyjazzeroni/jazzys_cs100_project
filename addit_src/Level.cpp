@@ -104,7 +104,7 @@ void Level::takeAction() {
                 //cout << "A goblin appeared!" << endl;
                 Goblin* goblin = dynamic_cast<Goblin*>(encounter.get());
                 if (goblin) {
-                    MenuPrinter::GoblinEncounterMenu(*goblin); // Show goblin info and ask for fight choice
+                    MenuPrinter::GoblinEncounterMenu(*goblin, player); // Show goblin info and ask for fight choice
                     char choice;
                     cin >> choice;
                     if (choice == '1') {  // Player chooses to fight
