@@ -94,10 +94,6 @@ void MainCharacter::attack(Character &target) {
         }
         
     } 
-
-    if (!target.isalive()) {
-        cout << "The opponent has been defeated!" << endl;
-    }
 }
 
     void MainCharacter::print() const {

@@ -46,14 +46,25 @@ void Inventory::usePotion(MainCharacter& mainCharacter) {
         return;
     }
 
-    cout << "Select a potion to use:" << endl;
+    cout << "Would you like to use one of your potions?" << endl;
     for (size_t i = 0; i < potions.size(); i++) {
         cout << i + 1 << ". ";
         potions[i].print();
     }
+    cout << endl;
+    cout << "Press (y) to use a potion or any other key to cancel: ";
+
+    char choose;
+    cin >> choose;
+    if (choose != 'y') {
+        return;
+    }
+
+    else{
 
     int choice;
-    cout << "Enter choice: ";
+    cout << endl;
+    cout << "Enter number on list to use that potion: ";
     while (!(cin >> choice) || choice < 1 || choice > potions.size()) {
         cout << "Invalid choice. Please enter a valid number: ";
         cin.clear();
@@ -61,4 +72,5 @@ void Inventory::usePotion(MainCharacter& mainCharacter) {
     }
     mainCharacter.heal(potions[choice - 1].getHealingAmount());
     removePotion(potions[choice - 1].getType());
+    }
 }

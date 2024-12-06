@@ -1,4 +1,5 @@
 #include "..//addit_header//Level.h"
+#include <iostream>
 using namespace std;
 
 struct Map {
@@ -34,8 +35,6 @@ Level::Level(int power, const vector<vector<int>>& mapLayout, int goblinGoal, bo
 
 void Level::start() {
     while (!end && !*isOver) {
-      ////   gameMap.printMap(player.getX(), player.getY());
-
         while (!end && !*isOver) {
         pair<int, int> playerPos = player.getPosition();
         gameMap.printMap(playerPos.first, playerPos.second); //// Print the map
@@ -68,6 +67,8 @@ int Level::getCurrentLevel() const {
 }
 
 void Level::takeAction() {
+    // cout << "This is level " << currentLevel << ". You are " << player.getCurrentElement() << " element." << endl;
+
     char action;
     cout << "Enter action: ";
     //// //// MenuPrinter::printGoblinStatus(
@@ -120,6 +121,18 @@ void Level::takeAction() {
         if (type == "Goblin") {
                 Goblin* goblin = dynamic_cast<Goblin*>(encounter.get());
                 if (goblin) {
+                       cout <<
+"             ,      ,"<<endl<<
+"            //(.-\"\"-.)\\"<<endl<<
+"        |\\  \\//      \\//  //|"<<endl<<
+"        | \\ // =.  .= \\ // |"<<endl<<
+"        \\( \\   o\\//o   // )//"<<endl<<
+"         \\_, '-//  \\-' ,_//"<<endl<<
+"           //   \\__//   \\"<<endl<<
+"           \\ \\__//\\__// //"<<endl<<
+"         ___\\ \\|--|// //___"<<endl<<
+"       //`    \\      //    `\\"<<endl<<
+"  jgs //       '----'       \\"<<endl << endl;
                     MenuPrinter::GoblinEncounterMenu(*goblin); //// Show goblin info and ask for fight choice
                     char choice;
                     cin >> choice;
@@ -133,18 +146,6 @@ void Level::takeAction() {
                             char attackChoice;
                             cin >> attackChoice;
                             if (attackChoice == 'k') {
-                                cout <<
-"             ,      ,"<<endl<<
-"            //(.-\"\"-.)\\"<<endl<<
-"        |\\  \\//      \\//  //|"<<endl<<
-"        | \\ // =.  .= \\ // |"<<endl<<
-"        \\( \\   o\\//o   // )//"<<endl<<
-"         \\_, '-//  \\-' ,_//"<<endl<<
-"           //   \\__//   \\"<<endl<<
-"           \\ \\__//\\__// //"<<endl<<
-"         ___\\ \\|--|// //___"<<endl<<
-"       //`    \\      //    `\\"<<endl<<
-"  jgs //       '----'       \\"<<endl;
                                 player.attack(*goblin);  //// Perform attack
                                 if (!goblin->isalive()) {
                                     cout << "The goblin has been defeated!" << endl;
@@ -186,7 +187,6 @@ void Level::takeAction() {
                 Potion* potion = dynamic_cast<Potion*>(encounter.get());
                 if (potion) {
                    inventory.addPotion(*potion);
-                    cout << "You picked up a potion: " << potion->getType() << endl;
                     cout <<
 "      _____       " << endl<<
 "     `.___,'" << endl<<
@@ -201,7 +201,7 @@ void Level::takeAction() {
 "   :         ;" << endl<<
 "    \\       //" << endl<<
 "     `.___.' " << endl;
-
+                    cout << "You picked up a potion: " << potion->getType() << endl;
                 }
         }
         else if (type == "Sword") {
@@ -235,7 +235,7 @@ void Level::takeAction() {
 "             \\\\  ||        "<<endl<<
 "              \\\\ ////"<<endl<<
 "               \\V//"<<endl<<
-"                V"<<endl;
+"                V"<<endl << endl;
                 }
                 else{
                  cout << "Nothing interesting here." << endl;
